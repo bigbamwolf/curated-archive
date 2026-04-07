@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curated Archive</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #121212;
+      --panel-soft: #161616;
+      --panel-lift: #1b1b1b;
+      --line: rgba(198, 166, 106, 0.16);
+      --line-strong: rgba(198, 166, 106, 0.28);
+      --gold: #c6a66a;
+      --gold-soft: #9f8352;
+      --text: #f5f1e8;
+      --muted: #b2a58d;
+      --muted-2: #8d8578;
+      --card: rgba(255,255,255,0.02);
+      --shadow: 0 26px 60px rgba(0, 0, 0, 0.42);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --serif: "Georgia", "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(198,166,106,0.08), transparent 26%),
+        linear-gradient(180deg, #090909 0%, #0a0a0a 100%);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 28px 24px 42px;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)),
+        rgba(10,10,10,0.94);
+      box-shadow: var(--shadow);
+      padding: 34px 34px 28px;
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -120px -120px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198,166,106,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      color: var(--gold);
+    }
+
+    .hero-guide {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .guide-step {
+      padding: 16px 16px 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .guide-step strong {
+      display: block;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-family: var(--sans);
+    }
+
+    .guide-step span {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.28fr) minmax(330px, 0.82fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.008)),
+        rgba(12,12,12,0.96);
+      box-shadow: var(--shadow);
+    }
+
+    .main-panel {
+      padding: 24px;
+    }
+
+    .side-panel {
+      padding: 20px;
+      position: sticky;
+      top: 20px;
+      max-height: calc(100vh - 40px);
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .brand-picker {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .brand-label {
+      color: var(--gold);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+    }
+
+    select,
+    input,
+    textarea,
+    button {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+      transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+    }
+
+    select,
+    input,
+    textarea {
+      padding: 14px 15px;
+    }
+
+    select:focus,
+    input:focus,
+    textarea:focus {
+      border-color: var(--line-strong);
+    }
+
+    button {
+      cursor: pointer;
+      padding: 13px 16px;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #d6b57a 0%, #b69255 100%);
+      color: #17130d;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn-secondary {
+      background: var(--panel-soft);
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .tiny {
+      color: var(--muted-2);
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .brand-card {
+      padding: 18px;
+      text-align: left;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .brand-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    .brand-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .view-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .view-head h2 {
+      margin: 0;
+      font-size: 1.95rem;
+      color: var(--gold);
+    }
+
+    .view-subtext {
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    .home-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 820px;
+      margin-top: 12px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .text-link {
+      width: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .scent-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .scent-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        rgba(16,16,16,0.94);
+      padding: 18px 18px 16px;
+    }
+
+    .scent-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 8px;
+    }
+
+    .scent-name {
+      font-family: var(--serif);
+      font-size: 1.24rem;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .scent-tag {
+      white-space: nowrap;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--gold);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(198,166,106,0.06);
+    }
+
+    .scent-description {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.72;
+    }
+
+    .scent-controls {
+      display: grid;
+      grid-template-columns: minmax(160px, 1fr) 120px auto;
+      gap: 10px;
+      margin-top: 16px;
+      align-items: center;
+    }
+
+    .price-panel {
+      margin-top: 14px;
+      padding: 14px 15px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(198,166,106,0.05);
+    }
+
+    .price-total {
+      font-size: 1.02rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .price-unit {
+      margin-top: 6px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 8px 0;
+      line-height: 1.7;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .section-title {
+      margin: 18px 0 12px;
+      font-size: 1.55rem;
+      color: var(--gold);
+    }
+
+    .cart-scroll {
+      flex: 1 1 0;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-right: 6px;
+      margin: 10px 0 16px;
+    }
+
+    .cart-items {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .cart-item {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+      padding: 14px;
+    }
+
+    .cart-item-top,
+    .cart-item-bottom,
+    .cart-total,
+    .pay-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cart-item-bottom {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .remove-btn {
+      width: auto;
+      padding: 7px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      background: transparent;
+    }
+
+    .cart-total {
+      padding: 14px 0 12px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .payment-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tab-btn {
+      background: var(--panel-soft);
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .tab-btn.active {
+      background: rgba(198,166,106,0.12);
+      color: var(--gold);
+      border-color: var(--line-strong);
+    }
+
+    .payment-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.02);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .payment-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+
+    .qr-holder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 240px;
+      margin: 0 auto 12px;
+      border-radius: 18px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    .qr-holder img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .payment-pane.hidden,
+    .hidden {
+      display: none !important;
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .status {
+      margin-top: 12px;
+      min-height: 20px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .status.error {
+      color: #e9cfc6;
+    }
+
+    @media (max-width: 1080px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-panel {
+        position: static;
+        max-height: none;
+        overflow: visible;
+      }
+
+      .cart-scroll {
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .wrap {
+        padding: 18px 14px 28px;
+      }
+
+      .hero {
+        padding: 24px 20px 20px;
+      }
+
+      .main-panel,
+      .side-panel {
+        padding: 18px;
+      }
+
+      .side-panel {
+        display: block;
+      }
+
+      .field-grid,
+      .scent-controls,
+      .payment-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .scent-top,
+      .view-head,
+      .cart-item-top,
+      .cart-item-bottom,
+      .cart-total,
+      .pay-row {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Curated Archive</div>
+      <h1>Curated Archive</h1>
+      <div class="hero-guide">
+        <div class="guide-step">
+          <strong>Step 1</strong>
+          <span>Choose a brand or category from the selector below or tap a collection card.</span>
+        </div>
+        <div class="guide-step">
+          <strong>Step 2</strong>
+          <span>Inside the collection page, choose your preferred ml size and quantity. The computed price updates instantly.</span>
+        </div>
+        <div class="guide-step">
+          <strong>Step 3</strong>
+          <span>Add your selections to cart, review the total, then export your cart as a PDF for payment reference.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout">
+      <main class="panel main-panel">
+        <div class="brand-picker">
+          <label class="brand-label" for="brandSelect">Choose a collection</label>
+          <select id="brandSelect">
+            <option value="">Select a brand or category</option>
+          </select>
+          <div class="tiny">Switching collections is instant. You do not need to clear the field first.</div>
+        </div>
+
+        <section id="homeView">
+          <div class="view-head">
+            <div>
+              <h2>Collections</h2>
+              <div class="view-subtext">Choose a collection first, then browse all scents inside that dedicated page.</div>
+            </div>
+          </div>
+          <div class="home-copy">
+            Start with the selector above or tap a collection below. Each collection page keeps the full scent list under that specific brand or category, with only the available ml options shown.
+          </div>
+          <div id="brandGrid" class="brand-grid"></div>
+        </section>
+
+        <section id="brandView" class="hidden">
+          <div class="breadcrumbs">
+            <button id="backHomeBtn" class="text-link">Back to home</button>
+            <span>/</span>
+            <span id="currentBrandBreadcrumb"></span>
+          </div>
+          <div class="view-head">
+            <div>
+              <h2 id="brandTitle"></h2>
+              <div id="brandSubtext" class="view-subtext"></div>
+            </div>
+          </div>
+          <div id="scentGrid" class="scent-grid"></div>
+          <div id="brandStatus" class="status"></div>
+        </section>
+      </main>
+
+      <aside class="panel side-panel">
+        <div class="field-grid">
+          <input id="customerName" type="text" placeholder="Customer name" />
+          <input id="customerContact" type="text" placeholder="Contact number or messenger" />
+          <textarea id="customerNotes" class="full" rows="3" placeholder="Optional note, address, or meetup instructions"></textarea>
+        </div>
+
+        <h2 class="section-title">Shopping Cart</h2>
+        <div class="cart-scroll">
+          <div id="cartItems" class="cart-items"></div>
+        </div>
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="cartTotal">₱0.00</strong>
+        </div>
+
+        <div class="payment-tabs">
+          <button class="tab-btn active" data-tab="gcash">GCash</button>
+          <button class="tab-btn" data-tab="unionbank">UnionBank</button>
+        </div>
+
+        <div class="payment-card">
+          <div id="gcashPane" class="payment-pane">
+            <h3>GCash Payment</h3>
+            <div id="gcashQrHolder" class="qr-holder"></div>
+            <div class="pay-row">
+              <span class="muted">Account name</span>
+              <strong id="gcashNameText"></strong>
+            </div>
+            <div class="pay-row" style="margin-top: 8px;">
+              <span class="muted">GCash number</span>
+              <strong id="gcashNumberText"></strong>
+            </div>
+          </div>
+
+          <div id="unionbankPane" class="payment-pane hidden">
+            <h3>UnionBank Payment</h3>
+            <div id="unionbankQrHolder" class="qr-holder"></div>
+            <div class="tiny">Upload your UnionBank QR image to GitHub as <strong>unionbank-qr.png</strong> in the same folder as index.html.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="downloadPdfBtn" class="btn-primary">Download cart as PDF</button>
+          <button id="clearCartBtn" class="btn-secondary">Clear cart</button>
+        </div>
+
+        <div class="tiny" style="margin-top: 12px;">
+          The website shows the peso sign on screen. The PDF uses PHP formatting for cleaner export compatibility.
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script>
+    const STORE_CONFIG = {
+      shopName: "Curated Archive",
+      gcashName: "Arwin Edward M. Bagaslao",
+      gcashNumber: "09356708680",
+      gcashQrImagePath: "gcash-qr.png",
+      unionbankQrImagePath: "unionbank-qr.png"
+    };
+
+    const QR_PATHS = {
+      gcash: [
+        STORE_CONFIG.gcashQrImagePath,
+        "gcash qr.png",
+        "gcash-qr.jpg",
+        "gcash-qr.jpeg",
+        "gcash qr.jpg",
+        "gcash qr.jpeg",
+        "gcash-qr.webp"
+      ],
+      unionbank: [
+        STORE_CONFIG.unionbankQrImagePath,
+        "unionbank qr.png",
+        "unionbank-qr.jpg",
+        "unionbank-qr.jpeg",
+        "unionbank qr.jpg",
+        "unionbank qr.jpeg",
+        "unionbank-qr.webp"
+      ]
+    };
+
+    const CATALOG = {"Aventus":[{"name":"10J02","prices":{"1":3273,"2":6546,"5":16365,"10":32730},"description":"Aventus 10J02 opens with a faint touch of lemon, but the real focus is its smoke, which comes through with an ashtray like character that makes the scent feel very bold and challenging. It is not the easiest batch to appreciate right away, since the smokiness has an acquired taste and leans more rugged than crowd pleasing. In the mid, the fragrance stays woody and smoky, then gradually softens into a creamy musk vanilla drydown that gives the batch a smoother and more comforting finish."},{"name":"11Z01","prices":{"1":1925,"2":3850},"description":"Aventus 11Z01 has no noticeable pineapple presence and instead leans heavily into a smoky, oceanic, and salty profile that feels very distinctive from the usual fruity Aventus expectation. In the mid, a strong, clean, crisp, and almost pungent musk takes over, giving the fragrance a sharp and powerful character. As it dries down, the smokiness returns and leaves a lasting impression, but the smoke here feels especially unique, unusual, and difficult to compare to anything else, which is what makes this batch stand out so much."},{"name":"12D01","prices":{"1":1858,"2":4922,"5":12305},"description":"Aventus 12D01 opens with a distinct grilled pineapple note, as if the fruit has light charred marks, giving it a bold and memorable introduction. In the mid, the profile turns citrusy and earthy, adding depth and structure without losing freshness. The drydown reveals a smooth citrusy vanilla that feels refined and well integrated. The transitions between stages are seamless and satisfying, fully living up to the batch’s reputation, with the scent remaining clearly detectable even after 8 hours."},{"name":"12F01","prices":{"1":1120,"2":2856},"description":"Aventus 12F01 is dominated by an intense, in your face smoke that immediately gives the fragrance a raw, almost burned woodland character. The smokiness is bold and uncompromising, yet it remains surprisingly wearable, showing the kind of refined and distinctive smoke that makes the original Aventus difficult to replicate. In the mid, a hint of fruitiness tries to come through, but the smoke stays firmly in control for nearly three hours before the scent finally softens into a musky vanilla drydown. It is a powerful and memorable batch that leans heavily into smoke while still ending on a smoother, more comforting finish."},{"name":"13ZZ01","prices":{"1":1932,"2":3864,"5":9660,"10":19320},"description":"Aventus 13ZZ01 opens with a strong burst of fruity pineapple, paired with a pungent musk and a well judged touch of smoke that gives the scent both brightness and depth. In the mid, a subtle saltiness emerges alongside the smokiness, adding a slightly rugged and more textured character to the composition. As it dries down, the fragrance becomes more citrusy and musky, leaving a cleaner but still distinctive finish. Performance is solid, with around 2 hours of projection and about 5 hours on skin."},{"name":"14F01","prices":{"1":668.11,"2":1590,"5":3975,"10":7950},"description":"Aventus 14F01 opens with a fruity and musky profile that feels fresh and immediately wearable. In the mid, a faint whisper of smoke appears but remains subtle and barely noticeable. The fragrance maintains a fresh pineapple accord through to the drydown, giving it a clean, bright, and consistent finish."},{"name":"14K01","prices":{"1":1900,"2":5040},"description":"Aventus 14K01 is a stark departure from the modern fruity interpretations of Aventus, opening with a deep blend of earthy, mossy, and smoky notes that immediately signal a mature and authoritative character. The depth is striking, evoking a true time capsule effect that feels old-world and seasoned rather than playful. Despite the absence of a fruity opening, the Aventus DNA remains unmistakable, even recognizable to others. In the mid, a subtle pineapple note begins to surface, sharpened by assertive woods that add structure and edge. The drydown introduces a mix of saltiness, musk, and vanilla, grounding the fragrance into a powerful and long-lasting base. Performance is exceptional, with around 7 hours of projection and up to 20 hours of longevity."},{"name":"15R11","prices":{"1":724,"2":1746.56,"5":4366.39,"10":8732.78},"description":"Aventus 15R11 – A radiant expression of pineapple brightness, opening with sweet vibrancy before evolving into a refined woody signature. The iconic sweetness gently shifts into a softly zesty brightness reminiscent of fine lemon sorbet, wrapped in musk and dry woods. A confident, uplifting, and easy-wearing Aventus that brings optimism with subtle masculine structure."},{"name":"15X21","prices":{"1":631.43,"2":1488,"5":3720,"10":7440},"description":"Aventus 15X21 - An unapologetically woody interpretation of the Aventus DNA. The fruitiness remains understated, surrendering quickly to deep, assertive woods that command presence. As it settles, the fragrance mellows into a smooth musk-vanilla warmth, leaving behind a gentlemanly aura that resonates quietly but firmly."},{"name":"15Y11","prices":{"1":1044.34,"2":2644.15,"5":6610.37,"10":13220.75},"description":"Aventus 15Y11 – Opening with a lightly earthy fruitiness, this batch immediately leans dry-woody and aromatic. Lemon and woods define the heart, giving it a clean and distinguished identity. As it matures on skin, a gentle pineapple-musk veil emerges with remarkable persistence even activating beautifully with post-shower steam. A quiet powerhouse with impressive staying power."},{"name":"15Y01","prices":{"1":688.23,"2":1647.05,"5":4117.61,"10":8235.23},"description":"Aventus 15Y01 - Bright, joyful pineapple leads the composition from the very first spray, balanced by a touch of moss and airy woodiness. The fruit remains expressive before gracefully giving way to the beloved musk-vanilla warmth. A vibrant and cheerful batch that performs exceptionally on clothing, retaining its juicy radiance throughout the day."},{"name":"16A01","prices":{"1":573.23,"2":1325.06,"5":3312.64,"10":6625.28},"description":"Aventus 16A01 - A bright, lightly sweet pineapple character reminiscent of airy confectionery fruit. The woodiness in the heart remains subdued, giving this batch a breezy, elegant manner. The drydown is purely musky, maintaining a gentle, understated charm that never overwhelms."},{"name":"16D01","prices":{"1":613.84,"2":1438.74,"5":3596.86,"10":7193.71},"description":"Aventus 16D01 - A fresh pineapple opening with balanced sweetness over subtle effervescence. The journey continues with clean woods weaving into the fruit, forming a respectful harmony. The drydown is citrus-musky, calm yet confident — a fragrance with unspoken authority rather than loud projection."},{"name":"16E01","prices":{"1":525.47,"2":1191.32,"5":2978.3,"10":5956.6},"description":"Aventus 16E01 – A sparkling pineapple effect almost fizzy in brightness, grounded by touches of ash-smoke for depth. The heart develops an airy woodiness with a salinic edge: a rare and sophisticated nuance within the Aventus family. Longevity is solid, with extended bright projection before settling into a fresh citrus-musky finale."},{"name":"16H01","prices":{"1":711.47,"2":1712.1,"5":4280.26,"10":8560.51},"description":"Aventus 16H01 opens with a refined tart fruitiness that feels bright and composed rather than aggressive. The mid transitions into a fresh, citrus-forward profile that remains clean and airy, giving the fragrance an easy sense of movement and clarity. As it dries down, subtle woods emerge to provide balance and structure, preventing the composition from becoming too sharp or fleeting.\n\nOverall, this batch leans toward the lighter side of the Aventus spectrum. It is smooth, approachable, and effortless to wear, making it a dependable option for daily use and warmer conditions without sacrificing the signature Aventus character."},{"name":"16K01","prices":{"1":927.98,"2":2318.35},"description":"Aventus 16K01 - A darker, more mature pineapple begins the experience, infused with a soft smokiness and earthy undertones. The mid reveals a clarified pineapple note with restrained woods, evolving into a warm musk sweetness. Subtle, quietly sensual, and remarkably smooth in transition."},{"name":"16M01","prices":{"1":609,"2":1425.45,"5":3563.64,"10":7127.27},"description":"Aventus 16M01 - Opening with refined bergamot brightness enriched by patchouli’s earthy sweetness, this batch evolves into a deeper, richer, slightly sour-tinged complexity. The final stage reveals a confident blend of wood, vanilla, and fruit: commanding presence without excess. A fragrance of leadership, depth, and timeless masculine composure."},{"name":"17S01","prices":{"1":811.11,"2":1991.11,"5":4977.78,"10":9955.56},"description":"Aventus 17S01 opens with a woody and earthy profile that immediately feels grounded and mature. As it moves into the mid, the woodiness becomes warmer and ambery, supported by a subtle touch of vanilla that adds smoothness. In the drydown, the scent shifts toward a citrusy, musky finish that lightens the overall composition. Longevity is strong, lasting around 11 hours on both skin and T shirt."},{"name":"17T01","prices":{"1":317.39,"2":608.7,"5":1521.74,"10":3043.48},"description":"A refined and beautifully balanced interpretation of the Aventus DNA, 17T01 opens with a green-toned pineapple that feels fresh, natural, and effortlessly classy. As it settles, the fruit evolves into a smoother, richer pineapple accord with gentle sweetness, evoking depth without becoming candied. The drydown reveals a graceful fusion of vanilla and soft musk, creating an aura of subtly seductive sophistication. Long-lasting and elegantly composed, 17T01 delivers presence without aggression — a confident, modern classic with timeless appeal."},{"name":"17Q11","prices":{"1":533.9,"2":1214.92,"5":3037.3,"10":6074.6},"description":"Aventus 17Q11 - A perfectly calibrated harmony of wooded depth and juicy fruit, silky and beautifully structured. Devoid of harsh smokiness, this batch speaks to collectors who appreciate purity and balance within the Aventus profile. Smooth, elegant, and exceptionally refined."},{"name":"17W01","prices":{"1":343.9,"2":682.93,"5":1707.32,"10":3414.63},"description":"Aventus 17W01 - A bergamot-forward entry with crisp brightness, maturing swiftly into a subtly smoky masculinity. The drydown glows with creamy vanilla and wood, creating an alluring signature trail that remains perceptible even through a face mask. Assertive yet polished."},{"name":"17X01","prices":{"1":350,"2":700,"5":1750,"10":3500},"description":"A refined and luminous interpretation of the Aventus style. The opening presents a crisp and uplifting pineapple brightness intertwined with a gentle wood undertone that feels clean and polished. As it transitions, the fragrance deepens with a sweeter pineapple nuance lightly accented by a delicate spark of bergamot for subtle energy and lift. The drydown reveals a soft veil of musk and quiet warmth, creating an elegant skin-close aura. Fresh, balanced, and effortlessly sophisticated — a scent that communicates clarity and class rather than volume or aggression."},{"name":"18D02","prices":{"1":436.84,"2":674,"5":1685,"10":3370},"description":"Aventus 18D01 opens with an overripe pineapple accord paired with light woods, giving it a rich but controlled introduction. As it moves into the mid, the profile becomes fruity and musky, maintaining a soft and understated character. In the drydown, a very subtle musky vanilla emerges on both skin and fabric, requiring close wear to fully appreciate. Even after 20 hours, the scent remains detectable on clothing, with occasional gentle wafts of projection."},{"name":"18F21","prices":{"1":403.33,"2":849.33,"5":2123.32,"10":4246.64},"description":"Aventus 18F21 - A crisp pineapple impression that stays fresh rather than sugary, gradually acquiring woody grounding as it develops. The base is bright, citrus-musky, and uplifting. A modern-feeling batch that enhances vitality and clean energy."},{"name":"18K01","prices":{"1":388.46,"2":807.69,"5":2019.23,"10":4038.46},"description":"Aventus 18K01 - A lively burst of sweet pineapple transitions into a refined woody-citrus midtone with bergamot presence. Linear in progression, but assured in performance, especially on clothing. A dependable, clean-cut batch ideal for both skin and fabric application."},{"name":"21T01","prices":{"1":375.78,"2":772.19,"5":1930.48,"10":3860.95},"description":"Aventus 21T01 presents a darker character, comparable in depth to 16M01, but with its own distinct personality. The opening is earthy and woody, immediately setting a more serious and grounded tone, with a noticeable inky nuance reminiscent of a pentel pen that adds an interesting, almost industrial edge. As it develops into the mid, the woody profile remains dominant, but a subtle vanilla nuance begins to surface, softening the darkness and adding quiet richness.\n\nIn the drydown, citrus and musk emerge to lift the composition, creating contrast against the earlier heaviness while maintaining the recognizable Aventus DNA. Notably, the scent shows strong persistence, with traces of the DNA lingering on the skin even after washing with soap, highlighting its tenacity and staying power."},{"name":"21V01","prices":{"1":241.3,"2":395.65,"5":989.13,"10":1978.26},"description":"Aventus 21V01 - Vibrant pineapple meets earthy patchouli in a striking contrast, followed by a structured woody phase and a citrus-musky finish. Extremely persistent on fabric.  Lasting well beyond a full day, and maintaining presence with understated sophistication."},{"name":"21X01B","prices":{"1":329.17,"2":641.67,"5":1604.17,"10":3208.33},"description":"Aventus 21X01B opens with a fresh, musky bergamot that feels clean and airy. The mid stays citrusy and musky, maintaining the same light and transparent character. In the drydown, it simplifies further into a soft musky base. Overall, it comes across as extremely light, likely due to minimal oxidation at this stage."},{"name":"F2838","prices":{"1":186,"2":372,"5":930,"10":1860},"description":"Aventus F2838 - A playful pineapple atop a restrained woody dryness that becomes pepper-tinged and lively through the heart. The drydown divides: citrus-musky on skin, boldly woody on fabric. A striking character with evolving duality and excellent reactivation after heat exposure."},{"name":"F3334","prices":{"1":233.2,"2":372.95,"5":932.37,"10":1864.75},"description":"Aventus F3334 - An exquisite burst of sweet, syrupy pineapple opens the scent before shifting quickly to woody earthiness. The mid is gracefully woody-fresh, and the drydown becomes citrus-musky with outstanding longevity that clings to clothing. A strikingly dynamic batch with satisfying evolution."},{"name":"F388","prices":{"1":230,"2":364,"5":910,"10":1820},"description":"Aventus F388 - Green-woody and ambroxan-forward with understated citrus presence. The heart releases a micro-hint of smoke before landing in a vanilla-musk Aventus base. A young-feeling batch destined to grow richer with maturity and time."},{"name":"F387","prices":{"1":230,"2":364,"5":910,"10":1820},"description":"Aventus F387 - Bergamot-leaning with gentle vanilla and woods maintaining equilibrium. Vanilla shades emerge more on skin, woods more on fabric, resulting in a dual-character drydown. Promising in longevity and likely to improve beautifully through oxidation over time."},{"name":"F1520","prices":{"1":230,"2":364,"5":910,"10":1820},"description":"Aventus F1520 - A distinctive opening of deep woods and patchouli that later reveals bright blackcurrant flexibility. The closing impression is bergamot-kissed musk, creating a transition from shadow to light. A fascinating introspective batch that evolves with age, worthy of cellaring for maturity."},{"name":"F3135","prices":{"1":257.14,"2":440,"5":1100,"10":2200},"description":"Aventus F3135 - Blackcurrant and patchouli dominate the opening with bold personality before pineapple rises through the composition. The finale is an intensely woody signature softened by intermittent musk hints. For connoisseurs who appreciate unapologetically masculine woods."},{"name":"F463","prices":{"1":207.14,"2":300,"5":750,"10":1500},"description":"Aventus Flacon F463 - A refined balance of bright pineapple and birch smoke up front, followed by a dignified smoky heart and a warm sweet-musky closing. Classic, confident, and true to the quintessential Aventus spirit."}],"Dua":[{"name":"#Imagine","prices":{"1":123.53,"2":247.06,"5":617.65,"10":1235.29},"description":"Structured and modern. This composition opens with a distinctive ISO-E clarity and transitions into a refined tea note that dominates the blend with elegance. Minimalist and contemporary: a fragrance for those who appreciate clean, abstract sophistication."},{"name":"1 and Only Poseidon","prices":{"1":116.45,"2":232.89,"5":582.24,"10":1164.47}},{"name":"44 Shades of Cherry Poseidon","prices":{"1":128.72,"2":257.44,"5":643.59,"10":1287.18},"description":"A tri-fusion of 44 Vanille, Lost Cherry, and Poseidon. The opening presents soft fruit notes with cherry, pineapple, and vanilla, followed by a transition into smooth woods and creamy vanilla. The drydown settles into a comforting, full-bodied vanilla warmth with subtle fruity shadows. A cozy, gourmand-leaning cherry-vanilla interpretation of the Poseidon theme: gentle, approachable, and softly seductive."},{"name":"Another 13 Shades","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24},"description":"A smooth and comforting blend woven from airy amber tones and clean pear brightness. Modern, soft, and close-wearing, this scent embodies “your skin but better,” with freshness that rests between warm familiarity and subtle intrigue. Understated yet deeply pleasant, it quietly draws people in with a gentle, addictive purity."},{"name":"Banana Caramel Wonderland","prices":{"1":86.47,"2":172.94,"5":432.35,"10":864.71},"description":"Warm, cozy, and nutty. This one evokes freshly baked banana bread touched with cinnamon, gently spiced, and soft. The caramel note is subtle rather than dominant, allowing the gourmand banana warmth to take center stage. Unconventional and intriguing."},{"name":"Banana Cream Pie Cocktail","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06},"description":"A velvety and indulgent banana gourmand. Opens with the authentic scent of ripe banana flesh blended with rich cream and a whisper of boozy warmth. As it evolves, the creaminess fades into a muscovado-like depth, accented with golden-brown graham crust nuances. The drydown settles beautifully into a soft vanilla wafer tone reminiscent of Loacker Quadratini Vanilla. Comforting, delicious, and effortlessly playful."},{"name":"Beachvibes by the Water of Arabia","prices":{"1":111.92,"2":223.84,"5":559.59,"10":1119.18},"description":"Sunny, breezy, and coastal. A sparkling citrus-orange introduction gives way to a serene heart of neroli and tea. The finish brings soft greens and musks, evoking linen, sun, and open air. Relaxed, uplifting, and quietly radiant: a scent made for easy good-mood days."},{"name":"Butterbeer","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06},"description":"A whimsical scent for the imaginative and especially for the Harry Potter nostalgic at heart. The opening is a captivating mix of salted butter, sweet butterscotch sauce, and sparkling ginger ale effervescence. As it moves into the heart, the fragrance deepens into a darker, slightly bitter fizz with a warm oak undertone. The drydown becomes creamy and nostalgic, evoking vanilla ice cream drizzled with caramel. On clothing, it transforms into a rich root beer float aroma that lasts well into the next day. A delightfully unique fizzy gourmand."},{"name":"Butterscotch Sauce","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"Instant nostalgia. This fragrance smells exactly like old-style butterscotch candy wrapped in colored cellophane: buttery caramel and warm toffee with a light nutty tilt. Sweet, sentimental, and delightfully comforting, conjuring memories of childhood treats and small joys."},{"name":"Casino Elixir","prices":{"1":131.76,"2":263.53,"5":658.82,"10":1317.65},"description":"A striking fusion of Aventus brightness and the sugary, crystalline sweetness of BR540. The opening bursts with amplified fruit and airy sugar tones before settling into a calmer, smoother phase. A fragrance for those who appreciate volume and projection: exuberant, confident, and unapologetically bold."},{"name":"Choco Cherry Crumble Cake","prices":{"1":86.47,"2":172.94,"5":432.35,"10":864.71},"description":"Choco Cherry Crumble Cake opens with a rich gourmand blend of chocolate, vanilla, and caramel, immediately setting a dessert-like tone. The mid remains largely consistent with the opening, but gains an added graham crumble nuance that gives the scent more texture and depth. In the drydown, the composition becomes more condensed and dense, retaining its sweet gourmand character, while the cherry note stays very subtle and only faintly detectable toward the very end."},{"name":"Choco Poseidon","prices":{"1":131.76,"2":263.53,"5":658.82,"10":1317.65},"description":"A charming chocolate-infused Aventus interpretation. Smooth milk-chocolate layers integrate seamlessly into the pineapple-birch structure. Playful, elegant, and comfortingly delicious."},{"name":"Chocolate Wafers & Coffee","prices":{"1":69.06,"2":138.12,"5":345.31,"10":690.61},"description":"A comforting, café-like aroma with personality. After a brief rubbery top note that quickly evaporates, the fragrance opens into a nostalgic wafer scent: crisp, toasted, and subtly sweet, reminiscent of Nissin wafers wrapped in childhood. Light roasted coffee sits alongside, balancing the sweetness with aromatic depth. The mid is a softened creamy coffee tone, never too heavy. The drydown resolves into a smooth almond-cream finish. Balanced, calming, and warmly relatable."},{"name":"Clean Laundry","prices":{"1":116.45,"2":232.89,"5":582.24,"10":1164.47},"description":"A crisp and airy composition that evokes the scent of freshly opened powdered detergent before dilution: clean, pure, and uplifting. Unlike typical detergent-like profiles, a bright citrus lift gives it vibrancy and character, adding freshness rather than harshness. Minimalistic, soothing, and effortlessly wearable, this scent brings clarity and openness into any space."},{"name":"Elixir of Poseidon's Classic Pineapple","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"Elixir of Poseidon’s Classic Pineapple delivers one of the best syrupy pineapple profiles I’ve smelled, opening with a deep, ultra-fruity pineapple accord wrapped in a sugary undertone, reminiscent of the rich syrupiness found in Parfums Vintage Intense The One. As it develops into the mid, the scent turns creamy and woody, closely echoing the character of Pegasus’ drydown with a subtle touch of jasmine. In the drydown, it settles into a sweet, musky skin scent that feels smooth, comforting, and well-blended."},{"name":"Exotic Burst of Lemons","prices":{"1":73.38,"2":146.75,"5":366.88,"10":733.76},"description":"A vibrant, citrus-forward fragrance with a spirited lift. The opening is bold and immediate: bright lemon with a subtly fizzy character. The drydown is smooth and musky, holding onto that citrus brilliance with airy restraint. Clean, confident, and radiantly fresh."},{"name":"Fizzy Gin","prices":{"1":86.47,"2":172.94,"5":432.35,"10":864.71},"description":"Refined, sparkling, and spirited. A citrus effervescence with hints of calamansi and gin botanicals dances at the top, evoking sophistication and brightness. As it dries down, the scent melts into an elegant citrus musk profile with clean clarity. Fresh, refined, and quietly magnetic."},{"name":"Fruit Lemonade","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"A joyful, candy-fruity nostalgia bomb bursting with fun. The top sings with notes of watermelon, cucumber, and lemon: playful and bright. As it settles, it transforms into a bubblegum-like sweetness with a whimsical innocence. Youthful, lively, and delightfully fun to wear."},{"name":"Gone Swimming in Jazz Club","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06},"description":"Gone Swimming in Jazz Club opens with a striking contrast of fizzy orange brightness from Afternoon Swim layered against the smoky depth of Jazz Club. The combination is bold and immediately attention grabbing, though it can verge on being dizzying, making it better suited for cold environments. As the fragrance develops, the composition quickly leans into the familiar character of Jazz Club, which remains dominant through the mid and into the drydown, resulting in a warm, smoky, and consistent finish."},{"name":"Heaven on Earth","prices":{"1":95,"2":189,"5":474,"10":947},"description":"Heaven on Earth presents a rich combination of coffee and chocolate that runs consistently from the opening through the mid, creating a dense and linear profile. A noticeable patchouli note adds an earthy and dry depth, which can come across as dizzying and may not be to everyone’s taste. In the drydown, the composition softens into a creamier white chocolate nuance, giving off a vibe similar to A*Men."},{"name":"High Seas of Everest","prices":{"1":103.85,"2":207.69,"5":519.24,"10":1038.47},"description":"A clean, crisp masculine fragrance with a refreshing transition. The initial burst is familiar and musky-fresh, before evolving into a refined blend of bergamot and melon. The final stage is a very smooth musk, evoking calm confidence and effortless cleanliness."},{"name":"Imagine Gone Swimming in Amalfi Mandarin","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"A glowing fusion of citrus sophistication. Mandarin skin, black tea, and soft musks create a layered composition that feels both fresh and elegant. It carries a sun-lit Mediterranean charm, with a smooth musk-citrus finish that lasts for hours. Refined, modern, and delightful in motion."},{"name":"Imagine Poseidon Chilling at the Pacific with Fire God","prices":{"1":124.72,"2":249.45,"5":623.62,"10":1247.24}},{"name":"Imagine Poseidon's Vibrant Dreams","prices":{"1":116.45,"2":232.89,"5":582.24,"10":1164.47},"description":"Imagine Poseidon’s Vibrant Dreams opens with a bright blend of bergamot from Imagination, grapefruit from Vibrato, and a touch of Aventus-style woodiness. Through the mid, the profile remains largely the same but develops a noticeably soapy nuance. In the drydown, it settles into a creamy combination of cedarwood and musk. Notably, the pineapple and tea notes did not appear on my skin, but they projected strongly on fabric."},{"name":"Italiano Choco Pomme Poseidon","prices":{"1":128.72,"2":257.44,"5":643.59,"10":1287.18},"description":"A complex and evolving fragrance showcasing Italica, Belgian Chocolate Truffle, Apple Brandy, and Aventus. The opening begins with an intriguing medicinal apple nuance that slowly clarifies into a lactonic-boozy apple accord layered with creamy warmth. The drydown unfolds into a beautifully decadent apple-milk chocolate shell with subtle richness. This is a connoisseur’s blend: evolving, thoughtful, and rewarding over repeated wear."},{"name":"Leedys","prices":{"1":119.41,"2":238.82,"5":597.06,"10":1194.12},"description":"A refreshing reinterpretation of a modern aromatic fougère. Opening with cool mint and grapefruit brightness, it creates a smooth, contemporary cleanliness. The base becomes grounded with vetiver and musk, resulting in a scent that feels cool, calm, and sophisticated."},{"name":"Matchalicious","prices":{"1":69.23,"2":138.45,"5":346.13,"10":692.26},"description":"A fresh and soothing matcha-inspired blend. The opening presents a smooth combination of citrus, mate, and white chocolate, grounding and calming. The drydown transforms the white chocolate into a lush creamy tone. A beautifully executed interpretation of MM Matcha Meditation, but with an even richer chocolate dimension. Clean, comforting, and highly wearable."},{"name":"Melánge Moussex","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06}},{"name":"Melody","prices":{"1":141.03,"2":282.06,"5":705.15,"10":1410.29},"description":"A lively, sparkling citrus fragrance that bursts with the playful fizz of lemon-soda brightness. Cheerful, uplifting, and refreshingly straightforward, this scent maintains its energetic character from opening to drydown, offering a clean, linear citrus signature. A modern feel-good fragrance: refreshingly simple, authentically joyful, and unmistakably fresh."},{"name":"Melody of Sweet Fruits","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"A refined, musky composition with soft floral lift. Rather than a literal fruit explosion, this scent opens with an airy musk, touched briefly by rose and jasmine. These notes fade gracefully into a creamy, lightly sweet base with subtle sophistication. It recalls the elegance of Bois 1920 Oro Rosa, leaning gently feminine with serene presence."},{"name":"Musky Pineapple","prices":{"1":119.41,"2":238.82,"5":597.06,"10":1194.12},"description":"A lush, syrupy pineapple opening that feels rich and mouth-watering, followed by a smooth transition into balanced musk-pineapple harmony. Later, a Bal d’Afrique-like drydown emerges: woody, creamy, and quietly sensual. This fragrance is sunny, warm, and deeply comforting: a sweet-fruity signature that lingers beautifully."},{"name":"Ocean of Dua","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"A smooth, refreshing aquatic-citrus blend that unfolds gently at first, then reveals its dynamic effervescence in movement and warmth. The base layers transition into soft oriental musks with depth and lift. Fresh yet grounded, calm yet radiant: an impressively balanced performer with long-lasting projection."},{"name":"Oh Damn!","prices":{"1":119.41,"2":238.82,"5":597.06,"10":1194.12},"description":"A decadent dessert-in-motion fragrance. The opening fuses chocolate and popcorn in an unexpectedly irresistible combination. The heart of the fragrance envelops you in salted caramel: luxurious, long-lasting, and addictively cozy. The final drydown is a creamy white chocolate reminiscent of Toblerone White, with the scent clinging to textiles for days afterward. A gourmand that lives rent-free on fabric and in memory. It earns its name, truly an “Oh Damn!” moment."},{"name":"Origins of Poseidon: Est 2010","prices":{"1":131.76,"2":263.53,"5":658.82,"10":1317.65},"description":"An homage to early Aventus batch identity: fruity with gentle vanilla and only a whisper of smoke. Classic, tasteful, and timeless. A subtle nod to history, rendered with restraint and elegance."},{"name":"Paris 1920","prices":{"1":108.17,"2":216.34,"5":540.85,"10":1081.71},"description":"A refined skin-centred fragrance with a quietly elegant aura. The scent opens with clean cedarwood and glowing musk, touched with mellow amber warmth. A subtle citrus accent: reminiscent of yuzu or calamansi, enters the mid, adding refinement and pointed freshness. Gentle, sophisticated, and warmly human, perfect for understated personal elegance."},{"name":"Peace with Poseidon","prices":{"1":78.24,"2":156.47,"5":391.18,"10":782.35},"description":"A woody-leaning Aventus variant with a restrained juniper presence paired with deeper, forest-toned woods. Balanced and grounded, this blend emphasizes structure and maturity over fruitiness. Resolute, calm, and gentlemanly."},{"name":"Perfumer’s Dua: Gold","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06}},{"name":"Perfumer’s Dua: Grapefruit","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06}},{"name":"Perfumer’s Dua: Pear","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06},"description":"A sparkling interpretation of fresh pear, capturing its juicy bite-like crispness with sparkling mineral fizz. Reminiscent of pear-infused carbonated spring water, it feels refreshing, bright, and effervescent. The scent remains lively as it dries down, with the fizzy sparkle persisting into a soft and clean finish. Light-hearted, refreshing, and ideal for layering and warm-weather wearing."},{"name":"Poseidon Jr.","prices":{"1":116.45,"2":232.89,"5":582.24,"10":1164.47},"description":"Poseidon’s Jr. (Poseidon’s 11Z01 x Poseidon’s Elixir 2.0) opens with a bright, fresh, syrupy pineapple accented by very minimal woods, giving a clean and vibrant first impression. As it moves into the mid, the woods stay restrained while a soft whisper of the Aventus signature vanilla slowly emerges, adding smoothness and balance. In the drydown, it settles into a woody, musky base with vanilla, coming across almost like light plywood wrapped in vanilla and musk 😆 Overall, it is a bright, easy-to-wear blend and a clear step up from MOD 1 (11Z01 x 13ZZ01)."},{"name":"Poseidon's Angelic Elixir","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"A captivating pairing of Aventus fruit brightness and warm cinnamon-booze accents from Angels’ Share. The oak and birch interplay beautifully, grounding the sweetness with wood-driven maturity. The drydown turns creamy with nuances of vanilla and musk. Elegant yet sensual: a masterful meeting of pleasure and refinement."},{"name":"Poseidon's Aphrodisiac","prices":{"1":135.88,"2":271.76,"5":679.41,"10":1358.82}},{"name":"Poseidon's Berry Affair","prices":{"1":131.76,"2":263.53,"5":658.82,"10":1317.65},"description":"A playful multi-berry explosion competing dynamically in the opening. Over time, the familiar Aventus base reclaims dominance. Fun, energetic, and lively: a fruit-forward joyride with a classic core."},{"name":"Poseidon's Cafe","prices":{"1":115.29,"2":230.59,"5":576.47,"10":1152.94},"description":"A delicious fusion of Aventus with affogato-like vanilla-espresso warmth. Sweet, creamy, and deeply addictive: the fragrant impression of ice cream melting into espresso over birch and pineapple."},{"name":"Poseidon's Cali Life","prices":{"1":111.92,"2":223.84,"5":559.59,"10":1119.18}},{"name":"Poseidon's Cologne","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24},"description":"A clean, casual, uplifting profile of bergamot, ginger, and birch. Crisp, balanced, and effortlessly refined — a stylish everyday interpretation of the DNA."},{"name":"Poseidon's Cotton Candy","prices":{"1":111.75,"2":223.51,"5":558.76,"10":1117.53},"description":"A playful and surprising interpretation of the Aventus DNA. The fruity brightness softens into spun-sugar sweetness balanced by a woody backbone. The drydown becomes creamy and airy, with Pegasus-like vanilla-wood echoes. Highly projecting and addictive: especially impactful in large indoor spaces."},{"name":"Poseidon's Dua Therapy","prices":{"1":111.75,"2":223.51,"5":558.76,"10":1117.53},"description":"A charismatic blend of Aventus and Musk Therapy. Opening with sparkling pineapple and sugar-soft sweetness, it transitions into a beautifully soft, creamy musk. Smooth, comforting, and effortlessly wearable: a scent that feels like confidence wrapped in softness."},{"name":"Poseidon's Elixir 11Z","prices":{"1":90.59,"2":181.18,"5":452.94,"10":905.88},"description":"Poseidon’s Elixir 11Z opens with a pungent musky blast reminiscent of Origins 2010, immediately asserting a sharp and assertive character. As it transitions into the mid, the musk remains but softens noticeably, becoming lighter and slightly sweeter. In the drydown, the scent settles back into a clean, musky finish that stays true to its core profile."},{"name":"Poseidon's Elixir 13ZZ","prices":{"1":135.88,"2":271.76,"5":679.41,"10":1358.82},"description":"A sophisticated expression of Aventus DNA without the expected pineapple presence. This blend opens with a refined mix of ambergris and gentle smoke, evoking a polished maritime-mineral tone with elegant restraint. As it develops, the composition gains a subtle sweetness with a faint salty nuance, maintaining its composure with an understated, dignified warmth. This is Aventus interpreted through depth, nuance, and quiet confidence: smooth, classy, and charismatic."},{"name":"Poseidon's Elixir 13ZZ (2.0)","prices":{"1":116.45,"2":232.89,"5":582.24,"10":1164.47},"description":"A perfectionist’s edition: the ideal fusion of fruitiness and woody backbone. Balanced in every phase: bright, smooth, and harmonious. A collector’s piece and a benchmark for Aventus-type compositions."},{"name":"Poseidon's Elixir 15Y","prices":{"1":116.45,"2":232.89,"5":582.24,"10":1164.47}},{"name":"Poseidon's Elixir 17X","prices":{"1":116.45,"2":232.89,"5":582.24,"10":1164.47}},{"name":"Poseidon's Elixir 2.0","prices":{"1":144.12,"2":288.24,"5":720.59,"10":1441.18},"description":"A perfectionist’s edition: the ideal fusion of fruitiness and woody backbone. Balanced in every phase: bright, smooth, and harmonious. A collector’s piece and a benchmark for Aventus-type compositions."},{"name":"Poseidon's Elixir Remixed MOD 1","prices":{"1":155.11,"2":310.22,"5":775.56,"10":1551.12},"description":"Poseidon’s Elixir MOD 1, a combination of 11Z01 x 13ZZ01, opens with a strong salty, musky, and aquatic character that immediately dominates the top. As it moves into the mid, the intensity becomes more subdued but remains largely unchanged, with the fruity pineapple character of an Aventus batch being almost unrecognizable. In the drydown, the fruitiness of 13ZZ01 finally emerges, though it is still laced with lingering saltiness. Overall, the scent comes across as aggressive and overwhelming, to the point of being dizzying and unsettling."},{"name":"Poseidon's Elixir Remixed MOD 2","prices":{"1":123.53,"2":247.06,"5":617.65,"10":1235.29},"description":"Crisp iso-e freshness on top, evolving into creamy vanilla and subtle smoke in the drydown. Quiet, modern, and intimately alluring: a soft-spoken charmer."},{"name":"Poseidon's Elixir Remixed MOD 3","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"A tactile evolution of the Poseidon formula, beginning with watery-iso freshness before revealing a tart, woody Aventus profile. Crisp, energetic, and engaging: a more modern, crystalline interpretation of the DNA."},{"name":"Poseidon's Fireplace","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06},"description":"A caramel-rich, roasted pineapple accord with a warmth reminiscent of smoldering wood and nutty sweetness. Not smoky in the classic Aventus sense: more like fruit warming over heat. Inviting, cozy, and perfect for rainy weather."},{"name":"Poseidon's Imagined Cologne","prices":{"1":123.53,"2":247.06,"5":617.65,"10":1235.29},"description":"Poseidon’s Imagined Cologne blends Aventus with the profile of Imagination, essentially adding a tea and ginger twist to the familiar Aventus DNA. The result is a fresher and slightly more aromatic take, where the tea gives a smoother refined feel while the ginger adds a light spicy brightness. Overall, it keeps the woody fruity backbone of Aventus intact but gives it a cleaner and more polished character."},{"name":"Poseidon's Jazz","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47},"description":"Poseidon’s Jazz opens with a fresh, diffusive burst of pineapple on the initial spray, but this quickly gives way to the sweet and smoky character reminiscent of Jazz Club. As it dries down, the citrus and woody facets associated with Aventus gradually resurface, bringing the composition back into a familiar and balanced territory."},{"name":"Poseidon's Leopard Cologne","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24},"description":"A refined and uplifting composition featuring a polished blend of pineapple, ginger, and grapefruit. Sparkling yet not loud, it carries a restrained effervescence that feels effortless and well-balanced. This scent maintains its sunny confidence from opening to drydown, embodying freshness with sophistication: easy to wear, versatile, and quietly charming."},{"name":"Poseidon's Ottomon Supernova","prices":{"1":131.76,"2":263.53,"5":658.82,"10":1317.65},"description":"A powerhouse blend of Aventus, Hacivat, and Elysium with a pronounced oakmoss force. Strong, tenacious, and incredibly persistent: the kind of scent that leaves presence in a room long after you leave."},{"name":"Poseidon's Precious Madagascar Vanilla","prices":{"1":115.29,"2":230.59,"5":576.47,"10":1152.94},"description":"An opulent vanilla-forward take on Aventus that recalls niche vanilla masterpieces. Intensely rich, sweet, and long-lasting: with creamy sandalwood in the base that adds sophistication. Fruity, indulgent, and decadently smooth."},{"name":"Poseidon's Private Reserve Whiskey","prices":{"1":135.88,"2":271.76,"5":679.41,"10":1358.82},"description":"A luxurious whisky-tinted take on Aventus. Citrus warmth, honey softness, and oak-aged smoothness merge into a velvety composition. Mature, composed, and evocative: transporting the wearer to a night sky, a skyline view, and a quiet glass of whisky at an upscale bar."},{"name":"Poseidon's Reflection","prices":{"1":123.53,"2":247.06,"5":617.65,"10":1235.29},"description":"A refined blend pairing the crisp sweetness of Reflection with Aventus brightness. The pineapple-woody elements balance and soften the floral-clean profile. Casual elegance with a subtle masculine edge."},{"name":"Poseidon's Sour Peach","prices":{"1":111.92,"2":223.84,"5":559.59,"10":1119.18},"description":"A vibrant and playful rendition that pairs bright pineapple with juicy peach and a touch of citrus. More than a blend, it emerges as a new character entirely: effervescent, joyful, and bursting with optimism. When worn, it radiates a youthful sparkle and a sunny, energetic aura that feels both uplifting and unique."},{"name":"Poseidon's Swimming Cologne","prices":{"1":123.53,"2":247.06,"5":617.65,"10":1235.29},"description":"A radiant citrus-fruity hybrid intertwining Afternoon Swim brightness with the airy pineapple-ginger signature of Aventus Cologne. Exhilarating, luminous, and wearable: an instant mood-elevator with exceptional freshness."},{"name":"Poseidon's Terre D' Dua","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06}},{"name":"Puffletuft's Lemon Pastry Caramel","prices":{"1":131.76,"2":263.53,"5":658.82,"10":1317.65},"description":"A full-bodied gourmand built for cooler environments. Smells like a warm plate of pancakes drenched in caramel syrup with a whisper of cinnamon and a subtle lemon lift. A fusion inspired by Akro Bake and Casamorati Lira, undeniably comforting and love-at-first-sniff worthy."},{"name":"Reflection of Casino Elixir","prices":{"1":123.53,"2":247.06,"5":617.65,"10":1235.29},"description":"A polished, sophisticated blend combining Reflection and BR540 with Aventus influence. Clean-sweet-fresh with glowing crystalline warmth. Elegant, sensual, and slightly provocative: charming with a wink."},{"name":"Reminiscent","prices":{"1":82.35,"2":164.71,"5":411.76,"10":823.53},"description":"Bright, crisp, and beautifully clean. A refined citrus profile with sharp bergamot clarity, this composition embraces freshness with elegance and restraint. Clean-cut, confident, and very well-crafted: a modern classic in feel."},{"name":"Rosa Poseidon","prices":{"1":127.65,"2":255.29,"5":638.24,"10":1276.47}},{"name":"Soulful Citrus Zest","prices":{"1":111.92,"2":223.84,"5":559.59,"10":1119.18},"description":"Bright and uplifting, with a zesty calamansi spark on top that feels immediately fresh and energizing. As it dries, musk and amber emerge, creating a clean, silky-smooth aura that subtly recalls the elegance of Another 13. Sophisticated yet approachable, radiant yet gentle."},{"name":"Strawberry Dream Cake","prices":{"1":73.38,"2":146.75,"5":366.88,"10":733.76},"description":"A joyful and addictive strawberry gourmand. Opens with a natural-tart strawberry aroma, never synthetic, perfectly blended with creamy cake accord and whipped vanilla cream. Think Starbucks strawberries & cream: airy, pretty, irresistible. The drydown shifts into a plush strawberry milk-style sweetness, much like Strawberry Knick Knacks. Charming and flirtatious, but wearable on anyone with confidence and personality."},{"name":"Supernova Cologne","prices":{"1":123.53,"2":247.06,"5":617.65,"10":1235.29},"description":"Supernova Cologne smells closer to Elysium Parfum Pour Homme than the Cologne version, since it gives off more of that juicy, slightly oriental character rather than a citrus forward freshness. Instead of leaning crisp and sparkling, the scent feels fuller and richer in a way that makes it come across deeper than expected for a cologne style release. Because of that, I find the 30 ml formulation more appealing, especially for its more noticeable citrusy top that gives the scent a brighter and fresher opening."},{"name":"Sweet Lemon Pastry","prices":{"1":86.47,"2":172.94,"5":432.35,"10":864.71},"description":"A pastry-lemon scent with confident brightness. The lemon note here is sharper, more persistent, and longer-lasting than in its sister compositions. The whipped-cream sweetness stays in the background while the drydown leans toward white sugar and buttercream frosting rather than a burnt-sugar finish. Fresh yet deliciously dessert-like."},{"name":"The Mobster vs Poseidon","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06},"description":"A bold and syrupy fruit bomb on skin, this blend contrasts dramatically with how it behaves on paper. Sweetened pineapple and apple are followed by cola-like dark fruit and cognac elements, evoking vintage indulgence with modern flair. The drydown reveals a smooth, vanilla-toned cola vibe. Full of personality and swagger: bright, punchy, and unforgettable."},{"name":"Tiger Gone Swimming","prices":{"1":82.35,"2":164.71,"5":411.76,"10":823.53},"description":"Vibrant, energizing, and stunningly smooth. The grapefruit-orange explosion at the top is both sparkling and juicy, followed by a bright, polished citrus accord that radiates joy and confidence. Luminous and unforgettable, this blend is citrus excellence done right."},{"name":"Uplifting Air","prices":{"1":86.47,"2":172.94,"5":432.35,"10":864.71},"description":"A uniquely airy and crystalline scent that mirrors the feeling of fresh linens and open windows. On skin, it carries a mingling of clean citrus, light grassiness, and airy clarity. Fresh, therapeutic, and refreshingly different: a breath of modern cleanliness."},{"name":"Victorian","prices":{"1":115.29,"2":230.59,"5":576.47,"10":1152.94},"description":"Elegant, green, and classical. A refined botanical character blooms at the top, evoking lush gardens and historic estates. The drydown becomes beautifully creamy-woody with a smooth sophistication. Mature, timeless, and irresistibly stately."},{"name":"Virtuoso's Aqua Heaven","prices":{"1":94.71,"2":189.41,"5":473.53,"10":947.06}},{"name":"Water of Arabia","prices":{"1":111.42,"2":222.85,"5":557.12,"10":1114.24},"description":"A refined aquatic-citrus blend that opens with crisp cool freshness and a serene marine clarity. As it matures, notes of neroli and gentle tea emerge, giving the fragrance a delicate, almost meditative depth. The drydown lands gracefully into a musky citrus-clean finish that feels current, effortless, and quietly refined. A contemporary aquatic with sophistication and subtle charisma."},{"name":"Whipped Lemonade","prices":{"1":111.75,"2":223.51,"5":558.76,"10":1117.53},"description":"A joyful and delicious citrus-gourmand. Beginning with a fizzy lemon brightness, it evolves into a sweet lemon-candy tone before finishing in a creamy whipped-sugar softness. Playful, edible, and addictiv: an instant mood lifter."},{"name":"White Beauty","prices":{"1":111.75,"2":223.51,"5":558.76,"10":1117.53},"description":"A soft and elegant linen-clean fragrance designed for serene environments and gentle presence. The opening is fresh and comforting, resembling clean fabric and sunlit laundry. A bouquet of subtle white florals emerges through the mid, maintaining an airy weightlessness. The drydown melts into a delicate musk-skinfusion that leaves a tender, comforting trail. Calm, pure, and quietly beautiful."},{"name":"White Tonic","prices":{"1":73.38,"2":146.75,"5":366.88,"10":733.76}},{"name":"Zesty Lemon Shade","prices":{"1":86.47,"2":172.94,"5":432.35,"10":864.71},"description":"Fresh, green, and natural. Lime, tea, and light woods create a refreshing outdoorsy aura: crisp and herbal with a clean citrus lift. Calm, quietly refreshing, and effortlessly pleasant: a signature scent for those who prefer understated brightness."},{"name":"Matcha Waffle Ice Cream","prices":{"1":119.41,"2":238.82,"5":597.06,"10":1194.12}},{"name":"High on Chocolate","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Caramel Coffee Cake","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"World's Best Key Lime Pie","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Dawa Cocktail","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Banana & Vanilla Custard Flan","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Vanilla Boba Milktea","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Realization","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Supernova Rebirth","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Triple Chocolate Cake","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Equilibrium 1.5","prices":{"1":98.82,"2":197.65,"5":494.12,"10":988.24}},{"name":"Sweet Serenade","prices":{"1":119.41,"2":238.82,"5":597.06,"10":1194.12}}],"Parfums Vintage":[{"name":"Unisex Intense","prices":{"1":189,"2":378,"5":945,"10":1890},"description":"A creamy, softly powdered interpretation of Aventus that leans gently into unisex territory. Its smooth and comforting aura makes it versatile, intimate, and skin-friendly. Quietly confident rather than loud, it offers a caressing presence that settles into a subtly nostalgic drydown reminiscent of timeless clean-musky classics."},{"name":"Intense Gold","prices":{"1":109.2,"2":218.4,"5":546,"10":1092},"description":"An ultra-clean, ultra-musky evolution of the Aventus identity. Intense Gold wraps the familiar pineapple signature in a freshly-pressed cotton clarity, resulting in an airy, refined aura of pristine cleanliness. Elegant from start to finish, this creation transforms fruit and musk into a polished expression of purity and sophistication, ideal for those who appreciate crisp refinement."},{"name":"Intense VI","prices":{"1":147,"2":294,"5":735,"10":1470},"description":"A captivating scent that begins with high-energy citrus and pineapple brightness before gradually settling into a smoother, more composed state. It expresses a confident and commanding presence, with a saline-citrus sparkle that feels energetic and distinguished. The drydown introduces a deeper, musky-berry nuance, creating a surprising and memorable evolution that rewards patience and full wear-time."},{"name":"Intense The One","prices":{"1":133,"2":266,"5":665,"10":1330},"description":"A beautifully balanced fruity-woody expression that refines the Aventus identity with a smoother and more harmonious opening. The scent transitions into a rounded, elegant blend of polished pineapple and woods, eventually settling into an exceptionally refined drydown where vanilla, sweetened fruit, and soft woods intermingle gracefully. An exceptional portrayal of the Aventus aura at its most mature and poetic."},{"name":"Intense","prices":{"1":135.5,"2":271,"5":677.49,"10":1354.98},"description":"A bold fruit-centric fragrance that celebrates the sweetness of ripe tropical pineapple in full saturation. Juicy, playful, and unapologetically vibrant, it carries a sun-lit energy that is indulgent yet playful. For those who enjoy expressive, extroverted fruit notes, this fragrance offers fun, personality, and a sense of energetic youthfulness."},{"name":"King","prices":{"1":114.8,"2":229.6,"5":574,"10":1148},"description":"A commanding and confident fragrance that opens with a bold burst of bergamot and pineapple, immediately establishing leadership presence. The scent gradually evolves into a dignified birch-framed woody base, delivering both masculinity and refinement. A standout statement fragrance for those who want their presence felt — noble, assertive, and classically regal."},{"name":"Vanilla Intense","prices":{"1":154,"2":308,"5":770,"10":1540},"description":"A sophisticated fusion of bergamot-tinged Aventus brightness with elegant vanilla and woods. The scent gradually unveils its pineapple accent in the heart before settling into a beautifully blended fruity-woody base. Warm, inviting, and balanced with refined sweetness, Vanilla Intense PV offers a graceful evolution that feels both modern and comfortingly familiar."},{"name":"Emperor Maximus","prices":{"1":168,"2":336,"5":840,"10":1680}},{"name":"Iridescent","prices":{"1":168,"2":336,"5":840,"10":1680},"description":"A sophisticated, airy composition with a subtle fruit-tinged opening framed by clean woods and refined musk. There is a lifted, atmospheric quality in its heart that feels luminous and elegantly weightless. This fragrance exudes modern refinement and clarity, concluding in a signature Parfums Vintage salty-pineapple-citrus profile that feels smooth and effortlessly stylish."},{"name":"Limited Edition 29","prices":{"1":161,"2":322,"5":805,"10":1610},"description":"A distinct and spirited entry in the collection, Limited Edition 29 marries juicy pineapple sweetness with the aromatic zest and slight bitterness of fresh orange peel. It is bright, juicy, and full of color — a vivid fragrance with energy and charisma. Over time, the composition relaxes into a smooth, uplifting state while maintaining its pineapple-orange essence. Unique, expressive, and highly memorable."},{"name":"Emperor Maximus Extrait","prices":{"1":189,"2":378,"5":945,"10":1890},"description":"A vivid and uplifting composition that opens with a radiant blend of bergamot and pineapple, effortlessly fresh and bright. What begins as a luminous citrus-fruity introduction evolves into a distinguished woody presence, particularly pronounced on fabric. The signature Parfums Vintage DNA embodies a salty-pineapple character with sparkling citrus energy, creating a charismatic and memorable scent profile with enduring elegance."}],"Local Niche":[{"name":"Tadhana Lover","prices":{"1":100.8,"2":201.6,"5":504,"10":1008},"description":"Lover is an emotionally rich and comforting fragrance that opens with honey citron tea and ginger, reminiscent of soothing drinks taken during sickness. The mid recalls childhood memories of Manzanilla oil used for stomach aches. The drydown evokes the scent of dried whisky left in a bottle or glass overnight. Deeply nostalgic and comforting, the fragrance feels like a warm embrace filled with memory and affection."},{"name":"TBGCO Blanc","prices":{"1":89.09,"2":178.18,"5":445.45,"10":890.91},"description":"Blanc may share a similar clean linen style category on paper, but the actual scent comes across very differently. It opens with a watery freshness touched by a soft hint of saffron, giving it a smooth and airy introduction rather than a straightforward laundry profile. After a few minutes, a gentle sweetness emerges that resembles white sugar, adding a delicate softness to the composition. In the drydown, the fragrance settles into a creamy sandalwood note reminiscent of Pegasus, layered over a skin scent style base of musk and ambroxan, resulting in a clean, polished, and quietly addictive scent."},{"name":"Orca Nero Star","prices":{"1":88.2,"2":176.4,"5":441,"10":882},"description":"Nero Star is a calming and well-balanced fragrance that blends neroli and lemon seamlessly, with neither note overpowering the other. As it dries down, subtle lavender appears alongside a refined white sugar sweetness. The overall impression is soothing, elegant, and quietly confident, frequently earning unsolicited compliments."},{"name":"Hiraya Wild Brew","prices":{"1":21.84,"2":43.68,"5":109.2,"10":218.4},"description":"Wild Brew opens with a bitter roasted coffee note paired with an extremely dry rose, evoking a rose close to wilting. As it develops, the fragrance transitions into a deep coffee and dark chocolate accord that remains through the drydown. Longevity exceeds 24 hours, making it a strong and underrated original blend."},{"name":"Scents & Style Jessy Working Late","prices":{"1":70,"2":140,"5":350,"10":700},"description":"Jessy Working Late is a powerful coffee fragrance with outstanding projection and longevity, continuing to project well into the night after afternoon application. It smells like a creamy coffee, often described as caramel macchiato, with coconut used smoothly and tastefully. The scent feels revitalizing, performs exceptionally in the air, and even overpowers strong food aromas."},{"name":"Domus Emeterius Verdant","prices":{"1":70,"2":140,"5":350},"description":"Verdant opens with green notes that carry a cooling effect, though softer than Baguio Verde. The greenery feels creamy with a faint citrus accent before shifting into green tea with a subtle drop of honey at the mid. The drydown becomes a masculine skin scent that is musky, woody, and lightly smoky, reminiscent of tree bark. Longevity is around 6 hours on skin and over 16 hours on clothing."},{"name":"GP Baguio Verde","prices":{"1":61.6,"2":123.2,"5":308,"10":616},"description":"Baguio Verde delivers a strong cooling sensation that persists well beyond the opening, creating the impression of being enveloped in cold air. It smells like ice itself, similar to opening a freezer and inhaling the chill from ice cubes. The pine needle note is clean and refined, never synthetic. Longevity on clothing approaches 24 hours, with projection noticeable to others even when the wearer becomes nose blind."},{"name":"Elnaris Berries & Safron","prices":{"1":30,"2":60,"5":150,"10":300}},{"name":"Elnaris Chocolat Noir","prices":{"1":30,"2":60,"5":150,"10":300}},{"name":"Parfums Astraux Ocean Wind","prices":{"1":50.76,"2":101.52,"5":253.8,"10":507.6}},{"name":"Parfums Astraux Tara Kape","prices":{"1":42,"2":84,"5":210,"10":420},"description":"Tara Kape opens with a brief rubbery note that cuts through the coffee but fades quickly. The mid reveals an intense barako coffee aroma that is even stronger than the opening. In the drydown, the scent softens into a comforting coffee profile paired with mocha biscuit sweetness, similar to dipping Hansel Mocha into brewed coffee. The opening is challenging, but the drydown is highly enjoyable."},{"name":"Wren Atelier Cerveza Rosa","prices":{"1":61.25,"2":122.5,"5":306.25,"10":612.5},"description":"Cerveza Rosa opens with an old rose character reminiscent of Frederic Malle Portrait of a Lady before transitioning into a distinctive beer and lychee accord similar to San Miguel Lychee. The beer note is unmistakable and highly unique. The fragrance finishes with a woody drydown similar in feel to Le Labo Gaiac 10."},{"name":"Claire Olfaction Samyo ng Bagong Saing","prices":{"1":157,"2":314,"5":785,"10":1570},"description":"Samyo ng Bagong Kanin smells like newly cooked rice blended with white chocolate and milk, similar to champorado without cocoa powder. Light, airy, and extremely easy to wear, it falls under the fresh gourmand category and is safe even for heavy spraying. The scent feels calming, wholesome, and comforting, outperforming similar concepts like D’Annam White Rice. Longevity exceeds 24 hours."},{"name":"Artisan's After the Rain","prices":{"1":28,"2":56,"5":140,"10":280},"description":"After the Rain captures the scent of a garden after rainfall, opening green and airy with a natural freshness. The mid becomes cleaner and more aldehydic, giving it a polished and refined feel. It dries down into a sweet, watery finish that is pleasant and comforting. Longevity is strong at around 12 hours on skin and is highly approved by my wife."},{"name":"L'Abondance Creme Brule","prices":{"1":39.2,"2":78.4,"5":196,"10":392},"description":"Crème Brûlée opens with the aroma of warm, crunchy caramelized sugar before transitioning into a rich and creamy custard accord at the mid. The drydown settles into a comforting creamy rice pudding scent that feels indulgent yet smooth. Performance is excellent, lasting more than 12 hours on skin."},{"name":"Home Studio Scents Dessert Lounge","prices":{"1":39.81,"2":79.61,"5":199.03,"10":398.07},"description":"Dessert Lounge is a photorealistic honeydew melon fragrance, capturing the scent of freshly sliced melon blended with milk to create a creamy smoothie-like profile. Simple, playful, and highly wearable."}],"Niche":[{"name":"Oceania","prices":{"1":210,"2":420,"5":1050,"10":2100},"description":"Oceania feels like quenching extreme thirst under the midday sun with an ice-cold Sprite, elevated by Roja’s signature citrus quality. Bright, invigorating, and incredibly refreshing, it’s the kind of scent you’d want to bathe in. Perfect for the gym or casual wear, it finishes with a musky lime drydown that feels heavenly."},{"name":"Elysium PC","prices":{"1":210,"2":420,"5":1050,"10":2100},"description":"Elysium Parfum Cologne is a gentle, calming, and almost “pure” fragrance. While often criticized for its price and modest performance, its elegance and tranquility more than make up for it. The scent evokes walking through a lush citrus grove beside a spring, radiating serenity and refinement. If there were a scent in Heaven, this would be it."},{"name":"Elysium PPH SE","prices":{"1":448,"2":896,"5":2240,"10":4480},"description":"Elysium Special Edition surprised me by being distinct from both the Cologne and Parfum Pour Homme versions. To my nose, it blends the brightness of the Cologne with the depth of PPH, resulting in a juicy, well-balanced profile. The citrus elements soften the floral-woody facets, making it far more appealing to those who prefer freshness over heaviness. Rare and highly recommended if given the chance."},{"name":"Amore Mio","prices":{"1":294.74,"2":589.47,"5":1473.68,"10":2947.37}},{"name":"GNTonic","prices":{"1":147.76,"2":295.52,"5":738.81,"10":1477.62},"description":"GNtonic opens with a lively mix of lime and ginger, accompanied by a subtle fizzy effect. In the mid, it leans into a fresh, shower-gel-like profile similar to Sedley. Light, refreshing, and extremely easy to wear, this fragrance is safe even for overspraying without becoming overwhelming."},{"name":"Warm Cottom","prices":{"1":49,"2":98,"5":245,"10":490}},{"name":"Matcha Meditation","prices":{"1":137.19,"2":274.37,"5":685.93,"10":1371.86}},{"name":"Severo","prices":{"1":135.32,"2":270.64,"5":676.59,"10":1353.18}},{"name":"Mile High 58","prices":{"1":212.92,"2":425.83,"5":1064.58,"10":2129.17},"description":"Mile High 38 is the perfect balance of simplicity and complexity. It opens with smooth, fruity pineapple reminiscent of Aventus, then gradually transitions into the dry, herbaceous immortelle facet associated with Sunshine Man. In the drydown, creamy whipped notes and blow-torched brown sugar emerge, echoing Bake. Notably, the creaminess leans more toward a sunscreen-like texture rather than a heavy gourmand or lactonic feel. This is my most successful blind buy and a true work of art."},{"name":"Bake","prices":{"1":154,"2":308,"5":770,"10":1540},"description":"Bake opens with a bright lemony note that quickly melts into a whipped cream accord. It evokes the memory of buttery, chewy fondant icing, the kind you’d secretly snack on as a kid, rather than traditional buttercream. As it dries down, the scent deepens into a caramelized brown sugar profile, reminiscent of a blow-torched crème brûlée. A standout gourmand and easily my favorite in the category."},{"name":"Pegasus","prices":{"1":179.2,"2":358.4,"5":896,"10":1792},"description":"Pegasus is a fragrance I initially found puzzling, questioning why anyone would want to smell like almond. Over time, it completely won me over. It opens with a creamy, metallic almond note before revealing a beautifully smooth sandalwood in the drydown. Elegant, comforting, and quietly confident, this scent suits someone accomplished yet humble, and can even work in daytime conditions with the right breeze."},{"name":"Sedley","prices":{"1":210,"2":420,"5":1050,"10":2100},"description":"Sedley is my favorite from the house of Parfums de Marly and the last survivor from their fresh line in my collection. It delivers a fizzy, citrusy profile with a very subtle hint of mint, consistently smelling like Sprite from opening to drydown. Clean, refreshing, and endlessly wearable, this is a true backup-worthy fragrance."}],"Designers":[],"Middle Eastern":[{"name":"Riffs Freeze","prices":{"1":54,"2":108,"5":270,"10":540}},{"name":"Al Rehab French Coffee","prices":{"1":36,"2":72,"5":180,"10":360}},{"name":"Tubbees Bubble Gum","prices":{"1":18.6,"2":37.2,"5":93,"10":186},"description":"Bubble Gum opens with a bright, minty sweetness that can initially come across like a child’s toothpaste, giving it a playful and slightly nostalgic freshness. After a closer smell, the scent shifts into something much more familiar, evoking the distinctly sweet, chewy character of classic Bazooka bubble gum. The result is a fragrance that feels fun, youthful, and candy like, with a sugary profile that leans heavily into childhood nostalgia."},{"name":"Tubbees Chocolate Fudge","prices":{"1":18.6,"2":37.2,"5":93,"10":186},"description":"Chocolate Fudge immediately gives the impression of a Fudgee Bar, with a rich chocolate profile that feels familiar, sweet, and dessert like. The scent has a slightly dark and moist cake quality, layered with a chocolate filling effect that makes it smell dense, soft, and indulgent. Overall, it comes across as a comforting gourmand fragrance with a distinctly baked chocolate character."},{"name":"Tubbees Cookies & Cream","prices":{"1":18.6,"2":37.2,"5":93,"10":186},"description":"Cookies & Cream opens with the unmistakable scent of a cookies and cream Cornetto, then quickly brings to mind crisp chocolate chip cookies dipped in fresh milk. There is a distinct baked cookie batter quality here, slightly toasted and crispy from the heat, alongside a rich sweetness that makes the chocolate chips and creamy milk stand out clearly. The milk note is especially indulgent, dense and sweet without becoming nauseating, giving the fragrance a fuller and more comforting gourmand character than most lactonic scents. Overall, it smells like walking into a high end bake shop, warm, delicious, and irresistibly cozy."},{"name":"Tubbees Sweet Caramel","prices":{"1":18.6,"2":37.2,"5":93,"10":186},"description":"Sweet Caramel delivers a caramel note that feels smooth, creamy, and easy to enjoy without becoming too heavy or overwhelming. Instead of leaning overly thick or cloying, it has a softer and more balanced sweetness that makes the scent feel comforting and wearable. There is a fluffy, snack like quality to it that brings to mind caramel coated puffs, while the overall profile stays polished and gourmand in a way that feels playful yet refined."},{"name":"Afnan 9PM","prices":{"1":32.42,"2":64.84,"5":162.1,"10":324.2}},{"name":"Pendora Aventura","prices":{"1":30,"2":60,"5":150,"10":300},"description":"Aventura is a fresh, slightly sweet fragrance built around a bright pineapple note layered over a woody base. The sweetness is present but controlled, giving the scent an uplifting fruity character without making it feel overly sugary. Combined with the woody undertone, the result is a clean, masculine, and easy to wear fragrance that feels both vibrant and versatile."},{"name":"Fragrance World Black Leather","prices":{"1":38,"2":76,"5":190,"10":380},"description":"Black Leather is a fragrance that leans into a very fruity pineapple profile balanced by just the right amount of woodiness. The pineapple comes through bright, juicy, and appealing, while the woody base adds enough structure to keep the scent grounded and masculine. The result is a smooth and well balanced composition that feels easy to enjoy, especially for those who prefer a fruit forward take with a refined woody backbone."},{"name":"Rayhaan Imperia","prices":{"1":42,"2":84,"5":210,"10":420},"description":"Imperia opens with a strong lemony Aventus style DNA that may come across a little sharp at first, but the fragrance becomes far more rewarding as it develops. The mid and drydown reveal a richer pineapple character that feels almost jammy, musky, and woody, giving the scent more depth and appeal than the opening suggests. Once it settles, the composition feels smoother, fuller, and much more satisfying, with a refined fruity woody balance that makes it stand out strongly within this style of fragrance."},{"name":"Rumz Al Rasasi 9325 Pour Lui","prices":{"1":54,"2":108,"5":270,"10":540},"description":"Pour Lui blends tangy lemon, sweet pineapple, and a light woody base into a highly wearable and easy to enjoy fragrance. The scent has a bright and uplifting character that feels smooth, clean, and versatile, with a vibe that comes close to Allure Cologne but without the ginger sharpness. What makes it especially appealing is how polished and pleasant it smells throughout, without carrying the usual harsh or synthetic impression often associated with some Middle Eastern style releases."},{"name":"Dumont Nitro Black","prices":{"1":44,"2":88,"5":220,"10":440},"description":"Nitro Black Intense is a fruity, woody, and slightly smoky take on the Aventus style DNA, but what gives it a more distinctive edge is the subtle metallic nuance in the scent. That faint metallic touch adds an extra layer of sharpness and character, making it feel less straightforward and more interesting than a typical fruity woody composition. The result is a fragrance that still feels familiar in structure, yet stands out enough to have its own identity."},{"name":"Afnan Supremacy Silver","prices":{"1":54,"2":108,"5":270,"10":540},"description":"Supremacy Silver blends fruitiness and woodiness in a very smooth and balanced way, giving it a refined and easy to appreciate take on this style of fragrance. It may not come across as loud or as attention grabbing as some of its counterparts, but the composition feels more polished, cohesive, and effortlessly wearable. The result is a scent that delivers freshness, depth, and versatility in a way that feels well executed from start to finish."}],"S&L":[{"name":"Cacao Nibs","prices":{"1":60,"2":120,"5":300,"10":600},"description":"Cacao Nibs opens with an earthy, dry chocolate note that feels darker and more grounded at the start, then gradually softens into a creamier chocolate milk character through the mid. As it settles, the scent becomes warmer and more familiar, resembling a rich chocolate cake style fragrance with a smoother and sweeter finish. Its progression makes it appealing for chocolate lovers, especially with its impressive longevity, lasting around 15 hours on both skin and clothes."},{"name":"Carribean","prices":{"1":20,"2":40,"5":100,"10":200}},{"name":"Tropical Sun Bliss","prices":{"1":34,"2":68,"5":170,"10":340}},{"name":"Morning Rose's Essence","prices":{"1":34,"2":68,"5":170,"10":340}},{"name":"A Musk Have Scent","prices":{"1":34,"2":68,"5":170,"10":340}},{"name":"Glaze of the Lighthouse","prices":{"1":34,"2":68,"5":170,"10":340}},{"name":"Gardenia","prices":{"1":30,"2":60,"5":150,"10":300}},{"name":"To Hide a Smoker","prices":{"1":34,"2":68,"5":170,"10":340},"description":"To Hide a Smoker EDP has a sweet, warm, and nostalgic cola profile that immediately brings to mind gummy cola candy, with a texture that feels soft, chewy, and almost sparkling. The tobacco note stays very subtle, adding only a faint depth in the background rather than pushing the fragrance into anything dark or heavy. Because of that, the scent remains highly wearable and easy to enjoy, leaning more into a cozy gourmand character with a playful cola sweetness. It lasts for more than 8 hours and stays consistently pleasing without becoming tiring."},{"name":"These are my Confections","prices":{"1":34,"2":68,"5":170,"10":340}},{"name":"Carefree","prices":{"1":30,"2":60,"5":150,"10":300},"description":"Carefree smells like fresh laundry linen with a watery, airy quality that makes it feel clean and light from the start. As it develops, the mid is dominated by tea and aloe vera, giving the fragrance a soft, soothing, and slightly green freshness. In the drydown, the tea remains while musk becomes more noticeable, leaving a smooth and comforting clean scent trail. It lasts around 5 hours on skin and about 13 hours on clothes."},{"name":"Sweet Vine","prices":{"1":30,"2":60,"5":150,"10":300}},{"name":"Triumph","prices":{"1":30,"2":60,"5":150,"10":300}},{"name":"A Walk Among The Woods","prices":{"1":34,"2":68,"5":170,"10":340}}],"TBGCO":[{"name":"Captivate EDP","prices":{"1":168,"2":336,"5":840,"10":1680},"description":"Captivate EDP is similar to the permanent listing version, but this one stands out because of its well blended smoke accord. The smoke adds a darker and more textured layer to the fresh Aventus inspired profile, giving the fragrance more depth and personality without overwhelming its brightness. While the smokiness may come across stronger at first, it settles into something smoother and more wearable over time, making the overall composition feel more balanced. Compared with Extrait V1 and V2, this version feels more distinctive, as the smoke gives extra character to the freshness and makes the scent more dynamic."},{"name":"Captivate V1","prices":{"1":168,"2":336,"5":840,"10":1680},"description":"Captivate V1 opens with a syrupy pineapple accord wrapped in a noticeably musky character, giving this older bottle a deeper and more textured take on the Aventus inspired profile. The sweetness associated with the BR540 style DNA remains present and becomes more dominant in the mid, adding a rich and slightly airy sweetness that softens the composition. As it dries down, the musk becomes noticeable again, giving the fragrance a smoother and more mature finish. In this form, the added musk actually improves the scent, as it blends naturally with the Aventus style structure and gives it a more appealing depth."},{"name":"Temptation","prices":{"1":84,"2":168,"5":420,"10":840},"description":"Temptation is an enticing fragrance built around a bold apple and burnt sugar combination that immediately gives it a rich, sweet, and attention grabbing character. The scent has a warm spicy edge that adds depth to the sweetness, making it feel more seductive and polished rather than simply sugary. Its strong projection makes it especially noticeable in enclosed spaces, while the overall profile feels smooth, inviting, and perfectly suited for date night."},{"name":"Serene","prices":{"1":91,"2":182,"5":455,"10":910},"description":"Serene comes across to me as a smooth and calming blend of tea, neroli, mint, and a subtle aquatic touch, even if some of those nuances are not reflected in the official note breakdown. The combination gives the fragrance a clean, airy, and effortlessly laid back character that feels extremely easy on the nose. What stands out most is how soft and swabe the scent feels overall, leaning more into quiet freshness than sharp projection, though it also seems like the kind of fragrance that can make the wearer go nose blind fairly quickly."},{"name":"Eau Benite","prices":{"1":33.25,"2":66.5,"5":166.25,"10":332.5},"description":"Eau Benite is a difficult fragrance to pin down by notes alone, coming across as a blend of fresh spicy nuances, soft white florals, and an airy incense character. The overall impression feels clean, uplifting, and subtly sacred, with a watery freshness that gives it the effect of holy water meeting the gentle smoke of church incense. It has the refined atmosphere of a newly built, upscale church, cool, polished, and quietly reverent, making it a fragrance that feels serene, spiritual, and distinctly church appropriate."},{"name":"Hypnotic Holiday","prices":{"1":66,"2":132,"5":330},"description":"Hypnotic Holiday opens with a slight touch of mint and sea notes that give the fragrance a cool and airy freshness, while cinnamon, toffee, and lavender add warmth, sweetness, and an aromatic smoothness underneath. The contrast between the fresh opening and the richer supporting notes gives it a balanced character that feels both inviting and distinctive. Overall, it comes across as a scent that blends freshness and sweetness in a soft, well rounded way."},{"name":"Aventus Blanc","prices":{"1":66.18,"2":132.36,"5":330.91,"10":661.82},"description":"Aventus x Blanc opens with a fresh and ripe pineapple accord that feels soaked in water, brightened further by a clean neroli touch and a slight kick of saffron. The opening has a crisp and airy fruitiness that feels especially appealing, but as the fragrance develops, Blanc gradually takes over the composition. What begins as an Aventus led blend eventually settles into a soft, clean scent profile that resembles a freshly laundered duvet, making the overall impression smooth, comforting, and effortlessly elegant."},{"name":"Cap Cacao","prices":{"1":66,"2":132,"5":330,"10":660},"description":"Captivate Cacao blends Aventus, Cedrat Boise, BR540, and a cacao note into a rich gourmand composition that smells like a chocolate pineapple upside down cake. The scent feels decadent and moist, with the pineapple adding a bright fruity topping over a deep chocolatey sweetness, while the woody and airy facets underneath keep it from becoming too heavy. The result is a unique fragrance that balances fruity brightness and dessert like richness in a very creative way."},{"name":"Cap Sedley","prices":{"1":66,"2":132,"5":330,"10":660},"description":"Captivate Sedley is a surprisingly inventive blend that takes the fizzy, Sprite like freshness of Sedley and adds a touch of sweet pineapple, creating a scent that feels both sparkling and juicy at the top. As it develops, the drydown brings out a more pronounced cola nuance, likely enhanced by the BR540 style sweetness, shifting the character from a lemon lime soda impression into something deeper and more reminiscent of Pepsi Blue. The result is a highly unique fragrance that combines bright effervescence, fruity sweetness, and a playful cola twist in a way that feels unusual and memorable."},{"name":"Cap Toffee","prices":{"1":66,"2":132,"5":330,"10":660},"description":"Captivate Toffee blends Aventus, Cedrat Boise, BR540, and a toffee note into a warm, festive composition that immediately opens with sweet toffee supported by a fruity pineapple nuance in the background. The combination gives the fragrance a cozy holiday feel, balancing sugary richness with a bright fruity lift. As it dries down, the scent becomes slightly woody with a smooth caramel like finish, making it feel comforting, indulgent, and easy to enjoy."},{"name":"Cap Raspberry","prices":{"1":66,"2":132,"5":330,"10":660}},{"name":"Cap Rose","prices":{"1":66,"2":132,"5":330,"10":660},"description":"Captivate Rose combines the familiar Aventus style structure with a rich, jammy rose accord, creating a fragrance that feels both fruity and floral with a darker, more sensual edge. The woody and musky backbone keeps the scent grounded, while the rose adds a lush sweetness that gives it a more romantic and expressive character. The result is a striking blend that feels like Aventus reimagined through a bold rose centered lens."},{"name":"Cap Strawberry","prices":{"1":66,"2":132,"5":330,"10":660},"description":"Captivate Strawberry is a bold quadbrid that blends Aventus, Cedrat Boise, BR540, and strawberry into a scent that feels both familiar and completely unusual at the same time. The pineapple accord carries a slightly candy like twist, giving it a fruity character that recalls strawberry candy while still sitting on top of the woody, musky, and airy structure underneath. The result is a highly unique fragrance that feels like Aventus reimagined with a vivid strawberry edge, combining bright fruitiness and sweetness in a way that stands out even against many niche compositions."},{"name":"Cap Peach","prices":{"1":66,"2":132,"5":330,"10":660},"description":"Captivate Peach smells like an Aventus inspired base blended with a ripe peach accord, resulting in a very fruit forward composition. The familiar woody and musky structure of Aventus remains underneath, but the peach adds a brighter, juicier, and more playful character that makes the fragrance feel sweeter and more vibrant overall. The result is a fresh yet distinctly fruity scent that leans more into its peachy appeal than the usual Aventus style sharpness."},{"name":"Aventus Bake / IVL","prices":{"1":66.18,"2":132.36,"5":330,"10":661.82},"description":"Aventus IVL opens with the familiar woody character of Aventus, accented by a touch of lime that comes through more clearly on clothes than on skin. Within minutes, the fragrance transforms into a rich vanilla ice cream accord drizzled with caramel and topped with pineapple bits, giving it a creamy, dessert like twist while still retaining an Aventus inspired structure. As it settles, the scent softens into a musky skin scent that feels smooth, warm, and comforting. The result is a creative blend of fruity woods and gourmand sweetness, offering a more indulgent and playful take on the Aventus profile."},{"name":"Aventus Orange Pomelo","prices":{"1":74.67,"2":149.33,"5":373.33,"10":746.67},"description":"Pomelorangeventus is a bespoke fragrance that opens with the scent of ripe pineapple layered with zesty mandarin orange and juicy pomelo, creating a bright and vibrant fruity citrus introduction. As it develops, the fragrance shifts away from its sparkling opening and settles into a more woody character, with both the mid and drydown being dominated by a smooth and grounded woody base. The result is a scent that starts fresh and lively, then becomes more structured and masculine as it dries down."},{"name":"Aventus Banana Ice Cream","prices":{"1":74.67,"2":149.33,"5":373.33,"10":746.67},"description":"Bananaventus + Vanilla Ice Cream opens with a playful mix of slight citrus freshness, fruity banana, and a creamy vanilla ice cream accord swirling together into a rich and attention grabbing introduction. As it develops, the woody character becomes more noticeable in the mid, giving the sweetness a firmer structure and preventing the scent from feeling overly dessert like. By the drydown, the fragrance settles into a mostly fruity and musky finish that feels soft, smooth, and comforting. Because of its creamy sweetness and fuller presence, this one works best in cold environments where the notes can breathe without becoming too heavy."},{"name":"Under The Influence w/o canna","prices":{"1":66,"2":132,"5":330,"10":660},"description":"Under the Influence is, to my knowledge, one of the earliest local fragrances to explore a cola and rum combination, resulting in a scent that feels bold, boozy, and highly distinctive. It reminds me of a lighter take on Roja Enigma Parfum, with less fizz but a stronger pull toward the alcoholic warmth of the composition. Instead of focusing on sparkling cola freshness, it leans more into an intoxicating rum character that feels dense, heady, and almost overwhelming in the way real alcohol can be. That boozy effect is so pronounced that it can even recall the dizzy, uneasy feeling of having too much to drink, making the fragrance both memorable and striking in its realism."}],"Inspired":[{"name":"Warthog Stud","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Warthog Stud is a more wearable take on the DHI style DNA, especially for those who find the iris in the original too strong or overwhelming. It keeps that smooth, powdery, and slightly elegant character, but presents it in a softer and easier to wear way. The result is a fragrance that still feels polished and refined, while being more approachable and comfortable on the nose."},{"name":"Warthog Patchouli Haven","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Warthog Patchouli Haven opens with a refreshing burst of bright orange citrus, giving the scent an energetic and inviting start. As it dries down, the fragrance turns darker, slightly bitter, and more earthy, with patchouli becoming the clear focus of the composition. The contrast between the lively citrus opening and the deeper patchouli base gives it a bold and satisfying character, making it especially appealing in colder weather where its richness can fully shine."},{"name":"Warthog Hombre","prices":{"1":38.8,"2":77.6,"5":194,"10":388}},{"name":"Warthog Dark Elixir","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Dark Elixir is a lavender forward fragrance with the note staying prominent from the opening to the drydown, while honey and tobacco remain subtle but noticeable enough to add warmth and depth. The scent feels like a creative hybrid, combining the lavender and pear style smoothness of Ultra Male with the honey tobacco richness associated with Le Male Elixir. Even with those darker sweet elements, it stays controlled and wearable, giving the fragrance a balanced character that feels comforting, slightly seductive, and easy to wear without becoming too heavy."},{"name":"Warthog Citrus Oasis","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Citrus Oasis opens with a lemony profile that recalls older batches of DHC, bright, crisp, and immediately uplifting. In the mid, the scent shifts into something closer to the 2022 style, where a ginger like nuance becomes more noticeable and adds a fresher, spicier edge to the composition. As it dries down, it returns to the older character, settling into a musky bergamot finish. What makes it stand out is how it seems to move between two different expressions in one bottle, giving the fragrance a dynamic and well rounded citrus profile."},{"name":"Warthog Eternal Freshness","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Eternal Freshness comes very close to the original Sedley, sharing the same bright, sparkling Sprite like character that makes both scents instantly refreshing and easy to enjoy. Sedley feels fizzier and more effervescent, while Eternal Freshness leans slightly deeper with a more pronounced blue shower gel vibe. Even with that subtle difference, both carry the same clean citrus freshness that stays uplifting and highly wearable, making Eternal Freshness the kind of fragrance that remains enjoyable even when sprayed generously."},{"name":"Warthog Royal Cologne","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Royal Cologne is an Aventus Cologne inspired scent with a noticeably prominent ginger note that gives the fragrance a bright, spicy, and energetic freshness. The ginger stands out early and adds a crisp kick to the citrusy opening, making the scent feel more vibrant and lively than a typical fruity woody profile. Overall, it comes across as a fresh, clean, and modern fragrance with a sharper, more invigorating edge."},{"name":"Warthog Euphoria","prices":{"1":38.8,"2":77.6,"5":194,"10":388}},{"name":"Warthog Cosmopolitan","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Cosmopolitan is a sweet and playful fragrance that blends a smooth almond note with a rich cherry accord, creating a scent that feels both charming and polished. The almond gives it a soft, creamy elegance, while the cherry adds a luscious sweetness that makes the composition more vibrant and expressive. Together, they create a classy fragrance with a refined gourmand appeal that feels youthful, stylish, and effortlessly attractive."},{"name":"Warthog Red Moon","prices":{"1":38.8,"2":77.6,"5":194,"10":388},"description":"Red Moon is a more wearable take for those who may find the strong musky character of Prada Black too heavy or overwhelming. It comes across as smoother and easier on the nose, while still keeping that soft, dark, and comforting appeal. In the drydown, it settles into a musky powdery skin scent that feels clean, intimate, and subtly sensual."},{"name":"Prime Monkey Royal Zest","prices":{"1":32,"2":64,"5":160,"10":320},"description":"Royal Zest opens with around ten minutes of nonstop fizz, capturing the sparkling sensation of bubbling and popping carbonation with impressive realism. Even after an hour, it still carries that familiar orange soda character, keeping the scent playful, vibrant, and true to its name. As it dries down, the fragrance settles into a musky orange finish that feels softer and smoother while still retaining its citrus identity. It also performs surprisingly well on clothes, lasting around 10 hours."}]};
+
+    const STORAGE_KEYS = {
+      cart: "curatedArchiveCartV4"
+    };
+
+    let cart = loadCart();
+    let currentBrand = null;
+    const categoryNames = Object.keys(CATALOG);
+
+    const brandSelect = document.getElementById("brandSelect");
+    const brandGrid = document.getElementById("brandGrid");
+    const homeView = document.getElementById("homeView");
+    const brandView = document.getElementById("brandView");
+    const brandTitle = document.getElementById("brandTitle");
+    const brandSubtext = document.getElementById("brandSubtext");
+    const currentBrandBreadcrumb = document.getElementById("currentBrandBreadcrumb");
+    const scentGrid = document.getElementById("scentGrid");
+    const brandStatus = document.getElementById("brandStatus");
+    const cartItemsNode = document.getElementById("cartItems");
+    const cartTotalNode = document.getElementById("cartTotal");
+    const customerName = document.getElementById("customerName");
+    const customerContact = document.getElementById("customerContact");
+    const customerNotes = document.getElementById("customerNotes");
+    const gcashQrHolder = document.getElementById("gcashQrHolder");
+    const unionbankQrHolder = document.getElementById("unionbankQrHolder");
+    const gcashNameText = document.getElementById("gcashNameText");
+    const gcashNumberText = document.getElementById("gcashNumberText");
+
+    init();
+
+    function init() {
+      populateBrandSelect();
+      renderBrandGrid();
+      renderPaymentBlocks();
+      renderCart();
+      openRouteFromHash();
+
+      brandSelect.addEventListener("change", handleBrandSelect);
+      window.addEventListener("hashchange", openRouteFromHash);
+      document.getElementById("backHomeBtn").addEventListener("click", goHome);
+      document.getElementById("downloadPdfBtn").addEventListener("click", downloadPdf);
+      document.getElementById("clearCartBtn").addEventListener("click", clearCart);
+
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => setPaymentTab(btn.dataset.tab));
+      });
+    }
+
+    function populateBrandSelect() {
+      brandSelect.innerHTML = '<option value="">Select a brand or category</option>' +
+        categoryNames.map(name => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("");
+    }
+
+    function renderBrandGrid() {
+      brandGrid.innerHTML = "";
+      categoryNames.forEach(name => {
+        const count = (CATALOG[name] || []).length;
+        const button = document.createElement("button");
+        button.className = "brand-card";
+        button.innerHTML = `
+          <h3>${escapeHtml(name)}</h3>
+          <p>${count === 0 ? "Page ready. Inventory coming soon." : `${count} scent${count === 1 ? "" : "s"} available`}</p>
+        `;
+        button.addEventListener("click", () => goToBrand(name));
+        brandGrid.appendChild(button);
+      });
+    }
+
+    function handleBrandSelect() {
+      const value = brandSelect.value;
+      if (!value) {
+        goHome();
+        return;
+      }
+      goToBrand(value);
+    }
+
+    function goToBrand(name) {
+      location.hash = `brand=${encodeURIComponent(name)}`;
+    }
+
+    function goHome() {
+      location.hash = "";
+    }
+
+    function openRouteFromHash() {
+      const hash = location.hash.replace(/^#/, "");
+      if (!hash.startsWith("brand=")) {
+        currentBrand = null;
+        brandSelect.value = "";
+        homeView.classList.remove("hidden");
+        brandView.classList.add("hidden");
+        return;
+      }
+
+      const brandName = decodeURIComponent(hash.replace(/^brand=/, ""));
+      if (!CATALOG[brandName]) {
+        currentBrand = null;
+        brandSelect.value = "";
+        homeView.classList.remove("hidden");
+        brandView.classList.add("hidden");
+        return;
+      }
+
+      currentBrand = brandName;
+      brandSelect.value = brandName;
+      renderBrandPage();
+      homeView.classList.add("hidden");
+      brandView.classList.remove("hidden");
+    }
+
+    function renderBrandPage() {
+      const items = CATALOG[currentBrand] || [];
+      brandTitle.textContent = currentBrand;
+      brandSubtext.textContent = items.length
+        ? `${items.length} scent${items.length === 1 ? "" : "s"} available in this collection. Choose your ml size and quantity to see the live computed price before adding to cart.`
+        : "This page is ready. Inventory for this collection will be added soon.";
+      currentBrandBreadcrumb.textContent = currentBrand;
+      brandStatus.textContent = "";
+      scentGrid.innerHTML = "";
+
+      if (!items.length) {
+        scentGrid.innerHTML = `<div class="empty">No scents published yet for this page.</div>`;
+        return;
+      }
+
+      items.forEach((item, index) => {
+        const sizeKeys = Object.keys(item.prices).sort((a, b) => Number(a) - Number(b));
+        const defaultSize = sizeKeys[0] || "";
+        const card = document.createElement("article");
+        card.className = "scent-card";
+
+        card.innerHTML = `
+          <div class="scent-top">
+            <div>
+              <div class="scent-name">${escapeHtml(item.name)}</div>
+              ${item.description ? `<div class="scent-description">${escapeHtml(item.description)}</div>` : ""}
+            </div>
+            <div class="scent-tag">${escapeHtml(currentBrand)}</div>
+          </div>
+
+          <div class="scent-controls">
+            <select data-role="size">
+              ${sizeKeys.map(size => `<option value="${size}">${size} ml</option>`).join("")}
+            </select>
+            <input data-role="qty" type="number" min="1" value="1" />
+            <button class="btn-primary" data-role="add">Add to cart</button>
+          </div>
+
+          <div class="price-panel">
+            <div class="price-total" data-role="totalText"></div>
+            <div class="price-unit" data-role="unitText"></div>
+          </div>
+        `;
+
+        const sizeSelect = card.querySelector('[data-role="size"]');
+        const qtyInput = card.querySelector('[data-role="qty"]');
+        const addButton = card.querySelector('[data-role="add"]');
+        const totalText = card.querySelector('[data-role="totalText"]');
+        const unitText = card.querySelector('[data-role="unitText"]');
+
+        function updateCardPreview() {
+          const size = sizeSelect.value || defaultSize;
+          const quantity = Math.max(1, Number(qtyInput.value || 1));
+          const unitPrice = Number(item.prices[size] || 0);
+          const lineTotal = unitPrice * quantity;
+          totalText.textContent = `${size} ml × ${quantity} pc = ${formatMoney(lineTotal)}`;
+          unitText.textContent = `Unit price per piece, ${formatMoney(unitPrice)}`;
+        }
+
+        sizeSelect.addEventListener("change", updateCardPreview);
+        qtyInput.addEventListener("input", updateCardPreview);
+        updateCardPreview();
+
+        addButton.addEventListener("click", () => {
+          const size = sizeSelect.value || defaultSize;
+          const quantity = Math.max(1, Number(qtyInput.value || 1));
+          addToCart({
+            category: currentBrand,
+            name: item.name,
+            size,
+            unitPrice: Number(item.prices[size] || 0),
+            quantity
+          });
+          brandStatus.textContent = `${item.name} added to cart.`;
+          brandStatus.classList.remove("error");
+        });
+
+        scentGrid.appendChild(card);
+      });
+    }
+
+    function addToCart(item) {
+      const existing = cart.find(entry =>
+        entry.category === item.category &&
+        entry.name === item.name &&
+        entry.size === item.size
+      );
+
+      if (existing) {
+        existing.quantity += item.quantity;
+      } else {
+        cart.push(item);
+      }
+
+      saveCart();
+      renderCart();
+    }
+
+    function renderCart() {
+      cartItemsNode.innerHTML = "";
+      if (!cart.length) {
+        cartItemsNode.innerHTML = '<div class="empty">Your cart is empty.</div>';
+        cartTotalNode.textContent = formatMoney(0);
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const lineTotal = item.unitPrice * item.quantity;
+        const node = document.createElement("div");
+        node.className = "cart-item";
+        node.innerHTML = `
+          <div class="cart-item-top">
+            <div>
+              <strong>${escapeHtml(item.name)}</strong>
+              <div class="tiny">${escapeHtml(item.category)}</div>
+            </div>
+            <button class="remove-btn" data-index="${index}">Remove</button>
+          </div>
+          <div class="cart-item-bottom">
+            <span>${item.size} ml × ${item.quantity} pc</span>
+            <strong>${formatMoney(lineTotal)}</strong>
+          </div>
+        `;
+        node.querySelector(".remove-btn").addEventListener("click", () => removeCartItem(index));
+        cartItemsNode.appendChild(node);
+      });
+
+      cartTotalNode.textContent = formatMoney(getCartTotal());
+    }
+
+    function removeCartItem(index) {
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      saveCart();
+      renderCart();
+    }
+
+    function getCartTotal() {
+      return cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+    }
+
+    function loadCart() {
+      const saved = localStorage.getItem(STORAGE_KEYS.cart);
+      if (!saved) return [];
+      try {
+        return JSON.parse(saved);
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(cart));
+    }
+
+    function renderPaymentBlocks() {
+      gcashNameText.textContent = STORE_CONFIG.gcashName;
+      gcashNumberText.textContent = STORE_CONFIG.gcashNumber;
+      renderQrImage(gcashQrHolder, QR_PATHS.gcash, "Upload your real QR file as gcash-qr.png");
+      renderQrImage(unionbankQrHolder, QR_PATHS.unionbank, "Upload your real QR file as unionbank-qr.png");
+    }
+
+    async function resolveAvailablePath(paths) {
+      for (const path of paths) {
+        try {
+          const response = await fetch(`${path}?v=${Date.now()}`, { cache: "no-store" });
+          if (response.ok) return path;
+        } catch {}
+      }
+      return null;
+    }
+
+    async function renderQrImage(node, paths, fallbackText) {
+      node.innerHTML = "";
+      node.dataset.loadedPath = "";
+      const resolvedPath = await resolveAvailablePath(paths);
+      if (!resolvedPath) {
+        node.innerHTML = `<div style="color:#111; text-align:center; padding:18px; font-size:0.92rem; line-height:1.5;">${fallbackText}</div>`;
+        return;
+      }
+
+      const img = new Image();
+      img.onload = () => {
+        node.innerHTML = "";
+        node.appendChild(img);
+      };
+      img.onerror = () => {
+        node.innerHTML = `<div style="color:#111; text-align:center; padding:18px; font-size:0.92rem; line-height:1.5;">${fallbackText}</div>`;
+      };
+      node.dataset.loadedPath = resolvedPath;
+      img.src = `${resolvedPath}?v=${Date.now()}`;
+      img.alt = "Payment QR";
+    }
+
+    function setPaymentTab(tab) {
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === tab);
+      });
+      document.getElementById("gcashPane").classList.toggle("hidden", tab !== "gcash");
+      document.getElementById("unionbankPane").classList.toggle("hidden", tab !== "unionbank");
+    }
+
+    function formatMoney(value) {
+      return new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(Number(value || 0));
+    }
+
+    function formatMoneyPdf(value) {
+      return `PHP ${Number(value || 0).toLocaleString("en-PH", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}`;
+    }
+
+    function pdfSafeText(value) {
+      return String(value ?? "")
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[’`]/g, "'")
+        .replace(/[“”]/g, '"')
+        .replace(/[^\x20-\x7E\n]/g, "");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    async function blobToDataURL(blob) {
+      return await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    async function loadImageElement(src) {
+      return await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+      });
+    }
+
+    async function buildSquareImageDataUrlFromBlob(blob) {
+      const rawDataUrl = await blobToDataURL(blob);
+      const img = await loadImageElement(rawDataUrl);
+      const size = 900;
+      const padding = 72;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, size, size);
+      const scale = Math.min((size - padding * 2) / img.naturalWidth, (size - padding * 2) / img.naturalHeight);
+      const drawWidth = img.naturalWidth * scale;
+      const drawHeight = img.naturalHeight * scale;
+      const dx = (size - drawWidth) / 2;
+      const dy = (size - drawHeight) / 2;
+      ctx.drawImage(img, dx, dy, drawWidth, drawHeight);
+      return canvas.toDataURL("image/png");
+    }
+
+    async function getQrImageDataUrl(pathOrPaths) {
+      const resolvedPath = Array.isArray(pathOrPaths)
+        ? await resolveAvailablePath(pathOrPaths)
+        : pathOrPaths;
+
+      if (!resolvedPath) return null;
+
+      try {
+        const response = await fetch(`${resolvedPath}?v=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) return null;
+        const blob = await response.blob();
+        return await buildSquareImageDataUrlFromBlob(blob);
+      } catch {
+        return null;
+      }
+    }
+
+    async function downloadPdf() {
+      if (!cart.length) {
+        alert("The cart is empty. Add scents first.");
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: "mm", format: "a4" });
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+      const left = 14;
+      const right = pageWidth - 14;
+      let y = 18;
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text(pdfSafeText(STORE_CONFIG.shopName), left, y);
+      y += 8;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10.5);
+      doc.text(`Date: ${new Date().toLocaleString("en-PH")}`, left, y);
+      y += 6;
+      doc.text(`Customer: ${pdfSafeText(customerName.value.trim() || "Not provided")}`, left, y);
+      y += 6;
+      doc.text(`Contact: ${pdfSafeText(customerContact.value.trim() || "Not provided")}`, left, y);
+      y += 6;
+
+      const notes = customerNotes.value.trim();
+      if (notes) {
+        const noteLines = doc.splitTextToSize(`Notes: ${pdfSafeText(notes)}`, 180);
+        doc.text(noteLines, left, y);
+        y += noteLines.length * 5;
+      }
+
+      y += 4;
+      doc.line(left, y, right, y);
+      y += 8;
+      doc.setFont("helvetica", "bold");
+      doc.text("Items", left, y);
+      y += 7;
+
+      const xIndex = left;
+      const xScent = 24;
+      const xCategory = 96;
+      const xSize = 142;
+      const xQty = 166;
+      const xLineTotal = right;
+
+      const drawPdfTableHeader = () => {
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text("#", xIndex, y);
+        doc.text("Scent", xScent, y);
+        doc.text("Category", xCategory, y);
+        doc.text("Size", xSize, y);
+        doc.text("Qty", xQty, y, { align: "right" });
+        doc.text("Line Total", xLineTotal, y, { align: "right" });
+        y += 3;
+        doc.line(left, y, right, y);
+        y += 6;
+        doc.setFont("helvetica", "normal");
+      };
+
+      drawPdfTableHeader();
+
+      cart.forEach((item, index) => {
+        const scentLines = doc.splitTextToSize(pdfSafeText(item.name), 62);
+        const categoryLines = doc.splitTextToSize(pdfSafeText(item.category), 36);
+        const blockHeight = Math.max(scentLines.length, categoryLines.length) * 5;
+
+        if (y + blockHeight > pageHeight - 26) {
+          doc.addPage();
+          y = 18;
+          drawPdfTableHeader();
+        }
+
+        doc.text(String(index + 1), xIndex, y);
+        doc.text(scentLines, xScent, y);
+        doc.text(categoryLines, xCategory, y);
+        doc.text(`${item.size} ml`, xSize, y);
+        doc.text(String(item.quantity), xQty, y, { align: "right" });
+        doc.text(formatMoneyPdf(item.unitPrice * item.quantity), xLineTotal, y, { align: "right" });
+        y += blockHeight + 3;
+      });
+
+      y += 3;
+      if (y > pageHeight - 90) {
+        doc.addPage();
+        y = 18;
+      }
+
+      doc.setFont("helvetica", "bold");
+      doc.line(left, y, right, y);
+      y += 8;
+      doc.text(`Grand Total: ${formatMoneyPdf(getCartTotal())}`, 170, y, { align: "right" });
+      y += 12;
+      doc.text("Payment Details", left, y);
+      y += 7;
+
+      doc.setFont("helvetica", "normal");
+      doc.text(`GCash Name: ${pdfSafeText(STORE_CONFIG.gcashName)}`, left, y);
+      y += 6;
+      doc.text(`GCash Number: ${STORE_CONFIG.gcashNumber}`, left, y);
+
+      const gcashQrData = await getQrImageDataUrl(gcashQrHolder.dataset.loadedPath || QR_PATHS.gcash);
+      const unionbankQrData = await getQrImageDataUrl(unionbankQrHolder.dataset.loadedPath || QR_PATHS.unionbank);
+
+      if (gcashQrData) {
+        doc.addImage(gcashQrData, "PNG", left, y + 6, 40, 40);
+        doc.text("GCash QR", left, y + 50);
+      }
+
+      if (unionbankQrData) {
+        doc.addImage(unionbankQrData, "PNG", left + 52, y + 6, 40, 40);
+        doc.text("UnionBank QR", left + 52, y + 50);
+      }
+
+      const fileSafeName = (customerName.value.trim() || "order")
+        .replace(/[^a-z0-9]+/gi, "_")
+        .toLowerCase();
+
+      doc.save(`${fileSafeName}_curated_archive_cart.pdf`);
+    }
+  </script>
+</body>
+</html>
