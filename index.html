@@ -309,7 +309,7 @@
       <h1>Fragrance Shop V3</h1>
       <p>
         Home page first, search by brand or category. After the buyer selects a brand, the app opens that brand page and shows all scents under it.
-        This version still works on GitHub Pages and keeps the PDF cart and GCash payment flow.
+        This version uses your verified inventory and keeps the PDF cart and GCash payment flow.
       </p>
     </section>
 
@@ -327,7 +327,7 @@
         <datalist id="brandSuggestions"></datalist>
 
         <p class="tiny">
-          V3 flow. Search brand first, open the brand page, then pick scents from that page. For GitHub simplicity, this is built as a single HTML file with route style navigation.
+          V3 flow. Search brand first, open the brand page, then pick scents from that page. Designers is kept as a blank page for now.
         </p>
 
         <section id="homeView">
@@ -403,39 +403,2058 @@
     };
 
     const STARTER_CATALOG = {
-      Aventus: [
-        { name: 'Aventus 11Z01', prices: { '1': 220, '2': 420, '5': 980, '10': 1850 } },
-        { name: 'Aventus 12F01', prices: { '1': 200, '2': 390, '5': 920, '10': 1740 } }
-      ],
-      Dua: [
-        { name: 'Poseidon\'s Imagined Cologne', prices: { '1': 120, '2': 220, '5': 520, '10': 980 } },
-        { name: 'Poseidon\'s Elixir 13ZZ', prices: { '1': 110, '2': 200, '5': 470, '10': 880 } }
-      ],
-      'Parfums Vintage': [
-        { name: 'Emperor Extrait', prices: { '1': 120, '2': 230, '5': 540, '10': 1020 } }
-      ],
-      'Local Niche': [
-        { name: 'Sample Local Niche Scent', prices: { '1': 90, '2': 170, '5': 390, '10': 730 } }
-      ],
-      Niche: [
-        { name: 'Sample Niche Scent', prices: { '1': 130, '2': 250, '5': 590, '10': 1120 } }
-      ],
-      Designers: [
-        { name: 'Sample Designer Scent', prices: { '1': 80, '2': 150, '5': 350, '10': 660 } }
-      ],
-      'Middle Eastern': [
-        { name: 'Sample Middle Eastern Scent', prices: { '1': 75, '2': 140, '5': 330, '10': 620 } }
-      ],
-      'S&L': [
-        { name: 'Sample S&L Scent', prices: { '1': 85, '2': 160, '5': 370, '10': 700 } }
-      ],
-      TBGCO: [
-        { name: 'Sample TBGCO Scent', prices: { '1': 90, '2': 170, '5': 400, '10': 760 } }
-      ],
-      Inspired: [
-        { name: 'Sample Inspired Scent', prices: { '1': 60, '2': 110, '5': 260, '10': 500 } }
-      ]
-    };
+  "Aventus": [
+    {
+      "name": "10J02",
+      "prices": {
+        "1": 3273,
+        "2": 6546,
+        "5": 16365,
+        "10": 32730
+      }
+    },
+    {
+      "name": "11Z01",
+      "prices": {
+        "1": 1925,
+        "2": 3850
+      }
+    },
+    {
+      "name": "12D01",
+      "prices": {
+        "1": 1858,
+        "2": 4922,
+        "5": 12305
+      }
+    },
+    {
+      "name": "12F01",
+      "prices": {
+        "1": 1120,
+        "2": 2856
+      }
+    },
+    {
+      "name": "13ZZ01",
+      "prices": {
+        "1": 1932,
+        "2": 3864,
+        "5": 9660,
+        "10": 19320
+      }
+    },
+    {
+      "name": "14F01",
+      "prices": {
+        "1": 668.11,
+        "2": 1590,
+        "5": 3975,
+        "10": 7950
+      }
+    },
+    {
+      "name": "14K01",
+      "prices": {
+        "1": 1900,
+        "2": 5040
+      }
+    },
+    {
+      "name": "15R11",
+      "prices": {
+        "1": 724,
+        "2": 1746.56,
+        "5": 4366.39,
+        "10": 8732.78
+      }
+    },
+    {
+      "name": "15X21",
+      "prices": {
+        "1": 631.43,
+        "2": 1488,
+        "5": 3720,
+        "10": 7440
+      }
+    },
+    {
+      "name": "15Y11",
+      "prices": {
+        "1": 1044.34,
+        "2": 2644.15,
+        "5": 6610.37,
+        "10": 13220.75
+      }
+    },
+    {
+      "name": "15Y01",
+      "prices": {
+        "1": 688.23,
+        "2": 1647.05,
+        "5": 4117.61,
+        "10": 8235.23
+      }
+    },
+    {
+      "name": "16A01",
+      "prices": {
+        "1": 573.23,
+        "2": 1325.06,
+        "5": 3312.64,
+        "10": 6625.28
+      }
+    },
+    {
+      "name": "16D01",
+      "prices": {
+        "1": 613.84,
+        "2": 1438.74,
+        "5": 3596.86,
+        "10": 7193.71
+      }
+    },
+    {
+      "name": "16E01",
+      "prices": {
+        "1": 525.47,
+        "2": 1191.32,
+        "5": 2978.3,
+        "10": 5956.6
+      }
+    },
+    {
+      "name": "16H01",
+      "prices": {
+        "1": 711.47,
+        "2": 1712.1,
+        "5": 4280.26,
+        "10": 8560.51
+      }
+    },
+    {
+      "name": "16K01",
+      "prices": {
+        "1": 927.98,
+        "2": 2318.35
+      }
+    },
+    {
+      "name": "16M01",
+      "prices": {
+        "1": 609,
+        "2": 1425.45,
+        "5": 3563.64,
+        "10": 7127.27
+      }
+    },
+    {
+      "name": "17S01",
+      "prices": {
+        "1": 811.11,
+        "2": 1991.11,
+        "5": 4977.78,
+        "10": 9955.56
+      }
+    },
+    {
+      "name": "17T01",
+      "prices": {
+        "1": 317.39,
+        "2": 608.7,
+        "5": 1521.74,
+        "10": 3043.48
+      }
+    },
+    {
+      "name": "17Q11",
+      "prices": {
+        "1": 533.9,
+        "2": 1214.92,
+        "5": 3037.3,
+        "10": 6074.6
+      }
+    },
+    {
+      "name": "17W01",
+      "prices": {
+        "1": 343.9,
+        "2": 682.93,
+        "5": 1707.32,
+        "10": 3414.63
+      }
+    },
+    {
+      "name": "17X01",
+      "prices": {
+        "1": 350,
+        "2": 700,
+        "5": 1750,
+        "10": 3500
+      }
+    },
+    {
+      "name": "18D02",
+      "prices": {
+        "1": 436.84,
+        "2": 674,
+        "5": 1685,
+        "10": 3370
+      }
+    },
+    {
+      "name": "18F21",
+      "prices": {
+        "1": 403.33,
+        "2": 849.33,
+        "5": 2123.32,
+        "10": 4246.64
+      }
+    },
+    {
+      "name": "18K01",
+      "prices": {
+        "1": 388.46,
+        "2": 807.69,
+        "5": 2019.23,
+        "10": 4038.46
+      }
+    },
+    {
+      "name": "21T01",
+      "prices": {
+        "1": 375.78,
+        "2": 772.19,
+        "5": 1930.48,
+        "10": 3860.95
+      }
+    },
+    {
+      "name": "21V01",
+      "prices": {
+        "1": 241.3,
+        "2": 395.65,
+        "5": 989.13,
+        "10": 1978.26
+      }
+    },
+    {
+      "name": "21X01B",
+      "prices": {
+        "1": 329.17,
+        "2": 641.67,
+        "5": 1604.17,
+        "10": 3208.33
+      }
+    },
+    {
+      "name": "F2838",
+      "prices": {
+        "1": 186,
+        "2": 372,
+        "5": 930,
+        "10": 1860
+      }
+    },
+    {
+      "name": "F3334",
+      "prices": {
+        "1": 233.2,
+        "2": 372.95,
+        "5": 932.37,
+        "10": 1864.75
+      }
+    },
+    {
+      "name": "F388",
+      "prices": {
+        "1": 230,
+        "2": 364,
+        "5": 910,
+        "10": 1820
+      }
+    },
+    {
+      "name": "F387",
+      "prices": {
+        "1": 230,
+        "2": 364,
+        "5": 910,
+        "10": 1820
+      }
+    },
+    {
+      "name": "F1520",
+      "prices": {
+        "1": 230,
+        "2": 364,
+        "5": 910,
+        "10": 1820
+      }
+    },
+    {
+      "name": "F3135",
+      "prices": {
+        "1": 257.14,
+        "2": 440,
+        "5": 1100,
+        "10": 2200
+      }
+    },
+    {
+      "name": "F463",
+      "prices": {
+        "1": 207.14,
+        "2": 300,
+        "5": 750,
+        "10": 1500
+      }
+    }
+  ],
+  "Dua": [
+    {
+      "name": "#Imagine",
+      "prices": {
+        "1": 123.53,
+        "2": 247.06,
+        "5": 617.65,
+        "10": 1235.29
+      }
+    },
+    {
+      "name": "1 and Only Poseidon",
+      "prices": {
+        "1": 116.45,
+        "2": 232.89,
+        "5": 582.24,
+        "10": 1164.47
+      }
+    },
+    {
+      "name": "44 Shades of Cherry Poseidon",
+      "prices": {
+        "1": 128.72,
+        "2": 257.44,
+        "5": 643.59,
+        "10": 1287.18
+      }
+    },
+    {
+      "name": "Another 13 Shades",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Banana Caramel Wonderland",
+      "prices": {
+        "1": 86.47,
+        "2": 172.94,
+        "5": 432.35,
+        "10": 864.71
+      }
+    },
+    {
+      "name": "Banana Cream Pie Cocktail",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Beachvibes by the Water of Arabia",
+      "prices": {
+        "1": 111.92,
+        "2": 223.84,
+        "5": 559.59,
+        "10": 1119.18
+      }
+    },
+    {
+      "name": "Butterbeer",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Butterscotch Sauce",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Casino Elixir",
+      "prices": {
+        "1": 131.76,
+        "2": 263.53,
+        "5": 658.82,
+        "10": 1317.65
+      }
+    },
+    {
+      "name": "Choco Cherry Crumble Cake",
+      "prices": {
+        "1": 86.47,
+        "2": 172.94,
+        "5": 432.35,
+        "10": 864.71
+      }
+    },
+    {
+      "name": "Choco Poseidon",
+      "prices": {
+        "1": 131.76,
+        "2": 263.53,
+        "5": 658.82,
+        "10": 1317.65
+      }
+    },
+    {
+      "name": "Chocolate Wafers & Coffee",
+      "prices": {
+        "1": 69.06,
+        "2": 138.12,
+        "5": 345.31,
+        "10": 690.61
+      }
+    },
+    {
+      "name": "Clean Laundry",
+      "prices": {
+        "1": 116.45,
+        "2": 232.89,
+        "5": 582.24,
+        "10": 1164.47
+      }
+    },
+    {
+      "name": "Elixir of Poseidon's Classic Pineapple",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Exotic Burst of Lemons",
+      "prices": {
+        "1": 73.38,
+        "2": 146.75,
+        "5": 366.88,
+        "10": 733.76
+      }
+    },
+    {
+      "name": "Fizzy Gin",
+      "prices": {
+        "1": 86.47,
+        "2": 172.94,
+        "5": 432.35,
+        "10": 864.71
+      }
+    },
+    {
+      "name": "Fruit Lemonade",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Gone Swimming in Jazz Club",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Heaven on Earth",
+      "prices": {
+        "1": 95,
+        "2": 189,
+        "5": 474,
+        "10": 947
+      }
+    },
+    {
+      "name": "High Seas of Everest",
+      "prices": {
+        "1": 103.85,
+        "2": 207.69,
+        "5": 519.24,
+        "10": 1038.47
+      }
+    },
+    {
+      "name": "Imagine Gone Swimming in Amalfi Mandarin",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Imagine Poseidon Chilling at the Pacific with Fire God",
+      "prices": {
+        "1": 124.72,
+        "2": 249.45,
+        "5": 623.62,
+        "10": 1247.24
+      }
+    },
+    {
+      "name": "Imagine Poseidon's Vibrant Dreams",
+      "prices": {
+        "1": 116.45,
+        "2": 232.89,
+        "5": 582.24,
+        "10": 1164.47
+      }
+    },
+    {
+      "name": "Italiano Choco Pomme Poseidon",
+      "prices": {
+        "1": 128.72,
+        "2": 257.44,
+        "5": 643.59,
+        "10": 1287.18
+      }
+    },
+    {
+      "name": "Leedys",
+      "prices": {
+        "1": 119.41,
+        "2": 238.82,
+        "5": 597.06,
+        "10": 1194.12
+      }
+    },
+    {
+      "name": "Matchalicious",
+      "prices": {
+        "1": 69.23,
+        "2": 138.45,
+        "5": 346.13,
+        "10": 692.26
+      }
+    },
+    {
+      "name": "Melánge Moussex",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Melody",
+      "prices": {
+        "1": 141.03,
+        "2": 282.06,
+        "5": 705.15,
+        "10": 1410.29
+      }
+    },
+    {
+      "name": "Melody of Sweet Fruits",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Musky Pineapple",
+      "prices": {
+        "1": 119.41,
+        "2": 238.82,
+        "5": 597.06,
+        "10": 1194.12
+      }
+    },
+    {
+      "name": "Ocean of Dua",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Oh Damn!",
+      "prices": {
+        "1": 119.41,
+        "2": 238.82,
+        "5": 597.06,
+        "10": 1194.12
+      }
+    },
+    {
+      "name": "Origins of Poseidon: Est 2010",
+      "prices": {
+        "1": 131.76,
+        "2": 263.53,
+        "5": 658.82,
+        "10": 1317.65
+      }
+    },
+    {
+      "name": "Paris 1920",
+      "prices": {
+        "1": 108.17,
+        "2": 216.34,
+        "5": 540.85,
+        "10": 1081.71
+      }
+    },
+    {
+      "name": "Peace with Poseidon",
+      "prices": {
+        "1": 78.24,
+        "2": 156.47,
+        "5": 391.18,
+        "10": 782.35
+      }
+    },
+    {
+      "name": "Perfumer’s Dua: Gold",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Perfumer’s Dua: Grapefruit",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Perfumer’s Dua: Pear",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Poseidon Jr.",
+      "prices": {
+        "1": 116.45,
+        "2": 232.89,
+        "5": 582.24,
+        "10": 1164.47
+      }
+    },
+    {
+      "name": "Poseidon's Angelic Elixir",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Poseidon's Aphrodisiac",
+      "prices": {
+        "1": 135.88,
+        "2": 271.76,
+        "5": 679.41,
+        "10": 1358.82
+      }
+    },
+    {
+      "name": "Poseidon's Berry Affair",
+      "prices": {
+        "1": 131.76,
+        "2": 263.53,
+        "5": 658.82,
+        "10": 1317.65
+      }
+    },
+    {
+      "name": "Poseidon's Cafe",
+      "prices": {
+        "1": 115.29,
+        "2": 230.59,
+        "5": 576.47,
+        "10": 1152.94
+      }
+    },
+    {
+      "name": "Poseidon's Cali Life",
+      "prices": {
+        "1": 111.92,
+        "2": 223.84,
+        "5": 559.59,
+        "10": 1119.18
+      }
+    },
+    {
+      "name": "Poseidon's Cologne",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Poseidon's Cotton Candy",
+      "prices": {
+        "1": 111.75,
+        "2": 223.51,
+        "5": 558.76,
+        "10": 1117.53
+      }
+    },
+    {
+      "name": "Poseidon's Dua Therapy",
+      "prices": {
+        "1": 111.75,
+        "2": 223.51,
+        "5": 558.76,
+        "10": 1117.53
+      }
+    },
+    {
+      "name": "Poseidon's Elixir 11Z",
+      "prices": {
+        "1": 90.59,
+        "2": 181.18,
+        "5": 452.94,
+        "10": 905.88
+      }
+    },
+    {
+      "name": "Poseidon's Elixir 13ZZ",
+      "prices": {
+        "1": 135.88,
+        "2": 271.76,
+        "5": 679.41,
+        "10": 1358.82
+      }
+    },
+    {
+      "name": "Poseidon's Elixir 13ZZ (2.0)",
+      "prices": {
+        "1": 116.45,
+        "2": 232.89,
+        "5": 582.24,
+        "10": 1164.47
+      }
+    },
+    {
+      "name": "Poseidon's Elixir 15Y",
+      "prices": {
+        "1": 116.45,
+        "2": 232.89,
+        "5": 582.24,
+        "10": 1164.47
+      }
+    },
+    {
+      "name": "Poseidon's Elixir 17X",
+      "prices": {
+        "1": 116.45,
+        "2": 232.89,
+        "5": 582.24,
+        "10": 1164.47
+      }
+    },
+    {
+      "name": "Poseidon's Elixir 2.0",
+      "prices": {
+        "1": 144.12,
+        "2": 288.24,
+        "5": 720.59,
+        "10": 1441.18
+      }
+    },
+    {
+      "name": "Poseidon's Elixir Remixed MOD 1",
+      "prices": {
+        "1": 155.11,
+        "2": 310.22,
+        "5": 775.56,
+        "10": 1551.12
+      }
+    },
+    {
+      "name": "Poseidon's Elixir Remixed MOD 2",
+      "prices": {
+        "1": 123.53,
+        "2": 247.06,
+        "5": 617.65,
+        "10": 1235.29
+      }
+    },
+    {
+      "name": "Poseidon's Elixir Remixed MOD 3",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Poseidon's Fireplace",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Poseidon's Imagined Cologne",
+      "prices": {
+        "1": 123.53,
+        "2": 247.06,
+        "5": 617.65,
+        "10": 1235.29
+      }
+    },
+    {
+      "name": "Poseidon's Jazz",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Poseidon's Leopard Cologne",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Poseidon's Ottomon Supernova",
+      "prices": {
+        "1": 131.76,
+        "2": 263.53,
+        "5": 658.82,
+        "10": 1317.65
+      }
+    },
+    {
+      "name": "Poseidon's Precious Madagascar Vanilla",
+      "prices": {
+        "1": 115.29,
+        "2": 230.59,
+        "5": 576.47,
+        "10": 1152.94
+      }
+    },
+    {
+      "name": "Poseidon's Private Reserve Whiskey",
+      "prices": {
+        "1": 135.88,
+        "2": 271.76,
+        "5": 679.41,
+        "10": 1358.82
+      }
+    },
+    {
+      "name": "Poseidon's Reflection",
+      "prices": {
+        "1": 123.53,
+        "2": 247.06,
+        "5": 617.65,
+        "10": 1235.29
+      }
+    },
+    {
+      "name": "Poseidon's Sour Peach",
+      "prices": {
+        "1": 111.92,
+        "2": 223.84,
+        "5": 559.59,
+        "10": 1119.18
+      }
+    },
+    {
+      "name": "Poseidon's Swimming Cologne",
+      "prices": {
+        "1": 123.53,
+        "2": 247.06,
+        "5": 617.65,
+        "10": 1235.29
+      }
+    },
+    {
+      "name": "Poseidon's Terre D' Dua",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Puffletuft's Lemon Pastry Caramel",
+      "prices": {
+        "1": 131.76,
+        "2": 263.53,
+        "5": 658.82,
+        "10": 1317.65
+      }
+    },
+    {
+      "name": "Reflection of Casino Elixir",
+      "prices": {
+        "1": 123.53,
+        "2": 247.06,
+        "5": 617.65,
+        "10": 1235.29
+      }
+    },
+    {
+      "name": "Reminiscent",
+      "prices": {
+        "1": 82.35,
+        "2": 164.71,
+        "5": 411.76,
+        "10": 823.53
+      }
+    },
+    {
+      "name": "Rosa Poseidon",
+      "prices": {
+        "1": 127.65,
+        "2": 255.29,
+        "5": 638.24,
+        "10": 1276.47
+      }
+    },
+    {
+      "name": "Soulful Citrus Zest",
+      "prices": {
+        "1": 111.92,
+        "2": 223.84,
+        "5": 559.59,
+        "10": 1119.18
+      }
+    },
+    {
+      "name": "Strawberry Dream Cake",
+      "prices": {
+        "1": 73.38,
+        "2": 146.75,
+        "5": 366.88,
+        "10": 733.76
+      }
+    },
+    {
+      "name": "Supernova Cologne",
+      "prices": {
+        "1": 123.53,
+        "2": 247.06,
+        "5": 617.65,
+        "10": 1235.29
+      }
+    },
+    {
+      "name": "Sweet Lemon Pastry",
+      "prices": {
+        "1": 86.47,
+        "2": 172.94,
+        "5": 432.35,
+        "10": 864.71
+      }
+    },
+    {
+      "name": "The Mobster vs Poseidon",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Tiger Gone Swimming",
+      "prices": {
+        "1": 82.35,
+        "2": 164.71,
+        "5": 411.76,
+        "10": 823.53
+      }
+    },
+    {
+      "name": "Uplifting Air",
+      "prices": {
+        "1": 86.47,
+        "2": 172.94,
+        "5": 432.35,
+        "10": 864.71
+      }
+    },
+    {
+      "name": "Victorian",
+      "prices": {
+        "1": 115.29,
+        "2": 230.59,
+        "5": 576.47,
+        "10": 1152.94
+      }
+    },
+    {
+      "name": "Virtuoso's Aqua Heaven",
+      "prices": {
+        "1": 94.71,
+        "2": 189.41,
+        "5": 473.53,
+        "10": 947.06
+      }
+    },
+    {
+      "name": "Water of Arabia",
+      "prices": {
+        "1": 111.42,
+        "2": 222.85,
+        "5": 557.12,
+        "10": 1114.24
+      }
+    },
+    {
+      "name": "Whipped Lemonade",
+      "prices": {
+        "1": 111.75,
+        "2": 223.51,
+        "5": 558.76,
+        "10": 1117.53
+      }
+    },
+    {
+      "name": "White Beauty",
+      "prices": {
+        "1": 111.75,
+        "2": 223.51,
+        "5": 558.76,
+        "10": 1117.53
+      }
+    },
+    {
+      "name": "White Tonic",
+      "prices": {
+        "1": 73.38,
+        "2": 146.75,
+        "5": 366.88,
+        "10": 733.76
+      }
+    },
+    {
+      "name": "Zesty Lemon Shade",
+      "prices": {
+        "1": 86.47,
+        "2": 172.94,
+        "5": 432.35,
+        "10": 864.71
+      }
+    },
+    {
+      "name": "Matcha Waffle Ice Cream",
+      "prices": {
+        "1": 119.41,
+        "2": 238.82,
+        "5": 597.06,
+        "10": 1194.12
+      }
+    },
+    {
+      "name": "High on Chocolate",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Caramel Coffee Cake",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "World's Best Key Lime Pie",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Dawa Cocktail",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Banana & Vanilla Custard Flan",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Vanilla Boba Milktea",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Realization",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Supernova Rebirth",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Triple Chocolate Cake",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Equilibrium 1.5",
+      "prices": {
+        "1": 98.82,
+        "2": 197.65,
+        "5": 494.12,
+        "10": 988.24
+      }
+    },
+    {
+      "name": "Sweet Serenade",
+      "prices": {
+        "1": 119.41,
+        "2": 238.82,
+        "5": 597.06,
+        "10": 1194.12
+      }
+    }
+  ],
+  "Parfums Vintage": [
+    {
+      "name": "Unisex Intense",
+      "prices": {
+        "1": 189,
+        "2": 378,
+        "5": 945,
+        "10": 1890
+      }
+    },
+    {
+      "name": "Intense Gold",
+      "prices": {
+        "1": 109.2,
+        "2": 218.4,
+        "5": 546,
+        "10": 1092
+      }
+    },
+    {
+      "name": "Intense VI",
+      "prices": {
+        "1": 147,
+        "2": 294,
+        "5": 735,
+        "10": 1470
+      }
+    },
+    {
+      "name": "Intense The One",
+      "prices": {
+        "1": 133,
+        "2": 266,
+        "5": 665,
+        "10": 1330
+      }
+    },
+    {
+      "name": "Intense",
+      "prices": {
+        "1": 135.5,
+        "2": 271,
+        "5": 677.49,
+        "10": 1354.98
+      }
+    },
+    {
+      "name": "King",
+      "prices": {
+        "1": 114.8,
+        "2": 229.6,
+        "5": 574,
+        "10": 1148
+      }
+    },
+    {
+      "name": "Vanilla Intense",
+      "prices": {
+        "1": 154,
+        "2": 308,
+        "5": 770,
+        "10": 1540
+      }
+    },
+    {
+      "name": "Emperor Maximus",
+      "prices": {
+        "1": 168,
+        "2": 336,
+        "5": 840,
+        "10": 1680
+      }
+    },
+    {
+      "name": "Iridescent",
+      "prices": {
+        "1": 168,
+        "2": 336,
+        "5": 840,
+        "10": 1680
+      }
+    },
+    {
+      "name": "Limited Edition 29",
+      "prices": {
+        "1": 161,
+        "2": 322,
+        "5": 805,
+        "10": 1610
+      }
+    },
+    {
+      "name": "Emperor Maximus Extrait",
+      "prices": {
+        "1": 189,
+        "2": 378,
+        "5": 945,
+        "10": 1890
+      }
+    }
+  ],
+  "Local Niche": [
+    {
+      "name": "Tadhana Lover",
+      "prices": {
+        "1": 100.8,
+        "2": 201.6,
+        "5": 504,
+        "10": 1008
+      }
+    },
+    {
+      "name": "TBGCO Blanc",
+      "prices": {
+        "1": 89.09,
+        "2": 178.18,
+        "5": 445.45,
+        "10": 890.91
+      }
+    },
+    {
+      "name": "Orca Nero Star",
+      "prices": {
+        "1": 88.2,
+        "2": 176.4,
+        "5": 441,
+        "10": 882
+      }
+    },
+    {
+      "name": "Hiraya Wild Brew",
+      "prices": {
+        "1": 21.84,
+        "2": 43.68,
+        "5": 109.2,
+        "10": 218.4
+      }
+    },
+    {
+      "name": "Scents & Style Jessy Working Late",
+      "prices": {
+        "1": 70,
+        "2": 140,
+        "5": 350,
+        "10": 700
+      }
+    },
+    {
+      "name": "Domus Emeterius Verdant",
+      "prices": {
+        "1": 70,
+        "2": 140,
+        "5": 350
+      }
+    },
+    {
+      "name": "GP Baguio Verde",
+      "prices": {
+        "1": 61.6,
+        "2": 123.2,
+        "5": 308,
+        "10": 616
+      }
+    },
+    {
+      "name": "Elnaris Berries & Safron",
+      "prices": {
+        "1": 30,
+        "2": 60,
+        "5": 150,
+        "10": 300
+      }
+    },
+    {
+      "name": "Elnaris Chocolat Noir",
+      "prices": {
+        "1": 30,
+        "2": 60,
+        "5": 150,
+        "10": 300
+      }
+    },
+    {
+      "name": "Parfums Astraux Ocean Wind",
+      "prices": {
+        "1": 50.76,
+        "2": 101.52,
+        "5": 253.8,
+        "10": 507.6
+      }
+    },
+    {
+      "name": "Parfums Astraux Tara Kape",
+      "prices": {
+        "1": 42,
+        "2": 84,
+        "5": 210,
+        "10": 420
+      }
+    },
+    {
+      "name": "Wren Atelier Cerveza Rosa",
+      "prices": {
+        "1": 61.25,
+        "2": 122.5,
+        "5": 306.25,
+        "10": 612.5
+      }
+    },
+    {
+      "name": "Claire Olfaction Samyo ng Bagong Saing",
+      "prices": {
+        "1": 157,
+        "2": 314,
+        "5": 785,
+        "10": 1570
+      }
+    },
+    {
+      "name": "Artisan's After the Rain",
+      "prices": {
+        "1": 28,
+        "2": 56,
+        "5": 140,
+        "10": 280
+      }
+    },
+    {
+      "name": "L'Abondance Creme Brule",
+      "prices": {
+        "1": 39.2,
+        "2": 78.4,
+        "5": 196,
+        "10": 392
+      }
+    },
+    {
+      "name": "Home Studio Scents Dessert Lounge",
+      "prices": {
+        "1": 39.81,
+        "2": 79.61,
+        "5": 199.03,
+        "10": 398.07
+      }
+    }
+  ],
+  "Niche": [
+    {
+      "name": "Oceania",
+      "prices": {
+        "1": 210,
+        "2": 420,
+        "5": 1050,
+        "10": 2100
+      }
+    },
+    {
+      "name": "Elysium PC",
+      "prices": {
+        "1": 210,
+        "2": 420,
+        "5": 1050,
+        "10": 2100
+      }
+    },
+    {
+      "name": "Elysium PPH SE",
+      "prices": {
+        "1": 448,
+        "2": 896,
+        "5": 2240,
+        "10": 4480
+      }
+    },
+    {
+      "name": "Amore Mio",
+      "prices": {
+        "1": 294.74,
+        "2": 589.47,
+        "5": 1473.68,
+        "10": 2947.37
+      }
+    },
+    {
+      "name": "GNTonic",
+      "prices": {
+        "1": 147.76,
+        "2": 295.52,
+        "5": 738.81,
+        "10": 1477.62
+      }
+    },
+    {
+      "name": "Warm Cottom",
+      "prices": {
+        "1": 49,
+        "2": 98,
+        "5": 245,
+        "10": 490
+      }
+    },
+    {
+      "name": "Matcha Meditation",
+      "prices": {
+        "1": 137.19,
+        "2": 274.37,
+        "5": 685.93,
+        "10": 1371.86
+      }
+    },
+    {
+      "name": "Severo",
+      "prices": {
+        "1": 135.32,
+        "2": 270.64,
+        "5": 676.59,
+        "10": 1353.18
+      }
+    },
+    {
+      "name": "Mile High 58",
+      "prices": {
+        "1": 212.92,
+        "2": 425.83,
+        "5": 1064.58,
+        "10": 2129.17
+      }
+    },
+    {
+      "name": "Bake",
+      "prices": {
+        "1": 154,
+        "2": 308,
+        "5": 770,
+        "10": 1540
+      }
+    },
+    {
+      "name": "Pegasus",
+      "prices": {
+        "1": 179.2,
+        "2": 358.4,
+        "5": 896,
+        "10": 1792
+      }
+    },
+    {
+      "name": "Sedley",
+      "prices": {
+        "1": 210,
+        "2": 420,
+        "5": 1050,
+        "10": 2100
+      }
+    }
+  ],
+  "Designers": [],
+  "Middle Eastern": [
+    {
+      "name": "Riffs Freeze",
+      "prices": {
+        "1": 54,
+        "2": 108,
+        "5": 270,
+        "10": 540
+      }
+    },
+    {
+      "name": "Al Rehab French Coffee",
+      "prices": {
+        "1": 36,
+        "2": 72,
+        "5": 180,
+        "10": 360
+      }
+    },
+    {
+      "name": "Tubbees Bubble Gum",
+      "prices": {
+        "1": 18.6,
+        "2": 37.2,
+        "5": 93,
+        "10": 186
+      }
+    },
+    {
+      "name": "Tubbees Chocolate Fudge",
+      "prices": {
+        "1": 18.6,
+        "2": 37.2,
+        "5": 93,
+        "10": 186
+      }
+    },
+    {
+      "name": "Tubbees Cookies & Cream",
+      "prices": {
+        "1": 18.6,
+        "2": 37.2,
+        "5": 93,
+        "10": 186
+      }
+    },
+    {
+      "name": "Tubbees Sweet Caramel",
+      "prices": {
+        "1": 18.6,
+        "2": 37.2,
+        "5": 93,
+        "10": 186
+      }
+    },
+    {
+      "name": "Afnan 9PM",
+      "prices": {
+        "1": 32.42,
+        "2": 64.84,
+        "5": 162.1,
+        "10": 324.2
+      }
+    },
+    {
+      "name": "Pendora Aventura",
+      "prices": {
+        "1": 30,
+        "2": 60,
+        "5": 150,
+        "10": 300
+      }
+    },
+    {
+      "name": "Fragrance World Black Leather",
+      "prices": {
+        "1": 38,
+        "2": 76,
+        "5": 190,
+        "10": 380
+      }
+    },
+    {
+      "name": "Rayhaan Imperia",
+      "prices": {
+        "1": 42,
+        "2": 84,
+        "5": 210,
+        "10": 420
+      }
+    },
+    {
+      "name": "Rumz Al Rasasi 9325 Pour Lui",
+      "prices": {
+        "1": 54,
+        "2": 108,
+        "5": 270,
+        "10": 540
+      }
+    },
+    {
+      "name": "Dumont Nitro Black",
+      "prices": {
+        "1": 44,
+        "2": 88,
+        "5": 220,
+        "10": 440
+      }
+    },
+    {
+      "name": "Afnan Supremacy Silver",
+      "prices": {
+        "1": 54,
+        "2": 108,
+        "5": 270,
+        "10": 540
+      }
+    }
+  ],
+  "S&L": [
+    {
+      "name": "Cacao Nibs",
+      "prices": {
+        "1": 60,
+        "2": 120,
+        "5": 300,
+        "10": 600
+      }
+    },
+    {
+      "name": "Carribean",
+      "prices": {
+        "1": 20,
+        "2": 40,
+        "5": 100,
+        "10": 200
+      }
+    },
+    {
+      "name": "Tropical Sun Bliss",
+      "prices": {
+        "1": 34,
+        "2": 68,
+        "5": 170,
+        "10": 340
+      }
+    },
+    {
+      "name": "Morning Rose's Essence",
+      "prices": {
+        "1": 34,
+        "2": 68,
+        "5": 170,
+        "10": 340
+      }
+    },
+    {
+      "name": "A Musk Have Scent",
+      "prices": {
+        "1": 34,
+        "2": 68,
+        "5": 170,
+        "10": 340
+      }
+    },
+    {
+      "name": "Glaze of the Lighthouse",
+      "prices": {
+        "1": 34,
+        "2": 68,
+        "5": 170,
+        "10": 340
+      }
+    },
+    {
+      "name": "Gardenia",
+      "prices": {
+        "1": 30,
+        "2": 60,
+        "5": 150,
+        "10": 300
+      }
+    },
+    {
+      "name": "To Hide a Smoker",
+      "prices": {
+        "1": 34,
+        "2": 68,
+        "5": 170,
+        "10": 340
+      }
+    },
+    {
+      "name": "These are my Confections",
+      "prices": {
+        "1": 34,
+        "2": 68,
+        "5": 170,
+        "10": 340
+      }
+    },
+    {
+      "name": "Carefree",
+      "prices": {
+        "1": 30,
+        "2": 60,
+        "5": 150,
+        "10": 300
+      }
+    },
+    {
+      "name": "Sweet Vine",
+      "prices": {
+        "1": 30,
+        "2": 60,
+        "5": 150,
+        "10": 300
+      }
+    },
+    {
+      "name": "Triumph",
+      "prices": {
+        "1": 30,
+        "2": 60,
+        "5": 150,
+        "10": 300
+      }
+    },
+    {
+      "name": "A Walk Among The Woods",
+      "prices": {
+        "1": 34,
+        "2": 68,
+        "5": 170,
+        "10": 340
+      }
+    }
+  ],
+  "TBGCO": [
+    {
+      "name": "Captivate EDP",
+      "prices": {
+        "1": 168,
+        "2": 336,
+        "5": 840,
+        "10": 1680
+      }
+    },
+    {
+      "name": "Captivate V1",
+      "prices": {
+        "1": 168,
+        "2": 336,
+        "5": 840,
+        "10": 1680
+      }
+    },
+    {
+      "name": "Temptation",
+      "prices": {
+        "1": 84,
+        "2": 168,
+        "5": 420,
+        "10": 840
+      }
+    },
+    {
+      "name": "Serene",
+      "prices": {
+        "1": 91,
+        "2": 182,
+        "5": 455,
+        "10": 910
+      }
+    },
+    {
+      "name": "Eau Benite",
+      "prices": {
+        "1": 33.25,
+        "2": 66.5,
+        "5": 166.25,
+        "10": 332.5
+      }
+    },
+    {
+      "name": "Hypnotic Holiday",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330
+      }
+    },
+    {
+      "name": "Aventus Blanc",
+      "prices": {
+        "1": 66.18,
+        "2": 132.36,
+        "5": 330.91,
+        "10": 661.82
+      }
+    },
+    {
+      "name": "Cap Cacao",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    },
+    {
+      "name": "Cap Sedley",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    },
+    {
+      "name": "Cap Toffee",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    },
+    {
+      "name": "Cap Raspberry",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    },
+    {
+      "name": "Cap Rose",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    },
+    {
+      "name": "Cap Strawberry",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    },
+    {
+      "name": "Cap Peach",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    },
+    {
+      "name": "Aventus Bake / IVL",
+      "prices": {
+        "1": 66.18,
+        "2": 132.36,
+        "5": 330,
+        "10": 661.82
+      }
+    },
+    {
+      "name": "Aventus Orange Pomelo",
+      "prices": {
+        "1": 74.67,
+        "2": 149.33,
+        "5": 373.33,
+        "10": 746.67
+      }
+    },
+    {
+      "name": "Aventus Banana Ice Cream",
+      "prices": {
+        "1": 74.67,
+        "2": 149.33,
+        "5": 373.33,
+        "10": 746.67
+      }
+    },
+    {
+      "name": "Under The Influence w/o canna",
+      "prices": {
+        "1": 66,
+        "2": 132,
+        "5": 330,
+        "10": 660
+      }
+    }
+  ],
+  "Inspired": [
+    {
+      "name": "Warthog Stud",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Patchouli Haven",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Hombre",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Dark Elixir",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Citrus Oasis",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Eternal Freshness",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Royal Cologne",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Euphoria",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Cosmopolitan",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Warthog Red Moon",
+      "prices": {
+        "1": 38.8,
+        "2": 77.6,
+        "5": 194,
+        "10": 388
+      }
+    },
+    {
+      "name": "Prime Monkey Royal Zest",
+      "prices": {
+        "1": 32,
+        "2": 64,
+        "5": 160,
+        "10": 320
+      }
+    }
+  ]
+};
 
     const STORAGE_KEYS = {
       catalog: 'fragranceStoreCatalogV3',
@@ -614,12 +2633,13 @@
       scentGrid.innerHTML = '';
 
       if (!items.length) {
-        scentGrid.innerHTML = '<p class="empty">No scents available in this brand page.</p>';
+        scentGrid.innerHTML = '<p class="empty">No scents available in this brand page yet.</p>';
         return;
       }
 
       items.forEach((item, index) => {
-        const firstSize = Object.keys(item.prices).sort((a, b) => Number(a) - Number(b))[0] || '';
+        const sizes = Object.keys(item.prices).sort((a, b) => Number(a) - Number(b));
+        const firstSize = sizes[0] || '';
         const card = document.createElement('div');
         card.className = 'scent-card';
         card.innerHTML = `
@@ -635,10 +2655,7 @@
           </div>
           <div class="scent-actions" style="margin-top:12px;">
             <select id="size-${index}">
-              ${Object.keys(item.prices)
-                .sort((a, b) => Number(a) - Number(b))
-                .map(size => `<option value="${size}">${size} ml</option>`)
-                .join('')}
+              ${sizes.map(size => `<option value="${size}">${size} ml</option>`).join('')}
             </select>
             <input id="qty-${index}" type="number" min="1" value="1" />
             <button class="btn-primary" id="add-${index}">Add to cart</button>
@@ -967,7 +2984,7 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/\\"/g, '&quot;')
+        .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     }
   </script>
