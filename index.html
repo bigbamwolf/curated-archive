@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fragrance Shop V3</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #181c23;
+      --panel2: #202632;
+      --line: #2e3645;
+      --text: #f2f5f8;
+      --muted: #a7b0bd;
+      --accent: #58c066;
+      --danger: #ff7b7b;
+      --radius: 18px;
+      --shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0d1015 0%, #11151c 100%);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero,
+    .panel {
+      background: rgba(24, 28, 35, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 28px;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, rgba(88, 192, 102, 0.15), rgba(255, 255, 255, 0.03));
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.9fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 20px;
+    }
+
+    .toolbar,
+    .field-grid,
+    .action-grid,
+    .brand-grid,
+    .scent-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .toolbar {
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .field-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .brand-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 16px;
+    }
+
+    .scent-grid {
+      margin-top: 16px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    select,
+    textarea,
+    button,
+    .file-label {
+      width: 100%;
+      font: inherit;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel2);
+      color: var(--text);
+      padding: 13px 14px;
+      outline: none;
+    }
+
+    button,
+    .file-label,
+    .brand-card {
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    button:hover,
+    .file-label:hover,
+    .brand-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #091109;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn-secondary {
+      background: var(--panel2);
+      color: var(--text);
+    }
+
+    .file-label input {
+      display: none;
+    }
+
+    .tiny,
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .brand-card,
+    .scent-card,
+    .cart-item,
+    .payment-card {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .brand-card h3,
+    .payment-card h3,
+    .page-title {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .brand-card p,
+    .page-subtext {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .breadcrumbs {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .text-link {
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      padding: 0;
+      width: auto;
+      font-weight: 700;
+    }
+
+    .scent-card-top,
+    .cart-item-top,
+    .cart-item-bottom,
+    .cart-total,
+    .pay-row,
+    .scent-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .scent-card-top {
+      margin-bottom: 12px;
+    }
+
+    .scent-actions {
+      display: grid;
+      grid-template-columns: 1fr 110px 120px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .remove-btn {
+      width: auto;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid rgba(255, 123, 123, 0.38);
+      color: #ffd0d0;
+    }
+
+    .cart-items {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .cart-total {
+      padding: 14px 0 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .qr-holder {
+      width: 220px;
+      height: 220px;
+      background: #fff;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 12px;
+      overflow: hidden;
+      padding: 10px;
+    }
+
+    .qr-holder img,
+    .qr-holder canvas {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+    }
+
+    .action-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 6px 0;
+    }
+
+    .status {
+      margin-top: 10px;
+      min-height: 20px;
+      color: var(--muted);
+    }
+
+    .status.error {
+      color: #ffc1c1;
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .wrap {
+        padding: 16px;
+      }
+
+      .toolbar,
+      .field-grid,
+      .scent-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Fragrance Shop V3</h1>
+      <p>
+        Home page first, search by brand or category. After the buyer selects a brand, the app opens that brand page and shows all scents under it.
+        This version still works on GitHub Pages and keeps the PDF cart and GCash payment flow.
+      </p>
+    </section>
+
+    <section class="layout">
+      <main class="panel">
+        <div class="toolbar">
+          <input id="brandSearchInput" type="text" list="brandSuggestions" placeholder="Search brand or category, like Aventus, Dua, Niche" />
+          <label class="file-label btn-secondary">
+            Load price list JSON
+            <input id="catalogUpload" type="file" accept=".json" />
+          </label>
+          <button id="downloadCatalogBtn" class="btn-secondary">Download price list JSON</button>
+        </div>
+
+        <datalist id="brandSuggestions"></datalist>
+
+        <p class="tiny">
+          V3 flow. Search brand first, open the brand page, then pick scents from that page. For GitHub simplicity, this is built as a single HTML file with route style navigation.
+        </p>
+
+        <section id="homeView">
+          <h2 class="page-title">Brands and Categories</h2>
+          <p class="page-subtext">Type a brand above or choose from the cards below.</p>
+          <div id="brandGrid" class="brand-grid"></div>
+          <div id="homeStatus" class="status"></div>
+        </section>
+
+        <section id="brandView" class="hidden">
+          <div class="breadcrumbs">
+            <button id="backHomeBtn" class="text-link">← Back to home</button>
+            <span class="muted">/</span>
+            <span id="currentBrandBreadcrumb" class="muted"></span>
+          </div>
+
+          <h2 id="brandTitle" class="page-title"></h2>
+          <p id="brandSubtext" class="page-subtext"></p>
+          <div id="scentGrid" class="scent-grid"></div>
+          <div id="brandStatus" class="status"></div>
+        </section>
+      </main>
+
+      <aside class="panel">
+        <div class="field-grid">
+          <input id="customerName" type="text" placeholder="Customer name" />
+          <input id="customerContact" type="text" placeholder="Contact number or messenger" />
+          <textarea id="customerNotes" class="full" rows="3" placeholder="Optional note, address, or meetup instructions"></textarea>
+        </div>
+
+        <h2>Shopping Cart</h2>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="cartTotal">₱0.00</strong>
+        </div>
+
+        <div class="payment-card">
+          <h3>GCash Payment</h3>
+          <div id="qrHolder" class="qr-holder"></div>
+          <div class="pay-row">
+            <span class="muted">Account name</span>
+            <strong id="gcashNameText"></strong>
+          </div>
+          <div class="pay-row" style="margin-top:8px;">
+            <span class="muted">GCash number</span>
+            <strong id="gcashNumberText"></strong>
+          </div>
+        </div>
+
+        <div class="action-grid">
+          <button id="downloadPdfBtn" class="btn-primary">Download cart as PDF</button>
+          <button id="clearCartBtn" class="btn-secondary">Clear cart</button>
+          <button id="resetCatalogBtn" class="btn-secondary">Reset starter price list</button>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <div id="hiddenQrWorkArea" class="hidden"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
+  <script>
+    const STORE_CONFIG = {
+      shopName: 'Curated Archive Fragrance Cart',
+      currencySymbol: '₱',
+      gcashName: 'Your GCash Name',
+      gcashNumber: '09XXXXXXXXX',
+      gcashQrImagePath: 'gcash-qr.png',
+      gcashQrFallbackText: 'Send proof of payment after checkout.'
+    };
+
+    const STARTER_CATALOG = {
+      Aventus: [
+        { name: 'Aventus 11Z01', prices: { '1': 220, '2': 420, '5': 980, '10': 1850 } },
+        { name: 'Aventus 12F01', prices: { '1': 200, '2': 390, '5': 920, '10': 1740 } }
+      ],
+      Dua: [
+        { name: 'Poseidon\'s Imagined Cologne', prices: { '1': 120, '2': 220, '5': 520, '10': 980 } },
+        { name: 'Poseidon\'s Elixir 13ZZ', prices: { '1': 110, '2': 200, '5': 470, '10': 880 } }
+      ],
+      'Parfums Vintage': [
+        { name: 'Emperor Extrait', prices: { '1': 120, '2': 230, '5': 540, '10': 1020 } }
+      ],
+      'Local Niche': [
+        { name: 'Sample Local Niche Scent', prices: { '1': 90, '2': 170, '5': 390, '10': 730 } }
+      ],
+      Niche: [
+        { name: 'Sample Niche Scent', prices: { '1': 130, '2': 250, '5': 590, '10': 1120 } }
+      ],
+      Designers: [
+        { name: 'Sample Designer Scent', prices: { '1': 80, '2': 150, '5': 350, '10': 660 } }
+      ],
+      'Middle Eastern': [
+        { name: 'Sample Middle Eastern Scent', prices: { '1': 75, '2': 140, '5': 330, '10': 620 } }
+      ],
+      'S&L': [
+        { name: 'Sample S&L Scent', prices: { '1': 85, '2': 160, '5': 370, '10': 700 } }
+      ],
+      TBGCO: [
+        { name: 'Sample TBGCO Scent', prices: { '1': 90, '2': 170, '5': 400, '10': 760 } }
+      ],
+      Inspired: [
+        { name: 'Sample Inspired Scent', prices: { '1': 60, '2': 110, '5': 260, '10': 500 } }
+      ]
+    };
+
+    const STORAGE_KEYS = {
+      catalog: 'fragranceStoreCatalogV3',
+      cart: 'fragranceStoreCartV3'
+    };
+
+    let catalog = loadCatalog();
+    let cart = loadCart();
+    let categoryNames = Object.keys(catalog);
+    let currentBrand = null;
+
+    const brandSearchInput = document.getElementById('brandSearchInput');
+    const brandSuggestions = document.getElementById('brandSuggestions');
+    const brandGrid = document.getElementById('brandGrid');
+    const homeView = document.getElementById('homeView');
+    const brandView = document.getElementById('brandView');
+    const brandTitle = document.getElementById('brandTitle');
+    const brandSubtext = document.getElementById('brandSubtext');
+    const currentBrandBreadcrumb = document.getElementById('currentBrandBreadcrumb');
+    const scentGrid = document.getElementById('scentGrid');
+    const cartItemsNode = document.getElementById('cartItems');
+    const cartTotalNode = document.getElementById('cartTotal');
+    const customerName = document.getElementById('customerName');
+    const customerContact = document.getElementById('customerContact');
+    const customerNotes = document.getElementById('customerNotes');
+    const catalogUpload = document.getElementById('catalogUpload');
+    const qrHolder = document.getElementById('qrHolder');
+    const gcashNameText = document.getElementById('gcashNameText');
+    const gcashNumberText = document.getElementById('gcashNumberText');
+    const homeStatus = document.getElementById('homeStatus');
+    const brandStatus = document.getElementById('brandStatus');
+
+    init();
+
+    function init() {
+      rebuildCategories();
+      renderBrandSuggestions();
+      renderBrandGrid();
+      renderPaymentBlock();
+      renderCart();
+      openRouteFromHash();
+
+      brandSearchInput.addEventListener('input', handleBrandSearch);
+      brandSearchInput.addEventListener('change', handleBrandSearch);
+      window.addEventListener('hashchange', openRouteFromHash);
+
+      document.getElementById('backHomeBtn').addEventListener('click', goHome);
+      document.getElementById('downloadCatalogBtn').addEventListener('click', downloadCurrentCatalog);
+      document.getElementById('clearCartBtn').addEventListener('click', clearCart);
+      document.getElementById('resetCatalogBtn').addEventListener('click', resetCatalog);
+      document.getElementById('downloadPdfBtn').addEventListener('click', downloadPdf);
+      catalogUpload.addEventListener('change', handleCatalogUpload);
+    }
+
+    function loadCatalog() {
+      const saved = localStorage.getItem(STORAGE_KEYS.catalog);
+      if (!saved) return structuredClone(STARTER_CATALOG);
+      try {
+        return JSON.parse(saved);
+      } catch {
+        return structuredClone(STARTER_CATALOG);
+      }
+    }
+
+    function saveCatalog() {
+      localStorage.setItem(STORAGE_KEYS.catalog, JSON.stringify(catalog));
+    }
+
+    function loadCart() {
+      const saved = localStorage.getItem(STORAGE_KEYS.cart);
+      if (!saved) return [];
+      try {
+        return JSON.parse(saved);
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(cart));
+    }
+
+    function rebuildCategories() {
+      categoryNames = Object.keys(catalog);
+    }
+
+    function renderBrandSuggestions() {
+      brandSuggestions.innerHTML = categoryNames
+        .map(name => `<option value="${escapeHtml(name)}"></option>`)
+        .join('');
+    }
+
+    function renderBrandGrid(filter = '') {
+      const normalizedFilter = normalize(filter);
+      const filtered = categoryNames.filter(name => !normalizedFilter || normalize(name).includes(normalizedFilter));
+      brandGrid.innerHTML = '';
+
+      if (!filtered.length) {
+        brandGrid.innerHTML = '<p class="empty">No brand or category found.</p>';
+        return;
+      }
+
+      filtered.forEach(name => {
+        const itemCount = catalog[name]?.length || 0;
+        const card = document.createElement('button');
+        card.className = 'brand-card';
+        card.innerHTML = `
+          <h3>${escapeHtml(name)}</h3>
+          <p>${itemCount} scent${itemCount === 1 ? '' : 's'} available</p>
+        `;
+        card.addEventListener('click', () => goToBrand(name));
+        brandGrid.appendChild(card);
+      });
+    }
+
+    function handleBrandSearch() {
+      const value = brandSearchInput.value.trim();
+      renderBrandGrid(value);
+
+      if (!value) {
+        homeStatus.textContent = '';
+        homeStatus.classList.remove('error');
+        return;
+      }
+
+      const exact = categoryNames.find(name => normalize(name) === normalize(value));
+      if (exact) {
+        goToBrand(exact);
+        return;
+      }
+
+      homeStatus.textContent = 'No exact brand match yet. Choose from the matching cards below.';
+      homeStatus.classList.remove('error');
+    }
+
+    function goToBrand(name) {
+      location.hash = `brand=${encodeURIComponent(name)}`;
+    }
+
+    function goHome() {
+      location.hash = '';
+    }
+
+    function openRouteFromHash() {
+      const hash = location.hash.replace(/^#/, '');
+      if (!hash.startsWith('brand=')) {
+        currentBrand = null;
+        homeView.classList.remove('hidden');
+        brandView.classList.add('hidden');
+        return;
+      }
+
+      const brandName = decodeURIComponent(hash.replace(/^brand=/, ''));
+      if (!catalog[brandName]) {
+        currentBrand = null;
+        homeView.classList.remove('hidden');
+        brandView.classList.add('hidden');
+        homeStatus.textContent = 'That brand page does not exist in the current price list.';
+        homeStatus.classList.add('error');
+        return;
+      }
+
+      homeStatus.textContent = '';
+      homeStatus.classList.remove('error');
+      currentBrand = brandName;
+      renderBrandPage();
+      homeView.classList.add('hidden');
+      brandView.classList.remove('hidden');
+    }
+
+    function renderBrandPage() {
+      const items = catalog[currentBrand] || [];
+      brandTitle.textContent = currentBrand;
+      brandSubtext.textContent = `${items.length} scent${items.length === 1 ? '' : 's'} available in this page.`;
+      currentBrandBreadcrumb.textContent = currentBrand;
+      scentGrid.innerHTML = '';
+
+      if (!items.length) {
+        scentGrid.innerHTML = '<p class="empty">No scents available in this brand page.</p>';
+        return;
+      }
+
+      items.forEach((item, index) => {
+        const firstSize = Object.keys(item.prices).sort((a, b) => Number(a) - Number(b))[0] || '';
+        const card = document.createElement('div');
+        card.className = 'scent-card';
+        card.innerHTML = `
+          <div class="scent-card-top">
+            <div>
+              <strong>${escapeHtml(item.name)}</strong>
+            </div>
+            <div class="muted">${escapeHtml(currentBrand)}</div>
+          </div>
+          <div class="scent-meta">
+            <span class="muted">Starts at</span>
+            <strong>${formatMoney(item.prices[firstSize] || 0)}</strong>
+          </div>
+          <div class="scent-actions" style="margin-top:12px;">
+            <select id="size-${index}">
+              ${Object.keys(item.prices)
+                .sort((a, b) => Number(a) - Number(b))
+                .map(size => `<option value="${size}">${size} ml</option>`)
+                .join('')}
+            </select>
+            <input id="qty-${index}" type="number" min="1" value="1" />
+            <button class="btn-primary" id="add-${index}">Add to cart</button>
+          </div>
+        `;
+        scentGrid.appendChild(card);
+
+        const sizeSelect = card.querySelector(`#size-${index}`);
+        const qtyInput = card.querySelector(`#qty-${index}`);
+        const addBtn = card.querySelector(`#add-${index}`);
+
+        addBtn.addEventListener('click', () => {
+          const size = sizeSelect.value;
+          const quantity = Math.max(1, Number(qtyInput.value || 1));
+          const unitPrice = Number(item.prices[size]);
+          addToCart({
+            category: currentBrand,
+            name: item.name,
+            size,
+            unitPrice,
+            quantity
+          });
+          brandStatus.textContent = `${item.name} added to cart.`;
+          brandStatus.classList.remove('error');
+        });
+      });
+    }
+
+    function addToCart(item) {
+      const existing = cart.find(entry =>
+        entry.category === item.category &&
+        entry.name === item.name &&
+        entry.size === item.size
+      );
+
+      if (existing) {
+        existing.quantity += item.quantity;
+      } else {
+        cart.push(item);
+      }
+
+      saveCart();
+      renderCart();
+    }
+
+    function renderCart() {
+      cartItemsNode.innerHTML = '';
+      if (!cart.length) {
+        cartItemsNode.innerHTML = '<p class="empty">Your cart is empty.</p>';
+        cartTotalNode.textContent = formatMoney(0);
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const lineTotal = item.unitPrice * item.quantity;
+        const node = document.createElement('div');
+        node.className = 'cart-item';
+        node.innerHTML = `
+          <div class="cart-item-top">
+            <div>
+              <strong>${escapeHtml(item.name)}</strong>
+              <div class="tiny">${escapeHtml(item.category)}</div>
+            </div>
+            <button class="remove-btn" data-index="${index}">Remove</button>
+          </div>
+          <div class="cart-item-bottom" style="margin-top:8px; color:var(--muted); font-size:0.92rem;">
+            <span>${item.size} ml × ${item.quantity}</span>
+            <strong style="color:var(--text);">${formatMoney(lineTotal)}</strong>
+          </div>
+        `;
+        node.querySelector('.remove-btn').addEventListener('click', () => removeCartItem(index));
+        cartItemsNode.appendChild(node);
+      });
+
+      cartTotalNode.textContent = formatMoney(getCartTotal());
+    }
+
+    function removeCartItem(index) {
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      saveCart();
+      renderCart();
+    }
+
+    function getCartTotal() {
+      return cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+    }
+
+    function renderPaymentBlock() {
+      gcashNameText.textContent = STORE_CONFIG.gcashName;
+      gcashNumberText.textContent = STORE_CONFIG.gcashNumber;
+      qrHolder.innerHTML = '';
+      const img = new Image();
+      img.onload = () => {
+        qrHolder.innerHTML = '';
+        qrHolder.appendChild(img);
+      };
+      img.onerror = () => {
+        qrHolder.innerHTML = `<div style="color:#111; text-align:center; padding:18px; font-size:0.92rem;">Upload your real QR file as <strong>${STORE_CONFIG.gcashQrImagePath}</strong></div>`;
+      };
+      img.src = STORE_CONFIG.gcashQrImagePath;
+      img.alt = 'GCash QR';
+    }
+
+    function downloadCurrentCatalog() {
+      const blob = new Blob([JSON.stringify(catalog, null, 2)], { type: 'application/json' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'fragrance-price-list.json';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    function resetCatalog() {
+      const confirmed = window.confirm('Reset the price list back to the starter catalog?');
+      if (!confirmed) return;
+      catalog = structuredClone(STARTER_CATALOG);
+      saveCatalog();
+      rebuildCategories();
+      renderBrandSuggestions();
+      renderBrandGrid();
+      goHome();
+    }
+
+    function handleCatalogUpload(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          validateCatalog(parsed);
+          catalog = parsed;
+          saveCatalog();
+          rebuildCategories();
+          renderBrandSuggestions();
+          renderBrandGrid();
+          goHome();
+          alert('Price list loaded successfully.');
+        } catch (error) {
+          alert(`Invalid JSON file. ${error.message}`);
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function validateCatalog(data) {
+      if (!data || typeof data !== 'object' || Array.isArray(data)) {
+        throw new Error('Catalog root must be an object with categories.');
+      }
+      Object.entries(data).forEach(([category, items]) => {
+        if (!Array.isArray(items)) {
+          throw new Error(`Category ${category} must contain an array of scents.`);
+        }
+        items.forEach(item => {
+          if (!item.name || typeof item.name !== 'string') {
+            throw new Error(`Each scent in ${category} must have a name.`);
+          }
+          if (!item.prices || typeof item.prices !== 'object') {
+            throw new Error(`Each scent in ${category} must have a prices object.`);
+          }
+        });
+      });
+    }
+
+    async function downloadPdf() {
+      if (!cart.length) {
+        alert('The cart is empty. Add scents first.');
+        return;
+      }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+      const left = 14;
+      const right = pageWidth - 14;
+      let y = 18;
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(18);
+      doc.text(STORE_CONFIG.shopName, left, y);
+      y += 8;
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10.5);
+      doc.text(`Date: ${new Date().toLocaleString('en-PH')}`, left, y);
+      y += 6;
+      doc.text(`Customer: ${customerName.value.trim() || 'Not provided'}`, left, y);
+      y += 6;
+      doc.text(`Contact: ${customerContact.value.trim() || 'Not provided'}`, left, y);
+      y += 6;
+
+      const notes = customerNotes.value.trim();
+      if (notes) {
+        const splitNotes = doc.splitTextToSize(`Notes: ${notes}`, 180);
+        doc.text(splitNotes, left, y);
+        y += splitNotes.length * 5;
+      }
+
+      y += 4;
+      doc.line(left, y, right, y);
+      y += 8;
+      doc.setFont('helvetica', 'bold');
+      doc.text('Items', left, y);
+      y += 7;
+
+      doc.setFontSize(10);
+      doc.text('#', left, y);
+      doc.text('Scent', left + 10, y);
+      doc.text('Category', 92, y);
+      doc.text('Size', 132, y);
+      doc.text('Qty', 150, y);
+      doc.text('Line Total', 170, y, { align: 'right' });
+      y += 3;
+      doc.line(left, y, right, y);
+      y += 6;
+      doc.setFont('helvetica', 'normal');
+
+      cart.forEach((item, index) => {
+        if (y > pageHeight - 26) {
+          doc.addPage();
+          y = 18;
+        }
+
+        const scentLines = doc.splitTextToSize(item.name, 46);
+        const categoryLines = doc.splitTextToSize(item.category, 34);
+        const blockHeight = Math.max(scentLines.length, categoryLines.length) * 5;
+
+        doc.text(String(index + 1), left, y);
+        doc.text(scentLines, left + 10, y);
+        doc.text(categoryLines, 92, y);
+        doc.text(`${item.size} ml`, 132, y);
+        doc.text(String(item.quantity), 150, y);
+        doc.text(formatMoney(item.unitPrice * item.quantity), 170, y, { align: 'right' });
+        y += blockHeight + 3;
+      });
+
+      y += 3;
+      if (y > pageHeight - 80) {
+        doc.addPage();
+        y = 18;
+      }
+
+      doc.setFont('helvetica', 'bold');
+      doc.line(left, y, right, y);
+      y += 8;
+      doc.text(`Grand Total: ${formatMoney(getCartTotal())}`, 170, y, { align: 'right' });
+      y += 12;
+      doc.text('Payment Details', left, y);
+      y += 7;
+      doc.setFont('helvetica', 'normal');
+      doc.text(`GCash Name: ${STORE_CONFIG.gcashName}`, left, y);
+      y += 6;
+      doc.text(`GCash Number: ${STORE_CONFIG.gcashNumber}`, left, y);
+      y += 6;
+      const paymentNoteLines = doc.splitTextToSize(STORE_CONFIG.gcashQrFallbackText, 120);
+      doc.text(paymentNoteLines, left, y);
+
+      const qrDataUrl = await getQrImageForPdf();
+      if (qrDataUrl) {
+        doc.addImage(qrDataUrl, 'PNG', 140, y - 4, 46, 46);
+      }
+
+      const fileSafeName = (customerName.value.trim() || 'order').replace(/[^a-z0-9]+/gi, '_').toLowerCase();
+      doc.save(`${fileSafeName}_fragrance_cart.pdf`);
+    }
+
+    async function getQrImageForPdf() {
+      try {
+        const response = await fetch(STORE_CONFIG.gcashQrImagePath);
+        if (!response.ok) throw new Error('QR image not found.');
+        const blob = await response.blob();
+        return await blobToDataURL(blob);
+      } catch {
+        return await buildFallbackQrAsDataUrl(`GCash: ${STORE_CONFIG.gcashName} ${STORE_CONFIG.gcashNumber}`);
+      }
+    }
+
+    async function buildFallbackQrAsDataUrl(text) {
+      const hiddenQrWorkArea = document.getElementById('hiddenQrWorkArea');
+      hiddenQrWorkArea.innerHTML = '';
+      const holder = document.createElement('div');
+      hiddenQrWorkArea.appendChild(holder);
+      new QRCode(holder, { text, width: 180, height: 180 });
+      await wait(200);
+      const canvas = holder.querySelector('canvas');
+      const img = holder.querySelector('img');
+      if (canvas) return canvas.toDataURL('image/png');
+      if (img) return img.src;
+      return null;
+    }
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function blobToDataURL(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    function formatMoney(value) {
+      return `${STORE_CONFIG.currencySymbol}${Number(value).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}`;
+    }
+
+    function normalize(value) {
+      return String(value).trim().toLowerCase();
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\\"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>
