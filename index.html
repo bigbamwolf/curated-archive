@@ -96,7 +96,7 @@
   .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.2rem;color:var(--gold);background:var(--gold-soft)}
   .card-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:6px;flex:1}
   .card .cat{color:var(--gold-deep);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
-  .card .nm{font-family:var(--serif);font-size:1.2rem;line-height:1.15;color:var(--ink)}
+  .card .nm{font-family:var(--serif);font-weight:600;font-size:1.24rem;line-height:1.15;color:var(--ink)}
   .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:8px}
   .price{font-weight:600;font-size:.98rem}
   .price small{color:var(--muted);font-weight:400;font-size:.76rem}
@@ -139,7 +139,7 @@
   .citem{display:grid;grid-template-columns:60px 1fr auto;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}
   .citem img,.citem .ph{width:60px;height:60px;border-radius:12px;object-fit:cover}
   .citem .ph{font-size:1.2rem}
-  .citem .nm{font-family:var(--serif);font-size:1.05rem;line-height:1.1}
+  .citem .nm{font-family:var(--serif);font-weight:600;font-size:1.05rem;line-height:1.1}
   .citem .meta{color:var(--muted);font-size:.82rem;margin-top:3px}
   .citem .rm{color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;margin-top:6px;text-align:left}
   .citem .rm:hover{color:#a4443a}
@@ -185,7 +185,7 @@
   .lcard:hover{transform:translateY(-3px);border-color:rgba(168,133,74,.5);box-shadow:var(--shadow)}
   .lcard-pair{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
   .lcard-pair span{opacity:.55;margin:0 5px}
-  .lcard-name{font-family:var(--serif);font-size:1.45rem;line-height:1.12;color:var(--ink)}
+  .lcard-name{font-family:var(--serif);font-weight:600;font-size:1.45rem;line-height:1.12;color:var(--ink)}
   .lcard-teaser{color:var(--muted);font-size:.9rem;line-height:1.6;flex:1}
   .lcard-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
   .lcard-cta{color:var(--gold-deep);font-size:.82rem;font-weight:600}
@@ -198,7 +198,7 @@
   .lpill{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:16px;padding:14px;background:var(--surface)}
   .lpill img,.lpill .ph{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:none}
   .lpill .ph{font-size:1.2rem}
-  .lpill .nm{font-family:var(--serif);font-size:1.1rem;line-height:1.12}
+  .lpill .nm{font-family:var(--serif);font-weight:600;font-size:1.1rem;line-height:1.12}
   .lpill .pr{color:var(--muted);font-size:.84rem;margin-top:3px}
   .lphases{margin-top:24px;border-top:1px solid var(--line)}
   .phase{padding:18px 0;border-bottom:1px solid var(--line)}
@@ -213,6 +213,15 @@
   .fopt{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:18px 22px;transition:.15s;display:flex;flex-direction:column;gap:3px;cursor:pointer}
   .fopt:hover{border-color:var(--gold);transform:translateY(-1px);box-shadow:var(--shadow)}
   .fopt.sel{border-color:var(--ink);background:var(--ink);color:#f3ecdd}
+  .fopt b{font-weight:600;font-size:1.08rem}
+  @keyframes fSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .fanim{animation:fSlide .32s cubic-bezier(.22,.61,.36,1)}
+  .shopbar{display:flex;flex-wrap:wrap;gap:12px;margin:2px 0 20px}
+  .selwrap{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .selwrap select{font-family:var(--sans);font-size:.9rem;font-weight:500;letter-spacing:normal;text-transform:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:9px 34px 9px 14px;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23a08d6a' stroke-width='2'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+  .selwrap select:hover{border-color:var(--gold)}
+  .grid-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:54px 0;font-size:1.02rem}
+  .hb-range{width:100%;accent-color:var(--gold);height:24px;cursor:pointer;margin:6px 0 2px;display:block}
   .fopt.sel span{color:#cbbfa6}
   .fopt b{font-family:var(--serif);font-size:1.3rem;color:inherit}
   .fopt span{color:var(--muted);font-size:.92rem}
@@ -388,6 +397,24 @@
     <div class="sec" id="shop">
       <div class="sec-head"><div><h2>The Collection</h2><p>Browse by house, then choose your size.</p></div></div>
       <div class="chips" id="chips"></div>
+      <div class="shopbar">
+        <label class="selwrap">Availability
+          <select id="fAvail" onchange="setAvail(this.value)">
+            <option value="all">All</option>
+            <option value="in">In stock</option>
+            <option value="made">Made to order</option>
+            <option value="out">Sold out</option>
+          </select>
+        </label>
+        <label class="selwrap">Sort
+          <select id="fSort" onchange="setSort(this.value)">
+            <option value="feat">Featured</option>
+            <option value="plow">Price: low to high</option>
+            <option value="phigh">Price: high to low</option>
+            <option value="az">Name: A to Z</option>
+          </select>
+        </label>
+      </div>
       <div class="grid" id="grid"></div>
     </div>
   </section>
@@ -5663,7 +5690,7 @@
 };
   let categories = [], chipCats = [], gridRows = [];
   let cart = loadCart();
-  let activeCat = "All";
+  let activeCat = "All", activeAvail = "all", activeSort = "feat";
   let view = { cat: null, item: null, size: null, qty: 1 };
 
   const peso = n => "₱" + Number(n).toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -5731,11 +5758,18 @@
   }
   function setCatI(i){ setCat(chipCats[i]); }
   function setCat(c){ activeCat = c; renderChips(); renderGrid(); if(!_fromHash) setHash(c&&c!=="All"?"#/shop/"+slug(c):"#/shop"); }
+  function setAvail(v){ activeAvail = v; renderGrid(); }
+  function setSort(v){ activeSort = v; renderGrid(); }
 
   function renderGrid(){
     gridRows = [];
     if (activeCat === "All") categories.forEach(c => CATALOG[c].forEach(it => gridRows.push({cat:c, it})));
     else (CATALOG[activeCat]||[]).forEach(it => gridRows.push({cat:activeCat, it}));
+    if (activeAvail !== "all") gridRows = gridRows.filter(r => stockInfo(r.it).cls === activeAvail);
+    if (activeSort === "plow") gridRows.sort((a,b)=>minPrice(a.it)-minPrice(b.it));
+    else if (activeSort === "phigh") gridRows.sort((a,b)=>minPrice(b.it)-minPrice(a.it));
+    else if (activeSort === "az") gridRows.sort((a,b)=>String(a.it.name).localeCompare(String(b.it.name)));
+    if (!gridRows.length){ document.getElementById("grid").innerHTML = `<div class="grid-empty">No scents match this filter. Try a different availability.</div>`; return; }
     document.getElementById("grid").innerHTML = gridRows.map((r,i) => `
       <button class="card" onclick="openI(${i})">
         <div class="card-img">${imgTag(r.it, r.cat)}</div>
@@ -5944,10 +5978,10 @@
     if(finderStep>=FINDER_Q.length){ showFinderResults(); return; }
     res.classList.add("hidden"); quiz.classList.remove("hidden");
     const Q=FINDER_Q[finderStep];
-    quiz.innerHTML=`<div class="fstep">Step ${finderStep+1} of ${FINDER_Q.length}</div>
+    quiz.innerHTML=`<div class="fanim"><div class="fstep">Step ${finderStep+1} of ${FINDER_Q.length}</div>
       <h2 class="fq">${esc(Q.q)}</h2>
       <div class="fopts">${Q.a.map((o,i)=>`<button class="fopt ${finderAns[finderStep]===i?'sel':''}" onclick="finderPick(${i})"><b>${esc(o.label)}</b><span>${esc(o.sub)}</span></button>`).join("")}</div>
-      ${finderStep>0?'<button class="text-link fback" onclick="finderBack()">&larr; Back</button>':''}`;
+      ${finderStep>0?'<button class="text-link fback" onclick="finderBack()">&larr; Back</button>':''}</div>`;
   }
   function finderPick(i){ finderAns[finderStep]=i; finderStep++; renderFinder(); }
   function finderBack(){ if(finderStep>0) finderStep--; renderFinder(); }
@@ -6068,21 +6102,27 @@
   }
   function renderHybrid(){
     document.getElementById("hbTotal").innerHTML=HYB_SIZES.map(t=>`<button class="${t===hyb.total?'on':''}" onclick="hybSetTotal(${t})">${t} ml</button>`).join("");
+    const used=hybUsed();
+    const slots=document.getElementById("hbSlots");
+    slots.innerHTML = hyb.scents.length ? hyb.scents.map((x,i)=>{ const a=availMl(x.it);
+      const cap=Math.max(HYB_MIN, Math.min(a, hyb.total-(used-x.ml)));
+      return `<div class="hb-slot">
+        <div class="nm"><small>${esc(x.cat)}${(a<hyb.total&&a<9999)?' · only '+a+'ml in stock':''}</small>${esc(x.name)}</div>
+        <input type="range" class="hb-range" min="${HYB_MIN}" max="${cap}" value="${x.ml}" step="1" oninput="hybSlide(${i},this)" onchange="renderHybrid()" aria-label="${esc(x.name)} millilitres">
+        <div class="hb-ml"><button onclick="hybBump(${i},-1)" aria-label="less">−</button><b class="hb-mlval">${x.ml} ml</b><button onclick="hybBump(${i},1)" aria-label="more">+</button></div>
+        <button class="hb-rm" onclick="hybRemove(${i})">Remove</button>
+      </div>`; }).join("") : `<div class="hb-empty">No scents yet. Add 2 to ${HYB_MAX} from the library above.</div>`;
+    hybRefreshTotals();
+  }
+  function hybRefreshTotals(){
     const used=hybUsed(), rem=hyb.total-used;
     document.getElementById("hbFill").style.width=Math.min(100, hyb.total?used/hyb.total*100:0)+"%";
     document.getElementById("hbUsed").innerHTML=`<b>${used} ml</b> of ${hyb.total} ml used`+(rem>0?` · ${rem} ml left`:(rem<0?` · ${-rem} ml over`:` · bottle full`));
-    const slots=document.getElementById("hbSlots");
-    slots.innerHTML = hyb.scents.length ? hyb.scents.map((x,i)=>{ const a=availMl(x.it);
-      return `<div class="hb-slot">
-        <div class="nm"><small>${esc(x.cat)}${(a<hyb.total&&a<9999)?' · only '+a+'ml in stock':''}</small>${esc(x.name)}</div>
-        <div class="hb-ml"><button onclick="hybBump(${i},-1)">−</button><b>${x.ml} ml</b><button onclick="hybBump(${i},1)">+</button></div>
-        <button class="hb-rm" onclick="hybRemove(${i})">Remove</button>
-      </div>`; }).join("") : `<div class="hb-empty">No scents yet. Add 2 to ${HYB_MAX} from the library above.</div>`;
     document.getElementById("hbPrice").textContent=peso(hybPrice());
     const agreeEl=document.getElementById("hbAgree");
     const minOk=hyb.scents.every(x=>x.ml>=HYB_MIN);
     const valid = hyb.scents.length>=2 && hyb.scents.length<=HYB_MAX && used===hyb.total && hyb.total>=10 && minOk;
-    document.getElementById("hbOrder").disabled = !(valid && agreeEl && agreeEl.checked);
+    const ob=document.getElementById("hbOrder"); if(ob) ob.disabled = !(valid && agreeEl && agreeEl.checked);
     let note="";
     if(hyb.scents.length<2) note="Add at least 2 scents to blend.";
     else if(used<hyb.total){ const reach=hyb.scents.reduce((s,x)=>s+availMl(x.it),0);
@@ -6094,6 +6134,14 @@
     else if(!(agreeEl && agreeEl.checked)) note="Tick the waiver to order.";
     else note="Ready to blend.";
     document.getElementById("hbNote").textContent=note;
+  }
+  function hybSlide(i, el){
+    const sc=hyb.scents[i]; if(!sc) return; const cur=sc.ml;
+    const cap=Math.min(availMl(sc.it), hyb.total-(hybUsed()-cur));
+    let nv=Math.round(+el.value); if(nv<HYB_MIN) nv=HYB_MIN; if(nv>cap) nv=Math.max(HYB_MIN, cap);
+    sc.ml=nv; if(+el.value!==nv) el.value=nv;
+    const slot=el.closest(".hb-slot"); if(slot){ const v=slot.querySelector(".hb-mlval"); if(v) v.textContent=nv+" ml"; }
+    hybRefreshTotals();
   }
   function orderHybrid(){
     const used=hybUsed();
