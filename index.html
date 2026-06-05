@@ -5730,7 +5730,7 @@
       `<button class="chip ${c===activeCat?'active':''}" onclick="setCatI(${i})">${esc(c)}</button>`).join("");
   }
   function setCatI(i){ setCat(chipCats[i]); }
-  function setCat(c){ activeCat = c; renderChips(); renderGrid(); }
+  function setCat(c){ activeCat = c; renderChips(); renderGrid(); if(!_fromHash) setHash(c&&c!=="All"?"#/shop/"+slug(c):"#/shop"); }
 
   function renderGrid(){
     gridRows = [];
@@ -5753,9 +5753,9 @@
   function openI(i){ const r = gridRows[i]; if (r) openDetail(r.cat, r.it); }
 
   function openDetail(cat, it){
+    if(!_fromHash && it) setHash("#/p/"+slug(cat)+"/"+slug(it.name));
     view = { cat, item: it, size: sizesOf(it)[0], qty: 1 };
-    document.getElementById("homeView").classList.add("hidden");
-    document.getElementById("detailView").classList.remove("hidden");
+    showOnly("detailView");
     const cc = document.getElementById("crumbCat");
     cc.textContent = cat; cc.onclick = () => scrollToShop(cat);
     document.getElementById("crumbName").textContent = it.name;
@@ -5818,13 +5818,38 @@
 
   function openCart(){ document.getElementById("drawer").classList.add("open"); document.getElementById("scrim").classList.add("open"); }
   function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("scrim").classList.remove("open"); }
-  function goHome(){ ["detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); }
+  function goHome(){ ["detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
   function goShop(cat){ showOnly("shopView"); setCat(cat||"All"); window.scrollTo({top:0,behavior:"smooth"}); }
   function scrollToShop(cat){ goShop(cat); }
 
   let currentLayer = 0;
   function showOnly(id){ ["homeView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
-  function goLayering(){ showOnly("layeringView"); renderLayerGrid(); window.scrollTo({ top:0, behavior:"smooth" }); }
+  // ---- hash routing: shareable deep links + working Back button on a static SPA ----
+  let _fromHash=false, _lastHash=null;
+  function slug(s){ return (s||"").toString().toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
+  function setHash(h){ _lastHash=h; if(location.hash!==h) location.hash=h; }
+  function catFromSlug(cs){ if(!cs) return "All"; for(const c in CATALOG){ if(slug(c)===cs) return c; } return "All"; }
+  function layerIndexBySlug(s){ for(let i=0;i<LAYERING.length;i++){ if(slug(LAYERING[i].name)===s) return i; } return -1; }
+  function findItemBySlug(cs,ns){ for(const c in CATALOG){ if(slug(c)!==cs) continue; const arr=CATALOG[c]||[]; for(let j=0;j<arr.length;j++){ if(slug(arr[j].name)===ns) return {cat:c,it:arr[j]}; } } return null; }
+  function route(h){
+    const p=(h||"").replace(/^#\/?/,"").split("/").filter(Boolean).map(decodeURIComponent);
+    if(!p.length){ goHome(); return; }
+    switch(p[0]){
+      case "shop": goShop(catFromSlug(p[1])); break;
+      case "layering": goLayering(); break;
+      case "layer": { repairLayerAliases(); const i=layerIndexBySlug(p[1]); if(i>=0) openLayer(i); else goLayering(); break; }
+      case "p": { const m=findItemBySlug(p[1],p[2]); if(m) openDetail(m.cat,m.it); else goShop("All"); break; }
+      case "find": goFinder(); break;
+      case "bundles": goBundles(); break;
+      case "hybrid": goHybrid(); break;
+      case "frankenbatch": goFrankenbatch(); break;
+      default: goHome();
+    }
+  }
+  function applyHash(){ if(location.hash===_lastHash) return; _lastHash=location.hash; _fromHash=true; try{ route(location.hash); } finally { _fromHash=false; } }
+  window.addEventListener("hashchange", applyHash);
+  setTimeout(function(){ if(location.hash && location.hash!=="#/" && location.hash!=="#") applyHash(); }, 0);
+  function goLayering(){ showOnly("layeringView"); renderLayerGrid(); window.scrollTo({ top:0, behavior:"smooth" }); if(!_fromHash) setHash("#/layering"); }
   function layerTeaser(t){ const m=t.match(/Top:\s*([\s\S]+?)(?:\s+Mid:|$)/); let s=(m?m[1]:t).trim(); return s.length>120 ? s.slice(0,118)+"…" : s; }
   let _layerRepaired=false;
   function repairLayerAliases(){
@@ -5863,7 +5888,7 @@
     return html;
   }
   function openLayer(i){
-    currentLayer=i; const l=LAYERING[i]; showOnly("layerDetailView");
+    currentLayer=i; const l=LAYERING[i]; if(!_fromHash && l) setHash("#/layer/"+slug(l.name)); showOnly("layerDetailView");
     document.getElementById("lcrumb").textContent=l.name;
     document.getElementById("lname").textContent=l.name;
     document.getElementById("lpair").innerHTML=`<b>${esc(l.f1)}</b> layered with <b>${esc(l.f2)}</b>`;
@@ -5913,7 +5938,7 @@
       {label:"Surprise me", sub:"No strong preference", w:{}} ]}
   ];
   let finderStep=0, finderAns=[], finderMatches=[];
-  function goFinder(){ showOnly("finderView"); finderStep=0; finderAns=[]; renderFinder(); window.scrollTo({top:0,behavior:"smooth"}); }
+  function goFinder(){ showOnly("finderView"); finderStep=0; finderAns=[]; renderFinder(); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/find"); }
   function renderFinder(){
     const quiz=document.getElementById("finderQuiz"), res=document.getElementById("finderResults");
     if(finderStep>=FINDER_Q.length){ showFinderResults(); return; }
@@ -5960,7 +5985,7 @@
     const dua=(CATALOG['Dua']||[]).map(it=>({cat:'Dua',it})).filter(x=>minPrice(x.it)).slice(0,3); if(dua.length>=3) BUNDLES.push({title:"Dua Discovery", blurb:"New to Dua? Three crowd favourites to find your signature fast.", picks:dua});
   }
   function bLines(b){ return b.picks.map(p=>{ const s=[5,2,1,10].find(x=>p.it.prices[String(x)]!=null)||sizesOf(p.it)[0]; return {cat:p.cat,it:p.it,size:s,price:Number(p.it.prices[String(s)])}; }); }
-  function goBundles(){ buildBundles(); showOnly("bundlesView"); renderBundles(); window.scrollTo({top:0,behavior:"smooth"}); }
+  function goBundles(){ buildBundles(); showOnly("bundlesView"); renderBundles(); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/bundles"); }
   function renderBundles(){
     document.getElementById("bundleGrid").innerHTML = BUNDLES.map((b,i)=>{
       const L=bLines(b), total=L.reduce((s,l)=>s+l.price,0);
@@ -6027,8 +6052,8 @@
     document.getElementById("hbOrder").textContent="Order My "+cfg.word;
     showOnly("hybridView"); const sb=document.getElementById("hbSearch"); if(sb) sb.value=""; const sg=document.getElementById("hbSugg"); if(sg){ sg.classList.remove("open"); sg.innerHTML=""; } renderHybrid(); window.scrollTo({top:0,behavior:"smooth"});
   }
-  function goHybrid(){ openHyb(null); }
-  function goFrankenbatch(){ openHyb('Aventus'); }
+  function goHybrid(){ openHyb(null); if(!_fromHash) setHash("#/hybrid"); }
+  function goFrankenbatch(){ openHyb('Aventus'); if(!_fromHash) setHash("#/frankenbatch"); }
   function hybRemove(i){ hyb.scents.splice(i,1); renderHybrid(); }
   function hybBump(i,d){
     const sc=hyb.scents[i]; const cur=sc.ml;
