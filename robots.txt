@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bigbamwolf.github.io/curated-archive/sitemap.xml
