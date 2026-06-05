@@ -5814,7 +5814,21 @@
   function showOnly(id){ ["homeView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
   function goLayering(){ showOnly("layeringView"); renderLayerGrid(); window.scrollTo({ top:0, behavior:"smooth" }); }
   function layerTeaser(t){ const m=t.match(/Top:\s*([\s\S]+?)(?:\s+Mid:|$)/); let s=(m?m[1]:t).trim(); return s.length>120 ? s.slice(0,118)+"…" : s; }
+  let _layerRepaired=false;
+  function repairLayerAliases(){
+    if(_layerRepaired) return;
+    const nm=s=>(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"");
+    const ALIAS={ perfumerduapear:"perfumersduapear", warmcotton:"warmcottom", aventusf387:"f387", cremebrulee:"labondancecremebrule" };
+    const idx={}; for(const c in CATALOG) CATALOG[c].forEach(it=>{ idx[nm(it.name)]=it; });
+    LAYERING.forEach(l=>{
+      if(!l.f1_item){ const a=ALIAS[nm(l.f1)]; if(a&&idx[a]) l.f1_item=idx[a]; }
+      if(!l.f2_item){ const b=ALIAS[nm(l.f2)]; if(b&&idx[b]) l.f2_item=idx[b]; }
+      l.shoppable=!!(l.f1_item&&l.f2_item);
+    });
+    _layerRepaired=true;
+  }
   function renderLayerGrid(){
+    repairLayerAliases();
     document.getElementById("layerGrid").innerHTML = LAYERING.map((l,i)=>`
       <button class="lcard" onclick="openLayer(${i})">
         <div class="lcard-pair">${esc(l.f1)} <span>×</span> ${esc(l.f2)}</div>
