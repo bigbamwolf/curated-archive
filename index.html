@@ -50,6 +50,20 @@
   .emblem-logo{width:min(360px,74vw);height:auto;border-radius:26px;box-shadow:0 34px 80px rgba(0,0,0,.30)}
   .emblem-word{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:.04em;color:var(--gold-deep)}
   .emblem-sub{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .hero-cine{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:min(84vh,760px);min-height:460px;overflow:hidden;display:flex;align-items:center;background:#0c0b0a}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,7,6,.90),rgba(8,7,6,.62) 40%,rgba(8,7,6,.14) 72%,rgba(8,7,6,.36))}
+  .hero-cine-inner{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px);color:#f5efe2}
+  .hero-kicker{letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;color:var(--gold);font-weight:700;margin-bottom:16px}
+  .hero-cine h1{font-family:var(--serif);font-weight:600;color:#fff;font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.0;margin:0 0 16px;letter-spacing:.005em}
+  .hero-cine p{max-width:520px;color:#e9e1d3;font-size:1.05rem;line-height:1.6;margin:0 0 28px}
+  .btn-ghost.light{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
+  .btn-ghost.light:hover{background:rgba(255,255,255,.12)}
+  @media(max-width:680px){
+    .hero-cine{height:80vh;min-height:440px;align-items:flex-end;padding-bottom:42px}
+    .hero-veil{background:linear-gradient(0deg,rgba(8,7,6,.93),rgba(8,7,6,.46) 46%,rgba(8,7,6,.30))}
+    .hero-cine p{font-size:1rem}
+  }
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;transition:transform .15s ease, background .15s ease, color .15s}
   .btn-gold{background:var(--gold);color:#fff}
@@ -303,20 +317,18 @@
 
 <main>
   <section id="homeView" class="wrap">
-    <div class="hero">
-      <div>
-        <div class="eyebrow">Hand decanted · Since 2025</div>
-        <h1>The archive of modern scent.</h1>
-        <p>Rare Creed Aventus batches, Dua creations, and niche houses, decanted into 1ml, 2ml, 5ml and 10ml so you can explore the greats without the full bottle price.</p>
+    <div class="hero-cine">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="media/hero-poster.jpg">
+        <source src="media/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-veil"></div>
+      <div class="hero-cine-inner">
+        <div class="hero-kicker">The Aventus Archive</div>
+        <h1>Rare batches,<br>decanted.</h1>
+        <p>Vintage Creed Aventus and niche houses, poured into 1, 2, 5 and 10ml. Explore the greats without the full bottle price.</p>
         <div class="hero-cta">
-          <button class="btn btn-gold" onclick="scrollToShop()">Explore the collection</button>
-          <button class="btn btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">How decants work</button>
-        </div>
-      </div>
-      <div class="hero-art">
-        <div class="emblem">
-          <img class="emblem-logo" src="assets/logo-512.png" alt="Curated Archive"/>
-          <span class="emblem-sub">Est. 2025 · Manila</span>
+          <button class="btn btn-gold" onclick="scrollToShop('Aventus')">Shop the Aventus collection</button>
+          <button class="btn btn-ghost light" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">How decants work</button>
         </div>
       </div>
     </div>
