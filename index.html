@@ -260,6 +260,20 @@
   .about-body{max-width:640px;margin:0 auto}
   .about-body p{color:var(--muted);font-size:1.05rem;line-height:1.72;margin:0 0 16px}
   .about-closing{text-align:center;font-family:var(--serif);font-size:1.3rem;color:var(--gold-deep);margin:30px 0 0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .hero-slides{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:clamp(380px,72vh,780px);background:#0a0908;overflow:hidden}
+  .hero-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease;pointer-events:none}
+  .hero-slide.active{opacity:1;pointer-events:auto}
+  .hero-slide img{max-width:min(860px,96vw);max-height:100%;width:auto;height:auto;object-fit:contain;cursor:pointer;display:block}
+  .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(0,0,0,.34);color:#f3ecdd;border:1px solid rgba(255,255,255,.28);width:44px;height:44px;border-radius:50%;font-size:1.7rem;line-height:1;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;padding-bottom:3px}
+  .hero-arrow:hover{background:rgba(0,0,0,.6);border-color:var(--gold)}
+  .hero-arrow.prev{left:18px}
+  .hero-arrow.next{right:18px}
+  .hero-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px}
+  .hero-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.42);cursor:pointer;padding:0;transition:.25s}
+  .hero-dots button.on{background:var(--gold);width:22px;border-radius:5px}
+  .hero-cta-bar{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding:26px 0 4px}
+  @media(max-width:680px){.hero-slides{height:100vw}.hero-slide img{max-width:100%}.hero-arrow{width:38px;height:38px;font-size:1.4rem}}
   .fopt.sel span{color:#cbbfa6}
   .fopt b{font-family:var(--serif);font-size:1.3rem;color:inherit}
   .fopt span{color:var(--muted);font-size:.92rem}
@@ -364,20 +378,19 @@
 
 <main>
   <section id="homeView" class="wrap">
-    <div class="hero-cine">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="media/hero-poster.jpg">
-        <source src="media/hero.mp4" type="video/mp4">
-      </video>
-      <div class="hero-veil"></div>
-      <div class="hero-cine-inner">
-        <div class="hero-kicker">The Aventus Archive</div>
-        <h1>Rare batches,<br>decanted.</h1>
-        <p>Vintage Creed Aventus and niche houses, poured into 1, 2, 5 and 10ml. Explore the greats without the full bottle price.</p>
-        <div class="hero-cta">
-          <button class="btn btn-gold" onclick="scrollToShop('Aventus')">Shop the Aventus collection</button>
-          <button class="btn btn-ghost light" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">How decants work</button>
-        </div>
-      </div>
+    <h1 class="sr-only">Curated Archive, rare Creed Aventus and niche fragrance decants in Manila</h1>
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active"><img src="assets/banners/banner-1-decants-available.jpg" alt="Aventus decants available at Curated Archive" onclick="scrollToShop('Aventus')"></div>
+      <div class="hero-slide"><img src="assets/banners/banner-2-batch-archive.jpg" alt="Aventus batch archive" onclick="scrollToShop('Aventus')"></div>
+      <div class="hero-slide"><img src="assets/banners/banner-3-collection.jpg" alt="Aventus collection" onclick="scrollToShop('Aventus')"></div>
+      <div class="hero-slide"><img src="assets/banners/banner-4-curated-archive.jpg" alt="Curated Archive" onclick="scrollToShop('Aventus')"></div>
+      <button class="hero-arrow prev" onclick="heroGo(-1)" aria-label="Previous banner">&#8249;</button>
+      <button class="hero-arrow next" onclick="heroGo(1)" aria-label="Next banner">&#8250;</button>
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+    <div class="hero-cta-bar">
+      <button class="btn btn-gold" onclick="scrollToShop('Aventus')">Shop the Aventus collection</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">How decants work</button>
     </div>
 
     <div class="trust">
@@ -5784,11 +5797,18 @@
     document.getElementById("gcashNumber").textContent = STORE.gcashNumber;
     document.getElementById("footGcash").innerHTML = "GCash · <b>" + esc(STORE.gcashName) + "</b><br>" + esc(STORE.gcashNumber);
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
+    heroSlidesInit();
     loadCatalogFromApi().finally(() => {
       buildCategories(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
     });
   }
 
+  let _hi=0,_ht=null;
+  function heroRender(){ var s=document.querySelectorAll("#heroSlides .hero-slide"); for(var i=0;i<s.length;i++) s[i].classList.toggle("active",i===_hi); var d=document.querySelectorAll("#heroDots button"); for(var j=0;j<d.length;j++) d[j].classList.toggle("on",j===_hi); }
+  function heroGo(dir){ var n=document.querySelectorAll("#heroSlides .hero-slide").length; if(!n)return; _hi=(_hi+dir+n)%n; heroRender(); heroAuto(); }
+  function heroSet(i){ _hi=i; heroRender(); heroAuto(); }
+  function heroAuto(){ clearInterval(_ht); _ht=setInterval(function(){heroGo(1);},5000); }
+  function heroSlidesInit(){ var box=document.getElementById("heroSlides"); if(!box)return; var n=box.querySelectorAll(".hero-slide").length; var dots=document.getElementById("heroDots"); if(dots){ var h=""; for(var i=0;i<n;i++) h+='<button class="'+(i===0?"on":"")+'" onclick="heroSet('+i+')" aria-label="Banner '+(i+1)+'"></button>'; dots.innerHTML=h; } _hi=0; heroRender(); heroAuto(); }
   async function loadCatalogFromApi(){
     if (!API_CONFIG.apiBase) return;
     try{
