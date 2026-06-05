@@ -216,6 +216,11 @@
   .lcard-teaser{color:var(--muted);font-size:.9rem;line-height:1.6;flex:1}
   .lcard-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
   .lcard-cta{color:var(--gold-deep);font-size:.82rem;font-weight:600}
+  .lcard-photo{margin:-22px -20px 8px;height:172px;overflow:hidden;border-radius:18px 18px 0 0;background:#0c0b0a}
+  .lcard-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+  .lcard.has-photo:hover .lcard-photo img{transform:scale(1.05)}
+  .ldetail-photo{width:100%;max-width:600px;margin:4px auto 20px;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#0c0b0a}
+  .ldetail-photo img{width:100%;display:block;max-height:440px;object-fit:cover}
   .ldetail{max-width:860px;margin:0 auto;padding:26px 0 60px}
   .ldetail .eyebrow{color:var(--gold-deep);letter-spacing:.18em;text-transform:uppercase;font-size:.74rem;font-weight:600;text-align:center;display:block}
   .ldetail h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,4vw,3.2rem);text-align:center;margin:10px 0 6px;line-height:1.04}
@@ -509,6 +514,7 @@
     <div class="crumbs"><button onclick="goLayering()">Layering</button> / <span id="lcrumb"></span></div>
     <div class="ldetail">
       <span class="eyebrow">Layering recipe</span>
+      <div class="ldetail-photo" id="lphotoWrap" style="display:none"><img id="lphoto" alt=""></div>
       <h2 id="lname"></h2>
       <div class="lpair-big" id="lpair"></div>
       <div class="lpills" id="lpills"></div>
@@ -5948,10 +5954,14 @@
     });
     _layerRepaired=true;
   }
+  const LAYER_PHOTOS=new Set(["balikbayan-aura","black-barrel-afterhours","boardroom-canopy","cafe-spark","citrus-cedar-pulse","citrus-ease","honeyed-pineapple","ivory-king","lemon-tart-crown","lemonwood-cream","pineapple-tonic","smoked-silver-vanilla","solar-fizz-crown","steamed-resolve"]);
+  function lpSlug(s){ return (s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
+  function layerPhoto(name){ const s=lpSlug(name); return LAYER_PHOTOS.has(s)?"assets/layering/"+s+".jpg":""; }
   function renderLayerGrid(){
     repairLayerAliases();
     document.getElementById("layerGrid").innerHTML = LAYERING.map((l,i)=>`
-      <button class="lcard" onclick="openLayer(${i})">
+      <button class="lcard${layerPhoto(l.name)?' has-photo':''}" onclick="openLayer(${i})">
+        ${layerPhoto(l.name)?`<div class="lcard-photo"><img src="${layerPhoto(l.name)}" alt="${esc(l.name)} layering combination" loading="lazy"></div>`:''}
         <div class="lcard-pair">${esc(l.f1)} <span>×</span> ${esc(l.f2)}</div>
         <div class="lcard-name">${esc(l.name)}</div>
         <div class="lcard-teaser">${esc(layerTeaser(l.trans))}</div>
@@ -5975,6 +5985,7 @@
     currentLayer=i; const l=LAYERING[i]; if(!_fromHash && l) setHash("#/layer/"+slug(l.name)); showOnly("layerDetailView");
     document.getElementById("lcrumb").textContent=l.name;
     document.getElementById("lname").textContent=l.name;
+    (function(){ const lp=layerPhoto(l.name), w=document.getElementById("lphotoWrap"); if(lp){ const im=document.getElementById("lphoto"); im.src=lp; im.alt=l.name+" layering combination"; w.style.display=""; } else { w.style.display="none"; } })();
     document.getElementById("lpair").innerHTML=`<b>${esc(l.f1)}</b> layered with <b>${esc(l.f2)}</b>`;
     document.getElementById("lpills").innerHTML=layerPill(l.f1_item,l.f1)+layerPill(l.f2_item,l.f2);
     const add=document.getElementById("laddboth");
