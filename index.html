@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Curated Archive — Fragrance Decants</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,8 +28,9 @@
   .announce{background:var(--ink);color:#f3ecdd;text-align:center;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:9px 14px}
   header.site{position:sticky;top:0;z-index:40;background:rgba(247,244,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .brand{font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:.04em;color:var(--ink)}
+  .brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:.04em;color:var(--ink)}
   .brand b{color:var(--gold);font-weight:600}
+  .brand-logo{width:36px;height:36px;border-radius:9px;object-fit:cover;flex:0 0 auto;box-shadow:0 2px 8px rgba(0,0,0,.16)}
   .nav-links{display:flex;gap:30px;font-size:.83rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
   .nav-links button:hover{color:var(--gold)}
   .nav-right{display:flex;align-items:center;gap:18px}
@@ -42,8 +45,9 @@
   .hero-art{position:relative;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 50% 38%, #fff, var(--gold-soft) 70%, #ece2cd 100%);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);overflow:hidden}
   .hero-art::after{content:"";position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(168,133,74,.35)}
   .hero-art img{width:74%;height:74%;object-fit:contain;filter:drop-shadow(0 22px 30px rgba(40,25,0,.28))}
-  .emblem{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .emblem{display:flex;flex-direction:column;align-items:center;gap:18px}
   .emblem svg{width:118px;height:148px;color:var(--gold);opacity:.92}
+  .emblem-logo{width:min(360px,74vw);height:auto;border-radius:26px;box-shadow:0 34px 80px rgba(0,0,0,.30)}
   .emblem-word{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:.04em;color:var(--gold-deep)}
   .emblem-sub{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 
@@ -278,7 +282,7 @@
 
 <header class="site">
   <div class="wrap nav">
-    <button class="brand" onclick="goHome()">Curated <b>Archive</b></button>
+    <button class="brand" onclick="goHome()"><img class="brand-logo" src="assets/logo-96.png" alt="Curated Archive logo"/>Curated <b>Archive</b></button>
     <nav class="nav-links">
       <button onclick="goHome()">Home</button>
       <button onclick="scrollToShop()">Shop</button>
@@ -311,16 +315,7 @@
       </div>
       <div class="hero-art">
         <div class="emblem">
-          <svg viewBox="0 0 120 150" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="49" y="10" width="22" height="15" rx="3"/>
-            <rect x="53" y="25" width="14" height="9"/>
-            <rect x="34" y="40" width="52" height="92" rx="14"/>
-            <path d="M53 34 q-19 2 -19 18"/>
-            <path d="M67 34 q19 2 19 18"/>
-            <line x1="45" y1="98" x2="75" y2="98"/>
-            <line x1="45" y1="115" x2="75" y2="115"/>
-          </svg>
-          <span class="emblem-word">Curated Archive</span>
+          <img class="emblem-logo" src="assets/logo-512.png" alt="Curated Archive"/>
           <span class="emblem-sub">Est. 2025 · Manila</span>
         </div>
       </div>
