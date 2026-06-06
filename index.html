@@ -353,6 +353,19 @@
   .mmenu a small{display:block;font-family:var(--sans);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:2px}
   @media(max-width:620px){ .menu-btn{display:inline-flex} }
 </style>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+.acct-chip{cursor:pointer;color:#c8a86b;border:1px solid rgba(200,168,107,.45);border-radius:999px;padding:6px 13px;font-size:.85rem;white-space:nowrap;background:transparent}
+.ca-modal{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;z-index:9999}
+.ca-modal.on{display:flex}
+.ca-card{position:relative;background:#141414;border:1px solid rgba(200,168,107,.3);border-radius:14px;padding:30px 26px;max-width:362px;width:90%;color:#f3ecdd;font-family:Georgia,'Times New Roman',serif;text-align:center}
+.ca-card h3{color:#c8a86b;font-weight:600;margin:0 0 6px;font-size:1.35rem}
+.ca-card p{color:#b9b1a0;font-size:.9rem;margin:0 0 18px;line-height:1.5}
+.ca-card input{width:100%;box-sizing:border-box;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:#0d0d0d;color:#f3ecdd;margin-bottom:12px;font-size:.95rem}
+.ca-gbtn{display:flex;justify-content:center;min-height:44px}
+.ca-or{color:#7d7768;font-size:.72rem;letter-spacing:.1em;margin:16px 0 14px}
+.ca-x{position:absolute;top:12px;right:18px;color:#9a937f;cursor:pointer;font-size:1.5rem;line-height:1}
+</style>
 </head>
 <body>
 <div class="announce">Authentic decants · Nationwide shipping · Pay via GCash, Maya, or card</div>
@@ -372,6 +385,8 @@
       <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
     </nav>
     <div class="nav-right">
+      <button class="bag-btn" id="signInBtn" onclick="caSignIn()">Sign in</button>
+      <span class="acct-chip" id="acctChip" style="display:none" title="Account" onclick="caAccountMenu()"></span>
       <button class="bag-btn" onclick="openCart()">Bag <span class="bag-count" id="bagCount">0</span></button>
       <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
     </div>
@@ -638,6 +653,7 @@
     <div class="totrow"><span>Total</span><strong id="cartTotal">₱0.00</strong></div>
     <h4 style="margin-top:16px">Delivery details</h4>
     <input class="field" id="cName" placeholder="Full name" />
+    <input class="field" id="cEmail" type="email" placeholder="Email address" />
     <input class="field" id="cContact" placeholder="Mobile number" />
     <select class="field" id="cDelivery">
       <option value="">Mode of delivery</option>
@@ -653,6 +669,19 @@
     <div class="ostatus" id="orderStatus"></div>
   </div>
 </aside>
+
+<div class="ca-modal" id="caModal" onclick="if(event.target===this)caCloseModal()">
+  <div class="ca-card">
+    <span class="ca-x" onclick="caCloseModal()">&times;</span>
+    <h3>Welcome to the archive</h3>
+    <p>Sign in to keep your collection, batches, and details ready for next time. No password, ever.</p>
+    <div class="ca-gbtn" id="caGoogleBtn"></div>
+    <div class="ca-or" id="caOr">OR CONTINUE WITH EMAIL</div>
+    <input id="caEmail" type="email" placeholder="you@email.com" autocomplete="email" />
+    <button class="btn btn-gold btn-block" onclick="caEmailLink()">Email me a sign in link</button>
+    <div class="ostatus" id="caStatus"></div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
@@ -6266,11 +6295,12 @@
     const miss = [];
     const v = id => document.getElementById(id).value.trim();
     if (!v("cName")) miss.push("Full name");
+    if (!v("cEmail")) miss.push("Email address");
     if (!v("cContact")) miss.push("Mobile number");
     if (!v("cDelivery")) miss.push("Mode of delivery");
     if (!v("cAddress")) miss.push("Delivery address");
     if (miss.length){ alert("Please complete:\n\n" + miss.join("\n")); return null; }
-    return { name:v("cName"), contact:v("cContact"), delivery:v("cDelivery"), address:v("cAddress") };
+    return { name:v("cName"), email:v("cEmail"), contact:v("cContact"), delivery:v("cDelivery"), address:v("cAddress") };
   }
 
   async function placeOrder(){
@@ -6285,6 +6315,7 @@
     const original = btn.textContent; btn.disabled = true; btn.textContent = "Placing order...";
     status.textContent = "Submitting your order...";
     const payload = { action:"order", store:API_CONFIG.storeName, customer,
+      session: ACCOUNT.session,
       items: cart.map(i => ({ category:i.category, name:i.name, size:i.size, quantity:i.quantity, unitPrice:i.unitPrice })),
       total: cartTotal() };
     try{
@@ -6328,7 +6359,90 @@
     doc.save((customer.name||"order").replace(/[^a-z0-9]+/gi,"_").toLowerCase() + "_curated_archive.pdf");
   }
 
+  /* ---------- Seamless accounts: Google One Tap + email magic link ---------- */
+  const ACCOUNT = { clientId: "", session: null, profile: null };
+
+  async function caPost(payload){
+    if (!API_CONFIG.apiBase) return null;
+    try{ const r = await fetch(API_CONFIG.apiBase, { method:"POST", body: JSON.stringify(payload) }); return await r.json(); }
+    catch(e){ return null; }
+  }
+
+  function caBoot(){
+    try{
+      const m = (location.hash||"").match(/session=([^&]+)/);
+      if (m){ localStorage.setItem("ca_session", decodeURIComponent(m[1])); history.replaceState(null,"",location.pathname+location.search); }
+    }catch(e){}
+    ACCOUNT.session = localStorage.getItem("ca_session") || null;
+    try{ const cached = localStorage.getItem("ca_profile"); if (cached) caApplyProfile(JSON.parse(cached), true); }catch(e){}
+    caInitGoogle();
+    if (ACCOUNT.session) caLoadProfile();
+  }
+
+  function caInitGoogle(){
+    if (!ACCOUNT.clientId){ var orr=document.getElementById("caOr"); if(orr) orr.style.display="none"; return; }
+    if (!(window.google && google.accounts && google.accounts.id)) return setTimeout(caInitGoogle, 600);
+    google.accounts.id.initialize({ client_id: ACCOUNT.clientId, callback: caGoogleCb, auto_select:false, cancel_on_tap_outside:true });
+    if (!ACCOUNT.session) google.accounts.id.prompt();
+    const slot = document.getElementById("caGoogleBtn");
+    if (slot) google.accounts.id.renderButton(slot, { theme:"filled_black", size:"large", shape:"pill", text:"continue_with", width:300 });
+  }
+
+  async function caGoogleCb(resp){
+    if (!resp || !resp.credential) return;
+    const d = await caPost({ action:"google_signin", credential: resp.credential });
+    if (d && d.ok){ caCloseModal(); caOnSignedIn(d.session, d.profile); }
+  }
+
+  function caOnSignedIn(session, profile){
+    if (session){ ACCOUNT.session = session; localStorage.setItem("ca_session", session); }
+    caApplyProfile(profile);
+  }
+
+  async function caLoadProfile(){
+    const d = await caPost({ action:"account_get", session: ACCOUNT.session });
+    if (d && d.ok) caApplyProfile(d.profile);
+    else { ACCOUNT.session=null; localStorage.removeItem("ca_session"); localStorage.removeItem("ca_profile"); }
+  }
+
+  function caApplyProfile(p, quiet){
+    if (!p) return;
+    ACCOUNT.profile = p;
+    if (!quiet){ try{ localStorage.setItem("ca_profile", JSON.stringify(p)); }catch(e){} }
+    const chip = document.getElementById("acctChip");
+    const btn = document.getElementById("signInBtn");
+    const first = ((p.name||"").split(" ")[0]) || "Member";
+    if (chip){ chip.textContent = "Hi, " + first; chip.style.display="inline-block"; }
+    if (btn) btn.style.display = "none";
+    const set = (id,val)=>{ const el=document.getElementById(id); if(el && !el.value && val) el.value=val; };
+    set("cName", p.name); set("cEmail", p.email); set("cContact", p.mobile); set("cAddress", p.address);
+    if (p.delivery){ const s=document.getElementById("cDelivery"); if(s && !s.value) s.value=p.delivery; }
+  }
+
+  function caSignIn(){ caOpenModal(); if (ACCOUNT.clientId && window.google && google.accounts && google.accounts.id) google.accounts.id.prompt(); }
+  function caOpenModal(){ const m=document.getElementById("caModal"); if(m) m.classList.add("on"); }
+  function caCloseModal(){ const m=document.getElementById("caModal"); if(m) m.classList.remove("on"); const st=document.getElementById("caStatus"); if(st) st.textContent=""; }
+
+  async function caEmailLink(){
+    const el=document.getElementById("caEmail"); const st=document.getElementById("caStatus");
+    const email=((el&&el.value)||"").trim();
+    if (!email || email.indexOf("@")<0){ if(st) st.textContent="Please enter a valid email."; return; }
+    if (st) st.textContent="Sending your link...";
+    const d = await caPost({ action:"request_link", email });
+    if (st) st.textContent = (d && d.ok) ? "Check your email for a one tap sign in link." : ((d && d.error) || "Could not send the link, please try again.");
+  }
+
+  function caAccountMenu(){ if (confirm("Sign out of Curated Archive?")) caSignOut(); }
+  function caSignOut(){
+    ACCOUNT.session=null; ACCOUNT.profile=null;
+    localStorage.removeItem("ca_session"); localStorage.removeItem("ca_profile");
+    const chip=document.getElementById("acctChip"); const btn=document.getElementById("signInBtn");
+    if(chip) chip.style.display="none"; if(btn) btn.style.display="";
+    if (ACCOUNT.clientId && window.google && google.accounts && google.accounts.id) google.accounts.id.disableAutoSelect();
+  }
+
   init();
+  caBoot();
 </script>
 </body>
 </html>
