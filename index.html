@@ -380,7 +380,7 @@
       <button onclick="goBundles()">Bundles</button>
       <button onclick="goHybrid()">Build a Hybrid</button>
       <button onclick="goFrankenbatch()">Frankenbatch</button>
-      <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About</button>
+      <button onclick="goAbout()">About</button>
     </nav>
     <div class="nav-right">
       <button class="bag-btn" id="signInBtn" onclick="caSignIn()">Sign in</button>
@@ -396,7 +396,7 @@
     <div class="hero-cine">
       <div class="hero-slides" id="heroSlides">
         <img class="hero-slide active" src="assets/banners/banner-1-decants-available.jpg" alt="Aventus decants available">
-        <img class="hero-slide" data-bare="1" src="assets/banners/banner-5-tagline.jpg" alt="Curated in private, reserved for those who already know its worth">
+        <img class="hero-slide" src="assets/banners/banner-5-tagline.jpg" alt="Curated in private, reserved for those who already know its worth">
         <img class="hero-slide" src="assets/banners/banner-2-batch-archive.jpg" alt="Aventus batch archive">
         <img class="hero-slide" src="assets/banners/banner-3-collection.jpg" alt="Aventus collection">
         <img class="hero-slide" src="assets/banners/banner-4-curated-archive.jpg" alt="Curated Archive">
@@ -408,7 +408,7 @@
         <p>Vintage Creed Aventus and niche houses, poured into 1, 2, 5 and 10ml. Explore the greats without the full bottle price.</p>
         <div class="hero-cta">
           <button class="btn btn-gold" onclick="scrollToShop('Aventus')">Shop the Aventus collection</button>
-          <button class="btn btn-ghost light" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">How decants work</button>
+          <button class="btn btn-ghost light" onclick="goAbout()">How decants work</button>
         </div>
       </div>
       <div class="hero-dots" id="heroDots"></div>
@@ -453,7 +453,9 @@
         <button class="btn btn-gold" onclick="goLayering()">Explore the recipes</button>
       </div>
     </div>
+  </section>
 
+  <section id="aboutView" class="wrap hidden">
     <div class="sec" id="about">
       <div class="about-wrap">
         <span class="about-eyebrow">The Archive</span>
@@ -5971,12 +5973,13 @@
 
   function openCart(){ document.getElementById("drawer").classList.add("open"); document.getElementById("scrim").classList.add("open"); }
   function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("scrim").classList.remove("open"); }
-  function goHome(){ ["detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
+  function goHome(){ ["aboutView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
+  function goAbout(){ showOnly("aboutView"); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/about"); }
   function goShop(cat){ showOnly("shopView"); setCat(cat||"All"); window.scrollTo({top:0,behavior:"smooth"}); }
   function scrollToShop(cat){ goShop(cat); }
 
   let currentLayer = 0;
-  function showOnly(id){ ["homeView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
+  function showOnly(id){ ["homeView","aboutView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
   // ---- hash routing: shareable deep links + working Back button on a static SPA ----
   let _fromHash=false, _lastHash=null;
   function slug(s){ return (s||"").toString().toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
@@ -5996,6 +5999,7 @@
       case "bundles": goBundles(); break;
       case "hybrid": goHybrid(); break;
       case "frankenbatch": goFrankenbatch(); break;
+      case "about": goAbout(); break;
       default: goHome();
     }
   }
