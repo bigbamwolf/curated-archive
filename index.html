@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Curated Archive | Fragrance Decants, Creed Aventus Manila</title>
-<meta name="description" content="Shop authentic fragrance decants in Manila. Rare Creed Aventus batches, Dua, and niche houses in 1ml to 10ml. Pay via GCash, Maya, or card. Nationwide Philippines shipping.">
+<meta name="description" content="Curated in private, reserved for those who already know its worth. Authentic Creed Aventus, Dua, and niche fragrance decants in Manila, 1ml to 10ml.">
 <meta name="keywords" content="fragrance decants, Creed Aventus, decant shop Philippines, rare perfume batches, niche fragrance Manila, authentic decants, vintage Creed, Dua, Parfums Vintage">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0c0b0a">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Curated Archive">
 <meta property="og:title" content="Curated Archive | Fragrance Decants, Creed Aventus Manila">
-<meta property="og:description" content="Rare batches, decanted. Authentic fragrance decants of Creed Aventus, Dua, and niche houses in 1ml to 10ml. Nationwide Philippines shipping.">
+<meta property="og:description" content="Curated in private, reserved for those who already know its worth. Authentic decants of Creed Aventus, Dua, and niche houses, 1ml to 10ml.">
 <meta property="og:url" content="https://bigbamwolf.github.io/curated-archive/">
 <meta property="og:image" content="https://bigbamwolf.github.io/curated-archive/media/hero-poster.jpg">
 <meta property="og:image:width" content="1920">
@@ -20,10 +20,10 @@
 <meta property="og:locale" content="en_PH">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Curated Archive | Fragrance Decants, Creed Aventus Manila">
-<meta name="twitter:description" content="Rare batches, decanted. Authentic Creed Aventus, Dua, and niche decants in 1ml to 10ml. Nationwide PH shipping.">
+<meta name="twitter:description" content="Curated in private, reserved for those who already know its worth. Creed Aventus, Dua, and niche decants, 1ml to 10ml.">
 <meta name="twitter:image" content="https://bigbamwolf.github.io/curated-archive/media/hero-poster.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"OnlineStore","name":"Curated Archive","url":"https://bigbamwolf.github.io/curated-archive/","logo":"https://bigbamwolf.github.io/curated-archive/assets/logo-512.png","image":"https://bigbamwolf.github.io/curated-archive/media/hero-poster.jpg","description":"Authentic fragrance decants of rare Creed Aventus batches, Dua, Parfums Vintage, and niche houses in 1ml, 2ml, 5ml, and 10ml. Manila, Philippines.","sameAs":["https://www.instagram.com/curatedarchive.fragrance/"],"areaServed":{"@type":"Country","name":"Philippines"},"currenciesAccepted":"PHP","paymentAccepted":"GCash, Maya, Credit Card","priceRange":"₱₱"}
+{"@context":"https://schema.org","@type":"OnlineStore","name":"Curated Archive","slogan":"Curated in private, reserved for those who already know its worth.","url":"https://bigbamwolf.github.io/curated-archive/","logo":"https://bigbamwolf.github.io/curated-archive/assets/logo-512.png","image":"https://bigbamwolf.github.io/curated-archive/media/hero-poster.jpg","description":"Authentic fragrance decants of rare Creed Aventus batches, Dua, Parfums Vintage, and niche houses in 1ml, 2ml, 5ml, and 10ml. Manila, Philippines.","sameAs":["https://www.instagram.com/curatedarchive.fragrance/"],"areaServed":{"@type":"Country","name":"Philippines"},"currenciesAccepted":"PHP","paymentAccepted":"GCash, Maya, Credit Card","priceRange":"₱₱"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Curated Archive","url":"https://bigbamwolf.github.io/curated-archive/"}
@@ -264,6 +264,9 @@
   .hero-slides{position:absolute;inset:0;z-index:0}
   .hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:0;transition:opacity .9s ease}
   .hero-slide.active{opacity:1}
+  .hero-cine-inner{transition:opacity .55s ease}
+  .hero-cine.bare .hero-cine-inner{opacity:0;pointer-events:none}
+  .hero-cine.bare .hero-veil{opacity:.42;transition:opacity .55s ease}
   .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(0,0,0,.34);color:#f3ecdd;border:1px solid rgba(255,255,255,.28);width:44px;height:44px;border-radius:50%;font-size:1.7rem;line-height:1;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;padding-bottom:3px}
   .hero-arrow:hover{background:rgba(0,0,0,.6);border-color:var(--gold)}
   .hero-arrow.prev{left:18px}
@@ -379,7 +382,8 @@
   <section id="homeView" class="wrap">
     <div class="hero-cine">
       <div class="hero-slides" id="heroSlides">
-        <img class="hero-slide active" src="assets/banners/banner-1-decants-available.jpg" alt="Aventus decants available">
+        <img class="hero-slide active" data-bare="1" src="assets/banners/banner-5-tagline.jpg" alt="Curated in private, reserved for those who already know its worth">
+        <img class="hero-slide" src="assets/banners/banner-1-decants-available.jpg" alt="Aventus decants available">
         <img class="hero-slide" src="assets/banners/banner-2-batch-archive.jpg" alt="Aventus batch archive">
         <img class="hero-slide" src="assets/banners/banner-3-collection.jpg" alt="Aventus collection">
         <img class="hero-slide" src="assets/banners/banner-4-curated-archive.jpg" alt="Curated Archive">
@@ -5813,7 +5817,7 @@
     for(var c in CATALOG){ (CATALOG[c]||[]).forEach(function(it){ var k=c+"|"+it.name; if(FIX[k]&&!it.image) it.image=FIX[k]; }); }
   }
   let _hi=0,_ht=null;
-  function heroRender(){ var s=document.querySelectorAll("#heroSlides .hero-slide"); for(var i=0;i<s.length;i++) s[i].classList.toggle("active",i===_hi); var d=document.querySelectorAll("#heroDots button"); for(var j=0;j<d.length;j++) d[j].classList.toggle("on",j===_hi); }
+  function heroRender(){ var s=document.querySelectorAll("#heroSlides .hero-slide"); for(var i=0;i<s.length;i++) s[i].classList.toggle("active",i===_hi); var d=document.querySelectorAll("#heroDots button"); for(var j=0;j<d.length;j++) d[j].classList.toggle("on",j===_hi); var cine=document.querySelector(".hero-cine"); if(cine&&s[_hi]) cine.classList.toggle("bare", s[_hi].getAttribute("data-bare")==="1"); }
   function heroGo(dir){ var n=document.querySelectorAll("#heroSlides .hero-slide").length; if(!n)return; _hi=(_hi+dir+n)%n; heroRender(); heroAuto(); }
   function heroSet(i){ _hi=i; heroRender(); heroAuto(); }
   function heroAuto(){ clearInterval(_ht); _ht=setInterval(function(){heroGo(1);},5000); }
