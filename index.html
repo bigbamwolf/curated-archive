@@ -5776,6 +5776,10 @@
   const sizesOf = it => Object.keys(it.prices||{}).map(Number).sort((a,b)=>a-b);
   const minPrice = it => { const s = sizesOf(it); return s.length ? it.prices[String(s[0])] : 0; };
   const priceRange = it => { const s=sizesOf(it); const ps=s.map(x=>Number(it.prices[String(x)])).filter(v=>v>0); if(!ps.length) return ""; const lo=Math.min(...ps), hi=Math.max(...ps); return lo===hi ? peso(lo) : peso(lo)+" to "+peso(hi); };
+  const DISP_NAME = { "TBGCO Blanc":"The Boar Grooming Co. Blanc", "Elysium PC":"Elysium Pour Homme Parfum Cologne", "Elysium PPH SE":"Elysium Pour Homme Parfum Special Edition" };
+  const DISP_CAT = { "TBGCO":"The Boar Grooming Co." };
+  const dispName = n => DISP_NAME[n] || n;
+  const dispCat = c => DISP_CAT[c] || c;
   const initials = n => { const p = String(n).replace(/[^A-Za-z0-9 ]/g,'').trim().split(/\s+/); return (((p[0]||'')[0]||'C') + ((p[1]||'')[0]||'A')).toUpperCase(); };
 
   function imgNext(img){
@@ -5843,7 +5847,7 @@
 
   function renderChips(){
     document.getElementById("chips").innerHTML = chipCats.map((c,i) =>
-      `<button class="chip ${c===activeCat?'active':''}" onclick="setCatI(${i})">${esc(c)}</button>`).join("");
+      `<button class="chip ${c===activeCat?'active':''}" onclick="setCatI(${i})">${esc(dispCat(c))}</button>`).join("");
   }
   function setCatI(i){ setCat(chipCats[i]); }
   function setCat(c){ activeCat = c; renderChips(); renderGrid(); if(!_fromHash) setHash(c&&c!=="All"?"#/shop/"+slug(c):"#/shop"); }
@@ -5863,8 +5867,8 @@
       <button class="card" onclick="openI(${i})">
         <div class="card-img">${imgTag(r.it, r.cat)}</div>
         <div class="card-body">
-          <div class="cat">${esc(r.cat)}</div>
-          <div class="nm">${esc(r.it.name)}</div>
+          <div class="cat">${esc(dispCat(r.cat))}</div>
+          <div class="nm">${esc(dispName(r.it.name))}</div>
           <div class="card-foot">
             <div class="price">${priceRange(r.it)}</div>
             ${badgeHtml(r.it)}
@@ -5880,10 +5884,10 @@
     view = { cat, item: it, size: sizesOf(it)[0], qty: 1 };
     showOnly("detailView");
     const cc = document.getElementById("crumbCat");
-    cc.textContent = cat; cc.onclick = () => scrollToShop(cat);
-    document.getElementById("crumbName").textContent = it.name;
-    document.getElementById("dCat").textContent = cat;
-    document.getElementById("dName").textContent = it.name;
+    cc.textContent = dispCat(cat); cc.onclick = () => scrollToShop(cat);
+    document.getElementById("crumbName").textContent = dispName(it.name);
+    document.getElementById("dCat").textContent = dispCat(cat);
+    document.getElementById("dName").textContent = dispName(it.name);
     const b = stockInfo(it);
     const sb = document.getElementById("dStock"); sb.className = "badge " + b.cls; sb.textContent = b.label;
     document.getElementById("detailImg").innerHTML = imgTag(it, view.cat);
@@ -5932,8 +5936,8 @@
       <div class="citem">
         ${imgTag(it, it.category)}
         <div>
-          <div class="nm">${esc(it.name)}</div>
-          <div class="meta">${esc(it.category)} · ${it.size} ml × ${it.quantity}</div>
+          <div class="nm">${esc(dispName(it.name))}</div>
+          <div class="meta">${esc(dispCat(it.category))} · ${it.size} ml × ${it.quantity}</div>
           <button class="rm" onclick="removeLine(${i})">Remove</button>
         </div>
         <div class="lt">${peso(it.unitPrice*it.quantity)}</div>
@@ -5996,7 +6000,7 @@
     document.getElementById("layerGrid").innerHTML = LAYERING.map((l,i)=>`
       <button class="lcard${layerPhoto(l.name)?' has-photo':''}" onclick="openLayer(${i})">
         ${layerPhoto(l.name)?`<div class="lcard-photo"><img src="${layerPhoto(l.name)}" alt="${esc(l.name)} layering combination" loading="lazy"></div>`:''}
-        <div class="lcard-pair">${esc(l.f1)} <span>×</span> ${esc(l.f2)}</div>
+        <div class="lcard-pair">${esc(dispName(l.f1))} <span>×</span> ${esc(dispName(l.f2))}</div>
         <div class="lcard-name">${esc(l.name)}</div>
         <div class="lcard-teaser">${esc(layerTeaser(l.trans))}</div>
         <div class="lcard-foot">${l.shoppable ? '<span class="badge in">Shop the pair</span>' : '<span class="badge made">Recipe</span>'}<span class="lcard-cta">View the layer →</span></div>
@@ -6005,7 +6009,7 @@
   function layerPill(item, rawName){
     if (!item) return `<div class="lpill"><div class="ph">${esc(initials(rawName))}</div><div><div class="nm">${esc(rawName)}</div><div class="pr">Not in the archive yet</div></div></div>`;
     const s = sizesOf(item)[0];
-    return `<div class="lpill">${imgTag(item, item.category)}<div><div class="nm">${esc(item.name)}</div><div class="pr">${esc(item.category)} · from ${pesoShort(item.prices[String(s)])}</div></div></div>`;
+    return `<div class="lpill">${imgTag(item, item.category)}<div><div class="nm">${esc(dispName(item.name))}</div><div class="pr">${esc(dispCat(item.category))} · from ${pesoShort(item.prices[String(s)])}</div></div></div>`;
   }
   function fmtPhases(t){
     const re=/(Top|Mid|Drydown|Base)\s*:/g, idxs=[]; let m;
@@ -6092,7 +6096,7 @@
       <div class="grid" style="margin-top:24px">${finderMatches.map((x,i)=>`
         <button class="card" onclick="openFinderItem(${i})">
           <div class="card-img">${imgTag(x.it,x.cat)}</div>
-          <div class="card-body"><div class="cat">${esc(x.cat)}</div><div class="nm">${esc(x.it.name)}</div>
+          <div class="card-body"><div class="cat">${esc(dispCat(x.cat))}</div><div class="nm">${esc(dispName(x.it.name))}</div>
           <div class="card-foot"><div class="price">${priceRange(x.it)}</div>${badgeHtml(x.it)}</div></div>
         </button>`).join("") || '<p style="text-align:center;color:var(--muted)">Tap retake and try different answers.</p>'}</div>
       <div style="text-align:center;margin-top:30px"><button class="btn btn-ghost" onclick="goFinder()">Retake the quiz</button></div>`;
@@ -6153,12 +6157,12 @@
     const q=(document.getElementById("hbSearch").value||"").trim().toLowerCase();
     const box=document.getElementById("hbSugg");
     let res=hybScopedItems().filter(x=>!hyb.scents.some(s=>s.cat===x.c&&s.name===x.it.name));
-    if(q) res=res.filter(x=>x.it.name.toLowerCase().includes(q)||x.c.toLowerCase().includes(q));
+    if(q) res=res.filter(x=>x.it.name.toLowerCase().includes(q)||x.c.toLowerCase().includes(q)||dispName(x.it.name).toLowerCase().includes(q)||dispCat(x.c).toLowerCase().includes(q));
     if(q) res.sort((a,b)=>(a.it.name.toLowerCase().startsWith(q)?0:1)-(b.it.name.toLowerCase().startsWith(q)?0:1));
     hybSuggList=res.slice(0,12);
     box.innerHTML = hybSuggList.length ? hybSuggList.map((x,i)=>{ const a=availMl(x.it); const ok=a>=HYB_MIN;
       const tag=a<=0?'sold out':(a<HYB_MIN?'low stock':(a<9999?a+'ml left':'available'));
-      return `<button ${ok?'':'disabled'} onmousedown="event.preventDefault()" onclick="hybAddIdx(${i})"><span class="sn"><small>${esc(x.c)}</small>${esc(x.it.name)}</span><span class="sx">${tag}</span></button>`; }).join("") : '<button disabled><span class="sn">No match in the library</span></button>';
+      return `<button ${ok?'':'disabled'} onmousedown="event.preventDefault()" onclick="hybAddIdx(${i})"><span class="sn"><small>${esc(dispCat(x.c))}</small>${esc(dispName(x.it.name))}</span><span class="sx">${tag}</span></button>`; }).join("") : '<button disabled><span class="sn">No match in the library</span></button>';
     box.classList.add("open");
   }
   function hybAddIdx(i){ const x=hybSuggList[i]; if(!x) return; addHybScent(x.c, x.it); const s=document.getElementById("hbSearch"); s.value=""; document.getElementById("hbSugg").classList.remove("open"); s.focus(); }
@@ -6202,8 +6206,8 @@
     slots.innerHTML = hyb.scents.length ? hyb.scents.map((x,i)=>{ const a=availMl(x.it);
       const cap=Math.max(HYB_MIN, Math.min(a, hyb.total-(used-x.ml)));
       return `<div class="hb-slot">
-        <div class="nm"><small>${esc(x.cat)}${(a<hyb.total&&a<9999)?' · only '+a+'ml in stock':''}</small>${esc(x.name)}</div>
-        <input type="range" class="hb-range" min="${HYB_MIN}" max="${cap}" value="${x.ml}" step="1" oninput="hybSlide(${i},this)" onchange="renderHybrid()" aria-label="${esc(x.name)} millilitres">
+        <div class="nm"><small>${esc(dispCat(x.cat))}${(a<hyb.total&&a<9999)?' · only '+a+'ml in stock':''}</small>${esc(dispName(x.name))}</div>
+        <input type="range" class="hb-range" min="${HYB_MIN}" max="${cap}" value="${x.ml}" step="1" oninput="hybSlide(${i},this)" onchange="renderHybrid()" aria-label="${esc(dispName(x.name))} millilitres">
         <div class="hb-ml"><button onclick="hybBump(${i},-1)" aria-label="less">−</button><b class="hb-mlval">${x.ml} ml</b><button onclick="hybBump(${i},1)" aria-label="more">+</button></div>
         <button class="hb-rm" onclick="hybRemove(${i})">Remove</button>
       </div>`; }).join("") : `<div class="hb-empty">No scents yet. Add 2 to ${HYB_MAX} from the library above.</div>`;
@@ -6314,10 +6318,10 @@
     doc.line(left,y,right,y); y+=8; doc.setFont("helvetica","bold"); doc.text("Order", left, y); y+=7; doc.setFont("helvetica","normal");
     cart.forEach((it,idx) => {
       if (y > 250){ doc.addPage(); y = 20; }
-      doc.setFont("helvetica","bold"); doc.text(`${idx+1}. ${it.name}`, left, y);
+      doc.setFont("helvetica","bold"); doc.text(`${idx+1}. ${dispName(it.name)}`, left, y);
       doc.setFont("helvetica","normal");
       doc.text("PHP " + Math.ceil(it.unitPrice*it.quantity).toLocaleString("en-PH"), right, y, {align:"right"}); y+=5;
-      doc.text(`${it.category} · ${it.size} ml x ${it.quantity}`, left, y); y+=7;
+      doc.text(`${dispCat(it.category)} · ${it.size} ml x ${it.quantity}`, left, y); y+=7;
     });
     doc.line(left,y,right,y); y+=8; doc.setFont("helvetica","bold");
     doc.text("Grand Total: PHP " + Math.ceil(cartTotal()).toLocaleString("en-PH"), right, y, {align:"right"}); y+=12;
