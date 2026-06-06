@@ -5780,6 +5780,7 @@
   const DISP_CAT = { "TBGCO":"The Boar Grooming Co." };
   const dispName = n => DISP_NAME[n] || n;
   const dispCat = c => DISP_CAT[c] || c;
+  const FORCE_INSTOCK = new Set(["Elysium PC","Elysium PPH SE"]);
   const initials = n => { const p = String(n).replace(/[^A-Za-z0-9 ]/g,'').trim().split(/\s+/); return (((p[0]||'')[0]||'C') + ((p[1]||'')[0]||'A')).toUpperCase(); };
 
   function imgNext(img){
@@ -5799,7 +5800,7 @@
   function stockInfo(it){
     const s = it.stock;
     if (s === 0 || s === "0") return { cls:"out", label:"Sold out", sold:true };
-    if (s === "" || s == null) return { cls:"made", label:"Made to order", sold:false };
+    if (s === "" || s == null) return FORCE_INSTOCK.has(it.name) ? { cls:"in", label:"In stock", sold:false } : { cls:"made", label:"Made to order", sold:false };
     return { cls:"in", label:"In stock", sold:false };
   }
   const badgeHtml = it => { const b = stockInfo(it); return `<span class="badge ${b.cls}">${b.label}</span>`; };
