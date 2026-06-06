@@ -4400,18 +4400,6 @@
 "description": "A bold and syrupy fruit bomb on skin, this blend contrasts dramatically with how it behaves on paper. Sweetened pineapple and apple are followed by cola-like dark fruit and cognac elements, evoking vintage indulgence with modern flair. The drydown reveals a smooth, vanilla-toned cola vibe. Full of personality and swagger: bright, punchy, and unforgettable."
 },
 {
-"name": "Tiger Gone Swimming",
-"prices": {
-"1": 82.35,
-"2": 164.71,
-"5": 411.76,
-"10": 823.53
-},
-"stock": 25,
-"image": "",
-"description": "Vibrant, energizing, and stunningly smooth. The grapefruit-orange explosion at the top is both sparkling and juicy, followed by a bright, polished citrus accord that radiates joy and confidence. Luminous and unforgettable, this blend is citrus excellence done right."
-},
-{
 "name": "Uplifting Air",
 "prices": {
 "1": 86.47,
@@ -5827,7 +5815,7 @@
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
-      for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&_it.name!=="Rayhaan Imperia"); }
+      for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!["Rayhaan Imperia","Tiger Gone Swimming"].includes(_it.name)); }
       buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
     });
   }
