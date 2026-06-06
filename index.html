@@ -5803,10 +5803,14 @@
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
-      buildCategories(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
+      buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
     });
   }
 
+  function patchCatalogImages(){
+    var FIX={"TBGCO|Under The Influence w/o canna":"TBGCO Under The Influence.jpg","TBGCO|Aventus Bake / IVL":"TBGCO Aventus Bake IVL.jpg"};
+    for(var c in CATALOG){ (CATALOG[c]||[]).forEach(function(it){ var k=c+"|"+it.name; if(FIX[k]&&!it.image) it.image=FIX[k]; }); }
+  }
   let _hi=0,_ht=null;
   function heroRender(){ var s=document.querySelectorAll("#heroSlides .hero-slide"); for(var i=0;i<s.length;i++) s[i].classList.toggle("active",i===_hi); var d=document.querySelectorAll("#heroDots button"); for(var j=0;j<d.length;j++) d[j].classList.toggle("on",j===_hi); }
   function heroGo(dir){ var n=document.querySelectorAll("#heroSlides .hero-slide").length; if(!n)return; _hi=(_hi+dir+n)%n; heroRender(); heroAuto(); }
