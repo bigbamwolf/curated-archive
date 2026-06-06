@@ -5235,18 +5235,6 @@
 "description": ""
 },
 {
-"name": "Rayhaan Imperia",
-"prices": {
-"1": 42,
-"2": 84,
-"5": 210,
-"10": 420
-},
-"stock": "",
-"image": "",
-"description": "Imperia opens with a strong lemony Aventus style DNA that may come across a little sharp at first, but the fragrance becomes far more rewarding as it develops. The mid and drydown reveal a richer pineapple character that feels almost jammy, musky, and woody, giving the scent more depth and appeal than the opening suggests. Once it settles, the composition feels smoother, fuller, and much more satisfying, with a refined fruity woody balance that makes it stand out strongly within this style of fragrance."
-},
-{
 "name": "Rumz Al Rasasi 9325 Pour Lui",
 "prices": {
 "1": 54,
@@ -5839,6 +5827,7 @@
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
+      for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&_it.name!=="Rayhaan Imperia"); }
       buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
     });
   }
