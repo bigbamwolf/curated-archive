@@ -158,11 +158,11 @@
 
   .scrim{position:fixed;inset:0;background:rgba(28,24,18,.42);opacity:0;pointer-events:none;transition:.2s;z-index:50}
   .scrim.open{opacity:1;pointer-events:auto}
-  .drawer{position:fixed;top:0;right:0;height:100%;width:430px;max-width:92vw;background:var(--bg);z-index:60;transform:translateX(100%);transition:transform .26s ease;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(40,30,10,.18)}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:430px;max-width:92vw;background:var(--bg);z-index:60;transform:translateX(100%);transition:transform .26s ease;overflow-y:auto;box-shadow:-20px 0 60px rgba(40,30,10,.18)}
   .drawer.open{transform:translateX(0)}
-  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:3}
   .drawer-head h3{font-family:var(--serif);font-weight:600;font-size:1.4rem;margin:0}
-  .drawer-body{flex:1;overflow-y:auto;padding:18px 22px}
+  .drawer-body{padding:18px 22px}
   .citem{display:grid;grid-template-columns:60px 1fr auto;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}
   .citem img,.citem .ph{width:60px;height:60px;border-radius:12px;object-fit:cover}
   .citem .ph{font-size:1.2rem}
@@ -375,7 +375,6 @@
     <button class="brand" onclick="goHome()"><img class="brand-logo" src="assets/logo-96.png" alt="Curated Archive logo"/>Curated <b>Archive</b></button>
     <nav class="nav-links">
       <button onclick="scrollToShop()">Shop</button>
-      <button onclick="scrollToShop('Aventus')">Aventus</button>
       <button onclick="goLayering()">Layering</button>
       <button onclick="goFinder()">Find your scent</button>
       <button onclick="goBundles()">Bundles</button>
