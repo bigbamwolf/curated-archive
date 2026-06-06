@@ -124,8 +124,8 @@
   .card-body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:6px;flex:1}
   .card .cat{color:var(--gold-deep);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
   .card .nm{font-family:var(--serif);font-weight:600;font-size:1.24rem;line-height:1.15;color:var(--ink)}
-  .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:8px}
-  .price{font-weight:600;font-size:.98rem}
+  .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding-top:8px}
+  .price{font-weight:600;font-size:.9rem;line-height:1.25}
   .price small{color:var(--muted);font-weight:400;font-size:.76rem}
   .badge{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;font-weight:600;display:inline-block}
   .badge.in{background:#eaf5ef;color:var(--ok)}
@@ -5766,11 +5766,12 @@
   let activeCat = "All", activeAvail = "all", activeSort = "feat";
   let view = { cat: null, item: null, size: null, qty: 1 };
 
-  const peso = n => "₱" + Number(n).toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  const pesoShort = n => "₱" + Number(n).toLocaleString("en-PH", { maximumFractionDigits: 0 });
+  const peso = n => "₱" + Math.ceil(Number(n)||0).toLocaleString("en-PH");
+  const pesoShort = n => "₱" + Math.ceil(Number(n)||0).toLocaleString("en-PH");
   const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const sizesOf = it => Object.keys(it.prices||{}).map(Number).sort((a,b)=>a-b);
   const minPrice = it => { const s = sizesOf(it); return s.length ? it.prices[String(s[0])] : 0; };
+  const priceRange = it => { const s=sizesOf(it); const ps=s.map(x=>Number(it.prices[String(x)])).filter(v=>v>0); if(!ps.length) return ""; const lo=Math.min(...ps), hi=Math.max(...ps); return lo===hi ? peso(lo) : peso(lo)+" to "+peso(hi); };
   const initials = n => { const p = String(n).replace(/[^A-Za-z0-9 ]/g,'').trim().split(/\s+/); return (((p[0]||'')[0]||'C') + ((p[1]||'')[0]||'A')).toUpperCase(); };
 
   function imgNext(img){
@@ -5861,7 +5862,7 @@
           <div class="cat">${esc(r.cat)}</div>
           <div class="nm">${esc(r.it.name)}</div>
           <div class="card-foot">
-            <div class="price"><small>from</small> ${pesoShort(minPrice(r.it))}</div>
+            <div class="price">${priceRange(r.it)}</div>
             ${badgeHtml(r.it)}
           </div>
         </div>
@@ -5909,6 +5910,7 @@
   function loadCart(){ try{ return JSON.parse(localStorage.getItem("ca_cart")||"[]"); }catch(e){ return []; } }
   function saveCart(){ localStorage.setItem("ca_cart", JSON.stringify(cart)); }
   function addToCart(line){
+    line.unitPrice = Math.ceil(Number(line.unitPrice)||0);
     const ex = cart.find(c => c.category===line.category && c.name===line.name && c.size===line.size);
     if (ex) ex.quantity += line.quantity; else cart.push(line);
     saveCart(); renderCart();
@@ -6087,7 +6089,7 @@
         <button class="card" onclick="openFinderItem(${i})">
           <div class="card-img">${imgTag(x.it,x.cat)}</div>
           <div class="card-body"><div class="cat">${esc(x.cat)}</div><div class="nm">${esc(x.it.name)}</div>
-          <div class="card-foot"><div class="price"><small>from</small> ${pesoShort(minPrice(x.it))}</div>${badgeHtml(x.it)}</div></div>
+          <div class="card-foot"><div class="price">${priceRange(x.it)}</div>${badgeHtml(x.it)}</div></div>
         </button>`).join("") || '<p style="text-align:center;color:var(--muted)">Tap retake and try different answers.</p>'}</div>
       <div style="text-align:center;margin-top:30px"><button class="btn btn-ghost" onclick="goFinder()">Retake the quiz</button></div>`;
   }
@@ -6310,11 +6312,11 @@
       if (y > 250){ doc.addPage(); y = 20; }
       doc.setFont("helvetica","bold"); doc.text(`${idx+1}. ${it.name}`, left, y);
       doc.setFont("helvetica","normal");
-      doc.text("PHP " + (it.unitPrice*it.quantity).toLocaleString("en-PH",{minimumFractionDigits:2}), right, y, {align:"right"}); y+=5;
+      doc.text("PHP " + Math.ceil(it.unitPrice*it.quantity).toLocaleString("en-PH"), right, y, {align:"right"}); y+=5;
       doc.text(`${it.category} · ${it.size} ml x ${it.quantity}`, left, y); y+=7;
     });
     doc.line(left,y,right,y); y+=8; doc.setFont("helvetica","bold");
-    doc.text("Grand Total: PHP " + cartTotal().toLocaleString("en-PH",{minimumFractionDigits:2}), right, y, {align:"right"}); y+=12;
+    doc.text("Grand Total: PHP " + Math.ceil(cartTotal()).toLocaleString("en-PH"), right, y, {align:"right"}); y+=12;
     doc.text("Payment", left, y); y+=6; doc.setFont("helvetica","normal");
     doc.text("GCash: " + STORE.gcashName + "  " + STORE.gcashNumber, left, y);
     doc.save((customer.name||"order").replace(/[^a-z0-9]+/gi,"_").toLowerCase() + "_curated_archive.pdf");
