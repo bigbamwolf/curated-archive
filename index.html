@@ -5808,7 +5808,7 @@
   }
 
   function patchCatalogImages(){
-    var FIX={"TBGCO|Under The Influence w/o canna":"TBGCO Under The Influence.jpg","TBGCO|Aventus Bake / IVL":"TBGCO Aventus Bake IVL.jpg"};
+    var FIX={"TBGCO|Under The Influence w/o canna":"TBGCO Under The Influence.jpg","TBGCO|Aventus Bake / IVL":"TBGCO Aventus Bake IVL.jpg","Dua|#Imagine":"Dua Imagine.jpg","Dua|Origins of Poseidon: Est 2010":"Dua Origins of Poseidon Est 2010.jpg","Dua|Perfumer’s Dua: Grapefruit":"Dua Perfumer’s Dua Grapefruit.jpg","Dua|Perfumer’s Dua: Pear":"Dua Perfumer’s Dua Pear.jpg","Dua|Perfumer’s Dua: Gold":"Dua Perfumer’s Dua Gold.jpg"};
     for(var c in CATALOG){ (CATALOG[c]||[]).forEach(function(it){ var k=c+"|"+it.name; if(FIX[k]&&!it.image) it.image=FIX[k]; }); }
   }
   let _hi=0,_ht=null;
