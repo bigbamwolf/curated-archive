@@ -3390,18 +3390,6 @@
 "description": "Aventus 21X01B opens with a fresh, musky bergamot that feels clean and airy. The mid stays citrusy and musky, maintaining the same light and transparent character. In the drydown, it simplifies further into a soft musky base. Overall, it comes across as extremely light, likely due to minimal oxidation at this stage."
 },
 {
-"name": "F2838",
-"prices": {
-"1": 186,
-"2": 372,
-"5": 930,
-"10": 1860
-},
-"stock": 78,
-"image": "Aventus F2838.jpg",
-"description": "Aventus F2838 - A playful pineapple atop a restrained woody dryness that becomes pepper-tinged and lively through the heart. The drydown divides: citrus-musky on skin, boldly woody on fabric. A striking character with evolving duality and excellent reactivation after heat exposure."
-},
-{
 "name": "F3334",
 "prices": {
 "1": 133.2,
@@ -5815,7 +5803,7 @@
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
-      for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!["Rayhaan Imperia","Tiger Gone Swimming"].includes(_it.name)); }
+      var _REM=["Rayhaan Imperia","Tiger Gone Swimming","F2838"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
       buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
     });
   }
