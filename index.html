@@ -195,6 +195,20 @@
   .terms-block ul{margin:6px 0 0;padding-left:20px}
   .terms-flag{border-color:var(--gold)}
   .terms-flag h3{color:var(--gold-deep)}
+  .nav-ico{background:none;border:none;cursor:pointer;color:var(--ink);padding:7px;position:relative;display:inline-flex;align-items:center;line-height:0}
+  .nav-ico:hover{color:var(--gold-deep)}
+  .nico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .nav-ico.signed-in .nico{stroke:var(--gold-deep)}
+  .ico-count{position:absolute;top:-1px;right:-3px;min-width:16px;height:16px;padding:0 4px;background:var(--gold-deep,#a98545);color:#fff;border-radius:9px;font-size:.62rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;font-variant-numeric:lining-nums}
+  .card-img{position:relative}
+  .wish-heart{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,.85);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;z-index:2;transition:.15s;padding:0}
+  .wish-heart:hover{background:#fff;transform:scale(1.08)}
+  .wish-heart .hicon{width:18px;height:18px;fill:none;stroke:#9a8f7d;stroke-width:1.8}
+  .wish-heart.on .hicon{fill:#c0392b;stroke:#c0392b}
+  .card.soldout .wish-heart{pointer-events:auto}
+  .wish-wrap{max-width:1100px;margin:0 auto;padding:8px 0 50px}
+  .wish-nudge{max-width:640px;margin:0 auto 26px;padding:14px 20px;background:linear-gradient(0deg,rgba(190,150,70,.08),rgba(190,150,70,.08));border:1px solid var(--gold);border-radius:14px;color:var(--ink);font-size:.9rem;line-height:1.5;text-align:center}
+  .wish-nudge a{color:var(--gold-deep);text-decoration:underline;cursor:pointer}
   .inspby{font-size:.72rem;color:var(--gold-deep);margin-top:3px}
   .card .nm,.citem .nm,.lpill .nm,.hb-slot .nm,#dName,#crumbName,.about-h,.story-text h2,.lcard-name{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
   .field:focus{border-color:var(--gold)}
@@ -404,9 +418,10 @@
       <button onclick="goAbout()">About</button>
     </nav>
     <div class="nav-right">
-      <button class="bag-btn" id="signInBtn" onclick="caSignIn()">Sign in</button>
-      <span class="acct-chip" id="acctChip" style="display:none" title="Account" onclick="caAccountMenu()"></span>
-      <button class="bag-btn" onclick="openCart()">Bag <span class="bag-count" id="bagCount">0</span></button>
+      <button class="nav-ico" onclick="navSearch()" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" class="nico"><circle cx="11" cy="11" r="7"/><line x1="20.5" y1="20.5" x2="16.4" y2="16.4"/></svg></button>
+      <button class="nav-ico" id="acctBtn" onclick="acctIcon()" aria-label="Account" title="Account"><svg viewBox="0 0 24 24" class="nico"><circle cx="12" cy="8" r="3.7"/><path d="M5.5 20.3c0-3.5 2.9-5.4 6.5-5.4s6.5 1.9 6.5 5.4"/></svg></button>
+      <button class="nav-ico" onclick="goWishlist()" aria-label="Wishlist" title="Wishlist"><svg viewBox="0 0 24 24" class="nico"><path d="M12 20.5S4 16 4 9.8C4 7 5.9 5.3 8.2 5.3c1.6 0 2.9 1 3.8 2.2.9-1.2 2.2-2.2 3.8-2.2C18.1 5.3 20 7 20 9.8 20 16 12 20.5 12 20.5z"/></svg><span class="ico-count" id="wishCount" style="display:none">0</span></button>
+      <button class="nav-ico" onclick="openCart()" aria-label="Bag" title="Bag"><svg viewBox="0 0 24 24" class="nico"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="ico-count" id="bagCount">0</span></button>
       <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
     </div>
   </div>
@@ -644,6 +659,15 @@
       <div class="terms-block"><h3>Fragrance Memory</h3><p>Your past memory of how a batch smelled years ago may not be identical due to:</p><ul><li>maturation</li><li>age of the juice</li><li>oxidation</li><li>storage conditions</li><li>your skin chemistry today vs before</li></ul></div>
       <div class="terms-block"><h3>Fair Expectations</h3><p>Aventus is a fresh, airy, elegant fragrance, and not a beastmode projector. Even with its premium price range, it is not designed to fill an entire room or create a nuclear scent trail. Manage expectations accordingly. Aventus shines in sophistication, subtle presence, and refined personal aura rather than loud projection.</p></div>
       <div class="terms-block"><h3>What You Are Really Paying For</h3><ul><li>The brand history and legacy</li><li>The prestigious heritage of Creed</li><li>The depth and nuance of natural ingredients</li><li>The story carried by each vintage batch</li><li>The curation, selection, and evaluation of batches</li><li>The collector experience and emotional ownership</li><li>The timeless elegance of the pineapple birch DNA</li><li>You are paying for craft, character, and refinement, not raw loudness.</li></ul></div>
+    </div>
+  </section>
+
+<section id="wishlistView" class="wrap hidden">
+    <div class="wish-wrap">
+      <h1 class="about-h">Your Wishlist</h1>
+      <div class="wish-nudge" id="wishNudge" style="display:none">Create a free account so your wishlist is saved and follows you across devices. Right now it lives only in this browser, and it clears if you wipe your data. <a onclick="acctIcon()">Make an account</a>.</div>
+      <div class="grid" id="wishGrid"></div>
+      <div id="wishEmpty" class="grid-empty" style="display:none">Your wishlist is empty. Tap the heart on any scent to save it here.</div>
     </div>
   </section>
 
@@ -5901,7 +5925,7 @@
     document.getElementById("grid").innerHTML = gridRows.map((r,i) => { const _b=stockInfo(r.it); return `
       <div class="card${_b.sold?' soldout':''}">
         <div class="card-click" onclick="openI(${i})">
-          <div class="card-img">${imgTag(r.it, r.cat)}</div>
+          <div class="card-img">${imgTag(r.it, r.cat)}<button class="wish-heart${inWish(r.it.name)?' on':''}" onclick="wishToggleI(${i},event)" aria-label="Save to wishlist"><svg viewBox="0 0 24 24" class="hicon"><path d="M12 20.5S4 16 4 9.8C4 7 5.9 5.3 8.2 5.3c1.6 0 2.9 1 3.8 2.2.9-1.2 2.2-2.2 3.8-2.2C18.1 5.3 20 7 20 9.8 20 16 12 20.5 12 20.5z"/></svg></button></div>
           <div class="card-body">
             <div class="cat">${esc(dispCat(r.cat))}</div>
             <div class="nm">${esc(dispName(r.it.name))}</div>
@@ -6006,15 +6030,43 @@
   }
 
   function openCart(){ document.getElementById("drawer").classList.add("open"); document.getElementById("scrim").classList.add("open"); }
+  let WISH=[]; try{ WISH=JSON.parse(localStorage.getItem("ca_wishlist")||"[]")||[]; }catch(e){ WISH=[]; }
+  let wishRows=[];
+  function inWish(n){ return WISH.indexOf(n)>=0; }
+  function updateWishCount(){ const c=document.getElementById("wishCount"); if(c){ c.textContent=WISH.length; c.style.display=WISH.length?"inline-flex":"none"; } }
+  function toggleWish(n){ const i=WISH.indexOf(n); if(i>=0) WISH.splice(i,1); else WISH.push(n); try{ localStorage.setItem("ca_wishlist",JSON.stringify(WISH)); }catch(e){} updateWishCount(); try{ renderGrid(); }catch(e){} }
+  function wishToggleI(i,ev){ if(ev){ ev.stopPropagation(); } const r=gridRows[i]; if(r) toggleWish(r.it.name); }
+  function navSearch(){ goShop(); setTimeout(function(){ const sx=document.getElementById("shopSearch"); if(sx){ sx.focus(); sx.scrollIntoView({block:"center"}); } },120); }
+  function acctIcon(){ if(window.ACCOUNT && ACCOUNT.session){ caAccountMenu(); } else { caSignIn(); } }
+  function goWishlist(){ showOnly("wishlistView"); renderWishlist(); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/wishlist"); }
+  function renderWishlist(){
+    wishRows=[]; for(const c in CATALOG){ (CATALOG[c]||[]).forEach(function(it){ if(inWish(it.name)) wishRows.push({cat:c,it:it}); }); }
+    const g=document.getElementById("wishGrid"), e=document.getElementById("wishEmpty"), nud=document.getElementById("wishNudge");
+    if(nud) nud.style.display=(wishRows.length && !(window.ACCOUNT&&ACCOUNT.session))?"block":"none";
+    if(!wishRows.length){ if(g) g.innerHTML=""; if(e) e.style.display="block"; return; }
+    if(e) e.style.display="none";
+    g.innerHTML = wishRows.map(function(r,i){ const b=stockInfo(r.it); return `
+      <div class="card${b.sold?' soldout':''}">
+        <div class="card-click" onclick="openWishI(${i})">
+          <div class="card-img">${imgTag(r.it,r.cat)}<button class="wish-heart on" onclick="wishRemoveI(${i},event)" aria-label="Remove from wishlist"><svg viewBox="0 0 24 24" class="hicon"><path d="M12 20.5S4 16 4 9.8C4 7 5.9 5.3 8.2 5.3c1.6 0 2.9 1 3.8 2.2.9-1.2 2.2-2.2 3.8-2.2C18.1 5.3 20 7 20 9.8 20 16 12 20.5 12 20.5z"/></svg></button></div>
+          <div class="card-body"><div class="cat">${esc(dispCat(r.cat))}</div><div class="nm">${esc(dispName(r.it.name))}</div>${provText(r.it.name)?`<div class="inspby">${esc(provText(r.it.name))}</div>`:''}<div class="card-foot"><div class="price">${priceRange(r.it)}</div>${badgeHtml(r.it)}</div></div>
+        </div>
+        ${b.sold?'':`<button class="btn btn-gold card-add" onclick="quickAddWishI(${i},event)">Add to Cart</button>`}
+      </div>`; }).join("");
+  }
+  function openWishI(i){ const r=wishRows[i]; if(r) openDetail(r.cat,r.it); }
+  function wishRemoveI(i,ev){ if(ev){ ev.stopPropagation(); } const r=wishRows[i]; if(r){ toggleWish(r.it.name); renderWishlist(); } }
+  function quickAddWishI(i,ev){ if(ev){ ev.stopPropagation(); } const r=wishRows[i]; if(!r) return; const it=r.it; const sz=sizesOf(it); if(!sz||!sz.length) return; const s=sz[0]; addToCart({ category:r.cat, name:it.name, size:s, quantity:1, unitPrice:Number(it.prices[String(s)]), image:it.image||"" }); const b=ev&&ev.currentTarget; if(b){ b.textContent="Added"; b.disabled=true; } }
+  setTimeout(updateWishCount,0);
   function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("scrim").classList.remove("open"); }
-  function goHome(){ ["aboutView","termsView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
+  function goHome(){ ["aboutView","termsView","wishlistView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
   function goAbout(){ showOnly("aboutView"); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/about"); }
   function goTerms(){ closeCart&&closeCart(); showOnly("termsView"); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/terms"); }
   function goShop(cat){ showOnly("shopView"); setCat(cat||"All"); window.scrollTo({top:0,behavior:"smooth"}); }
   function scrollToShop(cat){ goShop(cat); }
 
   let currentLayer = 0;
-  function showOnly(id){ ["homeView","aboutView","termsView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
+  function showOnly(id){ ["homeView","aboutView","termsView","wishlistView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
   // ---- hash routing: shareable deep links + working Back button on a static SPA ----
   let _fromHash=false, _lastHash=null;
   function slug(s){ return (s||"").toString().toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
@@ -6036,6 +6088,7 @@
       case "frankenbatch": goFrankenbatch(); break;
       case "about": goAbout(); break;
       case "terms": goTerms(); break;
+      case "wishlist": goWishlist(); break;
       default: goHome();
     }
   }
@@ -6451,7 +6504,7 @@
     const chip = document.getElementById("acctChip");
     const btn = document.getElementById("signInBtn");
     const first = ((p.name||"").split(" ")[0]) || "Member";
-    if (chip){ chip.textContent = "Hi, " + first; chip.style.display="inline-block"; }
+    if (chip){ chip.textContent = "Hi, " + first; chip.style.display="inline-block"; } const _ab=document.getElementById("acctBtn"); if(_ab){ _ab.title="Hi, "+first; _ab.classList.add("signed-in"); }
     if (btn) btn.style.display = "none";
     const set = (id,val)=>{ const el=document.getElementById(id); if(el && !el.value && val) el.value=val; };
     set("cName", p.name); set("cEmail", p.email); set("cContact", p.mobile); set("cAddress", p.address);
