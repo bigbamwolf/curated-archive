@@ -180,6 +180,9 @@
   .card.soldout{opacity:.6;pointer-events:none;cursor:default}
   .card.soldout .card-img img{filter:grayscale(.35)}
   .soldnote{font-size:.68rem;color:var(--muted);line-height:1.3;margin-top:6px;text-align:left}
+  .shopsearch{flex:1;min-width:200px;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:9px 14px;outline:none}
+  .shopsearch:focus{border-color:var(--gold)}
+  .inspby{font-size:.72rem;color:var(--gold-deep);margin-top:3px}
   .field:focus{border-color:var(--gold)}
   .pay{display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:6px 0 14px}
   .pay img{width:84px;height:84px;border-radius:10px;background:#fff;object-fit:contain;border:1px solid var(--line)}
@@ -494,6 +497,7 @@
       <div class="sec-head"><div><h2>The Collection</h2><p>Browse by house, then choose your size.</p></div></div>
       <div class="chips" id="chips"></div>
       <div class="shopbar">
+        <input class="shopsearch" id="shopSearch" type="text" autocomplete="off" placeholder="Search a scent, or the original it is inspired by..." oninput="renderGrid()">
         <label class="selwrap">Availability
           <select id="fAvail" onchange="setAvail(this.value)">
             <option value="all">All</option>
@@ -5764,6 +5768,7 @@
   const DISP_CAT = { "TBGCO":"The Boar Grooming Co." };
   const dispName = n => DISP_NAME[n] || n;
   const dispCat = c => DISP_CAT[c] || c;
+  const INSPIRED_BY = {"Warthog Stud":"Dior Homme Intense","Warthog Patchouli Haven":"Chanel Coromandel","Warthog Hombre":"JPG Le Male Le Parfum","Warthog Dark Elixir":"JPG Le Male Elixir","Warthog Citrus Oasis":"Dior Homme Cologne","Warthog Eternal Freshness":"Parfums de Marly Sedley","Warthog Royal Cologne":"Creed Aventus Cologne","Warthog Euphoria":"Roja Elysium Pour Homme Parfum","Warthog Cosmopolitan":"Guerlain L'Homme Ideal EDP","Warthog Red Moon":"Prada Luna Rossa Black","Prime Monkey Royal Zest":"Louis Vuitton Afternoon Swim"};
   const initials = n => { const p = String(n).replace(/[^A-Za-z0-9 ]/g,'').trim().split(/\s+/); return (((p[0]||'')[0]||'C') + ((p[1]||'')[0]||'A')).toUpperCase(); };
 
   function imgNext(img){
@@ -5795,7 +5800,7 @@
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
-      var _REM=["Rayhaan Imperia","Tiger Gone Swimming","F2838","17W01"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
+      var _REM=["Rayhaan Imperia","Tiger Gone Swimming"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
       buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
     });
   }
@@ -5843,6 +5848,8 @@
     if (activeCat === "All") categories.forEach(c => CATALOG[c].forEach(it => gridRows.push({cat:c, it})));
     else (CATALOG[activeCat]||[]).forEach(it => gridRows.push({cat:activeCat, it}));
     if (activeAvail !== "all") gridRows = gridRows.filter(r => stockInfo(r.it).cls === activeAvail);
+    var _q=(document.getElementById("shopSearch")?document.getElementById("shopSearch").value:"").toLowerCase().trim();
+    if(_q) gridRows = gridRows.filter(r=>[r.it.name,dispName(r.it.name),r.it.description||"",INSPIRED_BY[r.it.name]||"",r.cat].join(" ").toLowerCase().indexOf(_q)>=0);
     if (activeSort === "plow") gridRows.sort((a,b)=>minPrice(a.it)-minPrice(b.it));
     else if (activeSort === "phigh") gridRows.sort((a,b)=>minPrice(b.it)-minPrice(a.it));
     else if (activeSort === "az") gridRows.sort((a,b)=>String(a.it.name).localeCompare(String(b.it.name)));
@@ -5854,6 +5861,7 @@
         <div class="card-body">
           <div class="cat">${esc(dispCat(r.cat))}</div>
           <div class="nm">${esc(dispName(r.it.name))}</div>
+          ${INSPIRED_BY[r.it.name]?`<div class="inspby">Inspired by ${esc(INSPIRED_BY[r.it.name])}</div>`:''}
           <div class="card-foot">
             <div class="price">${priceRange(r.it)}</div>
             ${badgeHtml(r.it)}
