@@ -177,6 +177,9 @@
   .co h4{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin:0 0 12px}
   .field{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;outline:none}
   .field option,.selwrap select option{color:#1c1a17;background:#ffffff}
+  .card.soldout{opacity:.62}
+  .card.soldout .card-img img{filter:grayscale(.35)}
+  .soldnote{font-size:.68rem;color:var(--muted);line-height:1.3;margin-top:6px;text-align:left}
   .field:focus{border-color:var(--gold)}
   .pay{display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:6px 0 14px}
   .pay img{width:84px;height:84px;border-radius:10px;background:#fff;object-fit:contain;border:1px solid var(--line)}
@@ -3343,7 +3346,7 @@
 "description": "Aventus 18K01 - A lively burst of sweet pineapple transitions into a refined woody-citrus midtone with bergamot presence. Linear in progression, but assured in performance, especially on clothing. A dependable, clean-cut batch ideal for both skin and fabric application."
 },
 {
-"name": "21T01",
+"name": "20J01",
 "prices": {
 "1": 275.78,
 "2": 566.7,
@@ -3351,8 +3354,8 @@
 "10": 2833.5
 },
 "stock": 18,
-"image": "Aventus 21T01.jpg",
-"description": "Aventus 21T01 presents a darker character, comparable in depth to 16M01, but with its own distinct personality. The opening is earthy and woody, immediately setting a more serious and grounded tone, with a noticeable inky nuance reminiscent of a pentel pen that adds an interesting, almost industrial edge. As it develops into the mid, the woody profile remains dominant, but a subtle vanilla nuance begins to surface, softening the darkness and adding quiet richness.\n\nIn the drydown, citrus and musk emerge to lift the composition, creating contrast against the earlier heaviness while maintaining the recognizable Aventus DNA. Notably, the scent shows strong persistence, with traces of the DNA lingering on the skin even after washing with soap, highlighting its tenacity and staying power."
+"image": "Aventus 20J01.jpg",
+"description": "Aventus 20J01 presents a darker character, comparable in depth to 16M01, but with its own distinct personality. The opening is earthy and woody, immediately setting a more serious and grounded tone, with a noticeable inky nuance reminiscent of a pentel pen that adds an interesting, almost industrial edge. As it develops into the mid, the woody profile remains dominant, but a subtle vanilla nuance begins to surface, softening the darkness and adding quiet richness.\n\nIn the drydown, citrus and musk emerge to lift the composition, creating contrast against the earlier heaviness while maintaining the recognizable Aventus DNA. Notably, the scent shows strong persistence, with traces of the DNA lingering on the skin even after washing with soap, highlighting its tenacity and staying power."
 },
 {
 "name": "21V01",
@@ -5843,9 +5846,10 @@
     if (activeSort === "plow") gridRows.sort((a,b)=>minPrice(a.it)-minPrice(b.it));
     else if (activeSort === "phigh") gridRows.sort((a,b)=>minPrice(b.it)-minPrice(a.it));
     else if (activeSort === "az") gridRows.sort((a,b)=>String(a.it.name).localeCompare(String(b.it.name)));
+    gridRows.sort((a,b)=>(stockInfo(a.it).sold?1:0)-(stockInfo(b.it).sold?1:0));
     if (!gridRows.length){ document.getElementById("grid").innerHTML = `<div class="grid-empty">No scents match this filter. Try a different availability.</div>`; return; }
-    document.getElementById("grid").innerHTML = gridRows.map((r,i) => `
-      <button class="card" onclick="openI(${i})">
+    document.getElementById("grid").innerHTML = gridRows.map((r,i) => { const _b=stockInfo(r.it); return `
+      <button class="card${_b.sold?' soldout':''}" onclick="openI(${i})">
         <div class="card-img">${imgTag(r.it, r.cat)}</div>
         <div class="card-body">
           <div class="cat">${esc(dispCat(r.cat))}</div>
@@ -5854,8 +5858,9 @@
             <div class="price">${priceRange(r.it)}</div>
             ${badgeHtml(r.it)}
           </div>
+          ${_b.sold?'<div class="soldnote">No restock. Email to request, min 30ml, prepaid.</div>':''}
         </div>
-      </button>`).join("");
+      </button>`; }).join("");
   }
 
   function openI(i){ const r = gridRows[i]; if (r) openDetail(r.cat, r.it); }
