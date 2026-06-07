@@ -125,6 +125,8 @@
   .card .cat{color:var(--gold-deep);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
   .card .nm{font-family:var(--serif);font-weight:600;font-size:1.24rem;line-height:1.15;color:var(--ink)}
   .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding-top:8px}
+  .card-click{flex:1;display:flex;flex-direction:column;cursor:pointer}
+  .card-add{margin:0 14px 14px;padding:11px 14px;font-size:.9rem;border-radius:12px;width:auto}
   .price{font-weight:600;font-size:.9rem;line-height:1.25}
   .price small{color:var(--muted);font-weight:400;font-size:.76rem}
   .badge{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;font-weight:600;display:inline-block}
@@ -544,7 +546,7 @@
         <div class="sizes" id="dSizes"></div>
         <div class="qtyrow">
           <div class="stepper"><button onclick="bumpQty(-1)">−</button><b id="dQty">1</b><button onclick="bumpQty(1)">+</button></div>
-          <button class="btn btn-gold" id="dAdd" style="flex:1" onclick="addCurrentToCart()">Add to bag</button>
+          <button class="btn btn-gold" id="dAdd" style="flex:1" onclick="addCurrentToCart()">Add to Cart</button>
         </div>
         <div class="scent"><h3>The scent</h3><p id="dDesc"></p></div>
         <div class="mini-trust">
@@ -5891,22 +5893,26 @@
     gridRows.sort((a,b)=>(stockInfo(a.it).sold?1:0)-(stockInfo(b.it).sold?1:0));
     if (!gridRows.length){ document.getElementById("grid").innerHTML = `<div class="grid-empty">No scents match this filter. Try a different availability.</div>`; return; }
     document.getElementById("grid").innerHTML = gridRows.map((r,i) => { const _b=stockInfo(r.it); return `
-      <button class="card${_b.sold?' soldout':''}" onclick="openI(${i})">
-        <div class="card-img">${imgTag(r.it, r.cat)}</div>
-        <div class="card-body">
-          <div class="cat">${esc(dispCat(r.cat))}</div>
-          <div class="nm">${esc(dispName(r.it.name))}</div>
-          ${INSPIRED_BY[r.it.name]?`<div class="inspby">Inspired by ${esc(INSPIRED_BY[r.it.name])}</div>`:''}
-          <div class="card-foot">
-            <div class="price">${priceRange(r.it)}</div>
-            ${badgeHtml(r.it)}
+      <div class="card${_b.sold?' soldout':''}">
+        <div class="card-click" onclick="openI(${i})">
+          <div class="card-img">${imgTag(r.it, r.cat)}</div>
+          <div class="card-body">
+            <div class="cat">${esc(dispCat(r.cat))}</div>
+            <div class="nm">${esc(dispName(r.it.name))}</div>
+            ${INSPIRED_BY[r.it.name]?`<div class="inspby">Inspired by ${esc(INSPIRED_BY[r.it.name])}</div>`:''}
+            <div class="card-foot">
+              <div class="price">${priceRange(r.it)}</div>
+              ${badgeHtml(r.it)}
+            </div>
+            ${_b.sold?'<div class="soldnote">No restock. Email to request, min 30ml, prepaid.</div>':''}
           </div>
-          ${_b.sold?'<div class="soldnote">No restock. Email to request, min 30ml, prepaid.</div>':''}
         </div>
-      </button>`; }).join("");
+        ${_b.sold?'':`<button class="btn btn-gold card-add" onclick="quickAdd(${i},event)">Add to Cart</button>`}
+      </div>`; }).join("");
   }
 
   function openI(i){ const r = gridRows[i]; if (r) openDetail(r.cat, r.it); }
+  function quickAdd(i, ev){ if(ev) ev.stopPropagation(); const r=gridRows[i]; if(!r) return; const it=r.it; const sz=sizesOf(it); if(!sz||!sz.length) return; const s=sz[0]; addToCart({ category:r.cat, name:it.name, size:s, quantity:1, unitPrice:Number(it.prices[String(s)]), image:it.image||"" }); const b=ev&&ev.currentTarget; if(b){ const t=b.textContent; b.textContent="Added"; b.disabled=true; setTimeout(()=>{ b.textContent=t; b.disabled=false; }, 1100); } }
 
   function openDetail(cat, it){
     if(!_fromHash && it) setHash("#/p/"+slug(cat)+"/"+slug(it.name));
