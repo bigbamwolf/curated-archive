@@ -176,6 +176,7 @@
   .co{padding:18px 22px;border-top:1px solid var(--line);background:var(--surface)}
   .co h4{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin:0 0 12px}
   .field{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;outline:none}
+  .field option,.selwrap select option{color:#1c1a17;background:#ffffff}
   .field:focus{border-color:var(--gold)}
   .pay{display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:6px 0 14px}
   .pay img{width:84px;height:84px;border-radius:10px;background:#fff;object-fit:contain;border:1px solid var(--line)}
@@ -3294,18 +3295,6 @@
 "description": "Aventus 17Q11 - A perfectly calibrated harmony of wooded depth and juicy fruit, silky and beautifully structured. Devoid of harsh smokiness, this batch speaks to collectors who appreciate purity and balance within the Aventus profile. Smooth, elegant, and exceptionally refined."
 },
 {
-"name": "17W01",
-"prices": {
-"1": 243.9,
-"2": 484.35,
-"5": 1210.86,
-"10": 2421.72
-},
-"stock": 80,
-"image": "Aventus 17W01.png",
-"description": "Aventus 17W01 - A bergamot-forward entry with crisp brightness, maturing swiftly into a subtly smoky masculinity. The drydown glows with creamy vanilla and wood, creating an alluring signature trail that remains perceptible even through a face mask. Assertive yet polished."
-},
-{
 "name": "17X01",
 "prices": {
 "1": 125,
@@ -5803,7 +5792,7 @@
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
-      var _REM=["Rayhaan Imperia","Tiger Gone Swimming","F2838"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
+      var _REM=["Rayhaan Imperia","Tiger Gone Swimming","F2838","17W01"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
       buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
     });
   }
