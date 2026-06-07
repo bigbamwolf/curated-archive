@@ -548,6 +548,7 @@
           <div class="stepper"><button onclick="bumpQty(-1)">−</button><b id="dQty">1</b><button onclick="bumpQty(1)">+</button></div>
           <button class="btn btn-gold" id="dAdd" style="flex:1" onclick="addCurrentToCart()">Add to Cart</button>
         </div>
+        <div id="restockBox"></div>
         <div class="scent"><h3>The scent</h3><p id="dDesc"></p></div>
         <div class="mini-trust">
           <span><b>Authentic</b> · batch verified</span>
@@ -5819,7 +5820,7 @@
     if (cat) base.push(cat + " " + it.name + ".jpg");
     base.push(it.name + ".jpg");
     const cands = [];
-    [...new Set(base)].forEach(c => { const w = c.replace(/\.jpe?g$/i, ".webp"); if (w !== c) cands.push(w); cands.push(c); });
+    [...new Set(base)].forEach(c => { const w = c.replace(/\.(jpe?g|png)$/i, ".webp"); if (w !== c) cands.push(w); cands.push(c); });
     const list = [...new Set(cands)];
     return `<img src="${encodeURI(list[0])}" alt="${esc(it.name)}" loading="lazy" data-c='${esc(JSON.stringify(list))}' data-i="0" data-ini="${esc(initials(it.name))}" onerror="imgNext(this)">`;
   }
@@ -5906,7 +5907,7 @@
               <div class="price">${priceRange(r.it)}</div>
               ${badgeHtml(r.it)}
             </div>
-            ${_b.sold?'<div class="soldnote">No restock. Email to request, min 30ml, prepaid.</div>':''}
+            ${_b.sold?'<div class="soldnote">Sold out. Open for a back in stock alert.</div>':''}
           </div>
         </div>
         ${_b.sold?'':`<button class="btn btn-gold card-add" onclick="quickAdd(${i},event)">Add to Cart</button>`}
@@ -5929,8 +5930,28 @@
     const sb = document.getElementById("dStock"); sb.className = "badge " + b.cls; sb.textContent = b.label;
     document.getElementById("detailImg").innerHTML = imgTag(it, view.cat);
     document.getElementById("dDesc").textContent = DESC[it.name] || it.description || "A hand decanted selection from the Curated Archive.";
-    renderSizes(); renderQty();
+    renderSizes(); renderQty(); renderRestock();
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function renderRestock(){
+    const box = document.getElementById("restockBox"); if(!box) return;
+    const it = view.item;
+    if(!stockInfo(it).sold){ box.innerHTML=""; return; }
+    box.innerHTML = `<div style="margin-top:14px;padding:14px 16px;background:var(--gold-soft);border:1px solid var(--line);border-radius:12px">
+      <div style="font-family:var(--serif);font-size:1.15rem;color:var(--ink);margin-bottom:8px">Out of stock. Get a back in stock alert.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="rkEmail" type="email" placeholder="you@email.com" autocomplete="email" style="flex:1;min-width:200px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff"><button class="btn btn-gold" id="rkBtn" onclick="restockSubmit()">Notify me</button></div>
+      <div style="font-size:.8rem;color:var(--muted);margin-top:7px">One email the moment it returns. Restocks are min 30ml, prepaid.</div></div>`;
+  }
+  async function restockSubmit(){
+    const it = view.item; const inp = document.getElementById("rkEmail");
+    const email = ((inp && inp.value) || "").trim();
+    if(!email || email.indexOf("@") < 1){ if(inp){ inp.focus(); inp.style.borderColor = "#c0573e"; } return; }
+    const btn = document.getElementById("rkBtn"); if(btn){ btn.disabled = true; btn.textContent = "Saving..."; }
+    try{ await fetch(API_CONFIG.apiBase, { method:"POST", body: JSON.stringify({ action:"restock", store: API_CONFIG.storeName, item: it.name, email }) }); }catch(e){}
+    const box = document.getElementById("restockBox");
+    if(box) box.innerHTML = `<div style="margin-top:14px;padding:14px 16px;background:var(--gold-soft);border:1px solid var(--line);border-radius:12px">
+      <div style="font-family:var(--serif);font-size:1.15rem;color:var(--ink);margin-bottom:6px">You are on the list.</div>
+      <div style="font-size:.9rem;color:var(--muted)">We will email <b>${esc(email)}</b> the moment ${esc(dispName(it.name))} is back in stock.</div></div>`;
   }
 
   function renderSizes(){
