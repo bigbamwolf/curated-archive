@@ -182,6 +182,17 @@
   .soldnote{font-size:.68rem;color:var(--muted);line-height:1.3;margin-top:6px;text-align:left}
   .shopsearch{flex:1;min-width:200px;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:9px 14px;outline:none}
   .shopsearch:focus{border-color:var(--gold)}
+  .agree{display:flex;gap:9px;align-items:flex-start;font-size:.82rem;color:var(--muted);line-height:1.45;margin:6px 0 12px;cursor:pointer;text-align:left}
+  .agree input{margin-top:2px;flex-shrink:0;width:16px;height:16px;accent-color:var(--gold)}
+  .agree a{color:var(--gold-deep);text-decoration:underline;cursor:pointer}
+  .terms-wrap{max-width:760px;margin:0 auto;padding:14px 0 50px}
+  .terms-intro{text-align:center;color:var(--muted);max-width:560px;margin:0 auto 30px;line-height:1.6}
+  .terms-block{margin:0 0 18px;padding:18px 22px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+  .terms-block h3{font-family:var(--serif);font-size:1.18rem;margin:0 0 8px;color:var(--ink)}
+  .terms-block p,.terms-block li{color:#4a463f;line-height:1.65;font-size:.92rem;margin:0}
+  .terms-block ul{margin:6px 0 0;padding-left:20px}
+  .terms-flag{border-color:var(--gold)}
+  .terms-flag h3{color:var(--gold-deep)}
   .inspby{font-size:.72rem;color:var(--gold-deep);margin-top:3px}
   .card .nm,.citem .nm,.lpill .nm,.hb-slot .nm,#dName,#crumbName,.about-h,.story-text h2,.lcard-name{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
   .field:focus{border-color:var(--gold)}
@@ -614,6 +625,25 @@
   </section>
 </main>
 
+<section id="termsView" class="wrap hidden">
+    <div class="terms-wrap">
+      <h1 class="about-h">Terms &amp; Conditions</h1>
+      <p class="terms-intro">Please read before you order. Placing an order means you have read and agreed to everything below.</p>
+      <div class="terms-block terms-flag"><h3>All Sales Final, No Returns</h3><p>Every order is decanted to order and is considered sold the moment it is filled. We do not accept returns, refunds, or exchanges on the basis of personal scent preference, skin performance, or change of mind.</p></div>
+      <div class="terms-block terms-flag"><h3>Breakage in Transit</h3><p>We pack every decant extremely securely. Once it leaves us in good condition, breakage or damage during shipping is the courier&#39;s responsibility, not ours. Please inspect on arrival and file any breakage claim directly with the courier.</p></div>
+      <div class="terms-block"><h3>Standard Buyer Disclaimer</h3><p>Scent perception varies based on skin chemistry, humidity, temperature, storage, oxidation level, and application method. Results may differ between skin and clothing. We encourage testing on your own skin before forming conclusions. All fragrances are authentic and stored with care. However, we do not control how the scent behaves on different individuals.</p></div>
+      <div class="terms-block"><h3>Aventus Batch Reminder</h3><p>Aventus batches naturally differ due to formulation variations per production run. Notes described here are based on testing under my skin chemistry and environment. Your individual experience may vary.</p></div>
+      <div class="terms-block"><h3>Oxidation and Maturation Notice</h3><p>Some batches, especially F batches, develop deeper performance and smoother transitions after exposure to air. A fresh bottle may smell different after weeks of usage. Fragrances with lower skin performance may last significantly longer on fabric. For best performance, apply to both skin and clothing.</p></div>
+      <div class="terms-block"><h3>Testing Behavior</h3><p>The same batch may present differently on:</p><ul><li>skin vs clothing</li><li>freshly sprayed vs drydown</li><li>air conditioning vs outdoor heat</li><li>humid vs dry climate</li></ul></div>
+      <div class="terms-block"><h3>Environmental Impact and Nose Fatigue</h3><p>Philippine weather, sweat acidity, room temperature, and ventilation can affect projection and longevity. You may stop smelling the fragrance due to olfactory fatigue, even if others can still smell it around you.</p></div>
+      <div class="terms-block terms-flag"><h3>No Return Due to Scent Subjectivity</h3><p>Fragrance impressions are subjective. Returns or refunds are not accepted on the basis of personal scent preference or skin performance.</p></div>
+      <div class="terms-block"><h3>Decant Handling</h3><p>Since these are transfers from original bottles to decants, minor variation can occur due to oxygen exposure during transfer and temporary agitation of scent molecules.</p></div>
+      <div class="terms-block"><h3>Fragrance Memory</h3><p>Your past memory of how a batch smelled years ago may not be identical due to:</p><ul><li>maturation</li><li>age of the juice</li><li>oxidation</li><li>storage conditions</li><li>your skin chemistry today vs before</li></ul></div>
+      <div class="terms-block"><h3>Fair Expectations</h3><p>Aventus is a fresh, airy, elegant fragrance, and not a beastmode projector. Even with its premium price range, it is not designed to fill an entire room or create a nuclear scent trail. Manage expectations accordingly. Aventus shines in sophistication, subtle presence, and refined personal aura rather than loud projection.</p></div>
+      <div class="terms-block"><h3>What You Are Really Paying For</h3><ul><li>The brand history and legacy</li><li>The prestigious heritage of Creed</li><li>The depth and nuance of natural ingredients</li><li>The story carried by each vintage batch</li><li>The curation, selection, and evaluation of batches</li><li>The collector experience and emotional ownership</li><li>The timeless elegance of the pineapple birch DNA</li><li>You are paying for craft, character, and refinement, not raw loudness.</li></ul></div>
+    </div>
+  </section>
+
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -637,6 +667,7 @@
     </div>
     <div class="legal">
       <span>© <span id="yr"></span> Curated Archive</span>
+      <a onclick="goTerms()" style="display:inline;margin-left:14px;color:#b3a892;text-decoration:underline">Terms &amp; Conditions</a>
     </div>
   </div>
 </footer>
@@ -673,6 +704,7 @@
       <div class="ph" id="qrHolder">GCash QR</div>
       <div><b id="gcashName"></b><small id="gcashNumber"></small><small>Pay here if checkout is offline.</small></div>
     </div>
+    <label class="agree"><input type="checkbox" id="cAgree"><span>I have read and agree to the <a onclick="goTerms()">Terms &amp; Conditions</a>. All sales are final, decants are made to order, no returns or refunds.</span></label>
     <button class="btn btn-gold btn-block" id="placeBtn" onclick="placeOrder()">Place order</button>
     <button class="btn btn-ghost btn-block" style="margin-top:9px" onclick="downloadPdf()">Download order as PDF</button>
     <div class="ostatus" id="orderStatus"></div>
@@ -5942,13 +5974,14 @@
 
   function openCart(){ document.getElementById("drawer").classList.add("open"); document.getElementById("scrim").classList.add("open"); }
   function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("scrim").classList.remove("open"); }
-  function goHome(){ ["aboutView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
+  function goHome(){ ["aboutView","termsView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
   function goAbout(){ showOnly("aboutView"); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/about"); }
+  function goTerms(){ closeCart&&closeCart(); showOnly("termsView"); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/terms"); }
   function goShop(cat){ showOnly("shopView"); setCat(cat||"All"); window.scrollTo({top:0,behavior:"smooth"}); }
   function scrollToShop(cat){ goShop(cat); }
 
   let currentLayer = 0;
-  function showOnly(id){ ["homeView","aboutView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
+  function showOnly(id){ ["homeView","aboutView","termsView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
   // ---- hash routing: shareable deep links + working Back button on a static SPA ----
   let _fromHash=false, _lastHash=null;
   function slug(s){ return (s||"").toString().toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
@@ -5969,6 +6002,7 @@
       case "hybrid": goHybrid(); break;
       case "frankenbatch": goFrankenbatch(); break;
       case "about": goAbout(); break;
+      case "terms": goTerms(); break;
       default: goHome();
     }
   }
@@ -6276,6 +6310,7 @@
 
   async function placeOrder(){
     if (!cart.length){ alert("Your bag is empty."); return; }
+    var _ag=document.getElementById("cAgree"); if (!_ag || !_ag.checked){ alert("Please tick the box to agree to the Terms and Conditions, all sales final and no returns, before placing your order."); _ag&&_ag.focus&&_ag.focus(); return; }
     const customer = validCheckout(); if (!customer) return;
     const status = document.getElementById("orderStatus");
     const btn = document.getElementById("placeBtn");
