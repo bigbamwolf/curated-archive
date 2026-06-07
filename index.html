@@ -5765,7 +5765,7 @@
   const sizesOf = it => Object.keys(it.prices||{}).map(Number).sort((a,b)=>a-b);
   const minPrice = it => { const s = sizesOf(it); return s.length ? it.prices[String(s[0])] : 0; };
   const priceRange = it => { const s=sizesOf(it); const ps=s.map(x=>Number(it.prices[String(x)])).filter(v=>v>0); if(!ps.length) return ""; const lo=Math.min(...ps), hi=Math.max(...ps); return lo===hi ? peso(lo) : peso(lo)+" to "+peso(hi); };
-  const DISP_NAME = { "TBGCO Blanc":"The Boar Grooming Co. Blanc", "Elysium PC":"Elysium Pour Homme Parfum Cologne", "Elysium PPH SE":"Elysium Pour Homme Parfum Special Edition" };
+  const DISP_NAME = { "TBGCO Blanc":"The Boar Grooming Co. Blanc", "Elysium PC":"Elysium Pour Homme Parfum Cologne", "Elysium PPH SE":"Elysium Pour Homme Parfum Special Edition", "Cap Cacao":"Captivate Cacao", "Cap Sedley":"Captivate Sedley", "Cap Toffee":"Captivate Toffee", "Cap Raspberry":"Captivate Raspberry", "Cap Rose":"Captivate Rose", "Cap Strawberry":"Captivate Strawberry", "Cap Peach":"Captivate Peach" };
   const DISP_CAT = { "TBGCO":"The Boar Grooming Co." };
   const dispName = n => DISP_NAME[n] || n;
   const dispCat = c => DISP_CAT[c] || c;
