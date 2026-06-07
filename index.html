@@ -5814,10 +5814,12 @@
     const d = document.createElement('div'); d.className = 'ph'; d.textContent = img.dataset.ini || 'CA'; img.replaceWith(d);
   }
   function imgTag(it, cat){
+    const base = [];
+    if (it.image) base.push(it.image);
+    if (cat) base.push(cat + " " + it.name + ".jpg");
+    base.push(it.name + ".jpg");
     const cands = [];
-    if (it.image) cands.push(it.image);
-    if (cat) cands.push(cat + " " + it.name + ".jpg");
-    cands.push(it.name + ".jpg");
+    [...new Set(base)].forEach(c => { const w = c.replace(/\.jpe?g$/i, ".webp"); if (w !== c) cands.push(w); cands.push(c); });
     const list = [...new Set(cands)];
     return `<img src="${encodeURI(list[0])}" alt="${esc(it.name)}" loading="lazy" data-c='${esc(JSON.stringify(list))}' data-i="0" data-ini="${esc(initials(it.name))}" onerror="imgNext(this)">`;
   }
