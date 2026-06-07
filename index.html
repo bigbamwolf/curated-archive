@@ -133,6 +133,7 @@
   .badge.in{background:#eaf5ef;color:var(--ok)}
   .badge.made{background:var(--gold-soft);color:var(--gold-deep)}
   .badge.out{background:#f6e9e9;color:#a4443a}
+  .badge.low{background:#fbedda;color:#b5651d}
 
   .detail{display:grid;grid-template-columns:1fr 1fr;gap:46px;padding:38px 0 60px}
   .crumbs{font-size:.8rem;color:var(--muted);margin:22px 0 0}
@@ -5851,9 +5852,12 @@
     const list = [...new Set(cands)];
     return `<img src="${encodeURI(list[0])}" alt="${esc(it.name)}" loading="lazy" data-c='${esc(JSON.stringify(list))}' data-i="0" data-ini="${esc(initials(it.name))}" onerror="imgNext(this)">`;
   }
+  const LOW_STOCK = 10;
   function stockInfo(it){
     const s = it.stock;
     if (s === 0 || s === "0") return { cls:"out", label:"Sold out", sold:true };
+    const n = Number(s);
+    if (isFinite(n) && n > 0 && n <= LOW_STOCK) return { cls:"low", label:"Only " + n + " left", sold:false, low:true };
     return { cls:"in", label:"In stock", sold:false };
   }
   const badgeHtml = it => { const b = stockInfo(it); return `<span class="badge ${b.cls}">${b.label}</span>`; };
