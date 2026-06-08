@@ -14,14 +14,15 @@
 <meta property="og:title" content="Curated Archive | Fragrance Decants, Creed Aventus Manila">
 <meta property="og:description" content="Curated in private, reserved for those who already know its worth. Authentic Creed Aventus, Dua, and niche decants, 1ml to 10ml. Ships within the Philippines only, no international shipping.">
 <meta property="og:url" content="https://curated-archive.com/">
-<meta property="og:image" content="https://curated-archive.com/media/hero-poster.jpg">
-<meta property="og:image:width" content="1920">
-<meta property="og:image:height" content="1080">
+<meta property="og:image" content="https://curated-archive.com/assets/og-cover-v2.png">
+<meta property="og:image:alt" content="Curated Archive, curated in private, reserved for those who already know its worth.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_PH">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Curated Archive | Fragrance Decants, Creed Aventus Manila">
 <meta name="twitter:description" content="Curated in private, reserved for those who already know its worth. Creed Aventus, Dua, niche decants, 1ml to 10ml. Philippines only.">
-<meta name="twitter:image" content="https://curated-archive.com/media/hero-poster.jpg">
+<meta name="twitter:image" content="https://curated-archive.com/assets/og-cover-v2.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"OnlineStore","name":"Curated Archive","slogan":"Curated in private, reserved for those who already know its worth.","url":"https://curated-archive.com/","logo":"https://curated-archive.com/assets/logo-512.png","image":"https://curated-archive.com/media/hero-poster.jpg","description":"Authentic fragrance decants of rare Creed Aventus batches, Dua, Parfums Vintage, and niche houses in 1ml, 2ml, 5ml, and 10ml. Manila, Philippines.","sameAs":["https://www.instagram.com/curatedarchive.fragrance/"],"areaServed":{"@type":"Country","name":"Philippines"},"currenciesAccepted":"PHP","paymentAccepted":"GCash, Maya, Credit Card","priceRange":"₱₱"}
 </script>
@@ -451,6 +452,15 @@
     .brand-logo{width:26px;height:26px}
     .nico{width:18px;height:18px}
     .nav{height:52px}
+  }
+
+  /* Mobile hero fix, keep banner wordmark visible + shorter so headline + buttons land above the fold */
+  @media(max-width:720px){
+    .hero-cine{min-height:auto;height:auto;padding-top:34px;padding-bottom:42px}
+    .hero-cine .hero-bg img,.hero-cine .hero-bg picture,.hero-cine .hero-bg video{object-position:center 35%!important}
+    .hero-cine-inner{padding-left:18px;padding-right:18px}
+    .hero-cta{flex-wrap:wrap;gap:10px}
+    .hero-cta .btn{flex:1 1 auto;min-width:0}
   }
 </style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
