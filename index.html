@@ -5962,6 +5962,7 @@
     const sb = document.getElementById("dStock"); sb.className = "badge " + b.cls; sb.textContent = b.label;
     document.getElementById("detailImg").innerHTML = imgTag(it, view.cat);
     document.getElementById("dDesc").textContent = DESC[it.name] || DUA_DESC[it.name] || it.description || "A hand decanted selection from the Curated Archive.";
+    var _dp=document.getElementById("dProv"); if(_dp){ var pt=(typeof provText==="function")?provText(it.name):""; _dp.textContent=pt||""; _dp.style.display=pt?"block":"none"; }
     renderSizes(); renderQty(); renderRestock();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
