@@ -6233,10 +6233,12 @@
   // Hand-curated bundles (Boss picks). Auto-builder appends more below.
   const BUNDLES_SEED = [
     { title:"Aventus Batch Flight", blurb:"Three Creed Aventus batches, entry to legendary. Feel how the codes diverge on skin.", names:[['Aventus','F1520'],['Aventus','17Q11'],['Aventus','10J02']] },
-    { title:"Aventus Discovery Trio", blurb:"Three Creed Aventus batches Boss recommends as the gateway into the Aventus rabbit hole. Feel the years and the formula shifts on skin.", names:[['Aventus','12D01'],['Aventus','16M01'],['Aventus','18F21']] },
+    { title:"Aventus Discovery Trio", blurb:"The cheap gateway into the Aventus rabbit hole. One year code, one F-batch, one signature classic. Feel how the codes diverge without breaking the bank.", names:[['Aventus','17X01'],['Aventus','F388'],['Aventus','18K01']] },
     { title:"Filipino Niche Pride", blurb:"Three of the strongest local niche houses in the archive. Coffee + rose, beer + lychee, and the Tadhana love story.", names:[['Local Niche','Hiraya Wild Brew'],['Local Niche','Wren Atelier Cerveza Rosa'],['Local Niche','Tadhana Lover']] },
     { title:"Gourmand Dessert Set", blurb:"Three dessert wears for when you want to smell good enough to eat. Coffee cake, chocolate, and cookies and cream, all photorealistic.", names:[['Dua','Caramel Coffee Cake'],['Dua','High on Chocolate'],['Middle Eastern','Tubbees Cookies & Cream']] },
     { title:"Parfums Vintage Crown Trio", blurb:"Three flagships from the Parfums Vintage lineup, the inspired bottles built like jewels. King, Intense, and the namesake Emperor Maximus.", names:[['Parfums Vintage','King'],['Parfums Vintage','Intense'],['Parfums Vintage','Emperor Maximus']] },
+    { title:"Fresh Escape", blurb:"The real freshies. Cool, clean, daytime. PdM Sedley like Sprite from top to drydown, PdM GNTonic with lime and fizz, and Roja Oceania like an ice cold citrus under the midday sun.", names:[['Niche','Sedley'],['Niche','GNTonic'],['Niche','Oceania']] },
+    { title:"Dua Discovery", blurb:"New to Dua? One Aventus inspired (#Imagine), one true Dua Original (Matcha Waffle Ice Cream), and one Aventus hybrid (44 Shades of Cherry Poseidon). Find your signature fast.", names:[['Dua','#Imagine'],['Dua','Matcha Waffle Ice Cream'],['Dua','44 Shades of Cherry Poseidon']] },
   ];
   const BUNDLES = [];
   function bundleSeedHydrate_(){
@@ -6255,9 +6257,9 @@
     if (BUNDLES.length >= 7) return;
     const av=(CATALOG['Aventus']||[]).map(it=>({cat:'Aventus',it})).filter(x=>minPrice(x.it)).sort((a,b)=>minPrice(a.it)-minPrice(b.it));
     // Aventus Batch Flight is now curated in BUNDLES_SEED (with F1520 entry instead of imageless F463)
-    const g=pickByTag(['sweet','gourmand'],3); if(g.length>=3) BUNDLES.push({title:"Gourmand Trio", blurb:"Dessert you can wear. The three sweetest, richest pours in the archive.", picks:g});
-    const f=pickByTag(['fresh','citrus','aquatic'],3); if(f.length>=3) BUNDLES.push({title:"Fresh Escape", blurb:"Cool, clean, daytime. A set that wears like sea air and citrus zest.", picks:f});
-    const dua=(CATALOG['Dua']||[]).map(it=>({cat:'Dua',it})).filter(x=>minPrice(x.it)).slice(0,3); if(dua.length>=3) BUNDLES.push({title:"Dua Discovery", blurb:"New to Dua? Three crowd favourites to find your signature fast.", picks:dua});
+    // Gourmand Trio removed (was all TBGCO, duplicates Gourmand Dessert Set)
+    // Fresh Escape moved to BUNDLES_SEED (real freshies, was picking all TBGCO sweet fruit dupes)
+    // Dua Discovery moved to BUNDLES_SEED (curated picks, 1 and Only Poseidon swapped for Matcha Waffle Ice Cream, a true Dua Original)
   }
   function bLines(b){ return b.picks.map(p=>{ const s=[5,2,1,10].find(x=>p.it.prices[String(x)]!=null)||sizesOf(p.it)[0]; return {cat:p.cat,it:p.it,size:s,price:Number(p.it.prices[String(s)])}; }); }
   function goBundles(){ buildBundles(); showOnly("bundlesView"); renderBundles(); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/bundles"); }
