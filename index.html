@@ -5994,7 +5994,7 @@
     document.getElementById("dPrice").textContent = peso(it.prices[String(view.size)] * view.qty);
     const b = stockInfo(it);
     const add = document.getElementById("dAdd");
-    add.disabled = b.sold; add.textContent = b.sold ? "Sold out" : "Add to bag";
+    add.disabled = b.sold; add.textContent = b.sold ? "Sold out" : "Add to Cart";
   }
   function pickSize(s){ view.size = s; renderSizes(); }
   function renderQty(){ document.getElementById("dQty").textContent = view.qty; }
