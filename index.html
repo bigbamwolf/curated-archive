@@ -730,8 +730,6 @@
     <select class="field" id="cDelivery" onchange="renderCart()">
       <option value="">Choose your courier</option>
       <option value="J&amp;T Express">J&amp;T Express · 2 to 5 days · ₱85</option>
-      <option value="Ninja Van">Ninja Van · 2 to 5 days · ₱90</option>
-      <option value="Flash Express">Flash Express · 2 to 4 days · ₱75</option>
       <option value="LBC Express">LBC Express · 1 to 3 days · ₱150</option>
       <option value="Grab Express">Grab Express (Metro Manila same day) · ₱250</option>
       <option value="Lalamove">Lalamove (Metro Manila same day) · ₱350</option>
@@ -6029,8 +6027,6 @@
   function removeLine(i){ cart.splice(i,1); saveCart(); renderCart(); }
   const SHIPPING = { threshold: 10000, options: [
     { name:"J&T Express",    fee:85,  eta:"2 to 5 days" },
-    { name:"Ninja Van",      fee:90,  eta:"2 to 5 days" },
-    { name:"Flash Express",  fee:75,  eta:"2 to 4 days" },
     { name:"LBC Express",    fee:150, eta:"1 to 3 days" },
     { name:"Grab Express",   fee:250, eta:"Same day Metro Manila" },
     { name:"Lalamove",       fee:350, eta:"Same day Metro Manila" }
