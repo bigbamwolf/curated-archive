@@ -6230,14 +6230,27 @@
   }
   function openFinderItem(i){ const m=finderMatches[i]; if(m) openDetail(m.cat,m.it); }
 
+  // Hand-curated bundles (Boss picks). Auto-builder appends more below.
+  const BUNDLES_SEED = [
+    { title:"Aventus Discovery Trio", blurb:"Three Creed Aventus batches Boss recommends as the gateway into the Aventus rabbit hole. Feel the years and the formula shifts on skin.", names:[['Aventus','12D01'],['Aventus','16M01'],['Aventus','18F21']] },
+    { title:"Filipino Niche Pride", blurb:"Three of the strongest local niche houses in the archive. Coffee + rose, beer + lychee, and the Tadhana love story.", names:[['Local Niche','Hiraya Wild Brew'],['Local Niche','Wren Atelier Cerveza Rosa'],['Local Niche','Tadhana Lover']] },
+    { title:"Gourmand Dessert Set", blurb:"Three dessert wears for when you want to smell good enough to eat. Coffee cake, chocolate, and cookies and cream, all photorealistic.", names:[['Dua','Caramel Coffee Cake'],['Dua','High on Chocolate'],['Middle Eastern','Tubbees Cookies & Cream']] },
+  ];
   const BUNDLES = [];
+  function bundleSeedHydrate_(){
+    BUNDLES_SEED.forEach(function(b){
+      var picks = b.names.map(function(pair){ var c=pair[0], n=pair[1]; var it=((CATALOG[c]||[]).find(function(x){return x.name===n;})); return it?{cat:c,it:it}:null; }).filter(Boolean);
+      if (picks.length === b.names.length) BUNDLES.push({title:b.title, blurb:b.blurb, picks:picks});
+    });
+  }
   function pickByTag(tags, n){
     return categories.flatMap(c=>CATALOG[c].map(it=>({cat:c,it})))
       .filter(x=>minPrice(x.it) && tagsFor(x.it).some(t=>tags.includes(t)))
       .sort((a,b)=>minPrice(a.it)-minPrice(b.it)).slice(0,n);
   }
   function buildBundles(){
-    if (BUNDLES.length) return;
+    if (!BUNDLES.length) bundleSeedHydrate_();
+    if (BUNDLES.length >= 7) return;
     const av=(CATALOG['Aventus']||[]).map(it=>({cat:'Aventus',it})).filter(x=>minPrice(x.it)).sort((a,b)=>minPrice(a.it)-minPrice(b.it));
     if(av.length>=3) BUNDLES.push({title:"Aventus Batch Flight", blurb:"Three Creed Aventus batches, entry to legendary. Feel how the codes diverge on skin.", picks:[av[0],av[av.length>>1],av[av.length-1]]});
     const g=pickByTag(['sweet','gourmand'],3); if(g.length>=3) BUNDLES.push({title:"Gourmand Trio", blurb:"Dessert you can wear. The three sweetest, richest pours in the archive.", picks:g});
