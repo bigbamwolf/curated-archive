@@ -5894,7 +5894,7 @@
       const r = await fetch(`${API_CONFIG.apiBase}?action=catalog&v=${Date.now()}`, { cache:"no-store" });
       if (!r.ok) return;
       const d = await r.json();
-      if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog;
+      if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){}
     }catch(e){ /* keep embedded */ }
   }
 
