@@ -416,6 +416,42 @@
   .vac-bar{position:sticky;top:0;z-index:9999;display:none;background:linear-gradient(90deg,#b3a892,#d4c89e);color:#1a1612;padding:11px 18px;text-align:center;font-size:13px;letter-spacing:.04em;font-weight:600;box-shadow:0 2px 12px rgba(0,0,0,.18)}
   .vac-bar.on{display:block}
   body.vac-on .btn-buy,body.vac-on .card-add,body.vac-on .btn-gold[onclick*="placeOrder"],body.vac-on .btn-gold[onclick*="addBundle"]{opacity:.45;pointer-events:none;filter:grayscale(.4)}
+
+  /* Mobile responsiveness, single comprehensive breakpoint */
+  @media(max-width:720px){
+    .announce{font-size:.6rem;letter-spacing:.07em;padding:6px 10px;line-height:1.35}
+    .nav{height:56px}
+    .brand{font-size:1.08rem;gap:7px;letter-spacing:.02em}
+    .brand-logo{width:30px;height:30px;border-radius:7px}
+    .nav-ico{padding:6px}
+    .nico{width:19px;height:19px}
+    .ico-count{min-width:14px;height:14px;font-size:.56rem;top:-2px;right:-4px}
+    .vac-bar{font-size:11.5px;padding:9px 14px;letter-spacing:.02em;line-height:1.35}
+    .menu-btn{padding:6px;margin-left:2px}
+    /* Hero text scales down so it does not eat the screen */
+    .hero-cine h1{font-size:clamp(2rem,8vw,2.6rem);line-height:1.05}
+    .hero-cine p{font-size:.9rem;line-height:1.5}
+    .hero-kicker{font-size:.62rem}
+    /* Cart drawer + tracker page tighter */
+    .vip-row input{font-size:13px;padding:8px 10px}
+    .vip-row button{font-size:13px;padding:0 12px}
+    .track-card{padding:18px}
+    .track-card h3{font-size:18px}
+    .ts-label{font-size:9.5px}
+    .ts-dot{width:18px;height:18px}
+    .track-timeline::before{top:30px}
+    #trackView h1{font-size:32px}
+    /* About + content sections tighter */
+    .wrap{padding:0 16px}
+    .sec-head h2{font-size:clamp(1.6rem,5vw,2.1rem)}
+  }
+  @media(max-width:380px){
+    .announce{font-size:.56rem;padding:5px 8px}
+    .brand{font-size:.98rem}
+    .brand-logo{width:26px;height:26px}
+    .nico{width:18px;height:18px}
+    .nav{height:52px}
+  }
 </style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
