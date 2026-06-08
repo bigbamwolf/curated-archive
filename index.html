@@ -6040,6 +6040,21 @@
     var opt = SHIPPING.options.find(function(o){ return o.name === v; });
     return opt ? opt.fee : 0;
   }
+    function applyVacation_(v){
+    var bar = document.getElementById('vacBar');
+    if (!bar) return;
+    if (v && String(v.mode||'').toLowerCase() === 'on') {
+      var msg = v.message || 'The Archive is on a brief hiatus. We will reopen soon and notify you when we do.';
+      var until = v.until ? (' Back ' + v.until + '.') : '';
+      bar.textContent = msg + until;
+      bar.classList.add('on');
+      document.body.classList.add('vac-on');
+    } else {
+      bar.classList.remove('on');
+      document.body.classList.remove('vac-on');
+    }
+  }
+
   const cartTotal = () => cartSubtotal() + shippingFee();
   const bagCount = () => cart.reduce((s,i)=> s + i.quantity, 0);
 
@@ -6464,6 +6479,10 @@
   }
 
   async function placeOrder(){
+    if (window.VACATION && String(window.VACATION.mode||'').toLowerCase()==='on'){
+      alert((window.VACATION.message||'The Archive is on a brief hiatus.') + (window.VACATION.until?' Back '+window.VACATION.until+'.':''));
+      return;
+    }
     if (!cart.length){ alert("Your bag is empty."); return; }
     var _ag=document.getElementById("cAgree"); if (!_ag || !_ag.checked){ alert("Please tick the box to agree to the Terms and Conditions, all sales final and no returns, before placing your order."); _ag&&_ag.focus&&_ag.focus(); return; }
     const customer = validCheckout(); if (!customer) return;
