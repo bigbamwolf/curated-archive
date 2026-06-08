@@ -389,7 +389,34 @@
   .mmenu a small{display:block;font-family:var(--sans);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:2px}
   @media(max-width:620px){ .menu-btn{display:inline-flex} }
 .bsizes{list-style:none;padding:0;margin:0 0 14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);} .bsizes li{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;font-size:13px;color:var(--ink);} .bsizes li+li{border-top:1px solid var(--line);} .bsn{font-weight:500;} .bsv{color:var(--mut);font-variant-numeric:tabular-nums;font-size:12px;}
-  </style>
+  
+  .vip-row{display:flex;gap:8px;margin:8px 0 4px 0}
+  .vip-row input{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;text-transform:uppercase}
+  .vip-row button{padding:0 14px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;font:inherit;font-weight:600}
+  .vip-row button:hover{background:#f8f4ea}
+  .vip-msg{font-size:11.5px;color:var(--mut);padding:2px 0 6px 0}
+  .vip-msg.ok{color:var(--gold,#b3a892)}
+  .proc-line{font-size:11.5px;color:var(--mut);text-align:right;margin:0 0 8px 0}
+  #trackView{padding:64px 24px;max-width:720px;margin:0 auto;text-align:left}
+  .track-search{display:flex;gap:8px;margin:18px 0 32px 0}
+  .track-search input{flex:1;padding:14px 16px;border:1px solid var(--line);border-radius:8px;font:inherit;text-transform:uppercase;background:#fff}
+  .track-search button{padding:0 22px;background:var(--gold,#b3a892);color:#fff;border:0;border-radius:8px;font:inherit;font-weight:700;cursor:pointer}
+  .track-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;margin-top:18px}
+  .track-card h3{margin:0 0 6px 0}
+  .track-meta{font-size:13px;color:var(--mut);margin-bottom:18px}
+  .track-timeline{display:flex;justify-content:space-between;align-items:flex-start;padding:24px 0 12px 0;position:relative}
+  .track-timeline::before{content:"";position:absolute;top:34px;left:8%;right:8%;height:2px;background:#eee;z-index:0}
+  .ts-step{flex:1;text-align:center;position:relative;z-index:1}
+  .ts-dot{width:24px;height:24px;border-radius:50%;background:#eee;margin:0 auto 8px auto;border:3px solid #fff;box-shadow:0 0 0 2px #eee}
+  .ts-step.done .ts-dot{background:var(--gold,#b3a892);box-shadow:0 0 0 2px var(--gold,#b3a892)}
+  .ts-step.active .ts-dot{background:var(--gold,#b3a892);box-shadow:0 0 0 4px rgba(179,168,146,.22);animation:tsPulse 2s ease-in-out infinite}
+  @keyframes tsPulse{0%,100%{box-shadow:0 0 0 4px rgba(179,168,146,.22)}50%{box-shadow:0 0 0 8px rgba(179,168,146,.10)}}
+  .ts-label{font-size:11px;color:var(--mut);letter-spacing:.06em}
+  .ts-step.done .ts-label,.ts-step.active .ts-label{color:var(--ink);font-weight:600}
+  .vac-bar{position:sticky;top:0;z-index:9999;display:none;background:linear-gradient(90deg,#b3a892,#d4c89e);color:#1a1612;padding:11px 18px;text-align:center;font-size:13px;letter-spacing:.04em;font-weight:600;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+  .vac-bar.on{display:block}
+  body.vac-on .btn-buy,body.vac-on .card-add,body.vac-on .btn-gold[onclick*="placeOrder"],body.vac-on .btn-gold[onclick*="addBundle"]{opacity:.45;pointer-events:none;filter:grayscale(.4)}
+</style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 .acct-chip{cursor:pointer;color:#c8a86b;border:1px solid rgba(200,168,107,.45);border-radius:999px;padding:6px 13px;font-size:.85rem;white-space:nowrap;background:transparent}
@@ -405,6 +432,7 @@
 </style>
 </head>
 <body>
+<div class="vac-bar" id="vacBar"></div>
 <div class="announce">Authentic decants · Ships within the Philippines only · Pay via GCash, Maya, or card</div>
 
 <header class="site">
@@ -697,7 +725,7 @@
     </div>
     <div class="legal">
       <span>© <span id="yr"></span> Curated Archive</span>
-      <a onclick="goTerms()" style="display:inline;margin-left:14px;color:#b3a892;text-decoration:underline">Terms &amp; Conditions</a>
+      <a onclick="goTrack();return false;" href="#/track" style="display:inline;margin-right:14px;color:#b3a892;text-decoration:underline">Track your order</a><a onclick="goTerms()" style="display:inline;margin-left:14px;color:#b3a892;text-decoration:underline">Terms &amp; Conditions</a>
     </div>
   </div>
 </footer>
@@ -716,12 +744,29 @@
   <a onclick="closeMenu();openCart()">Your bag</a>
 </nav>
 <div class="scrim" id="scrim" onclick="closeCart()"></div>
+<section id="trackView" class="hidden">
+  <a href="#/" onclick="goHome();return false;" style="font-size:12px;color:var(--mut);text-decoration:none">&larr; Back to the Archive</a>
+  <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;margin:18px 0 6px 0">Track your order</h1>
+  <div style="color:var(--mut);font-size:14px">Type your order ID, like CA260608203343.</div>
+  <div class="track-search">
+    <input id="trackInput" placeholder="Order ID" autocomplete="off" maxlength="20" onkeydown="if(event.key==='Enter'){doTrack();}">
+    <button onclick="doTrack()">Track</button>
+  </div>
+  <div id="trackResult"></div>
+</section>
 <aside class="drawer" id="drawer" aria-label="Shopping bag">
   <div class="drawer-head"><h3>Your bag</h3><button onclick="closeCart()" style="font-size:1.4rem;color:var(--muted)">×</button></div>
   <div class="drawer-body" id="cartBody"></div>
   <div class="co">
     <div class="totrow" id="rowSubtotal" style="display:none"><span>Subtotal</span><span id="cartSubtotalAmt">₱0.00</span></div>
     <div class="totrow" id="rowShip" style="display:none"><span id="rowShipLbl">Shipping</span><span id="cartShipAmt">—</span></div>
+    <div class="proc-line" id="procLine">Hand decanted to order, ships in 2 to 5 working days.</div>
+    <div class="vip-row">
+      <input id="cVipCode" placeholder="VIP code (optional)" autocomplete="off" maxlength="40">
+      <button type="button" onclick="vipApply()">Apply</button>
+    </div>
+    <div class="vip-msg" id="vipMsg"></div>
+    <div class="totrow" id="rowVip" style="display:none"><span>VIP discount</span><span id="cartVipAmt" style="color:var(--gold,#b3a892)">—</span></div>
     <div class="totrow"><span>Total</span><strong id="cartTotal">₱0.00</strong></div>
     <h4 style="margin-top:16px">Delivery details</h4>
     <input class="field" id="cName" placeholder="Full name" />
@@ -5901,7 +5946,7 @@
       const r = await fetch(`${API_CONFIG.apiBase}?action=catalog&v=${Date.now()}`, { cache:"no-store" });
       if (!r.ok) return;
       const d = await r.json();
-      if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){}
+      if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){} try{ if(d.vacation){ window.VACATION=d.vacation; applyVacation_(d.vacation); } }catch(_e){} try{ if(d.processing){ var pl=document.getElementById('procLine'); if(pl) pl.textContent = 'Hand decanted to order, ships in ' + d.processing + '.'; } }catch(_e){}
     }catch(e){ /* keep embedded */ }
   }
 
@@ -6055,13 +6100,70 @@
     }
   }
 
+    window.VIP_DISCOUNT = 0;
+  window.VIP_CODE_OK = "";
+  function cartVip(){
+    var sub = cartSubtotal();
+    return Math.round(sub * (window.VIP_DISCOUNT || 0) * 100) / 100;
+  }
+  function vipApply(){
+    var code = (document.getElementById('cVipCode').value || '').trim();
+    var em = (document.getElementById('cEmail').value || '').trim();
+    var msg = document.getElementById('vipMsg');
+    msg.className = 'vip-msg';
+    if (!code) { window.VIP_DISCOUNT = 0; window.VIP_CODE_OK = ''; msg.textContent = ''; renderCart(); return; }
+    if (!em) { msg.textContent = 'Type your email above first, then Apply.'; return; }
+    msg.textContent = 'Checking code...';
+    fetch(API_CONFIG.apiBase + '?action=validatecode&code=' + encodeURIComponent(code) + '&email=' + encodeURIComponent(em))
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if (d.valid) {
+          window.VIP_DISCOUNT = d.discount;
+          window.VIP_CODE_OK = code.toUpperCase();
+          msg.className = 'vip-msg ok';
+          msg.textContent = 'VIP code applied. ' + (d.discount * 100) + '% off subtotal.' + (d.name ? ' Welcome back, ' + d.name + '.' : '');
+        } else {
+          window.VIP_DISCOUNT = 0;
+          window.VIP_CODE_OK = '';
+          msg.textContent = d.reason && d.reason.indexOf('expired')===0 ? 'This code expired.' : (d.reason === 'email not on vip list' ? 'This code is for our VIP guests only.' : 'Code not recognized.');
+        }
+        renderCart();
+      })
+      .catch(function(){ msg.textContent = 'Could not check the code, try again.'; });
+  }
+  function goTrack(){ showOnly('trackView'); window.scrollTo({top:0,behavior:'smooth'}); if(!_fromHash) setHash('#/track'); }
+  function doTrack(){
+    var id = (document.getElementById('trackInput').value || '').trim().toUpperCase();
+    var box = document.getElementById('trackResult');
+    if (!id) { box.innerHTML = '<div style="color:var(--mut)">Type an order ID to track.</div>'; return; }
+    box.innerHTML = '<div style="color:var(--mut)">Looking it up...</div>';
+    fetch(API_CONFIG.apiBase + '?action=track&id=' + encodeURIComponent(id))
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if (!d.ok) { box.innerHTML = '<div class="track-card"><h3>Order not found</h3><div class="track-meta">Double check the order ID, it usually starts with CA.</div></div>'; return; }
+        var stages = ['RECEIVED','PAID','DECANTING','SHIPPED','DELIVERED'];
+        var cur = stages.indexOf((d.status||'RECEIVED').toUpperCase());
+        if (cur < 0) cur = 0;
+        var ts = stages.map(function(s, i){
+          var cls = i < cur ? 'ts-step done' : (i === cur ? 'ts-step active' : 'ts-step');
+          return '<div class="'+cls+'"><div class="ts-dot"></div><div class="ts-label">'+s+'</div></div>';
+        }).join('');
+        var tracking = d.tracking ? ('<div style="margin-top:14px;padding:14px;background:#f8f4ea;border-radius:8px"><div style="font-size:11px;color:var(--mut);letter-spacing:.06em">COURIER TRACKING</div><div style="font-size:15px;font-weight:600;margin-top:4px">'+esc(d.courier)+' &middot; '+esc(d.tracking)+'</div></div>') : '';
+        var procLine = d.processing ? ('<div style="margin-top:10px;font-size:12px;color:var(--mut)">Processing time: '+esc(d.processing)+'</div>') : '';
+        box.innerHTML = '<div class="track-card"><h3>Order '+esc(d.orderId)+'</h3><div class="track-meta">Total: '+peso(d.total)+(d.courier?' &middot; '+esc(d.courier):'')+'</div><div class="track-timeline">'+ts+'</div>'+tracking+procLine+'</div>';
+      })
+      .catch(function(){ box.innerHTML = '<div style="color:var(--mut)">Could not reach the tracker, try again in a moment.</div>'; });
+  }
+
   const cartTotal = () => cartSubtotal() + shippingFee();
   const bagCount = () => cart.reduce((s,i)=> s + i.quantity, 0);
 
   function renderCart(){
     document.getElementById("bagCount").textContent = bagCount();
-    var sub = cartSubtotal(), ship = shippingFee(), tot = sub + ship;
+    var sub = cartSubtotal(), ship = shippingFee(), vip = cartVip(), tot = sub - vip + ship;
     document.getElementById("cartTotal").textContent = peso(tot);
+    var rv = document.getElementById('rowVip');
+    if (rv) { if (vip > 0) { rv.style.display='flex'; document.getElementById('cartVipAmt').textContent = '-' + peso(vip); } else { rv.style.display='none'; } }
     var rs=document.getElementById("rowSubtotal"), rsh=document.getElementById("rowShip");
     if (rs && rsh){
       if (cart.length){
@@ -6125,14 +6227,14 @@
   function quickAddWishI(i,ev){ if(ev){ ev.stopPropagation(); } const r=wishRows[i]; if(!r) return; const it=r.it; const sz=sizesOf(it); if(!sz||!sz.length) return; const s=sz[0]; addToCart({ category:r.cat, name:it.name, size:s, quantity:1, unitPrice:Number(it.prices[String(s)]), image:it.image||"" }); const b=ev&&ev.currentTarget; if(b){ b.textContent="Added"; b.disabled=true; } }
   setTimeout(updateWishCount,0);
   function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("scrim").classList.remove("open"); }
-  function goHome(){ ["aboutView","termsView","wishlistView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
+  function goHome(){ ["aboutView","termsView","wishlistView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView","trackView"].forEach(id=>document.getElementById(id).classList.add("hidden")); document.getElementById("homeView").classList.remove("hidden"); if(!_fromHash) setHash("#/"); }
   function goAbout(){ showOnly("aboutView"); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/about"); }
   function goTerms(){ closeCart&&closeCart(); showOnly("termsView"); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/terms"); }
   function goShop(cat){ showOnly("shopView"); setCat(cat||"All"); window.scrollTo({top:0,behavior:"smooth"}); }
   function scrollToShop(cat){ goShop(cat); }
 
   let currentLayer = 0;
-  function showOnly(id){ ["homeView","aboutView","termsView","wishlistView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
+  function showOnly(id){ ["homeView","aboutView","termsView","wishlistView","detailView","layeringView","layerDetailView","finderView","bundlesView","hybridView","shopView","trackView"].forEach(v=>document.getElementById(v).classList.toggle("hidden", v!==id)); }
   // ---- hash routing: shareable deep links + working Back button on a static SPA ----
   let _fromHash=false, _lastHash=null;
   function slug(s){ return (s||"").toString().toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
@@ -6152,6 +6254,7 @@
       case "bundles": goBundles(); break;
       case "hybrid": goHybrid(); break;
       case "frankenbatch": goFrankenbatch(); break;
+      case "track": goTrack(); break;
       case "about": goAbout(); break;
       case "terms": goTerms(); break;
       case "wishlist": goWishlist(); break;
@@ -6500,6 +6603,7 @@
       subtotal: cartSubtotal(),
       shipping: shippingFee(),
       courier: (function(){ var s=document.getElementById("cDelivery"); return s?String(s.value||""):""; })(),
+      code: window.VIP_CODE_OK || (document.getElementById('cVipCode')?String(document.getElementById('cVipCode').value||"").trim():""),
       total: cartTotal() };
     try{
       const r = await fetch(API_CONFIG.apiBase, { method:"POST", body: JSON.stringify(payload) });
