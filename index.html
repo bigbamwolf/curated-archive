@@ -388,7 +388,8 @@
   .mmenu a:hover{color:var(--gold)}
   .mmenu a small{display:block;font-family:var(--sans);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:2px}
   @media(max-width:620px){ .menu-btn{display:inline-flex} }
-</style>
+.bsizes{list-style:none;padding:0;margin:0 0 14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);} .bsizes li{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;font-size:13px;color:var(--ink);} .bsizes li+li{border-top:1px solid var(--line);} .bsn{font-weight:500;} .bsv{color:var(--mut);font-variant-numeric:tabular-nums;font-size:12px;}
+  </style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 .acct-chip{cursor:pointer;color:#c8a86b;border:1px solid rgba(200,168,107,.45);border-radius:999px;padding:6px 13px;font-size:.85rem;white-space:nowrap;background:transparent}
@@ -6269,9 +6270,10 @@
       return `<div class="bcard">
         <div class="bthumbs">${L.map(l=>`<div class="bthumb">${imgTag(l.it,l.cat)}</div>`).join("")}</div>
         <div class="bbody">
-          <div class="bcat">Curated set · ${L.length} scents</div>
+          <div class="bcat">Curated set · ${L.length} scents · ${L.reduce((s,l)=>s+l.size,0)}ml total</div>
           <h3>${esc(b.title)}</h3>
           <p>${esc(b.blurb)}</p>
+          <ul class="bsizes">${L.map(l=>`<li><span class="bsn">${esc(dispName(l.it.name))}</span><span class="bsv">${l.size}ml · ${peso(l.price)}</span></li>`).join("")}</ul>
           <div class="bprice"><strong>${peso(total)}</strong><span class="free">Free shipping</span></div>
           <button class="btn btn-gold btn-block" onclick="addBundle(${i})">Add the set to bag</button>
         </div>
