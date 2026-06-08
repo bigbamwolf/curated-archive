@@ -796,7 +796,7 @@
   <div class="co">
     <div class="totrow" id="rowSubtotal" style="display:none"><span>Subtotal</span><span id="cartSubtotalAmt">₱0.00</span></div>
     <div class="totrow" id="rowShip" style="display:none"><span id="rowShipLbl">Shipping</span><span id="cartShipAmt">—</span></div>
-    <div class="proc-line" id="procLine">Hand decanted to order, ships in 2 to 5 working days.</div>
+    <div class="proc-line" id="procLine">Ships in 2 to 5 working days.</div>
     <div class="vip-row">
       <input id="cVipCode" placeholder="VIP code (optional)" autocomplete="off" maxlength="40">
       <button type="button" onclick="vipApply()">Apply</button>
@@ -5982,7 +5982,7 @@
       const r = await fetch(`${API_CONFIG.apiBase}?action=catalog&v=${Date.now()}`, { cache:"no-store" });
       if (!r.ok) return;
       const d = await r.json();
-      if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){} try{ if(d.vacation){ window.VACATION=d.vacation; applyVacation_(d.vacation); } }catch(_e){} try{ if(d.processing){ var pl=document.getElementById('procLine'); if(pl) pl.textContent = 'Hand decanted to order, ships in ' + d.processing + '.'; } }catch(_e){}
+      if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){} try{ if(d.vacation){ window.VACATION=d.vacation; applyVacation_(d.vacation); } }catch(_e){} try{ if(d.processing){ var pl=document.getElementById('procLine'); if(pl) pl.textContent = 'Ships in ' + d.processing + '.'; } }catch(_e){}
     }catch(e){ /* keep embedded */ }
   }
 
