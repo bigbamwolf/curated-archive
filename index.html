@@ -763,11 +763,6 @@
         <a onclick="scrollToShop('Parfums Vintage')">Parfums Vintage</a>
         <a onclick="scrollToShop()">All scents</a>
       </div>
-      <div>
-        <h5>Order via</h5>
-        <p id="footGcash"></p>
-        <p>Questions? Message us before you pay and we will guide you.</p>
-      </div>
     </div>
     <div class="legal">
       <span>© <span id="yr"></span> Curated Archive</span>
@@ -5965,9 +5960,8 @@
 
   function init(){
     document.getElementById("yr").textContent = "2026";
-    document.getElementById("gcashName").textContent = STORE.gcashName;
-    document.getElementById("gcashNumber").textContent = STORE.gcashNumber;
-    document.getElementById("footGcash").innerHTML = "GCash · <b>" + esc(STORE.gcashName) + "</b><br>" + esc(STORE.gcashNumber);
+    const gn = document.getElementById("gcashName"); if (gn) gn.textContent = STORE.gcashName;
+    const gnum = document.getElementById("gcashNumber"); if (gnum) gnum.textContent = STORE.gcashNumber;
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
