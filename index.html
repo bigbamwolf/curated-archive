@@ -6244,7 +6244,7 @@
   function updateWishCount(){ const c=document.getElementById("wishCount"); if(c){ c.textContent=WISH.length; c.style.display=WISH.length?"inline-flex":"none"; } }
   function toggleWish(n){ const i=WISH.indexOf(n); if(i>=0) WISH.splice(i,1); else WISH.push(n); try{ localStorage.setItem("ca_wishlist",JSON.stringify(WISH)); }catch(e){} updateWishCount(); try{ renderGrid(); }catch(e){} }
   function wishToggleI(i,ev){ if(ev){ ev.stopPropagation(); } const r=gridRows[i]; if(r) toggleWish(r.it.name); }
-  function navSearch(){ goShop(); setTimeout(function(){ const sx=document.getElementById("shopSearch"); if(sx){ sx.focus(); sx.scrollIntoView({block:"center"}); } },120); }
+  function navSearch(){ goShop(); setTimeout(function(){ const sx=document.getElementById("shopSearch"); if(sx){ sx.value=""; renderGrid(); sx.focus(); sx.scrollIntoView({block:"center"}); } },120); }
   function acctIcon(){ if(window.ACCOUNT && ACCOUNT.session){ caAccountMenu(); } else { caSignIn(); } }
   function goWishlist(){ showOnly("wishlistView"); renderWishlist(); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/wishlist"); }
   function renderWishlist(){
