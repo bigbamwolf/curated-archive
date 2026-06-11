@@ -5964,9 +5964,21 @@
     const gnum = document.getElementById("gcashNumber"); if (gnum) gnum.textContent = STORE.gcashNumber;
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
-    loadCatalogFromApi().finally(() => {
+    var _lastCatalogFetch = 0;
+    function _refreshAll(){
       buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
+      try { if (typeof renderLayerGrid === "function") renderLayerGrid(); } catch(e){}
+    }
+    function _refetchCatalog(){
+      return loadCatalogFromApi().finally(function(){ _lastCatalogFetch = Date.now(); _refreshAll(); });
+    }
+    _refetchCatalog();
+    document.addEventListener("visibilitychange", function(){
+      if (document.visibilityState === "visible" && (Date.now() - _lastCatalogFetch) > 30000) {
+        _refetchCatalog();
+      }
     });
+    window._caRefresh = _refetchCatalog;
   }
 
   function patchCatalogImages(){
