@@ -475,6 +475,20 @@
 .ca-gbtn{display:flex;justify-content:center;min-height:44px}
 .ca-or{color:#7d7768;font-size:.72rem;letter-spacing:.1em;margin:16px 0 14px}
 .ca-x{position:absolute;top:12px;right:18px;color:#9a937f;cursor:pointer;font-size:1.5rem;line-height:1}
+.rmodal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.rmodal[hidden]{display:none}
+.rmodal-box{background:#fff;border-radius:14px;max-width:420px;width:100%;padding:24px;position:relative;font-family:inherit}
+.rmodal-box h3{margin:0 0 8px;font-size:18px;color:#1a1a1a;padding-right:24px}
+.rmodal-box .lead{color:#666;font-size:13px;margin:0 0 16px;line-height:1.45}
+.rmodal-box .small{color:#999;font-size:11px;margin:6px 0 14px;font-style:italic}
+.rmodal-box input[type=email]{width:100%;padding:13px;border:1px solid #d0c8b8;border-radius:10px;font:inherit;box-sizing:border-box;margin-bottom:12px}
+.rmodal-box input[type=email]:focus{outline:none;border-color:#a08823}
+.rmodal-box .btn{width:100%;cursor:pointer}
+.rmodal-close{position:absolute;top:8px;right:14px;font-size:26px;color:#999;cursor:pointer;line-height:1;background:none;border:none;padding:4px 8px}
+.rmodal-status{margin-top:12px;font-size:13px;text-align:center;min-height:18px}
+.rmodal-status.success{color:#2a7a3a}
+.rmodal-status.error{color:#a94442}
+.card.soldout .card-click{cursor:pointer}
 </style>
 </head>
 <body>
@@ -771,6 +785,18 @@
   </div>
 </footer>
 
+<div class="rmodal" id="rmodal" hidden onclick="if(event.target===this) closeRmodal()">
+  <div class="rmodal-box">
+    <button class="rmodal-close" onclick="closeRmodal()" aria-label="Close">&times;</button>
+    <h3 id="rmodal-title">Notify me when back in stock</h3>
+    <p class="lead">Drop your email and we'll note your interest in this exact one. No promises. We are honest, we may or may not restock it, but knowing there is demand helps us decide.</p>
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" id="rmodal-hp">
+    <input type="email" id="rmodal-email" placeholder="you@email.com" autocomplete="email">
+    <button class="btn btn-gold" id="rmodal-submit" onclick="submitRmodal()">Notify me</button>
+    <div class="small">We will only email about this exact bottle, never spam.</div>
+    <div class="rmodal-status" id="rmodal-status"></div>
+  </div>
+</div>
 <div class="scrim" id="menuScrim" onclick="closeMenu()"></div>
 <nav class="mmenu" id="mmenu" aria-label="Menu">
   <div class="mm-top"><span class="brand">Curated <b style="color:var(--gold)">Archive</b></span><button class="mm-x" onclick="closeMenu()">×</button></div>
@@ -6035,7 +6061,7 @@
     if (!gridRows.length){ document.getElementById("grid").innerHTML = `<div class="grid-empty">No scents match this filter. Try a different availability.</div>`; return; }
     document.getElementById("grid").innerHTML = gridRows.map((r,i) => { const _b=stockInfo(r.it); return `
       <div class="card${_b.sold?' soldout':''}">
-        <div class="card-click" onclick="openI(${i})">
+        <div class="card-click" onclick="${_b.sold?`quickRestock(${i},event,'grid')`:`openI(${i})`}">
           <div class="card-img">${imgTag(r.it, r.cat)}<button class="wish-heart${inWish(r.it.name)?' on':''}" onclick="wishToggleI(${i},event)" aria-label="Save to wishlist"><svg viewBox="0 0 24 24" class="hicon"><path d="M12 20.5S4 16 4 9.8C4 7 5.9 5.3 8.2 5.3c1.6 0 2.9 1 3.8 2.2.9-1.2 2.2-2.2 3.8-2.2C18.1 5.3 20 7 20 9.8 20 16 12 20.5 12 20.5z"/></svg></button></div>
           <div class="card-body">
             <div class="cat">${esc(dispCat(r.cat))}</div>
@@ -6256,6 +6282,50 @@
   function toggleWish(n){ const i=WISH.indexOf(n); if(i>=0) WISH.splice(i,1); else WISH.push(n); try{ localStorage.setItem("ca_wishlist",JSON.stringify(WISH)); }catch(e){} updateWishCount(); try{ renderGrid(); }catch(e){} }
   function wishToggleI(i,ev){ if(ev){ ev.stopPropagation(); } const r=gridRows[i]; if(r) toggleWish(r.it.name); }
   function navSearch(){ goShop(); setTimeout(function(){ const sx=document.getElementById("shopSearch"); if(sx){ sx.value=""; renderGrid(); sx.focus(); sx.scrollIntoView({block:"center"}); } },120); }
+  let _rmodalSku = ""; let _rmodalCat = "";
+  function quickRestock(i, ev, source){
+    if(ev){ ev.stopPropagation(); ev.preventDefault(); }
+    let r = null;
+    if(source === "wish") r = wishRows[i]; else r = gridRows[i];
+    if(!r) return;
+    _rmodalSku = r.it.name; _rmodalCat = r.cat;
+    document.getElementById("rmodal-title").textContent = "Notify me when " + dispName(r.it.name) + " restocks";
+    document.getElementById("rmodal-email").value = "";
+    document.getElementById("rmodal-hp").value = "";
+    const st = document.getElementById("rmodal-status"); st.className = "rmodal-status"; st.textContent = "";
+    const btn = document.getElementById("rmodal-submit"); btn.disabled = false; btn.textContent = "Notify me";
+    document.getElementById("rmodal").hidden = false;
+    setTimeout(()=>{ const e=document.getElementById("rmodal-email"); if(e) e.focus(); }, 60);
+  }
+  function closeRmodal(){ const m=document.getElementById("rmodal"); if(m) m.hidden = true; }
+  async function submitRmodal(){
+    const email = (document.getElementById("rmodal-email").value || "").trim();
+    const hp = (document.getElementById("rmodal-hp").value || "").trim();
+    const st = document.getElementById("rmodal-status");
+    st.className = "rmodal-status";
+    if(!email || email.indexOf("@") < 1){ st.className="rmodal-status error"; st.textContent="Enter a valid email."; return; }
+    const cnt = parseInt(sessionStorage.getItem("_rkc")||"0",10);
+    if(cnt >= 5){
+      if(!confirm("You have flagged " + cnt + " sold out items already this visit. Are you sure you want every one?")) return;
+    }
+    const btn = document.getElementById("rmodal-submit");
+    btn.disabled = true; btn.textContent = "Sending...";
+    try{
+      const r = await fetch(API_CONFIG.apiBase, { method:"POST", body: JSON.stringify({ action:"restock", store: API_CONFIG.storeName, item: _rmodalSku, email: email, website: hp }) });
+      let d = {}; try{ d = await r.json(); }catch(e){}
+      if(d && d.ok === false){
+        st.className="rmodal-status error"; st.textContent = d.message || "Could not save, try again in a moment.";
+        btn.disabled=false; btn.textContent="Notify me"; return;
+      }
+      st.className="rmodal-status success";
+      st.textContent = (d && d.already) ? "You were already on the list for this one." : "Noted. We will email you only if this exact bottle comes back. No promises.";
+      sessionStorage.setItem("_rkc", String(cnt + 1));
+      setTimeout(closeRmodal, 1800);
+    }catch(e){
+      st.className="rmodal-status error"; st.textContent="Network blip, try again."; btn.disabled=false; btn.textContent="Notify me";
+    }
+  }
+  window.addEventListener("keydown", e => { if(e.key === "Escape"){ const m=document.getElementById("rmodal"); if(m && !m.hidden) closeRmodal(); } });
   function acctIcon(){ if(window.ACCOUNT && ACCOUNT.session){ caAccountMenu(); } else { caSignIn(); } }
   function goWishlist(){ showOnly("wishlistView"); renderWishlist(); window.scrollTo({top:0,behavior:"smooth"}); if(!_fromHash) setHash("#/wishlist"); }
   function renderWishlist(){
@@ -6266,7 +6336,7 @@
     if(e) e.style.display="none";
     g.innerHTML = wishRows.map(function(r,i){ const b=stockInfo(r.it); return `
       <div class="card${b.sold?' soldout':''}">
-        <div class="card-click" onclick="openWishI(${i})">
+        <div class="card-click" onclick="${b.sold?`quickRestock(${i},event,'wish')`:`openWishI(${i})`}">
           <div class="card-img">${imgTag(r.it,r.cat)}<button class="wish-heart on" onclick="wishRemoveI(${i},event)" aria-label="Remove from wishlist"><svg viewBox="0 0 24 24" class="hicon"><path d="M12 20.5S4 16 4 9.8C4 7 5.9 5.3 8.2 5.3c1.6 0 2.9 1 3.8 2.2.9-1.2 2.2-2.2 3.8-2.2C18.1 5.3 20 7 20 9.8 20 16 12 20.5 12 20.5z"/></svg></button></div>
           <div class="card-body"><div class="cat">${esc(dispCat(r.cat))}</div><div class="nm">${esc(dispName(r.it.name))}</div>${provText(r.it.name)?`<div class="inspby">${esc(provText(r.it.name))}</div>`:''}<div class="card-foot"><div class="price">${priceRange(r.it)}</div>${badgeHtml(r.it)}</div></div>
         </div>
