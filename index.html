@@ -6028,7 +6028,7 @@
   }
 
   function buildCategories(){
-    const CAT_ORDER = ["Aventus","Dua","Parfums Vintage","Local Niche","Inspired","Niche","Middle Eastern","S&L","TBGCO"];
+    const CAT_ORDER = ["Aventus","Dua","Parfums Vintage","Local Niche","Inspired","Prime Monkey","Niche","Middle Eastern","S&L","TBGCO"];
     categories = Object.keys(CATALOG).filter(c => (CATALOG[c]||[]).length).sort((a,b)=>{var ia=CAT_ORDER.indexOf(a),ib=CAT_ORDER.indexOf(b);return (ia<0?99:ia)-(ib<0?99:ib);});
     chipCats = ["All", ...categories];
     let n = 0; categories.forEach(c => n += CATALOG[c].length);
