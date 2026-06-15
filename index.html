@@ -220,12 +220,6 @@
   .inspby{font-size:.72rem;color:var(--gold-deep);margin-top:3px}
   .card .nm,.citem .nm,.lpill .nm,.hb-slot .nm,#dName,#crumbName,.about-h,.story-text h2,.lcard-name{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
   .field:focus{border-color:var(--gold)}
-  .pay{display:none;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:6px 0 14px}
-  body.vac-on .pay{display:flex}
-  .pay img{width:84px;height:84px;border-radius:10px;background:#fff;object-fit:contain;border:1px solid var(--line)}
-  .pay .ph{width:84px;height:84px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--gold-soft);color:var(--gold-deep);font-size:.7rem;text-align:center;padding:6px}
-  .pay b{font-size:.92rem}
-  .pay div small{color:var(--muted);display:block;margin-top:2px}
   .ostatus{font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
 
   footer.site{background:var(--ink);color:#d8cfbd;margin-top:30px;padding:50px 0 30px}
@@ -857,10 +851,6 @@
     </select>
     <div class="ship-note" id="shipNote" style="font-size:12px;color:var(--muted);margin:-4px 0 8px 0">Free shipping on orders ₱10,000 and up. Below that, the courier rate you pick is added to your total.</div>
     <textarea class="field" id="cAddress" rows="2" placeholder="Complete delivery address"></textarea>
-    <div class="pay">
-      <div class="ph" id="qrHolder">GCash QR</div>
-      <div><b id="gcashName"></b><small id="gcashNumber"></small><small>Pay here if checkout is offline.</small></div>
-    </div>
     <label class="agree"><input type="checkbox" id="cAgree"><span>I have read and agree to the <a onclick="goTerms()">Terms &amp; Conditions</a>. All sales are final, decants are made to order, no returns or refunds.</span></label>
     <button class="btn btn-gold btn-block" id="placeBtn" onclick="placeOrder()">Place order</button>
     <button class="btn btn-ghost btn-block" style="margin-top:9px" onclick="downloadPdf()">Download order as PDF</button>
