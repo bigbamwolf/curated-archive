@@ -6024,6 +6024,18 @@
       if (!r.ok) return;
       const d = await r.json();
       if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){} try{ if(d.vacation){ window.VACATION=d.vacation; applyVacation_(d.vacation); } }catch(_e){} try{ if(d.processing){ var pl=document.getElementById('procLine'); if(pl) pl.textContent = 'Ships in ' + d.processing + '.'; } }catch(_e){}
+      try{
+        if (view && view.item && view.cat) {
+          var fresh = (CATALOG[view.cat]||[]).find(function(x){ return x.name === view.item.name; });
+          if (fresh) {
+            view.item = fresh;
+            if (!document.getElementById('detailView').classList.contains('hidden')) {
+              if (typeof renderSizes === 'function') renderSizes();
+              var sb=document.getElementById('dStock'); var b=stockInfo(fresh); if(sb){ sb.className='badge '+b.cls; sb.textContent=b.label; }
+            }
+          }
+        }
+      }catch(_eFresh){}
     }catch(e){ /* keep embedded */ }
   }
 
