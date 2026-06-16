@@ -156,6 +156,9 @@
   .size-btn.active{border-color:var(--ink);background:var(--ink);color:#f3ecdd}
   .size-btn b{display:block;font-size:.95rem}
   .size-btn span{font-size:.74rem;opacity:.8}
+  .size-btn .pcs{display:block;font-size:.68rem;opacity:.7;margin-top:3px;letter-spacing:.02em}
+  .size-btn.out{opacity:.45;cursor:not-allowed}
+  .size-btn.out .pcs{color:#b04848}
   .qtyrow{display:flex;align-items:center;gap:18px;margin:20px 0}
   .stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .stepper button{padding:10px 16px;font-size:1.1rem;color:var(--muted)}
@@ -6118,12 +6121,27 @@
 
   function renderSizes(){
     const it = view.item;
-    document.getElementById("dSizes").innerHTML = sizesOf(it).map(s =>
-      `<button class="size-btn ${s===view.size?'active':''}" onclick="pickSize(${s})"><b>${s} ml</b><span>${peso(it.prices[String(s)])}</span></button>`).join("");
+    const isDua = String(it.category||'').toLowerCase() === 'dua';
+    const stockMl = Number(it.stock) || 0;
+    document.getElementById("dSizes").innerHTML = sizesOf(it).map(s => {
+      let pcsHtml = '';
+      let clsExtra = '';
+      if (isDua) {
+        const pcs = Math.floor(stockMl / s);
+        if (pcs <= 0) clsExtra = ' out';
+        pcsHtml = `<span class="pcs">${pcs} left</span>`;
+      }
+      return `<button class="size-btn ${s===view.size?'active':''}${clsExtra}" onclick="pickSize(${s})"><b>${s} ml</b><span>${peso(it.prices[String(s)])}</span>${pcsHtml}</button>`;
+    }).join("");
     document.getElementById("dPrice").textContent = peso(it.prices[String(view.size)] * view.qty);
     const b = stockInfo(it);
     const add = document.getElementById("dAdd");
-    add.disabled = b.sold; add.textContent = b.sold ? "Sold out" : "Add to Cart";
+    let sold = b.sold;
+    if (isDua) {
+      const pcsAtSize = Math.floor(stockMl / view.size);
+      if (pcsAtSize <= 0) sold = true;
+    }
+    add.disabled = sold; add.textContent = sold ? "Sold out" : "Add to Cart";
   }
   function pickSize(s){ view.size = s; renderSizes(); }
   function renderQty(){ document.getElementById("dQty").textContent = view.qty; }
