@@ -6121,7 +6121,7 @@
 
   function renderSizes(){
     const it = view.item;
-    const isDua = String(it.category||'').toLowerCase() === 'dua';
+    const isDua = String(view.cat||it.category||'').toLowerCase() === 'dua';
     const stockMl = Number(it.stock) || 0;
     document.getElementById("dSizes").innerHTML = sizesOf(it).map(s => {
       let pcsHtml = '';
