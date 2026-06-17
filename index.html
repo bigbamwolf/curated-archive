@@ -860,7 +860,6 @@
     <textarea class="field" id="cAddress" rows="2" placeholder="Complete delivery address"></textarea>
     <label class="agree"><input type="checkbox" id="cAgree"><span>I have read and agree to the <a onclick="goTerms()">Terms &amp; Conditions</a>. All sales are final, decants are made to order, no returns or refunds.</span></label>
     <button class="btn btn-gold btn-block" id="placeBtn" onclick="placeOrder()">Place order</button>
-    <button class="btn btn-ghost btn-block" style="margin-top:9px" onclick="downloadPdf()">Download order as PDF</button>
     <div class="ostatus" id="orderStatus"></div>
   </div>
 </aside>
@@ -878,7 +877,6 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
   const API_CONFIG = { apiBase: "https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec", storeName: "Curated Archive" };
   const STORE = {};
@@ -6763,8 +6761,8 @@
     const status = document.getElementById("orderStatus");
     const btn = document.getElementById("placeBtn");
     if (!API_CONFIG.apiBase){
-      status.textContent = "Order desk is not connected yet, so we generated a PDF you can send us instead.";
-      await downloadPdf(); return;
+      status.textContent = "The order desk is not connected right now. Please try again in a moment or message us on Facebook.";
+      return;
     }
     const original = btn.textContent; btn.disabled = true; btn.textContent = "Placing order...";
     status.textContent = "Submitting your order...";
@@ -6785,35 +6783,8 @@
       if (d.checkoutUrl){ status.textContent = "Redirecting to secure payment..."; window.location.href = d.checkoutUrl; return; }
       status.textContent = "Order " + d.orderId + " received. Pay via GCash above and send your receipt. A copy was emailed to the shop.";
     }catch(e){
-      status.textContent = "We could not reach the order desk, so we generated a PDF you can send us instead.";
-      await downloadPdf();
+      status.textContent = "We could not reach the order desk. Please try again or message us on Facebook.";
     }finally{ btn.disabled = false; btn.textContent = original; }
-  }
-
-  async function downloadPdf(){
-    if (!cart.length){ alert("Your bag is empty."); return; }
-    const customer = validCheckout(); if (!customer) return;
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit:"mm", format:"a4" });
-    const left = 14, right = 196; let y = 20;
-    doc.setFont("helvetica","bold"); doc.setFontSize(20); doc.text("Curated Archive", left, y); y += 9;
-    doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
-    doc.text("Date: " + new Date().toLocaleString("en-PH"), left, y); y+=6;
-    doc.text("Customer: " + customer.name, left, y); y+=6;
-    doc.text("Contact: " + customer.contact, left, y); y+=6;
-    doc.text("Delivery: " + customer.delivery, left, y); y+=6;
-    const al = doc.splitTextToSize("Address: " + customer.address, 180); doc.text(al, left, y); y += al.length*5 + 6;
-    doc.line(left,y,right,y); y+=8; doc.setFont("helvetica","bold"); doc.text("Order", left, y); y+=7; doc.setFont("helvetica","normal");
-    cart.forEach((it,idx) => {
-      if (y > 250){ doc.addPage(); y = 20; }
-      doc.setFont("helvetica","bold"); doc.text(`${idx+1}. ${dispName(it.name)}`, left, y);
-      doc.setFont("helvetica","normal");
-      doc.text("PHP " + Math.ceil(it.unitPrice*it.quantity).toLocaleString("en-PH"), right, y, {align:"right"}); y+=5;
-      doc.text(`${dispCat(it.category)} · ${it.size} ml x ${it.quantity}`, left, y); y+=7;
-    });
-    doc.line(left,y,right,y); y+=8; doc.setFont("helvetica","bold");
-    doc.text("Grand Total: PHP " + Math.ceil(cartTotal()).toLocaleString("en-PH"), right, y, {align:"right"}); y+=12;
-    doc.save((customer.name||"order").replace(/[^a-z0-9]+/gi,"_").toLowerCase() + "_curated_archive.pdf");
   }
 
   /* ---------- Seamless accounts: Google One Tap + email magic link ---------- */
