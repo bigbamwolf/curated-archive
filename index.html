@@ -845,12 +845,16 @@
     <input class="field" id="cName" placeholder="Full name" />
     <input class="field" id="cEmail" type="email" placeholder="Email address" />
     <input class="field" id="cContact" placeholder="Mobile number" />
+    <select class="field" id="cZone" onchange="onZoneChange()">
+      <option value="">Where will this be delivered?</option>
+      <option value="A">Inner Metro Manila (Mandaluyong, San Juan, Makati, Ortigas, Pasig W, Manila E)</option>
+      <option value="B">Middle Metro Manila (rest of Pasig, QC, Manila, Marikina, Taguig BGC, Pateros)</option>
+      <option value="C">Outer Metro Manila (Caloocan, Valenzuela, Las Pinas, Paranaque, Muntinlupa)</option>
+      <option value="D">Luzon outside Metro Manila (Bulacan, Rizal, Cavite, Laguna, etc.)</option>
+      <option value="E">Visayas and Mindanao</option>
+    </select>
     <select class="field" id="cDelivery" onchange="renderCart()">
       <option value="">Choose your courier</option>
-      <option value="J&amp;T Express">J&amp;T Express · 2 to 5 days · ₱85</option>
-      <option value="LBC Express">LBC Express · 1 to 3 days · ₱150</option>
-      <option value="Grab Express">Grab Express (Metro Manila same day) · ₱250</option>
-      <option value="Lalamove">Lalamove (Metro Manila same day) · ₱350</option>
     </select>
     <div class="ship-note" id="shipNote" style="font-size:12px;color:var(--muted);margin:-4px 0 8px 0">Free shipping on orders ₱10,000 and up. Below that, the courier rate you pick is added to your total.</div>
     <textarea class="field" id="cAddress" rows="2" placeholder="Complete delivery address"></textarea>
@@ -6174,20 +6178,45 @@
     saveCart(); renderCart();
   }
   function removeLine(i){ cart.splice(i,1); saveCart(); renderCart(); }
-  const SHIPPING = { threshold: 10000, options: [
-    { name:"J&T Express",    fee:85,  eta:"2 to 5 days" },
-    { name:"LBC Express",    fee:150, eta:"1 to 3 days" },
-    { name:"Grab Express",   fee:250, eta:"Same day Metro Manila" },
-    { name:"Lalamove",       fee:350, eta:"Same day Metro Manila" }
-  ]};
+  // Zone-based shipping. Zones: A inner Metro, B middle Metro, C outer Metro,
+  // D Luzon outside Metro, E Vis/Min. Each courier carries its own zone rate.
+  // Grab + Lalamove are Metro-only so they hide on D + E.
+  const ZONE_RATES = {
+    "J&T Express":   { A:85,  B:95,  C:110, D:140, E:180, eta:"2 to 5 days" },
+    "LBC Express":   { A:130, B:150, C:170, D:200, E:280, eta:"1 to 3 days" },
+    "Grab Express":  { A:150, B:220, C:290,                eta:"Same day, Metro Manila only" },
+    "Lalamove":      { A:180, B:260, C:350,                eta:"Same day, Metro Manila only" }
+  };
+  const SHIPPING = { threshold: 10000 };
   const cartSubtotal = () => cart.reduce((s,i)=> s + i.unitPrice*i.quantity, 0);
+  function getZone(){ var z=document.getElementById("cZone"); return z?String(z.value||""):""; }
   function shippingFee(){
     var sub = cartSubtotal();
     if (sub >= SHIPPING.threshold) return 0;
     var sel = document.getElementById("cDelivery");
-    var v = sel ? String(sel.value || "") : "";
-    var opt = SHIPPING.options.find(function(o){ return o.name === v; });
-    return opt ? opt.fee : 0;
+    var courier = sel ? String(sel.value || "") : "";
+    var zone = getZone();
+    if (!courier || !zone) return 0;
+    var rates = ZONE_RATES[courier];
+    return (rates && typeof rates[zone] === "number") ? rates[zone] : 0;
+  }
+  function onZoneChange(){
+    var zone = getZone();
+    var sel = document.getElementById("cDelivery");
+    if (!sel) return;
+    var prior = sel.value;
+    var html = '<option value="">Choose your courier</option>';
+    Object.keys(ZONE_RATES).forEach(function(name){
+      var r = ZONE_RATES[name];
+      if (!zone) return; // user must pick zone first
+      if (typeof r[zone] !== "number") return; // courier does not serve this zone
+      var fee = r[zone];
+      html += '<option value="' + name + '">' + name.replace(/&/g,"&amp;") + ' &middot; ' + r.eta + ' &middot; ₱' + fee + '</option>';
+    });
+    sel.innerHTML = html;
+    // Restore prior selection if still valid
+    if (prior && [].slice.call(sel.options).some(function(o){return o.value===prior;})) sel.value = prior;
+    renderCart();
   }
     function applyVacation_(v){
     var bar = document.getElementById('vacBar');
@@ -6716,6 +6745,7 @@
     if (!v("cName")) miss.push("Full name");
     if (!v("cEmail")) miss.push("Email address");
     if (!v("cContact")) miss.push("Mobile number");
+    if (!v("cZone")) miss.push("Delivery zone");
     if (!v("cDelivery")) miss.push("Mode of delivery");
     if (!v("cAddress")) miss.push("Delivery address");
     if (miss.length){ alert("Please complete:\n\n" + miss.join("\n")); return null; }
@@ -6744,6 +6774,7 @@
       subtotal: cartSubtotal(),
       shipping: shippingFee(),
       courier: (function(){ var s=document.getElementById("cDelivery"); return s?String(s.value||""):""; })(),
+      zone: getZone(),
       code: window.VIP_CODE_OK || (document.getElementById('cVipCode')?String(document.getElementById('cVipCode').value||"").trim():""),
       total: cartTotal() };
     try{
