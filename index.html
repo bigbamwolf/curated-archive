@@ -866,8 +866,8 @@
     <span class="ca-x" onclick="caCloseModal()">&times;</span>
     <h3>Welcome to the archive</h3>
     <p>Sign in to keep your collection, batches, and details ready for next time. No password, ever.</p>
-    <div class="ca-gbtn" id="caGoogleBtn"></div>
-    <div class="ca-or" id="caOr">OR CONTINUE WITH EMAIL</div>
+    <div class="ca-gbtn" id="caGoogleBtn" style="display:none"></div>
+    <div class="ca-or" id="caOr" style="display:none">OR CONTINUE WITH EMAIL</div>
     <input id="caEmail" type="email" placeholder="you@email.com" autocomplete="email" />
     <button class="btn btn-gold btn-block" onclick="caEmailLink()">Email me a sign in link</button>
     <div class="ostatus" id="caStatus"></div>
@@ -6806,12 +6806,10 @@
   }
 
   function caInitGoogle(){
-    if (!ACCOUNT.clientId){ var orr=document.getElementById("caOr"); if(orr) orr.style.display="none"; return; }
-    if (!(window.google && google.accounts && google.accounts.id)) return setTimeout(caInitGoogle, 600);
-    google.accounts.id.initialize({ client_id: ACCOUNT.clientId, callback: caGoogleCb, auto_select:false, cancel_on_tap_outside:true });
-    if (!ACCOUNT.session) google.accounts.id.prompt();
-    const slot = document.getElementById("caGoogleBtn");
-    if (slot) google.accounts.id.renderButton(slot, { theme:"filled_black", size:"large", shape:"pill", text:"continue_with", width:300 });
+    // Google Sign-In disabled 2026-06-17 pending OAuth client JavaScript origin
+    // registration for curated-archive.com in Google Cloud Console. Re-enable
+    // by removing this early return AND unhiding #caGoogleBtn + #caOr in markup.
+    return;
   }
 
   async function caGoogleCb(resp){
