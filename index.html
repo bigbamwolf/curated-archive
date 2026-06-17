@@ -6135,7 +6135,7 @@
 
   function renderSizes(){
     const it = view.item;
-    const isDua = String(view.cat||it.category||'').toLowerCase() === 'dua';
+    const isDua = ['dua','tbgco'].indexOf(String(view.cat||it.category||'').toLowerCase()) >= 0;
     const stockMl = Number(it.stock) || 0;
     document.getElementById("dSizes").innerHTML = sizesOf(it).map(s => {
       let pcsHtml = '';
