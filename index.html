@@ -574,6 +574,7 @@
             <option value="plow">Price: low to high</option>
             <option value="phigh">Price: high to low</option>
             <option value="az">Name: A to Z</option>
+            <option value="soldfirst">Sold out first</option>
           </select>
         </label>
       </div>
@@ -5967,7 +5968,8 @@
     if (activeSort === "plow") gridRows.sort((a,b)=>minPrice(a.it)-minPrice(b.it));
     else if (activeSort === "phigh") gridRows.sort((a,b)=>minPrice(b.it)-minPrice(a.it));
     else if (activeSort === "az") gridRows.sort((a,b)=>String(a.it.name).localeCompare(String(b.it.name)));
-    gridRows.sort((a,b)=>(stockInfo(a.it).sold?1:0)-(stockInfo(b.it).sold?1:0));
+    if (activeSort === "soldfirst") gridRows.sort((a,b)=>(stockInfo(b.it).sold?1:0)-(stockInfo(a.it).sold?1:0));
+    else gridRows.sort((a,b)=>(stockInfo(a.it).sold?1:0)-(stockInfo(b.it).sold?1:0));
     if (!gridRows.length){ document.getElementById("grid").innerHTML = `<div class="grid-empty">No scents match this filter. Try a different availability.</div>`; return; }
     document.getElementById("grid").innerHTML = gridRows.map((r,i) => { const _b=stockInfo(r.it); return `
       <div class="card${_b.sold?' soldout':''}">
