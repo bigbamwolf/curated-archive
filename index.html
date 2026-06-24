@@ -754,6 +754,7 @@
   <div class="drawer-body" id="cartBody"></div>
   <div class="co">
     <div class="totrow" id="rowSubtotal" style="display:none"><span>Subtotal</span><span id="cartSubtotalAmt">₱0.00</span></div>
+    <div class="totrow" id="rowPromo" style="display:none"><span id="rowPromoLbl">Promo</span><span id="cartPromoAmt">—</span></div>
     <div class="totrow" id="rowShip" style="display:none"><span id="rowShipLbl">Shipping</span><span id="cartShipAmt">—</span></div>
     <div class="totrow"><span>Total</span><strong id="cartTotal">₱0.00</strong></div>
     <h4 style="margin-top:16px">Delivery details</h4>
@@ -6066,6 +6067,12 @@
     { name:"Lalamove",       fee:350, eta:"Same day Metro Manila" }
   ]};
   const cartSubtotal = () => cart.reduce((s,i)=> s + i.unitPrice*i.quantity, 0);
+  const PROMO_THRESHOLD = 2500;
+  const PROMO_THRESHOLD_PCT = 0.10;
+  const cartPromoDiscount = () => {
+    var sub = cartSubtotal();
+    return sub >= PROMO_THRESHOLD ? Math.round(sub * PROMO_THRESHOLD_PCT * 100) / 100 : 0;
+  };
   function shippingFee(){
     var sub = cartSubtotal();
     if (sub >= SHIPPING.threshold) return 0;
@@ -6074,18 +6081,33 @@
     var opt = SHIPPING.options.find(function(o){ return o.name === v; });
     return opt ? opt.fee : 0;
   }
-  const cartTotal = () => cartSubtotal() + shippingFee();
+  const cartTotal = () => cartSubtotal() - cartPromoDiscount() + shippingFee();
   const bagCount = () => cart.reduce((s,i)=> s + i.quantity, 0);
 
   function renderCart(){
     document.getElementById("bagCount").textContent = bagCount();
-    var sub = cartSubtotal(), ship = shippingFee(), tot = sub + ship;
+    var sub = cartSubtotal(), promo = cartPromoDiscount(), ship = shippingFee(), tot = sub - promo + ship;
     document.getElementById("cartTotal").textContent = peso(tot);
-    var rs=document.getElementById("rowSubtotal"), rsh=document.getElementById("rowShip");
+    var rs=document.getElementById("rowSubtotal"), rsh=document.getElementById("rowShip"), rp=document.getElementById("rowPromo");
     if (rs && rsh){
       if (cart.length){
         rs.style.display="flex"; rsh.style.display="flex";
         document.getElementById("cartSubtotalAmt").textContent = peso(sub);
+        if (rp){
+          var pAmt = document.getElementById("cartPromoAmt");
+          var pLbl = document.getElementById("rowPromoLbl");
+          rp.style.display = "flex";
+          if (promo > 0){
+            pLbl.textContent = "10% off promo applied";
+            pAmt.textContent = "-" + peso(promo);
+            pAmt.style.color = "var(--gold,#b3a892)";
+          } else {
+            var need = PROMO_THRESHOLD - sub;
+            pLbl.textContent = "Add " + peso(need) + " to unlock 10% off";
+            pAmt.textContent = "₱0.00";
+            pAmt.style.color = "var(--muted)";
+          }
+        }
         var shipAmt = document.getElementById("cartShipAmt");
         var shipLbl = document.getElementById("rowShipLbl");
         if (sub >= SHIPPING.threshold){
@@ -6098,7 +6120,7 @@
           if (v){ shipAmt.textContent = peso(ship); shipLbl.textContent = "Shipping (" + v + ")"; }
           else { shipAmt.textContent = "Choose courier ↓"; shipLbl.textContent = "Shipping"; }
         }
-      } else { rs.style.display="none"; rsh.style.display="none"; }
+      } else { rs.style.display="none"; rsh.style.display="none"; if(rp) rp.style.display="none"; }
     }
     const body = document.getElementById("cartBody");
     if (!cart.length){ body.innerHTML = '<div class="empty">Your bag is empty.</div>'; return; }
