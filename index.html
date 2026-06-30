@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="build-version" content="2026-06-30.1" />
 <title>Curated Archive | Creed Aventus Decants Philippines, Manila</title>
 <meta name="description" content="Curated in private, reserved for those who already know its worth. Creed Aventus, Dua, and niche decants, 1ml to 10ml. Ships within the Philippines only.">
 <meta name="keywords" content="fragrance decants, Creed Aventus, decant shop Philippines, rare perfume batches, niche fragrance Manila, authentic decants, vintage Creed, Dua, Parfums Vintage">
@@ -797,6 +798,11 @@
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
   const API_CONFIG = { apiBase: "https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec", storeName: "Curated Archive" };
+  // Bump this on every deploy. The stale-build guard in init() compares the running value
+  // against a fresh no-store fetch of index.html and forces one hard reload if they differ,
+  // so a browser/PWA cached frontend can never keep running an old checkout (no courier, no
+  // shipping). Must match the <meta name="build-version"> in <head>.
+  const BUILD_VERSION = "2026-06-30.1";
   const STORE = { gcashName: "Arwin Edward M. Bagaslao", gcashNumber: "09356708680", qr: "gcash-qr.png" };
   let LAYERING = /*layering*/[
 {
@@ -5906,7 +5912,32 @@
   }
   const badgeHtml = it => { const b = stockInfo(it); return `<span class="badge ${b.cls}">${b.label}</span>`; };
 
+  // Stale-build guard: a customer whose browser or PWA cached an old index.html keeps running
+  // that old checkout (which had no courier field and charged no shipping). On boot we fetch the
+  // live index.html with no-store, read its build-version, and if it is newer than the version
+  // this page was loaded with, force ONE hard reload so the fresh build takes over. A
+  // sessionStorage latch prevents any reload loop if the fetch or compare ever misbehaves.
+  async function checkForStaleBuild(){
+    try{
+      // Latch on THIS page's running version, not the live one. If a stubborn CDN edge keeps
+      // serving the old build even after the reload, the running version stays old and we must
+      // still stop after exactly one attempt this session. Keying the latch on BUILD_VERSION
+      // guarantees at most one reload per page load, so there is no reload loop.
+      if (sessionStorage.getItem("ca_stale_reload_from") === BUILD_VERSION) return;
+      const r = await fetch(location.pathname + "?cb=" + Date.now(), { cache: "no-store" });
+      if (!r.ok) return;
+      const html = await r.text();
+      const m = html.match(/name=["']build-version["']\s+content=["']([^"']+)["']/i);
+      const liveVersion = m ? m[1] : "";
+      if (liveVersion && liveVersion !== BUILD_VERSION){
+        sessionStorage.setItem("ca_stale_reload_from", BUILD_VERSION);
+        location.reload(true);
+      }
+    }catch(e){ /* offline or blocked, keep the running build */ }
+  }
+
   function init(){
+    checkForStaleBuild();
     document.getElementById("yr").textContent = "2026";
     document.getElementById("gcashName").textContent = STORE.gcashName;
     document.getElementById("gcashNumber").textContent = STORE.gcashNumber;
