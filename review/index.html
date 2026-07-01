@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-PH">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leave a Review · Curated Archive</title>
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta property="og:title" content="Curated Archive · Leave a review" />
+<meta property="og:description" content="Leave a quick review and get 10% off your next decant." />
+<style>
+  :root{ --black:#0A0A0A; --gold:#C6A66A; --cream:#F3ECDD; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    background:var(--black); color:var(--cream);
+    font-family:"Inter","Helvetica Neue",Arial,sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    padding:32px 22px; text-align:center; line-height:1.55;
+  }
+  .wrap{ width:100%; max-width:420px; }
+  .kicker{ color:var(--gold); letter-spacing:.34em; font-size:12px; font-weight:600; text-transform:uppercase; margin-bottom:26px; }
+  h1{ font-family:Georgia,"Cormorant Garamond",serif; font-weight:600; color:var(--gold); font-size:34px; letter-spacing:.01em; margin-bottom:14px; }
+  .sub{ color:var(--cream); font-size:16px; opacity:.92; margin-bottom:30px; }
+  .steps{ text-align:left; margin:0 auto 30px; max-width:320px; }
+  .step{ display:flex; gap:14px; align-items:flex-start; padding:11px 0; border-bottom:1px solid rgba(198,166,106,.18); }
+  .step:last-child{ border-bottom:none; }
+  .num{ flex:0 0 26px; height:26px; border:1px solid var(--gold); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; }
+  .step p{ font-size:14.5px; opacity:.92; }
+  .cta{ display:inline-block; width:100%; background:var(--gold); color:#111; text-decoration:none; font-weight:700; letter-spacing:.02em; padding:15px 20px; border-radius:10px; font-size:15px; }
+  .code-note{ color:var(--gold); font-size:13px; font-style:italic; margin-top:20px; opacity:.9; }
+  .foot{ margin-top:34px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); opacity:.55; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="kicker">Curated Archive</div>
+    <h1>Loved your decant?</h1>
+    <p class="sub">Leave a quick review and your <strong>10% off</strong> code lands right after.</p>
+
+    <div class="steps">
+      <div class="step"><div class="num">1</div><p>Open the TikTok app.</p></div>
+      <div class="step"><div class="num">2</div><p>Go to your Profile, then <strong>Your Orders</strong>.</p></div>
+      <div class="step"><div class="num">3</div><p>Find your Curated Archive order and tap <strong>Review</strong>.</p></div>
+      <div class="step"><div class="num">4</div><p>A photo or video review helps other buyers the most.</p></div>
+    </div>
+
+    <a class="cta" id="shopBtn" href="#">Open Curated Archive on TikTok</a>
+    <p class="code-note">Your 10% code arrives right after you post the review.</p>
+
+    <div class="foot">Curated in private</div>
+  </div>
+
+<script>
+  // ===== REPOINTABLE TARGET =====
+  // The one line to change if the review destination ever moves. No reprint needed,
+  // the printed QR always points at curated-archive.com/review, only this URL changes.
+  var SHOP_URL = "https://www.tiktok.com/@bigbamwolf";
+  document.getElementById("shopBtn").href = SHOP_URL;
+</script>
+</body>
+</html>
