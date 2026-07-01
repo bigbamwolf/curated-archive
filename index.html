@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="build-version" content="2026-06-30.2" />
+<meta name="build-version" content="2026-07-01.1" />
 <title>Curated Archive | Creed Aventus Decants Philippines, Manila</title>
 <meta name="description" content="Curated in private, reserved for those who already know its worth. Creed Aventus, Dua, and niche decants, 1ml to 10ml. Ships within the Philippines only.">
 <meta name="keywords" content="fragrance decants, Creed Aventus, decant shop Philippines, rare perfume batches, niche fragrance Manila, authentic decants, vintage Creed, Dua, Parfums Vintage">
@@ -725,7 +725,7 @@
       </div>
       <div>
         <h5>Order via</h5>
-        <p id="footGcash"></p>
+        <p>Secure checkout by <b>Xendit</b>. GCash, Maya, GrabPay, QRPH, or card.</p>
         <p>Questions? Message us before you pay and we will guide you.</p>
       </div>
     </div>
@@ -775,10 +775,6 @@
     </select>
     <div class="ship-note" id="shipNote" style="font-size:12px;color:var(--muted);margin:-4px 0 8px 0">Free shipping on orders ₱10,000 and up. Below that, the courier rate you pick is added to your total.</div>
     <textarea class="field" id="cAddress" rows="2" placeholder="Complete delivery address"></textarea>
-    <div class="pay">
-      <div class="ph" id="qrHolder">GCash QR</div>
-      <div><b id="gcashName"></b><small id="gcashNumber"></small><small>Pay here if checkout is offline.</small></div>
-    </div>
     <label class="agree"><input type="checkbox" id="cAgree"><span>I have read and agree to the <a onclick="goTerms()">Terms &amp; Conditions</a>. All sales are final, decants are made to order, no returns or refunds.</span></label>
     <button class="btn btn-gold btn-block" id="placeBtn" onclick="placeOrder()">Place order</button>
     <button class="btn btn-ghost btn-block" style="margin-top:9px" onclick="downloadPdf()">Download order as PDF</button>
@@ -806,8 +802,8 @@
   // against a fresh no-store fetch of index.html and forces one hard reload if they differ,
   // so a browser/PWA cached frontend can never keep running an old checkout (no courier, no
   // shipping). Must match the <meta name="build-version"> in <head>.
-  const BUILD_VERSION = "2026-06-30.2";
-  const STORE = { gcashName: "Arwin Edward M. Bagaslao", gcashNumber: "09356708680", qr: "gcash-qr.png" };
+  const BUILD_VERSION = "2026-07-01.1";
+  const STORE = {};
   let LAYERING = /*layering*/[
 {
 "name": "Mango Sticky Rice Glow",
@@ -5943,14 +5939,11 @@
   function init(){
     checkForStaleBuild();
     document.getElementById("yr").textContent = "2026";
-    document.getElementById("gcashName").textContent = STORE.gcashName;
-    document.getElementById("gcashNumber").textContent = STORE.gcashNumber;
-    document.getElementById("footGcash").innerHTML = "GCash · <b>" + esc(STORE.gcashName) + "</b><br>" + esc(STORE.gcashNumber);
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
       var _REM=["Rayhaan Imperia"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
-      buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
+      buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart();
     });
   }
 
@@ -6561,13 +6554,6 @@
   function toggleMenu(){ document.getElementById("mmenu").classList.toggle("open"); document.getElementById("menuScrim").classList.toggle("open"); }
   function closeMenu(){ document.getElementById("mmenu").classList.remove("open"); document.getElementById("menuScrim").classList.remove("open"); }
 
-  async function loadQr(){
-    try{
-      const r = await fetch(STORE.qr + "?v=" + Date.now(), { cache:"no-store" });
-      if (r.ok){ const img = new Image(); img.onload = () => { const h = document.getElementById("qrHolder"); if (h) h.outerHTML = '<img src="'+STORE.qr+'" alt="GCash QR">'; }; img.src = STORE.qr; }
-    }catch(e){}
-  }
-
   function validCheckout(){
     const miss = [];
     const v = id => document.getElementById(id).value.trim();
@@ -6607,7 +6593,7 @@
       if (!d.ok) throw new Error(d.error||"Order failed");
       cart = []; saveCart(); renderCart();
       if (d.checkoutUrl){ status.textContent = "Redirecting to secure payment..."; window.location.href = d.checkoutUrl; return; }
-      status.textContent = "Order " + d.orderId + " received. Pay via GCash above and send your receipt. A copy was emailed to the shop.";
+      status.textContent = "Order " + d.orderId + " received. A copy was emailed to the shop. Checkout will open shortly.";
     }catch(e){
       status.textContent = "We could not reach the order desk, so we generated a PDF you can send us instead.";
       await downloadPdf();
@@ -6638,7 +6624,7 @@
     doc.line(left,y,right,y); y+=8; doc.setFont("helvetica","bold");
     doc.text("Grand Total: PHP " + Math.ceil(cartTotal()).toLocaleString("en-PH"), right, y, {align:"right"}); y+=12;
     doc.text("Payment", left, y); y+=6; doc.setFont("helvetica","normal");
-    doc.text("GCash: " + STORE.gcashName + "  " + STORE.gcashNumber, left, y);
+    doc.text("Secure checkout by Xendit. GCash, Maya, GrabPay, QRPH, or card.", left, y);
     doc.save((customer.name||"order").replace(/[^a-z0-9]+/gi,"_").toLowerCase() + "_curated_archive.pdf");
   }
 
