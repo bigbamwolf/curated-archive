@@ -5925,6 +5925,10 @@
     loadCatalogFromApi().finally(() => {
       var _REM=["Rayhaan Imperia"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
       buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
+      // A deep link routes at t=0 against the embedded snapshot, which can be
+      // stale on price and stock and can be missing newer products entirely.
+      // Once the live catalog lands, re-run the route so the view shows sheet truth.
+      try{ if(location.hash && location.hash!=="#/" && location.hash!=="#"){ _lastHash=null; applyHash(); } }catch(_e){}
     });
   }
 
