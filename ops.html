@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Curated Archive Ops</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#faf8f4; --ink:#1d1a14; --gold:#b08d3e; --line:#e7e0d2; --card:#ffffff; --dim:#7a7264; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--cream); color:var(--ink); font:15px/1.55 Inter, sans-serif; min-height:100vh; }
+  h1,h2,h3 { font-family:'Cormorant Garamond', serif; font-weight:600; }
+  .wrap { max-width:1100px; margin:0 auto; padding:24px; }
+  .brand { display:flex; align-items:baseline; gap:10px; }
+  .brand b { font-family:'Cormorant Garamond', serif; font-size:26px; letter-spacing:.06em; }
+  .brand span { color:var(--gold); font-size:12px; letter-spacing:.22em; text-transform:uppercase; }
+  .login { max-width:380px; margin:12vh auto 0; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:34px; box-shadow:0 12px 40px rgba(60,45,10,.07); }
+  .login h1 { font-size:30px; margin-bottom:4px; }
+  .login p { color:var(--dim); font-size:13px; margin-bottom:22px; }
+  label { display:block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim); margin:14px 0 6px; }
+  input, select { width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; background:#fff; }
+  button { margin-top:20px; width:100%; padding:12px; border:0; border-radius:8px; background:var(--ink); color:#fff; font:600 14px Inter; letter-spacing:.06em; cursor:pointer; }
+  button:hover { background:#000; }
+  .err { color:#a33; font-size:13px; margin-top:12px; min-height:18px; }
+  header.bar { display:flex; justify-content:space-between; align-items:center; padding:18px 24px; border-bottom:1px solid var(--line); background:var(--card); }
+  .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .kpi b { display:block; font-size:26px; font-family:'Cormorant Garamond', serif; }
+  .kpi span { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
+  .tabs { display:flex; gap:8px; margin-bottom:16px; }
+  .tabs a { padding:8px 16px; border:1px solid var(--line); border-radius:20px; font-size:13px; cursor:pointer; background:var(--card); }
+  .tabs a.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th { text-align:left; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); border-bottom:1px solid var(--line); padding:8px; }
+  td { padding:8px; border-bottom:1px solid #f1ece0; }
+  .searchrow { display:flex; gap:10px; margin-bottom:14px; }
+  .searchrow input, .searchrow select { width:auto; flex:1; }
+  .pill { display:inline-block; padding:2px 9px; border-radius:10px; font-size:11.5px; background:#f0e9d8; color:#6e5a22; }
+  pre { background:#faf7ee; border:1px solid var(--line); border-radius:8px; padding:14px; font-size:12.5px; overflow-x:auto; white-space:pre-wrap; }
+  .hidden { display:none; }
+  .note { color:var(--dim); font-size:12px; margin-top:10px; }
+</style>
+</head>
+<body>
+<div id="loginView">
+  <div class="login">
+    <div class="brand" style="margin-bottom:18px"><b>CURATED ARCHIVE</b><span>Ops</span></div>
+    <h1>Sign in</h1>
+    <p>Internal listing and order desk of Curated Archive Consumer Goods Trading.</p>
+    <label>Username</label><input id="u" autocomplete="username">
+    <label>Password</label><input id="p" type="password" autocomplete="current-password">
+    <button onclick="login()">Sign in</button>
+    <div class="err" id="lerr"></div>
+  </div>
+</div>
+
+<div id="appView" class="hidden">
+  <header class="bar">
+    <div class="brand"><b>CURATED ARCHIVE</b><span>Ops</span></div>
+    <div style="font-size:13px;color:var(--dim)"><span id="who"></span> · <a style="cursor:pointer;color:var(--gold)" onclick="logout()">Sign out</a></div>
+  </header>
+  <div class="wrap">
+    <div class="kpis">
+      <div class="kpi"><b id="kItems">–</b><span>Catalog items</span></div>
+      <div class="kpi"><b id="kLive">–</b><span>In stock</span></div>
+      <div class="kpi"><b id="kMl">–</b><span>Total stock ml</span></div>
+      <div class="kpi"><b id="kOrd">–</b><span>Recent orders</span></div>
+    </div>
+    <div class="tabs">
+      <a id="tCat" class="on" onclick="tab('cat')">Catalog</a>
+      <a id="tOrd" onclick="tab('ord')">Orders</a>
+      <a id="tCmp" onclick="tab('cmp')">Listing composer</a>
+    </div>
+    <div id="vCat" class="panel">
+      <div class="searchrow"><input id="q" placeholder="Search catalog" oninput="renderCat()"><select id="fc" onchange="renderCat()"><option value="">All categories</option></select></div>
+      <table><thead><tr><th>Item</th><th>Category</th><th>Stock ml</th><th>1ml</th><th>2ml</th><th>5ml</th><th>10ml</th></tr></thead><tbody id="catBody"></tbody></table>
+    </div>
+    <div id="vOrd" class="panel hidden">
+      <table><thead><tr><th>Order</th><th>Date</th><th>Buyer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody id="ordBody"></tbody></table>
+      <div class="note">Buyer names are masked. Full order detail lives in the fulfillment desk.</div>
+    </div>
+    <div id="vCmp" class="panel hidden">
+      <label>Item</label><select id="cmpItem" onchange="renderCmp()"></select>
+      <label>Marketplace</label><select id="cmpMkt" onchange="renderCmp()"><option>Shopee</option><option>Lazada</option><option>TikTok Shop</option></select>
+      <h3 style="margin:16px 0 8px">Listing payload</h3>
+      <pre id="cmpOut"></pre>
+      <div class="note">Generated from live stock and the house price book. Copy into the channel publisher.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec';
+let DATA = null;
+async function post(body) {
+  const r = await fetch(API, { method:'POST', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(body) });
+  return r.json();
+}
+async function login() {
+  document.getElementById('lerr').textContent = '';
+  try {
+    const j = await post({ action:'ops_login', username: document.getElementById('u').value, password: document.getElementById('p').value });
+    if (!j.ok) { document.getElementById('lerr').textContent = j.error || 'Sign in failed'; return; }
+    try { localStorage.setItem('opsTok', j.token); localStorage.setItem('opsUser', j.user); } catch(e) {}
+    boot(j.token, j.user);
+  } catch (e) { document.getElementById('lerr').textContent = 'Network error, try again'; }
+}
+function logout() { try { localStorage.removeItem('opsTok'); } catch(e) {} location.reload(); }
+async function boot(tok, user) {
+  const j = await post({ action:'ops_data', token: tok });
+  if (!j.ok) { document.getElementById('lerr').textContent = j.error || 'Session expired'; return; }
+  DATA = j;
+  document.getElementById('loginView').classList.add('hidden');
+  document.getElementById('appView').classList.remove('hidden');
+  document.getElementById('who').textContent = user || 'signed in';
+  document.getElementById('kItems').textContent = j.kpi.items;
+  document.getElementById('kLive').textContent = j.kpi.live;
+  document.getElementById('kMl').textContent = j.kpi.totalMl.toLocaleString();
+  document.getElementById('kOrd').textContent = j.kpi.orders20;
+  const cats = [...new Set(j.catalog.map(i => i.category).filter(Boolean))].sort();
+  document.getElementById('fc').innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option>${c}</option>`).join('');
+  document.getElementById('cmpItem').innerHTML = j.catalog.filter(i => Number(i.stock) > 0).map((i, n) => `<option value="${i.name.replace(/"/g,'&quot;')}">${i.name}</option>`).join('');
+  renderCat(); renderOrd(); renderCmp();
+}
+function tab(t) {
+  for (const [id, v] of [['tCat','cat'],['tOrd','ord'],['tCmp','cmp']]) document.getElementById(id).classList.toggle('on', v === t);
+  document.getElementById('vCat').classList.toggle('hidden', t !== 'cat');
+  document.getElementById('vOrd').classList.toggle('hidden', t !== 'ord');
+  document.getElementById('vCmp').classList.toggle('hidden', t !== 'cmp');
+}
+function renderCat() {
+  const q = (document.getElementById('q').value || '').toLowerCase();
+  const fc = document.getElementById('fc').value;
+  const rows = DATA.catalog.filter(i => (!q || i.name.toLowerCase().includes(q)) && (!fc || i.category === fc)).slice(0, 250);
+  document.getElementById('catBody').innerHTML = rows.map(i => {
+    const p = i.prices || {};
+    return `<tr><td>${i.name}</td><td><span class="pill">${i.category || ''}</span></td><td>${i.stock ?? ''}</td>
+      <td>${p['1'] ?? ''}</td><td>${p['2'] ?? ''}</td><td>${p['5'] ?? ''}</td><td>${p['10'] ?? ''}</td></tr>`;
+  }).join('');
+}
+function renderOrd() {
+  document.getElementById('ordBody').innerHTML = (DATA.orders || []).map(o =>
+    `<tr><td>${o.id}</td><td>${String(o.date).slice(0,10)}</td><td>${o.name}</td><td>${o.items}</td><td>${o.total}</td><td>${o.status || ''}</td></tr>`).join('');
+}
+function renderCmp() {
+  const name = document.getElementById('cmpItem').value;
+  const mkt = document.getElementById('cmpMkt').value;
+  const it = DATA.catalog.find(i => i.name === name);
+  if (!it) { document.getElementById('cmpOut').textContent = ''; return; }
+  const sku = 'CA-' + (it.category || 'GEN').replace(/[^A-Za-z]/g, '').slice(0, 8).toUpperCase() + '-' + it.name.replace(/[^A-Za-z0-9]/g, '').slice(0, 24);
+  const sizes = ['1','2','5','10'].filter(s => (it.prices || {})[s]);
+  const payload = {
+    marketplace: mkt,
+    title: `DECANT ${it.name} ${sizes.map(s=>s+'mL').join(' ')} Curated Archive`,
+    parent_sku: sku,
+    category_hint: 'Perfumes',
+    attributes: { brand: 'No brand', gender: 'Unisex', formulation: 'Spray', concentration: 'EDP' },
+    variations: sizes.map(s => ({ size: s + 'ml', sku: sku + '-' + s + 'ML', price: it.prices[s], stock_units: Math.floor(Number(it.stock || 0) / Number(s)) }))
+  };
+  document.getElementById('cmpOut').textContent = JSON.stringify(payload, null, 2);
+}
+(function init() {
+  let t = null, u = null;
+  try { t = localStorage.getItem('opsTok'); u = localStorage.getItem('opsUser'); } catch(e) {}
+  if (t) boot(t, u);
+})();
+</script>
+</body>
+</html>
