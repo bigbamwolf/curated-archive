@@ -806,12 +806,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
   const API_CONFIG = { apiBase: "https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec", storeName: "Curated Archive" };
-  const STORE = { gcashName: "Arwin Edward M. Bagaslao", gcashNumber: "09356708680", qr: "gcash-qr.png" };
+  const STORE = { gcashName: "Arwin Edward M. Bagaslao", gcashNumber: "", qr: "gcash-qr.png" };
   let LAYERING = /*layering*/[
 {
 "name": "Mango Sticky Rice Glow",
 "f1": "Imagine Poseidon Chilling at the Pacific with Fire God",
-"f2": "Samyo ng Bagong Saing",
+"f2": "Samyo ng Bagong Kanin",
 "f1_item": {
 "name": "Imagine Poseidon Chilling at the Pacific with Fire God",
 "category": "Dua",
@@ -824,7 +824,7 @@
 "image": ""
 },
 "f2_item": {
-"name": "Claire Olfaction Samyo ng Bagong Saing",
+"name": "Claire Olfaction Samyo ng Bagong Kanin",
 "category": "Local Niche",
 "prices": {
 "1": 157,
@@ -1242,7 +1242,7 @@
 {
 "name": "Morning Champorado",
 "f1": "Chocolat Noir",
-"f2": "Samyo ng Bagong Saing",
+"f2": "Samyo ng Bagong Kanin",
 "f1_item": {
 "name": "Elnaris Chocolat Noir",
 "category": "Local Niche",
@@ -1255,7 +1255,7 @@
 "image": "Local Niche Elnaris Chocolat Noir.jpg"
 },
 "f2_item": {
-"name": "Claire Olfaction Samyo ng Bagong Saing",
+"name": "Claire Olfaction Samyo ng Bagong Kanin",
 "category": "Local Niche",
 "prices": {
 "1": 157,
@@ -5015,7 +5015,7 @@
 "description": ""
 },
 {
-"name": "Claire Olfaction Samyo ng Bagong Saing",
+"name": "Claire Olfaction Samyo ng Bagong Kanin",
 "prices": {
 "1": 157,
 "2": 314,
@@ -5918,8 +5918,8 @@
   function init(){
     document.getElementById("yr").textContent = "2026";
     document.getElementById("gcashName").textContent = STORE.gcashName;
-    document.getElementById("gcashNumber").textContent = STORE.gcashNumber;
-    document.getElementById("footGcash").innerHTML = "GCash · <b>" + esc(STORE.gcashName) + "</b><br>" + esc(STORE.gcashNumber);
+    document.getElementById("gcashNumber").textContent = STORE.gcashNumber || "";
+    document.getElementById("footGcash").innerHTML = "GCash · <b>" + esc(STORE.gcashName) + "</b>" + (STORE.gcashNumber ? "<br>" + esc(STORE.gcashNumber) : "");
     window.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
@@ -6352,7 +6352,7 @@
   const BUNDLES_SEED = [
     { title:"Aventus Batch Flight", blurb:"Three of the most legendary Creed Aventus vintage batches. 12F01 with in your face smoke, 12D01 with grilled pineapple over charred wood, 13ZZ01 with fruity pineapple folded into musky smoke. The flight that defines the Aventus rabbit hole.", names:[['Aventus','12F01'],['Aventus','12D01'],['Aventus','13ZZ01']] },
     { title:"Aventus Discovery Trio", blurb:"The cheap gateway into the Aventus rabbit hole. One year code, one F-batch, one signature classic. Feel how the codes diverge without breaking the bank.", names:[['Aventus','17X01'],['Aventus','F388'],['Aventus','18K01']] },
-    { title:"Filipino Niche Pride", blurb:"Three of the strongest local niche houses in the archive. The emotionally rich Tadhana Lover, the warm rice and milk comfort of Claire Olfaction Samyo ng Bagong Saing, and the calming neroli signature of Orca Nero Star.", names:[['Local Niche','Tadhana Lover'],['Local Niche','Claire Olfaction Samyo ng Bagong Saing'],['Local Niche','Orca Nero Star']] },
+    { title:"Filipino Niche Pride", blurb:"Three of the strongest local niche houses in the archive. The emotionally rich Tadhana Lover, the warm rice and milk comfort of Claire Olfaction Samyo ng Bagong Kanin, and the calming neroli signature of Orca Nero Star.", names:[['Local Niche','Tadhana Lover'],['Local Niche','Claire Olfaction Samyo ng Bagong Kanin'],['Local Niche','Orca Nero Star']] },
     { title:"Gourmand Dessert Set", blurb:"Three dessert wears for when you want to smell good enough to eat. Coffee cake, chocolate, and cookies and cream, all photorealistic.", names:[['Dua','Caramel Coffee Cake'],['Dua','High on Chocolate'],['Middle Eastern','Tubbees Cookies & Cream']] },
     { title:"Parfums Vintage Crown Trio", blurb:"Three flagships from the Parfums Vintage lineup, the inspired bottles built like jewels. King, Intense, and the namesake Emperor Maximus.", names:[['Parfums Vintage','King'],['Parfums Vintage','Intense'],['Parfums Vintage','Emperor Maximus']] },
     { title:"Fresh Escape", blurb:"The real freshies. Cool, clean, daytime. PdM Sedley like Sprite from top to drydown, PdM GNTonic with lime and fizz, and Roja Oceania like an ice cold citrus under the midday sun.", names:[['Niche','Sedley'],['Niche','GNTonic'],['Niche','Oceania']] },
@@ -6595,7 +6595,7 @@
     doc.line(left,y,right,y); y+=8; doc.setFont("helvetica","bold");
     doc.text("Grand Total: PHP " + Math.ceil(cartTotal()).toLocaleString("en-PH"), right, y, {align:"right"}); y+=12;
     doc.text("Payment", left, y); y+=6; doc.setFont("helvetica","normal");
-    doc.text("GCash: " + STORE.gcashName + "  " + STORE.gcashNumber, left, y);
+    doc.text("GCash: " + STORE.gcashName + (STORE.gcashNumber ? "  " + STORE.gcashNumber : ""), left, y);
     doc.save((customer.name||"order").replace(/[^a-z0-9]+/gi,"_").toLowerCase() + "_curated_archive.pdf");
   }
 
