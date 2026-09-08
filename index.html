@@ -609,6 +609,7 @@
           <button class="btn btn-gold" id="dAdd" style="flex:1" onclick="addCurrentToCart()">Add to Cart</button>
         </div>
         <div id="restockBox"></div>
+        <div style="margin:10px 0 0"><button class="btn" id="dShare" onclick="shareCurrent(event)" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase">Copy link</button></div>
         <div class="scent"><h3>The scent</h3><p id="dDesc"></p></div>
         <div class="mini-trust">
           <span><b>Authentic</b> · batch verified</span>
@@ -772,10 +773,10 @@
     <input class="field" id="cContact" placeholder="Mobile number" />
     <select class="field" id="cDelivery" onchange="renderCart()">
       <option value="">Choose your courier</option>
-      <option value="J&amp;T Express">J&amp;T Express · 2 to 5 days · ₱85</option>
-      <option value="LBC Express">LBC Express · 1 to 3 days · ₱150</option>
-      <option value="Grab Express">Grab Express (Metro Manila same day) · ₱250</option>
-      <option value="Lalamove">Lalamove (Metro Manila same day) · ₱350</option>
+      <option value="J&amp;T Express">J&amp;T Express · 2 to 5 days · ₱95</option>
+      <option value="LBC Express">LBC Express · 1 to 3 days · ₱160</option>
+      <option value="Grab Express">Grab Express (Metro Manila same day) · ₱260</option>
+      <option value="Lalamove">Lalamove (Metro Manila same day) · ₱360</option>
     </select>
     <div class="ship-note" id="shipNote" style="font-size:12px;color:var(--muted);margin:-4px 0 8px 0">Free shipping on orders ₱10,000 and up. Below that, the courier rate you pick is added to your total.</div>
     <textarea class="field" id="cAddress" rows="2" placeholder="Complete delivery address"></textarea>
@@ -6007,6 +6008,15 @@
   function openI(i){ const r = gridRows[i]; if (r) openDetail(r.cat, r.it); }
   function quickAdd(i, ev){ if(ev) ev.stopPropagation(); const r=gridRows[i]; if(!r) return; const it=r.it; const sz=sizesOf(it); if(!sz||!sz.length) return; const s=sz[0]; if(!sizeFits(it, s)) return; addToCart({ category:r.cat, name:it.name, size:s, quantity:1, unitPrice:Number(it.prices[String(s)]), image:it.image||"" }); const b=ev&&ev.currentTarget; if(b){ const t=b.textContent; b.textContent="Added"; b.disabled=true; setTimeout(()=>{ b.textContent=t; b.disabled=false; }, 1100); } }
 
+  function productUrl(cat, it){ return location.origin + location.pathname + "#/p/" + slug(cat) + "/" + slug(it.name); }
+  function shareCurrent(ev){
+    if(!view || !view.item) return;
+    const url = productUrl(view.cat, view.item);
+    const done = function(){ const b = ev && ev.currentTarget; if(!b) return; const t = b.textContent; b.textContent = "Link copied"; setTimeout(function(){ b.textContent = t; }, 1400); };
+    if (navigator.share) { navigator.share({ title: dispName(view.item.name), url: url }).catch(function(){}); done(); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt("Copy this link", url); }); return; }
+    window.prompt("Copy this link", url);
+  }
   function openDetail(cat, it){
     if(!_fromHash && it) setHash("#/p/"+slug(cat)+"/"+slug(it.name));
     view = { cat, item: it, size: sizesOf(it)[0], qty: 1 };
@@ -6081,10 +6091,10 @@
   }
   function removeLine(i){ cart.splice(i,1); saveCart(); renderCart(); }
   const SHIPPING = { threshold: 10000, options: [
-    { name:"J&T Express",    fee:85,  eta:"2 to 5 days" },
-    { name:"LBC Express",    fee:150, eta:"1 to 3 days" },
-    { name:"Grab Express",   fee:250, eta:"Same day Metro Manila" },
-    { name:"Lalamove",       fee:350, eta:"Same day Metro Manila" }
+    { name:"J&T Express",    fee:95,  eta:"2 to 5 days" },
+    { name:"LBC Express",    fee:160, eta:"1 to 3 days" },
+    { name:"Grab Express",   fee:260, eta:"Same day Metro Manila" },
+    { name:"Lalamove",       fee:360, eta:"Same day Metro Manila" }
   ]};
   const cartSubtotal = () => cart.reduce((s,i)=> s + i.unitPrice*i.quantity, 0);
   const PROMO_THRESHOLD = 2500;
@@ -6200,9 +6210,21 @@
   function setHash(h){ _lastHash=h; if(location.hash!==h) location.hash=h; }
   function catFromSlug(cs){ if(!cs) return "All"; for(const c in CATALOG){ if(slug(c)===cs) return c; } return "All"; }
   function layerIndexBySlug(s){ for(let i=0;i<LAYERING.length;i++){ if(slug(LAYERING[i].name)===s) return i; } return -1; }
-  function findItemBySlug(cs,ns){ for(const c in CATALOG){ if(slug(c)!==cs) continue; const arr=CATALOG[c]||[]; for(let j=0;j<arr.length;j++){ if(slug(arr[j].name)===ns) return {cat:c,it:arr[j]}; } } return null; }
+  function findItemBySlug(cs,ns){
+    if(!ns) return null;
+    for(const c in CATALOG){ if(slug(c)!==cs) continue; const arr=CATALOG[c]||[]; for(let j=0;j<arr.length;j++){ if(slug(arr[j].name)===ns) return {cat:c,it:arr[j]}; } }
+    // A shared link outlives the category it was made in. When a product is moved
+    // to another house the old link still names the right fragrance, so match on
+    // the name alone rather than sending the buyer to the grid.
+    for(const c in CATALOG){ const arr=CATALOG[c]||[]; for(let j=0;j<arr.length;j++){ if(slug(arr[j].name)===ns) return {cat:c,it:arr[j]}; } }
+    return null;
+  }
   function route(h){
-    const p=(h||"").replace(/^#\/?/,"").split("/").filter(Boolean).map(decodeURIComponent);
+    // Messenger, TikTok and IG in app browsers append tracking params INSIDE the
+    // fragment (#/p/aventus/12d01?fbclid=...), which used to break the slug match
+    // and dump a shared product link on the shop grid. Strip them per segment.
+    const p=(h||"").replace(/^#\/?/,"").split("/").filter(Boolean)
+      .map(function(x){ return decodeURIComponent(x).replace(/[?&#].*$/,"").trim(); }).filter(Boolean);
     if(!p.length){ goHome(); return; }
     switch(p[0]){
       case "shop": goShop(catFromSlug(p[1])); break;
