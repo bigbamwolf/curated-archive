@@ -1848,4 +1848,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+<url><loc>https://curated-archive.com/returns/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+<url><loc>https://curated-archive.com/shipping/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
 </urlset>
