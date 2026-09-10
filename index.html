@@ -807,6 +807,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
   const API_CONFIG = { apiBase: "https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec", storeName: "Curated Archive" };
+  (function(){ try{
+    var vid;
+    try{ vid = localStorage.getItem("ca_vid"); if(!vid){ vid = Math.random().toString(36).slice(2)+Date.now().toString(36); localStorage.setItem("ca_vid", vid); } }catch(_){ vid = Math.random().toString(36).slice(2); }
+    var qs = "action=hit&route="+encodeURIComponent(location.hash||"#/")+"&ref="+encodeURIComponent(document.referrer||"")+"&vid="+encodeURIComponent(vid);
+    fetch(API_CONFIG.apiBase+"?"+qs, { method:"GET", mode:"no-cors", keepalive:true }).catch(function(){});
+  }catch(_){} })();
   const STORE = { gcashName: "Arwin Edward M. Bagaslao", gcashNumber: "", qr: "gcash-qr.png" };
   let LAYERING = /*layering*/[
 {
