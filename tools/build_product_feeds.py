@@ -30,6 +30,7 @@ filter is applied here beyond what the endpoint already returns.
 """
 
 import json
+import math
 import re
 import subprocess
 import sys
@@ -118,6 +119,11 @@ def build_items(catalog):
                 if price is None or price == "" or float(price) <= 0:
                     continue  # size not sold for this product, not an error
                 in_stock = size <= avail_ml
+                # The storefront's peso() formatter renders Math.ceil(price),
+                # never the raw decimal (index.html: peso = n => "₱" +
+                # Math.ceil(Number(n)||0)...). The feed price must match
+                # that rendered number exactly, so ceil here too.
+                shown_price = math.ceil(float(price))
                 items.append({
                     "id": f"{group_id}-{size}ml",
                     "group_id": group_id,
@@ -125,8 +131,8 @@ def build_items(catalog):
                     "description": desc,
                     "link": link,
                     "image_link": image_link,
-                    "price": f"{float(price):.2f} PHP",
-                    "price_num": float(price),
+                    "price": f"{shown_price:.2f} PHP",
+                    "price_num": shown_price,
                     "availability": "in stock" if in_stock else "out of stock",
                     "brand": house,
                     "size_ml": size,
