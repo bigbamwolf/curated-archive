@@ -25,6 +25,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://curated-archive.com/guide/aventus-batches/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://curated-archive.com/p/aventus/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -1848,6 +1854,4 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-<url><loc>https://curated-archive.com/returns/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-<url><loc>https://curated-archive.com/shipping/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
 </urlset>
