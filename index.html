@@ -5976,7 +5976,7 @@
       `<button class="chip ${c===activeCat?'active':''}" onclick="setCatI(${i})">${esc(dispCat(c))}</button>`).join("");
   }
   function setCatI(i){ setCat(chipCats[i]); }
-  function setCat(c){ activeCat = c; renderChips(); renderGrid(); if(!_fromHash) setHash(c&&c!=="All"?"#/shop/"+slug(c):"#/shop"); }
+  function setCat(c){ activeCat = c; var _ss=document.getElementById("shopSearch"); if(_ss) _ss.value=""; renderChips(); renderGrid(); if(!_fromHash) setHash(c&&c!=="All"?"#/shop/"+slug(c):"#/shop"); }
   function setAvail(v){ activeAvail = v; renderGrid(); }
   function setSort(v){ activeSort = v; renderGrid(); }
 
