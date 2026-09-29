@@ -5980,20 +5980,28 @@
   function setAvail(v){ activeAvail = v; renderGrid(); }
   function setSort(v){ activeSort = v; renderGrid(); }
 
+  function normSearch(t){ return String(t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/['’`]/g,"").replace(/&/g," and ").replace(/[^a-z0-9#]+/g," ").trim(); }
+  function searchVariants(q){ var n=normSearch(q); if(!n) return []; var out=[n]; for(var k in ABBREV){ var nk=normSearch(k), nv=normSearch(ABBREV[k]); if(!nk||!nv) continue; var w=" "+n+" "; if(w.indexOf(" "+nk+" ")>=0) out.push(w.replace(" "+nk+" "," "+nv+" ").trim()); if(n.length>=4 && nk.length>n.length && nk.indexOf(n)===0) out.push(nv); } return out.filter(function(v,i,a){ return a.indexOf(v)===i; }); }
+  function searchScore(r, variants){ var nm=normSearch(r.it.name+" "+dispName(r.it.name)), pv=normSearch(provText(r.it.name)+" "+r.cat), ds=normSearch(r.it.description||DESC[r.it.name]||DUA_DESC[r.it.name]||""), all=nm+" "+pv+" "+ds, best=0;
+    variants.forEach(function(v,vi){ var tk=v.split(" "); var has=function(t){ var w=" "+t+" "; return tk.every(function(x){ return x.length>3 ? t.indexOf(x)>=0 : w.indexOf(" "+x+(vi?" ":""))>=0; }); }; var sc=0;
+      if((" "+nm+" ").indexOf(" "+v)>=0) sc=5; else if(has(nm)) sc=4; else if(pv.indexOf(v)>=0) sc=3; else if(has(nm+" "+pv)) sc=2; else if((!vi || v.length>=4) && has(all)) sc=1;
+      if(sc>best) best=sc; });
+    return best; }
   function renderGrid(){
-    var _hs=["Aventus","Niche","Local Niche"].indexOf(activeCat)>=0; var _ss=document.getElementById("shopSearch"); if(_ss){ _ss.style.display=_hs?"none":""; if(_hs)_ss.value=""; }
     gridRows = [];
-    if (activeCat === "All") categories.forEach(c => CATALOG[c].forEach(it => gridRows.push({cat:c, it})));
+    var _q=(document.getElementById("shopSearch")?document.getElementById("shopSearch").value:"").trim();
+    var _qv=_q?searchVariants(_q):[];
+    if (activeCat === "All" || _qv.length) categories.forEach(c => CATALOG[c].forEach(it => gridRows.push({cat:c, it})));
     else (CATALOG[activeCat]||[]).forEach(it => gridRows.push({cat:activeCat, it}));
     if (activeAvail !== "all") gridRows = gridRows.filter(r => stockInfo(r.it).cls === activeAvail);
-    var _q=(document.getElementById("shopSearch")?document.getElementById("shopSearch").value:"").toLowerCase().trim();
-    if(_q){ var _qx=expandSearch(_q); gridRows = gridRows.filter(function(r){ var corpus=expandSearch([r.it.name,dispName(r.it.name),r.it.description||DESC[r.it.name]||DUA_DESC[r.it.name]||"",provText(r.it.name),r.cat].join(" ")); return corpus.indexOf(_qx)>=0 || corpus.indexOf(_q)>=0; }); }
+    if(_qv.length){ gridRows.forEach(function(r){ r.score=searchScore(r,_qv); }); gridRows = gridRows.filter(function(r){ return r.score>0; }); }
     if (activeSort === "plow") gridRows.sort((a,b)=>minPrice(a.it)-minPrice(b.it));
     else if (activeSort === "phigh") gridRows.sort((a,b)=>minPrice(b.it)-minPrice(a.it));
     else if (activeSort === "az") gridRows.sort((a,b)=>String(a.it.name).localeCompare(String(b.it.name)));
     if (activeSort === "soldfirst") gridRows.sort((a,b)=>(stockInfo(b.it).sold?1:0)-(stockInfo(a.it).sold?1:0));
     else gridRows.sort((a,b)=>(stockInfo(a.it).sold?1:0)-(stockInfo(b.it).sold?1:0));
-    if (!gridRows.length){ document.getElementById("grid").innerHTML = `<div class="grid-empty">No scents match this filter. Try a different availability.</div>`; return; }
+    if (_qv.length) gridRows.sort((a,b)=>((stockInfo(a.it).sold?1:0)-(stockInfo(b.it).sold?1:0)) || (b.score-a.score));
+    if (!gridRows.length){ document.getElementById("grid").innerHTML = `<div class="grid-empty">${_qv.length?"No scents match that search. Try a house, a note, or the original it is inspired by.":"No scents match this filter. Try a different availability."}</div>`; return; }
     document.getElementById("grid").innerHTML = gridRows.map((r,i) => { const _b=stockInfo(r.it); return `
       <div class="card${_b.sold?' soldout':''}">
         <div class="card-click" onclick="openI(${i})">
