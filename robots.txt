@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /ops.html
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /tools/
 
 Sitemap: https://curated-archive.com/sitemap.xml

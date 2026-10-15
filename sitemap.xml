@@ -1,2013 +1,1668 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://curated-archive.com/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/decants/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/guide/creed-aventus-batch-codes/</loc>
     <lastmod>2026-09-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://curated-archive.com/guide/aventus-batches/</loc>
     <lastmod>2026-09-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/</loc>
     <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/</loc>
     <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/</loc>
     <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/jem/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/10j02/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2010J02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/11z01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2011Z01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/12d01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2012D01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/12f01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2012F01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/13zz01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2013ZZ01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/14f01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2014F01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/14k01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2014K01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/15r11/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2015R11.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/15x21/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2015X21.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/15y11/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2015Y11.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/15y01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2015Y01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/16a01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2016A01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/16d01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2016D01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/16e01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2016E01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/16h01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2016H01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/16k01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2016K01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/17s01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2017S01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/17t01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2017T01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/17q11/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2017Q11.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/17x01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2017X01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/18d02/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2018D02.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/18f21/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2018F21.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/18k01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2018K01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/20j01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2020J01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/21v01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2021V01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/21x01b/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2021X01B.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/f3334/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%203334.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/f388/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%20F388.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/f387/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%20F387.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/f1520/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%20F1520.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/f3135/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%20F3135.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/f463/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%20F463.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/17w01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2017W01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/f2838/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%20F2838.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/21t01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2021T01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/aventus/160/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%20160.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/16m01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Aventus%2016M01.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-edp/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Captivate%20EDP.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-v1/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Captivate%20V1.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/temptation/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Temptation.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/serene/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Serene.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/eau-benite/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Eau%20Benite.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/hypnotic-holiday/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Hypnotic%20Holiday.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/aventus-blanc/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Aventus%20Blanc.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-cacao/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Cacao.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-sedley/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Sedley.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-toffee/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Toffee.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-raspberry/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Raspberry.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-rose/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Rose.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-strawberry/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Strawberry.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/captivate-peach/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Peach.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/aventus-bake-ivl/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Aventus%20Bake%20IVL.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/aventus-orange-pomelo/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Aventus%20Orange%20Pomelo.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/aventus-banana-ice-cream/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Aventus%20Banana%20Ice%20Cream.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/under-the-influence-w-o-canna/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Under%20The%20Influence.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/tbgco/cap-sedley/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/TBGCO%20Cap%20Sedley.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/imagine/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20%23Imagine.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/1-and-only-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%201%20and%20Only%20Poseidon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/44-shades-of-cherry-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%2044%20Shades%20of%20Cherry%20Poseidon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/another-13-shades/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Another%2013%20Shades.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/banana-caramel-wonderland/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Banana%20Caramel%20Wonderland.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/banana-cream-pie-cocktail/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Banana%20Cream%20Pie%20Cocktail.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/beachvibes-by-the-water-of-arabia/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Beachvibes%20by%20the%20Water%20of%20Arabia.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/butterbeer/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Butterbeer.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/butterscotch-sauce/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Butterscotch%20Sauce.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/casino-elixir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Casino%20Elixir.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/choco-cherry-crumble-cake/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Choco%20Cherry%20Crumble%20Cake.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/choco-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Choco%20Poseidon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/chocolate-wafers-coffee/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Chocolate%20Wafers%20%26%20Coffee.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/clean-laundry/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Clean%20Laundry.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/elixir-of-poseidon-s-classic-pineapple/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Elixir%20of%20Poseidon%27s%20Classic%20Pineapple.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/exotic-burst-of-lemons/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Exotic%20Burst%20of%20Lemons.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/fizzy-gin/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Fizzy%20Gin.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/fruit-lemonade/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Fruit%20Lemonade.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/gone-swimming-in-jazz-club/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Gone%20Swimming%20in%20Jazz%20Club.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/heaven-on-earth/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Heaven%20on%20Earth.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/high-seas-of-everest/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20High%20Seas%20of%20Everest.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/imagine-gone-swimming-in-amalfi-mandarin/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Imagine%20Gone%20Swimming%20in%20Amalfi%20Mandarin.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/imagine-poseidon-s-vibrant-dreams/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Imagine%20Poseidon%27s%20Vibrant%20Dreams.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/italiano-choco-pomme-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Italiano%20Choco%20Pomme%20Poseidon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/leedys/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Leedys.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/matchalicious/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Matchalicious.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/mel-nge-moussex/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Mel%C3%A1nge%20Moussex.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/melody/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Melody.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/melody-of-sweet-fruits/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Melody%20of%20Sweet%20Fruits.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/musky-pineapple/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Musky%20Pineapple.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/ocean-of-dua/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Ocean%20of%20Dua.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/oh-damn/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Oh%20Damn%21.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/origins-of-poseidon-est-2010/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Origins%20of%20Poseidon%3A%20Est%202010.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/paris-1920/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Paris%201920.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/peace-with-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Peace%20with%20Poseidon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/perfumer-s-dua-gold/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Perfumer%E2%80%99s%20Dua%3A%20Gold.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/perfumer-s-dua-pear/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Perfumer%E2%80%99s%20Dua%3A%20Pear.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-jr/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%20Jr..webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-angelic-elixir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Angelic%20Elixir.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-aphrodisiac/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Aphrodisiac.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-berry-affair/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Berry%20Affair.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-cafe/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Cafe.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-cologne/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Cologne.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-cotton-candy/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Cotton%20Candy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-dua-therapy/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Dua%20Therapy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-11z/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2011Z.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-13zz/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2013ZZ.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-13zz-2-0/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2013ZZ%20%282.0%29.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-15y/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2015Y.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-17x/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2017X.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-2-0/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%202.0.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-remixed-mod-1/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%20Remixed%20MOD%201.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-remixed-mod-2/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%20Remixed%20MOD%202.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-remixed-mod-3/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%20Remixed%20MOD%203.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-fireplace/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Fireplace.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-imagined-cologne/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Imagined%20Cologne.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-jazz/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Jazz.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-leopard-cologne/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Leopard%20Cologne.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-ottomon-supernova/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Ottomon%20Supernova.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-precious-madagascar-vanilla/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Precious%20Madagascar%20Vanilla.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-private-reserve-whiskey/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Private%20Reserve%20Whiskey.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-reflection/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Reflection.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-sour-peach/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Sour%20Peach.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-swimming-cologne/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Swimming%20Cologne.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/puffletuft-s-lemon-pastry-caramel/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Puffletuft%27s%20Lemon%20Pastry%20Caramel.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/reflection-of-casino-elixir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Reflection%20of%20Casino%20Elixir.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/reminiscent/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Reminiscent.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/rosa-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Rosa%20Poseidon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/soulful-citrus-zest/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Soulful%20Citrus%20Zest.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/strawberry-dream-cake/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Strawberry%20Dream%20Cake.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/supernova-cologne/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Supernova%20Cologne.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/sweet-lemon-pastry/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Sweet%20Lemon%20Pastry.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/the-mobster-vs-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20The%20Mobster%20vs%20Poseidon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/uplifting-air/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Uplifting%20Air.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/victorian/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Victorian.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/water-of-arabia/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Water%20of%20Arabia.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/whipped-lemonade/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Whipped%20Lemonade.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/white-beauty/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20White%20Beauty.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/white-tonic/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20White%20Tonic.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/zesty-lemon-shade/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Zesty%20Lemon%20Shade.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/matcha-waffle-ice-cream/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Matcha%20Waffle%20Ice%20Cream.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/high-on-chocolate/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20High%20on%20Chocolate.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/caramel-coffee-cake/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Caramel%20Coffee%20Cake.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/world-s-best-key-lime-pie/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20World%27s%20Best%20Key%20Lime%20Pie.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/dawa-cocktail/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Dawa%20Cocktail.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/banana-vanilla-custard-flan/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Banana%20%26%20Vanilla%20Custard%20Flan.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/vanilla-boba-milktea/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Vanilla%20Boba%20Milktea.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/realization/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Realization.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/supernova-rebirth/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Supernova%20Rebirth.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/triple-chocolate-cake/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Triple%20Chocolate%20Cake.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/sweet-serenade/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Sweet%20Serenade.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/tiger-gone-swimming/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Tiger%20Gone%20Swimming.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/tropical-fanta-fizz/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Tropical%20Fanta%20Fizz.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/cola-cream-dream/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Cola%20Cream%20Dream.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/passion-fruit-milk/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Passion%20Fruit%20Milk.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/puffletuft-s-milkylicious-lemon-pastry/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Puffletuft%27s%20Milkylicious%20Lemon%20Pastry.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/origins-of-poseidon-10e01/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Origins%20of%20Poseidon%2010E01.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-13n/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2013N.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-20j/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2020J.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/poseidon-s-elixir-16a/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Poseidon%27s%20Elixir%2016A.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/victorian-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Victorian%20Poseidon.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/dua/royal-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Royal%20Poseidon.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://curated-archive.com/p/dua/pineapple-brandy/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Pineapple%20Brandy.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://curated-archive.com/p/dua/sangria-fiesta/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Dua%20Sangria%20Fiesta.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/unisex-intense/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Unisex%20Intense.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/intense-gold/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Intense%20Gold.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/intense-vi/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Intense%20VI.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/intense-the-one/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Intense%20The%20One.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/intense/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Intense.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/king/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20King.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/vanilla-intense/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Vanilla%20Intense.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/emperor-maximus/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Emperor%20Maximus.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/iridescent/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Iridescent.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/limited-edition-29/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20Limited%20Edition%2029.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/parfums-vintage/emperor-maximus-extrait/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Parfums%20Vintage%20EmperorMaximusExtrait.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/tadhana-lover/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Tadhana%20Lover.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/tbgco-blanc/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20TBGCO%20Blanc.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/hiraya-wild-brew/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20HirayaWildBrew.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/scents-style-jessy-working-late/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Scents%20%26%20Style%20Jessy%20Working%20Late.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/domus-emeterius-verdant/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Domus%20Emeterius%20Verdant.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/gp-baguio-verde/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20GPBaguioVerde.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/elnaris-berries-saffron/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Elnaris%20Berries%20%26%20Saffron.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/elnaris-chocolat-noir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Elnaris%20Chocolat%20Noir.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/parfums-astraux-ocean-wind/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Parfums%20Astraux%20Ocean%20Wind.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/parfums-astraux-tara-kape/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20ParfumsAstrauxTaraKape.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/claire-olfaction-samyo-ng-bagong-kanin/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Claire%20Olfaction%20Samyo%20ng%20Bagong%20Kanin.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/artisan-s-after-the-rain/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20ArtisansAftertheRain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/l-abondance-creme-brule/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20LAbondance%20Creme%20Brule.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/home-studio-scents-dessert-lounge/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20HomeStudioScentsDessertLounge.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/local-niche/banawe/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Local%20Niche%20Banawe.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/oceania/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Oceania.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/elysium-pc/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Elysium%20PC.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/elysium-pph-se/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Elysium%20PPH%20SE.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/amore-mio/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Amore%20Mio.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/gntonic/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20GNTonic.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/warm-cottom/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20WarmCottom.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/matcha-meditation/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Matcha%20Meditation.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/severo/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Severo.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/mile-high-58/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Mile%20High%2058.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/bake/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Bake.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/pegasus/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Pegasus.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/sedley/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Sedley.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/visionary/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Visionary.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/imaginary-pineapple/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Imaginary%20Pineapple.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/vision-fascination/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Vision%20Fascination.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/invision-d3kod3/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Invision%20D3KOD3.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/niche/imagination-superdose/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Niche%20Imagination%20Superdose.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/riffs-freeze/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Riffs%20Freeze.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/al-rehab-french-coffee/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Al%20Rehab%20French%20Coffee.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/tubbees-bubble-gum/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20TubbeesBubbleGum.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/tubbees-chocolate-fudge/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20TubbeesChocolateFudge.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/tubbees-cookies-cream/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20TubbeesCookiesCream.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/tubbees-sweet-caramel/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Tubbees%20Sweet%20Caramel.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/afnan-9pm/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Afnan9PM.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/pendora-aventura/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Pendora%20Aventura.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/fragrance-world-black-leather/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Fragrance%20World%20Black%20Leather.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/rumz-al-rasasi-9325-pour-lui/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Rumz%20Al%20Rasasi%209325%20Pour%20Lui.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/dumont-nitro-black/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Dumont%20Nitro%20Black.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/afnan-supremacy-silver/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20AfnanSupremacySilver.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/rayhaan-imperia/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Rayhaan%20Imperia.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/middle-eastern/shiyaaka-sky/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Middle%20Eastern%20Shiyaaka%20Sky.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/cacao-nibs/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Cacao%20Nibs.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/carribean/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Carribean.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/tropical-sun-bliss/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Tropical%20Sun%20Bliss.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/morning-rose-s-essence/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Morning%20Rose%27s%20Essence.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/a-musk-have-scent/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20A%20Musk%20Have%20Scent.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/glaze-of-the-lighthouse/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Glaze%20of%20the%20Lighthouse.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/gardenia/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Gardenia.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/to-hide-a-smoker/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20To%20Hide%20a%20Smoker.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/these-are-my-confections/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20These%20are%20my%20Confections.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/carefree/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Carefree.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/sweet-vine/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Sweet%20Vine.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/triumph/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20Triumph.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/s-l/a-walk-among-the-woods/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/S%26L%20A%20Walk%20Among%20The%20Woods.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/warthog-stud/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Warthog%20Stud.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/warthog-patchouli-haven/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Warthog%20Patchouli%20Haven.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/warthog-hombre/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Warthog%20Hombre.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/warthog-dark-elixir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Warthog%20Dark%20Elixir.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/warthog-royal-cologne/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Warthog%20Royal%20Cologne.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/warthog-cosmopolitan/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Warthog%20Cosmopolitan.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/warthog-red-moon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Warthog%20Red%20Moon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/inspired/imaginaire/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Imaginaire.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/lv-imagination/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/LV%20Imagination.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/bphe-00j52k14a/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/BPHE%2000J52K14A.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/bphe-20n18da1/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/BPHE%2020N18DA1.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/bphe-31201c1/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/BPHE%2031201C1.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/bphe-31n01da2/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/BPHE%2031N01DA2.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/tom-ford-neroli-portofino/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Tom%20Ford%20Neroli%20Portofino.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/jpg-le-male/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://curated-archive.com/p/designers/jpg-ultra-male/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://curated-archive.com/p/designers/jpg-le-male-elixir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/JPG%20Le%20Male.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/designers/phantasy/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Designers%20Phantasy.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-2016-prototype/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Prime%20Monkey%20Valor%202016%20Prototype.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-2021-prototype/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Prime%20Monkey%20Valor%202021%20Prototype.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-happy-cookie-prototype/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Prime%20Monkey%20Happy%20Cookie%20Prototype.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-happy-cookie/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Prime%20Monkey%20Happy%20Cookie.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-dendros-420/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Prime%20Monkey%20Dendros%20420.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/new-prime-monkey-royal-zest/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Prime%20Monkey%20Royal%20Zest.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-sonata/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Sonata.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-icarus-wings/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Icarus%20Wings.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-poseidon/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Poseidon.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-planet-befall/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Planet%20Befall.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-behemoth/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Behemoth.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-cosmic/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Cosmic.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-shadowmere/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Shadowmere.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-glaukos/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Glaukos.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-thanatos/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Thanatos.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-ethereal-noir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Ethereal%20Noir.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-neroli-kaze/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Neroli%20Kaze.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-nexus-ultra/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Nexus%20Ultra.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-silver-edge/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Silver%20Edge.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-alpha-vortex-zenith/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Alpha%20Vortex%20Zenith.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-420/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20420.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-express/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Express.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-leviathan/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Leviathan.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-rouge/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Rouge.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-teqrose/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Teqrose.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-vermillion/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Vermillion.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-reconstructed/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Reconstructed.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-nvr-summer/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20NVR%20Summer%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-hibiscus-sumera-prototype/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Hibiscus%20Sumera%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-ymir/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Ymir%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-amber-claw/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Amber%20Claw%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-sprite-zest/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Sprite%20Zest%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-temptation/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Temptation.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-sonata/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Sonata.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-poseidon-old-batch/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Poseidon%20Old%20Batch.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-silver-edge-official/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Silver%20Edge%20Official.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-black-collar/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Black%20Collar%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-celestial-fondonero/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Celestial%20Fondonero%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-harbringer-extreme/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Harbinger%20Extreme%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-windrise/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Windrise%20Prototype.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-hemera-nox/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Hemera%20Nox.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-celestial-enigma/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Celestial%20Enigma.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-emperium/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Emperium.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-primal-helix/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Primal%20Helix.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-amatsu-pura/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Amatsu%20Pura.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-royal-zest/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Inspired%20Prime%20Monkey%20Royal%20Zest%20%28Old%29.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-nocturne-omen/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Nocturne%20Omen.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-emperium-old/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Emperium.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-poseidon-new/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Poseidon.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-reserve/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Reserve.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-teqrose/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20TeqRose.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-matcha/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Matcha.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-emperium-new/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Emperium.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-dendros-official/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Dendros%20Official.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-valor-absolu/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Valor%20Absolu.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-hibiscus-sumera-official/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Hibiscus%20Sumera%20Official.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-aegis/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Aegis.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-istarbaks/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Istarbaks.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/prime-monkey/prime-monkey-silent-ode/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Prime%20Monkey%20Silent%20Ode.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-silver/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Silver.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-extreme/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Extreme.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-hibiscus/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Hibiscus.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-valaya/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Valaya.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-d-iconic-reformulated/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20D%27Iconic.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-mango-venom-reformulated/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Mango%20Venom.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-curiosity-v2/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Curiosity%20V2.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/cotidiano-ma-shiro-na-kokoro/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Ma%20Shiro%20Na%20Kokoro.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/cotidiano/passion-orange/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Cotidiano%20Passion%20Orange.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/jem/jem-sunstone/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/JEM%20Sunstone.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/jem/aquamarine/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Jem%20Aquamarine.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://curated-archive.com/p/jem/oracle-bleu/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-16</lastmod>
+    <image:image><image:loc>https://curated-archive.com/Jem%20Oracle%20Bleu.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://curated-archive.com/shipping/</loc>
+    <lastmod>2026-09-10</lastmod>
+  </url>
+  <url>
+    <loc>https://curated-archive.com/returns/</loc>
+    <lastmod>2026-09-10</lastmod>
   </url>
 </urlset>
