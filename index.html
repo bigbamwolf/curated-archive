@@ -826,9 +826,8 @@
     </select>
     <div class="ship-note" id="shipNote" style="font-size:12px;color:var(--muted);margin:-4px 0 8px 0">Free shipping on orders ₱10,000 and up. Below that, the courier rate you pick is added to your total.</div>
     <textarea class="field" id="cAddress" rows="2" placeholder="Complete delivery address"></textarea>
-    <div class="pay">
-      <div class="ph" id="qrHolder">GCash QR</div>
-      <div><b id="gcashName"></b><small id="gcashNumber"></small><small>Pay here if checkout is offline.</small></div>
+    <div class="pay" style="display:none">
+      <div><b id="gcashName"></b><small id="gcashNumber"></small></div>
     </div>
     <label class="agree"><input type="checkbox" id="cAgree"><span>I have read and agree to the <a onclick="goTerms()">Terms &amp; Conditions</a>. All sales are final, decants are made to order, no returns or refunds.</span></label>
     <button class="btn btn-gold btn-block" id="placeBtn" onclick="placeOrder()">Place order</button>
@@ -5977,7 +5976,7 @@
     heroSlidesInit();
     loadCatalogFromApi().finally(() => {
       var _REM=["Rayhaan Imperia"]; for(const _c in CATALOG){ CATALOG[_c]=(CATALOG[_c]||[]).filter(_it=>_it&&!_REM.includes(_it.name)); } try{for(var _i=LAYERING.length-1;_i>=0;_i--){if(_REM.includes(LAYERING[_i].f1)||_REM.includes(LAYERING[_i].f2))LAYERING.splice(_i,1);}}catch(_e){}
-      buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart(); loadQr();
+      buildCategories(); patchCatalogImages(); setHero(); renderChips(); renderGrid(); renderCart();
       // A deep link routes at t=0 against the embedded snapshot, which can be
       // stale on price and stock and can be missing newer products entirely.
       // Once the live catalog lands, re-run the route so the view shows sheet truth.
@@ -6646,7 +6645,7 @@
       if (!d.ok) throw new Error(d.error||"Order failed");
       cart = []; saveCart(); renderCart();
       if (d.checkoutUrl){ status.textContent = "Redirecting to secure payment..."; window.location.href = d.checkoutUrl; return; }
-      status.textContent = "Order " + d.orderId + " received. Pay via GCash above and send your receipt. A copy was emailed to the shop.";
+      status.textContent = "Order " + d.orderId + " received. We will message you the payment details shortly. A copy was emailed to the shop.";
     }catch(e){
       status.textContent = "We could not reach the order desk, so we generated a PDF you can send us instead.";
       await downloadPdf();
