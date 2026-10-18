@@ -11,8 +11,7 @@ Processing Time
 
 Orders are decanted, sealed, and dispatched within 1 to 3 working days
 after your payment is confirmed. Payment is confirmed once your Xendit
-checkout clears, or once your GCash payment is verified for orders that
-use the GCash fallback method.
+checkout clears.
 
 Courier Options and Rates
 
