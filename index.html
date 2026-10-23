@@ -450,9 +450,16 @@
   .cc-panel{bottom:0;right:0;width:100vw;height:100vh;max-height:none;border-radius:0;border:none}
   .cc-toggle{bottom:14px;right:14px;padding:10px 16px;font-size:.95rem}
 }
+  /* VACATION MODE */
+  .vac-banner{background:#1a1712;color:#f3ecdd;border-bottom:1px solid #b79a5b;text-align:center;padding:16px 18px}
+  .vac-banner b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;font-weight:500;letter-spacing:.04em;color:#d9bf85;margin-bottom:4px}
+  .vac-banner span{font-size:.92rem;letter-spacing:.03em;color:#e6dcc6}
+  html.vacation .card-add,html.vacation #dAdd,html.vacation #placeBtn,html.vacation #laddboth,html.vacation #hbOrder,html.vacation .bprice+button,html.vacation [onclick^="addBundle"]{font-size:0!important;pointer-events:none;cursor:not-allowed;background:#d8d0bd!important;color:#6f6650!important;border-color:#d8d0bd!important}
+  html.vacation .card-add::after,html.vacation #dAdd::after,html.vacation #placeBtn::after,html.vacation #laddboth::after,html.vacation #hbOrder::after,html.vacation [onclick^="addBundle"]::after{content:"Ordering paused";font-size:.9rem;letter-spacing:.06em}
 </style>
 </head>
 <body>
+<div class="vac-banner" id="vacBanner" hidden role="status"><b>The Archive is on a short holiday</b><span>Browse freely, ordering reopens soon.</span></div>
 <div class="announce">Authentic decants · Ships within the Philippines only · Secure checkout via Xendit</div>
 
 <header class="site">
@@ -848,6 +855,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
+  const VACATION_MODE = true; /* flip to false to reopen ordering */
+  if (VACATION_MODE){ document.documentElement.classList.add("vacation"); var _vb=document.getElementById("vacBanner"); if(_vb) _vb.hidden=false; }
+  function vacationBlocked(){ if(!VACATION_MODE) return false; var b=document.getElementById("vacBanner"); if(b){ b.hidden=false; b.scrollIntoView({behavior:"smooth",block:"start"}); } return true; }
   const API_CONFIG = { apiBase: "https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec", storeName: "Curated Archive" };
   (function(){ try{
     var vid;
@@ -6091,7 +6101,7 @@
 
   function loadCart(){ try{ return JSON.parse(localStorage.getItem("ca_cart")||"[]"); }catch(e){ return []; } }
   function saveCart(){ localStorage.setItem("ca_cart", JSON.stringify(cart)); }
-  function addToCart(line){
+  function addToCart(line){ if (vacationBlocked()) return;
     line.unitPrice = Math.ceil(Number(line.unitPrice)||0);
     const ex = cart.find(c => c.category===line.category && c.name===line.name && c.size===line.size);
     if (ex) ex.quantity += line.quantity; else cart.push(line);
@@ -6306,7 +6316,7 @@
     document.getElementById("lphases").innerHTML=fmtPhases(l.trans);
     window.scrollTo({ top:0, behavior:"smooth" });
   }
-  function addBothToBag(i){
+  function addBothToBag(i){ if (vacationBlocked()) return;
     const l=LAYERING[i];
     [l.f1_item,l.f2_item].forEach(it=>{ if(it){ const s=sizesOf(it)[0]; addToCart({ category:it.category, name:it.name, size:s, quantity:1, unitPrice:Number(it.prices[String(s)]), image:it.image||"" }); } });
     openCart();
@@ -6427,7 +6437,7 @@
       </div>`;
     }).join("");
   }
-  function addBundle(i){
+  function addBundle(i){ if (vacationBlocked()) return;
     bLines(BUNDLES[i]).forEach(l=>addToCart({category:l.cat,name:l.it.name,size:l.size,quantity:1,unitPrice:l.price,image:l.it.image||""}));
     openCart();
   }
@@ -6535,7 +6545,7 @@
     const slot=el.closest(".hb-slot"); if(slot){ const v=slot.querySelector(".hb-mlval"); if(v) v.textContent=nv+" ml"; }
     hybRefreshTotals();
   }
-  function orderHybrid(){
+  function orderHybrid(){ if (vacationBlocked()) return;
     const used=hybUsed();
     if(hyb.scents.length<2 || hyb.scents.length>HYB_MAX || used!==hyb.total || !hyb.scents.every(x=>x.ml>=HYB_MIN)){ alert("Your blend must use exactly "+hyb.total+" ml across 2 to "+HYB_MAX+" scents, minimum "+HYB_MIN+"ml each."); return; }
     if(!document.getElementById("hbAgree").checked){ alert("Please accept the waiver to order."); return; }
@@ -6563,7 +6573,7 @@
     return { name:v("cName"), email:v("cEmail"), contact:v("cContact"), delivery:v("cDelivery"), address:v("cAddress") };
   }
 
-  async function placeOrder(){
+  async function placeOrder(){ if (vacationBlocked()) return;
     if (!cart.length){ alert("Your bag is empty."); return; }
     var _ag=document.getElementById("cAgree"); if (!_ag || !_ag.checked){ alert("Please tick the box to agree to the Terms and Conditions, all sales final and no returns, before placing your order."); _ag&&_ag.focus&&_ag.focus(); return; }
     const customer = validCheckout(); if (!customer) return;
@@ -6595,7 +6605,7 @@
     }finally{ btn.disabled = false; btn.textContent = original; }
   }
 
-  async function downloadPdf(){
+  async function downloadPdf(){ if (vacationBlocked()) return;
     if (!cart.length){ alert("Your bag is empty."); return; }
     const customer = validCheckout(); if (!customer) return;
     const { jsPDF } = window.jspdf;
