@@ -459,7 +459,7 @@
 </style>
 </head>
 <body>
-<div class="vac-banner" id="vacBanner" hidden role="status"><b>The Archive is on a short holiday</b><span>Browse freely, ordering reopens soon.</span></div>
+<div class="vac-banner" id="vacBanner" hidden role="status"><b>The Archive is on a short holiday</b><span>Browse freely, ordering reopens October 27.</span></div>
 <div class="announce">Authentic decants · Ships within the Philippines only · Secure checkout via Xendit</div>
 
 <header class="site">
@@ -855,7 +855,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
-  const VACATION_MODE = true; /* flip to false to reopen ordering */
+  const VACATION_UNTIL = Date.parse("2026-10-27T00:00:00+08:00");
+  const VACATION_MODE = Date.now() < VACATION_UNTIL;
   if (VACATION_MODE){ document.documentElement.classList.add("vacation"); var _vb=document.getElementById("vacBanner"); if(_vb) _vb.hidden=false; }
   function vacationBlocked(){ if(!VACATION_MODE) return false; var b=document.getElementById("vacBanner"); if(b){ b.hidden=false; b.scrollIntoView({behavior:"smooth",block:"start"}); } return true; }
   const API_CONFIG = { apiBase: "https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec", storeName: "Curated Archive" };
