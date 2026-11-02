@@ -14,7 +14,6 @@ span { color:#b08d3e; font-size:10.5px; letter-spacing:.28em; text-transform:upp
 p { color:#8f877a; font-size:13px; margin:18px 0; }
 #btn { display:flex; justify-content:center; min-height:44px; }
 </style>
-<script src="https://accounts.google.com/gsi/client" async onload="go()"></script>
 </head>
 <body>
 <div class="c"><b>CURATED ARCHIVE</b><span>Seller Center</span><p id="m">Opening with your Google account</p><div id="btn"></div></div>
@@ -27,5 +26,6 @@ function go() {
   google.accounts.id.renderButton(document.getElementById('btn'), { theme: 'filled_black', size: 'large', shape: 'pill', text: 'continue_with', width: 280 });
 }
 </script>
+<script src="https://accounts.google.com/gsi/client" async onload="go()"></script>
 </body>
 </html>
