@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Seller Center Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body { margin:0; min-height:100vh; display:grid; place-items:center; background:#f6f4ef; color:#1d1a14; font:14px/1.5 Inter,sans-serif; padding:24px; box-sizing:border-box; }
+.c { background:#fff; border:1px solid #e8e2d6; border-radius:16px; padding:34px 30px; max-width:380px; width:100%; text-align:center; box-shadow:0 6px 20px rgba(40,30,10,.05); }
+b { font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:.14em; display:block; }
+span { color:#b08d3e; font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; }
+p { color:#8f877a; font-size:13px; margin:18px 0; }
+#btn { display:flex; justify-content:center; min-height:44px; }
+</style>
+<script src="https://accounts.google.com/gsi/client" async onload="go()"></script>
+</head>
+<body>
+<div class="c"><b>CURATED ARCHIVE</b><span>Seller Center</span><p id="m">Opening with your Google account</p><div id="btn"></div></div>
+<script>
+var DEST = 'https://sellercenter.curated-archive.com/';
+function done(r) { location.replace(DEST + '#gid=' + encodeURIComponent(r.credential)); }
+function go() {
+  google.accounts.id.initialize({ client_id: '559339620399-78m0836ims4a2rgjrfeuf8kkbn1pfpd8.apps.googleusercontent.com', callback: done, auto_select: true, login_hint: 'arwinbagaslao@gmail.com', cancel_on_tap_outside: false, use_fedcm_for_prompt: true });
+  google.accounts.id.prompt();
+  google.accounts.id.renderButton(document.getElementById('btn'), { theme: 'filled_black', size: 'large', shape: 'pill', text: 'continue_with', width: 280 });
+}
+</script>
+</body>
+</html>
