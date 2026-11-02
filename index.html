@@ -8,6 +8,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-9KNDVMBV0V');
+  gtag('config', 'AW-18549620444');
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6598,6 +6599,7 @@
       const d = await r.json();
       if (!d.ok) throw new Error(d.error||"Order failed");
       cart = []; saveCart(); renderCart();
+      try{ localStorage.setItem("ca_pending_order", JSON.stringify({ id:String(d.orderId||""), total:Number(d.total)||0 })); }catch(_e){}
       if (d.checkoutUrl){ status.textContent = "Redirecting to secure payment..."; window.location.href = d.checkoutUrl; return; }
       status.textContent = "Order " + d.orderId + " received. We will message you the payment details shortly. A copy was emailed to the shop.";
     }catch(e){
@@ -6643,7 +6645,23 @@
     catch(e){ return null; }
   }
 
+  function caTrackPurchase(){
+    try{
+      var pid = new URLSearchParams(location.search).get("paid");
+      if (!pid) return;
+      var p = JSON.parse(localStorage.getItem("ca_pending_order")||"null");
+      if (!p || p.id !== pid || !(p.total > 0)) return;
+      var key = "ca_conv_" + pid;
+      if (localStorage.getItem(key)) return;
+      if (typeof gtag !== "function") return;
+      gtag("event","conversion",{ send_to:"AW-18549620444/q7BXCPaAqbAdENz9ko1F", value:p.total, currency:"PHP", transaction_id:pid });
+      localStorage.setItem(key, "1");
+      localStorage.removeItem("ca_pending_order");
+    }catch(_e){}
+  }
+
   function caBoot(){
+    caTrackPurchase();
     try{
       const m = (location.hash||"").match(/session=([^&]+)/);
       if (m){ localStorage.setItem("ca_session", decodeURIComponent(m[1])); history.replaceState(null,"",location.pathname+location.search); }
