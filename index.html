@@ -6512,7 +6512,7 @@
     if(!document.getElementById("hbAgree").checked){ alert("Please accept the waiver to order."); return; }
     const cfg=hybCfg();
     const desc=hyb.scents.map(x=>`${x.name} ${x.ml}ml`).join(" + ");
-    addToCart({ category:cfg.cat, name:`${hyb.total}ml ${cfg.word} (${desc})`, size:hyb.total, quantity:1, unitPrice:Math.round(hybPrice()*100)/100, image:"" });
+    addToCart({ category:cfg.cat, name:`${hyb.total}ml ${cfg.word} (${desc})`, size:hyb.total, quantity:1, unitPrice:Math.round(hybPrice()*100)/100, image:"", components:hyb.scents.map(x=>({category:x.cat,name:x.name,ml:x.ml})) });
     const sc=hyb.scope; hyb={ total:hyb.total, scents:[], scope:sc };
     const ag=document.getElementById("hbAgree"); if(ag) ag.checked=false;
     renderHybrid(); openCart();
@@ -6548,7 +6548,7 @@
     status.textContent = "Submitting your order...";
     const payload = { action:"order", store:API_CONFIG.storeName, customer,
       session: ACCOUNT.session,
-      items: cart.map(i => ({ category:i.category, name:i.name, size:i.size, quantity:i.quantity, unitPrice:i.unitPrice })),
+      items: cart.map(i => ({ category:i.category, name:i.name, size:i.size, quantity:i.quantity, unitPrice:i.unitPrice, components:i.components })),
       subtotal: cartSubtotal(),
       shipping: shippingFee(),
       courier: (function(){ var s=document.getElementById("cDelivery"); return s?String(s.value||""):""; })(),

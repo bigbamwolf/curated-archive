@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /ops.html
-Disallow: /admin/
 Disallow: /tmp/
 Disallow: /tools/
 

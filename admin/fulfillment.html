@@ -4,17 +4,65 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <title>Curated Archive Fulfillment</title>
 <style>
-  html, body { margin: 0; padding: 0; height: 100%; background: #0c0c0e; overflow: hidden; }
+  html, body { margin: 0; padding: 0; height: 100%; background: #0c0c0e; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
   iframe { border: 0; width: 100%; height: 100%; display: block; background: #0c0c0e; }
+  #gate { display: none; height: 100%; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; }
+  #gate form { width: 100%; max-width: 360px; color: #e9e4d8; }
+  #gate h1 { font-size: 18px; font-weight: 600; margin: 0 0 12px; }
+  #gate input { width: 100%; box-sizing: border-box; padding: 12px; border-radius: 8px; border: 1px solid #3a3a40; background: #17171a; color: #e9e4d8; font-size: 16px; }
+  #gate button { margin-top: 12px; width: 100%; padding: 12px; border: 0; border-radius: 8px; background: #c9a961; color: #0c0c0e; font-size: 16px; font-weight: 600; }
+  #gate p { font-size: 13px; color: #8d877a; min-height: 18px; }
 </style>
 </head>
 <body>
-<iframe
-  src="https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec?action=fulfillment&token=KiOYuX-zZFH6Vogg5bU5zTNQeqii0_Wl"
-  allow="clipboard-write"
-  loading="eager"
-  title="Curated Archive Fulfillment"></iframe>
+<div id="gate">
+  <form id="gateForm" autocomplete="off">
+    <h1>Fulfillment desk</h1>
+    <input id="tok" type="password" placeholder="Desk key" autocomplete="current-password" required>
+    <button type="submit">Open desk</button>
+    <p id="msg"></p>
+  </form>
+</div>
+<script>
+(function () {
+  var EXEC = 'https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec';
+  var KEY = 'ca_desk_key';
+  function store(t) { try { sessionStorage.setItem(KEY, t); } catch (e) {} }
+  function read() { try { return sessionStorage.getItem(KEY) || ''; } catch (e) { return ''; } }
+  var m = /[#&]t=([^&]+)/.exec(location.hash || '');
+  if (m) { store(decodeURIComponent(m[1])); history.replaceState(null, '', location.pathname); }
+  function open(t) {
+    var f = document.createElement('iframe');
+    f.src = EXEC + '?action=fulfillment&token=' + encodeURIComponent(t);
+    f.allow = 'clipboard-write';
+    f.title = 'Curated Archive Fulfillment';
+    document.getElementById('gate').style.display = 'none';
+    document.body.appendChild(f);
+  }
+  function gate(msg) {
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    document.getElementById('msg').textContent = msg || '';
+    document.getElementById('gate').style.display = 'flex';
+  }
+  function check(t) {
+    fetch(EXEC + '?action=xenditstate&token=' + encodeURIComponent(t), { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (d && d.ok) { store(t); open(t); } else gate('That key did not work.'); })
+      .catch(function () { store(t); open(t); });
+  }
+  document.getElementById('gateForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var v = document.getElementById('tok').value.trim();
+    if (v.length < 24) { document.getElementById('msg').textContent = 'That key is too short.'; return; }
+    document.getElementById('msg').textContent = 'Checking...';
+    check(v);
+  });
+  var t = read();
+  if (t) check(t); else gate('');
+})();
+</script>
 </body>
 </html>

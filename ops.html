@@ -94,6 +94,7 @@
 <script>
 const API = 'https://script.google.com/macros/s/AKfycbyMqvlROnEtvZ3pOjy7S8PoOdbryVmtFxzeqmDVn-dkzdz-b1mq-vhrIDxTGsuSLZ-f/exec';
 let DATA = null;
+function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
 async function post(body) {
   const r = await fetch(API, { method:'POST', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(body) });
   return r.json();
@@ -120,8 +121,8 @@ async function boot(tok, user) {
   document.getElementById('kMl').textContent = j.kpi.totalMl.toLocaleString();
   document.getElementById('kOrd').textContent = j.kpi.orders20;
   const cats = [...new Set(j.catalog.map(i => i.category).filter(Boolean))].sort();
-  document.getElementById('fc').innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option>${c}</option>`).join('');
-  document.getElementById('cmpItem').innerHTML = j.catalog.filter(i => Number(i.stock) > 0).map((i, n) => `<option value="${i.name.replace(/"/g,'&quot;')}">${i.name}</option>`).join('');
+  document.getElementById('fc').innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option>${esc(c)}</option>`).join('');
+  document.getElementById('cmpItem').innerHTML = j.catalog.filter(i => Number(i.stock) > 0).map((i, n) => `<option value="${esc(i.name)}">${esc(i.name)}</option>`).join('');
   renderCat(); renderOrd(); renderCmp();
 }
 function tab(t) {
@@ -136,13 +137,13 @@ function renderCat() {
   const rows = DATA.catalog.filter(i => (!q || i.name.toLowerCase().includes(q)) && (!fc || i.category === fc)).slice(0, 250);
   document.getElementById('catBody').innerHTML = rows.map(i => {
     const p = i.prices || {};
-    return `<tr><td>${i.name}</td><td><span class="pill">${i.category || ''}</span></td><td>${i.stock ?? ''}</td>
-      <td>${p['1'] ?? ''}</td><td>${p['2'] ?? ''}</td><td>${p['5'] ?? ''}</td><td>${p['10'] ?? ''}</td></tr>`;
+    return `<tr><td>${esc(i.name)}</td><td><span class="pill">${esc(i.category)}</span></td><td>${esc(i.stock)}</td>
+      <td>${esc(p['1'])}</td><td>${esc(p['2'])}</td><td>${esc(p['5'])}</td><td>${esc(p['10'])}</td></tr>`;
   }).join('');
 }
 function renderOrd() {
   document.getElementById('ordBody').innerHTML = (DATA.orders || []).map(o =>
-    `<tr><td>${o.id}</td><td>${String(o.date).slice(0,10)}</td><td>${o.name}</td><td>${o.items}</td><td>${o.total}</td><td>${o.status || ''}</td></tr>`).join('');
+    `<tr><td>${esc(o.id)}</td><td>${esc(String(o.date).slice(0,10))}</td><td>${esc(o.name)}</td><td>${esc(o.items)}</td><td>${esc(o.total)}</td><td>${esc(o.status)}</td></tr>`).join('');
 }
 function renderCmp() {
   const name = document.getElementById('cmpItem').value;
