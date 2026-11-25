@@ -5856,7 +5856,8 @@
   const peso = n => "₱" + Math.ceil(Number(n)||0).toLocaleString("en-PH");
   const pesoShort = n => "₱" + Math.ceil(Number(n)||0).toLocaleString("en-PH");
   const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-  const sizesOf = it => Object.keys(it.prices||{}).map(Number).sort((a,b)=>a-b);
+  let BLOCKED_SIZES = [1, 2]; /* Boss 2026-11-25: 1ml and 2ml vials out. Remove a size here (and in the sheet BLOCKED_SIZES property) to restore. */
+  const sizesOf = it => { const all = Object.keys(it.prices||{}).map(Number).sort((a,b)=>a-b); const ok = all.filter(x => BLOCKED_SIZES.indexOf(x) < 0); return ok.length ? ok : all; };
   const minPrice = it => { const s = sizesOf(it); return s.length ? it.prices[String(s[0])] : 0; };
   const priceRange = it => { const s=sizesOf(it); const ps=s.map(x=>Number(it.prices[String(x)])).filter(v=>v>0); if(!ps.length) return ""; const lo=Math.min(...ps), hi=Math.max(...ps); return lo===hi ? peso(lo) : peso(lo)+" to "+peso(hi); };
   const DISP_NAME = { "TBGCO Blanc":"The Boar Grooming Co. Blanc", "Elysium PC":"Elysium Pour Homme Parfum Cologne", "Elysium PPH SE":"Elysium Pour Homme Parfum Special Edition", "Cap Cacao":"Captivate Cacao", "Cap Sedley":"Captivate Sedley", "Cap Toffee":"Captivate Toffee", "Cap Raspberry":"Captivate Raspberry", "Cap Rose":"Captivate Rose", "Cap Strawberry":"Captivate Strawberry", "Cap Peach":"Captivate Peach" };
@@ -5943,7 +5944,7 @@
       const r = await fetch(`${API_CONFIG.apiBase}?action=catalog&v=${Date.now()}`, { cache:"no-store" });
       if (!r.ok) return;
       const d = await r.json();
-      if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){}
+      if (d && Array.isArray(d.blockedSizes)) BLOCKED_SIZES = d.blockedSizes.map(Number); if (d && d.catalog && Object.keys(d.catalog).length) CATALOG = d.catalog; try{ if(Array.isArray(d.layering)&&d.layering.length){ LAYERING.length=0; d.layering.forEach(function(_l){ LAYERING.push({name:_l.name,f1:_l.f1,f2:_l.f2,shoppable:_l.shoppable!==false,trans:_l.trans||''}); }); } }catch(_e){}
     }catch(e){ /* keep embedded */ }
   }
 
@@ -6058,7 +6059,7 @@
   }
 
   function mlLeft(it){ const raw = it.stock; if (raw === "" || raw == null) return Infinity; const st = Number(raw); return isFinite(st) ? st : Infinity; }
-  function sizeFits(it, s){ return s <= mlLeft(it); }
+  function sizeFits(it, s){ return BLOCKED_SIZES.indexOf(s) < 0 && s <= mlLeft(it); }
   function renderSizes(){
     const it = view.item;
     if (!sizeFits(it, view.size)) { const ok = sizesOf(it).filter(s => sizeFits(it, s)); if (ok.length) view.size = ok[0]; }
