@@ -6071,8 +6071,9 @@
     const b = stockInfo(it);
     const overMl = (view.size * view.qty) > mlLeft(it);
     const add = document.getElementById("dAdd");
-    add.disabled = b.sold || overMl;
-    add.textContent = b.sold ? "Sold out" : (overMl ? "Only " + mlLeft(it) + "ml left" : "Add to Cart");
+    const _blk = BLOCKED_SIZES.indexOf(view.size) >= 0;
+    add.disabled = b.sold || overMl || _blk;
+    add.textContent = (b.sold || _blk) ? "Sold out" : (overMl ? "Only " + mlLeft(it) + "ml left" : "Add to Cart");
   }
   function pickSize(s){ if (!sizeFits(view.item, s)) return; view.size = s; renderSizes(); }
   function renderQty(){ document.getElementById("dQty").textContent = view.qty; }
